@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="banner">
+<typeAlias alias="banner" type="com.lj.app.lvjianjunan.banner.model.Banner" />
+
+	<resultMap id="bannerResult" class="banner">       
+	 	<result property="bannerId" column="bannerId"/>      
+	   <result property="bannerImage" column="bannerImage"/>     
+       <result property="linkUrl" column="linkUrl"/>
+       <result property="isUsed" column="isUsed"/>      
+       <result property="orderId" column="orderId"/>
+        <result property="alt" column="alt"/>
+   </resultMap>
+   
+	<select id="select"  resultMap="bannerResult">
+		SELECT * FROM BANNER
+	</select>
+	
+	<select id="getInfoByKey"  resultClass="banner" parameterClass="int">
+		SELECT * FROM BANNER WHERE bannerId=#bannerId:NUMBER#
+	</select>
+
+	<insert id="insert" parameterClass="banner"  >
+			INSERT INTO BANNER(bannerImage,linkUrl,isUsed,orderId,alt)
+						VALUES(#bannerImage#,#linkUrl#,#isUsed#,#orderId#,#alt#)
+	</insert>
+	
+	<update id="update" parameterClass="banner" >
+			UPDATE  banner t SET t.bannerImage = #bannerImage#, 
+			t.linkUrl = #linkUrl#,t.isUsed=#isUsed#,
+			t.orderId=#orderId#, t.alt=#alt#  WHERE bannerId=#bannerId#
+	</update>
+	
+	<delete id="delete" parameterClass="int">
+		DELETE FROM   banner WHERE bannerId=#bannerId#
+	</delete>
+	
+</sqlMap>

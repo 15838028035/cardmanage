@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="user">
+<typeAlias alias="user" type="com.lj.app.cardmanage.user.model.User" />
+
+	<resultMap id="userResult" class="user">       
+	   <result property="userId" column="userId"/>      
+	   <result property="loginNo" column="loginNo"/>     
+       <result property="pwd" column="pwd"/>      
+       <result property="userName" column="userName"/>
+       <result property="cardNo" column="cardNo"/>
+       <result property="address" column="address"/>
+       <result property="mobile" column="MOBILE"/>
+       <result property="lockStatus" column="lockStatus"/>
+       <result property="enableFlag" column="enableFlag"/>
+	
+   </resultMap>
+   
+	<select id="select"  resultMap="userResult">
+		SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG FROM USER
+	</select>
+	
+	<select id="pagenate" resultMap="userResult">
+		SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG FROM USER t
+		<dynamic prepend="WHERE">
+		  	<isNotEmpty prepend="AND" property="loginNo"> t.loginNo = #loginNo#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="userName"> t.userName = #userName#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="cardNo"> t.cardNo = #cardNo#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="userName"> t.userName = #userName#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="address"> t.address = #address#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="mobile"> t.mobile = #mobile#</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	
+	 <select id="pagenate_count" resultClass="long">
+				SELECT count(1) FROM USER t
+  		<dynamic prepend="WHERE">
+			 	<isNotEmpty prepend="AND" property="loginNo"> t.loginNo = #loginNo#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="userName"> t.userName = #userName#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="cardNo"> t.cardNo = #cardNo#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="userName"> t.userName = #userName#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="address"> t.address = #address#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="mobile"> t.mobile = #mobile#</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="getInfoByKey" parameterClass="int" resultMap="userResult">
+			SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG FROM USER	
+		WHERE userId=#userId:NUMBER#
+	</select>
+	
+	<insert id="insert" parameterClass="user" >
+			INSERT INTO USER(LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG)
+						VALUES(#loginNo:VARCHAR#,
+						#pwd:VARCHAR#,
+						#userName:VARCHAR#,
+						#cardNo:VARCHAR#,
+						#address:VARCHAR#,
+						#mobile:VARCHAR#,
+						#lockStatus:VARCHAR#,
+						#enableFlag:VARCHAR#
+						)
+       
+	</insert>
+	
+	<update id="update" parameterClass="user" >
+			UPDATE  USER t 
+			SET t.loginNo = #loginNo:VARCHAR#, 
+			t.pwd=#pwd:VARCHAR#,
+			t.userName=#userName:VARCHAR#,
+			t.cardNo=#cardNo:VARCHAR#,
+			 t.address = #address:VARCHAR#, 
+			 t.mobile=#mobile:VARCHAR#, 
+			 t.lockStatus=#lockStatus:VARCHAR#, 
+			 t.enableFlag=#enableFlag:VARCHAR# 
+	 WHERE userId=#userId#
+       
+	</update>
+	
+	<delete id="delete" parameterClass="int">
+		DELETE FROM   USER WHERE userId=#userId#
+	</delete>
+	
+</sqlMap>

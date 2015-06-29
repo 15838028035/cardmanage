@@ -9,6 +9,9 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/scr/test/filters"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/filters"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/config"/>
         <property name="java-output-path" value="/cardmanage/src/main/webapp/WEB-INF/classes"/>
         <property name="context-root" value="/cardmanage"/>
     </wb-module>

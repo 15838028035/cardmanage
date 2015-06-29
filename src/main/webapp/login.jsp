@@ -1,3 +1,4 @@
+﻿<%@page language="java" isELIgnored="false"%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ include file="/jsp/common/taglibs.jsp" %>
 <%
@@ -8,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<%@ include file="/jsp/common/meta.jsp" %>
-	<title>中国移动统一帐号认证授权审计系统登录</title>
+	<title>卡神管理系统--用户登录</title>
 	<%@ include file="/jsp/common/resource/styles_all.jsp" %>
 	<%@ include file="/jsp/common/resource/scripts_base.jsp" %>
 	
@@ -89,9 +90,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <table id="btnSubmit" cellpadding="0" cellspacing="0" border="0" width="364" style="margin-top:20px;">
             	<tr><td align="center">
                 <div class="but but01">
-                	<a href="#" onClick="login();">
-                	<div class="but01_hover">
-                	</div>
+                	<a href="#" onClick="login();"> 登录
+                		<div class="but01_hover">
+                			</div>
                     </a>
                 </div>
                 </td></tr>

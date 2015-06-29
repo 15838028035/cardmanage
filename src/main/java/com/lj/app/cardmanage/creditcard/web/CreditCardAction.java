@@ -23,7 +23,7 @@ import com.lj.app.core.common.web.Struts2Utils;
 @Controller
 @Namespace("/jsp/creditCard")
 @Results({
-		@Result(name = AbstractBaseAction.EDIT, location = "creditCard-edit.jlsp"),
+		@Result(name = AbstractBaseAction.EDIT, location = "/jsp/creditCard/creditCard-edit.jsp"),
 		@Result(name = AbstractBaseAction.INPUT, location = "creditCardAction!edit.action",type = "redirect")
 
 })
@@ -65,6 +65,8 @@ public class CreditCardAction  extends AbstractBaseAction<CreditCard> {
 	@Override
 	public String list() throws Exception {
 		try {
+			String aa = "aa";
+			
 			String param = ServletActionContext.getRequest().getParameter("param");
 			Map condition = new HashMap();
 			this.creditCardService.findPageList(page, condition);
@@ -75,6 +77,7 @@ public class CreditCardAction  extends AbstractBaseAction<CreditCard> {
 			throw e;
 		}
 	}
+	
 	@Override
 	public String input() throws Exception {
 		return INPUT;

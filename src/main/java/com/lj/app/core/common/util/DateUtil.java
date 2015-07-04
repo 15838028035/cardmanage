@@ -1,11 +1,17 @@
 package com.lj.app.core.common.util;
 
 import java.text.ParseException;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DateUtil {
+	
+	public static final String DATE_FOMRAT_yyyyMMddhhMMss = "yyyy-MM-dd hh:mm:ss";
+	
+	public static final String getNowDateYYYYMMddHHMMSS() {
+		return getNowDate(DATE_FOMRAT_yyyyMMddhhMMss);
+	}
+	
 
 	/**得到当前时间
 	 * @param format 时间格式

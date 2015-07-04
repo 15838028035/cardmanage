@@ -39,7 +39,7 @@
 		
 	</select>
 	
-	<select id="pagenate" resultMap="creditCardResult">
+	<select id="pagenate" parameterClass="java.util.HashMap" resultMap="creditCardResult">
 		SELECT ID,CARDNO,BANKNO,USERNAME,MAXLIMIT,SECNO,VALIDATEDATE,BILLDATE,REPAYMENTDATE,LOCKSTATUS,ENABLEFLAG,
 			CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY
 			,DATE_FORMAT(UPDATEDATE, '%Y-%m-%d %h:%i:%s') UPDATEDATE
@@ -55,7 +55,7 @@
 	</select>
 	
 	
-	 <select id="pagenate_count" resultClass="long">
+	 <select id="pagenate_count" parameterClass="java.util.HashMap" resultClass="long">
 				SELECT count(1) FROM CREDITCARD t
   		<dynamic prepend="WHERE">
 			 <isNotEmpty prepend="AND" property="cardNo"> t.cardNo = #cardNo#</isNotEmpty>
@@ -76,8 +76,8 @@
 						#maxLimit:NUMBER#,
 						#secNo:VARCHAR#,
 						#validateDate:VARCHAR#,
-						#billDate:VARCHAR#,
-						#repaymentDate:VARCHAR#,
+						#billDate:NUMBER#,
+						#repaymentDate:NUMBER#,
 						#lockStatus:VARCHAR#,
 						#enableFlag:VARCHAR#,
 						#createBy:VARCHAR#,
@@ -96,6 +96,7 @@
 			 t.secNo = #secNo:VARCHAR#, 
 			 t.validateDate=#validateDate:VARCHAR#, 
 			 t.billDate=#billDate:NUMBER#, 
+			 t.repaymentDate=#repaymentDate:NUMBER#, 
 			 t.lockStatus=#lockStatus:VARCHAR#,
 			 t.enableFlag=#enableFlag:VARCHAR#,
 			 t.updateBy=#updateBy:VARCHAR#,

@@ -32,7 +32,7 @@
 	<div id="wrapper">
 		<a href="${ctx}/jsp/creditCard/creditCardList.jsp">卡片管理</a>
 		<a href="${ctx}/jsp/postCard/postCardList.jsp">post机管理</a>
-		<a href="${ctx}//jsp/user/userList.jsp">用户管理</a>
+		<a href="${ctx}/jsp/user/userList.jsp">用户管理</a>
 	</div>
   </body>
 

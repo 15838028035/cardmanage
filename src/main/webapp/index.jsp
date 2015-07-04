@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title><s:text name="common.title"></s:text></title>
+  <title>卡神管理系统</title>
 	<%@ include file="/jsp/common/meta.jsp" %>
 	<%@ include file="/jsp/common/resource/styles_all.jsp" %>
 	<%@ include file="/jsp/common/resource/scripts_all.jsp"%>
@@ -253,9 +253,6 @@ function topMenuEff(){
                 <li class="float_lef LT_hd_li" id="fullscreen" >
 						<a href="#"><img src="${ctx}/images/Esc_h.gif" title="全屏" /></a>
 				</li>
-                <LI class="float_lef LT_hd_li help" id="help" >
-						<a href="#"><img src="${ctx}/images/help-browser_h.gif" title="帮助中心" /></a>
-				</LI>
 				<li class="float_lef LT_hd_li Logout">
 					<a href="#"><img src="${ctx}/images/logout_h.gif" title="退出系统" /></a>
 				</li>
@@ -277,124 +274,20 @@ function topMenuEff(){
     
     	<div class="LT_Fr_wrap_TM" id="LT_Fr_wrap_TM">
         	<ul>
-        		<c:if test="${provCodeEn == 'CHONG_QING'}">
-	        		<li class="float_lef LT_hd_li_TM chongqingMenu">
-	                	<table cellpadding="0" cellspacing="0"  border="0"> <tr> <td width="10"> <img src="images/job.png" align="absmiddle"  width=15 height=15/> </td> <td><span class="marg_lef5">本地功能</span></td></tr></table>
-	                </li>
-        		</c:if>
-						<!--LT_hd_li改成了LT_hd_li_TM-->
-           		<sec:authorize code="uap_mainacct_mainmenu" >
-                  	<li class="float_lef LT_hd_li_TM accentMannagent">
-                    	<table cellpadding="0" cellspacing="0"  border="0"><tr><td width="10"><img src="images/system-users.gif" align="absmiddle" width=15 height=15 /></td><td><span class="marg_lef5"><s:text name="mainacct.zhgl" /></span></td></tr></table>
-                    </li>
-				</sec:authorize>
-					<!--LT_hd_li改成了LT_hd_li_TM-->
-					<sec:authorize code="uap_appmgmt" required="true">
-                    <li class="float_lef LT_hd_li_TM ApplicationMannagent">
-                    	<table cellpadding="0" cellspacing="0"  border="0"><tr><td width="10"><img src="images/spreadsheet18.gif"  align="absmiddle"  width=15 height=15/></td><td><span class="marg_lef5"><s:text name='appmgmt'/></span></td></tr></table>
-                    </li>
-                    </sec:authorize>
-					<c:if test="${provCodeEn != 'SHANG_HAI' || outNet != 'Y'}">					
-					<!--LT_hd_li改成了LT_hd_li_TM-->
-					
-					<sec:authorize code="uap_equipment_manament" required="true">
-	                    <li class="float_lef LT_hd_li_TM EquipmentManament">
-	                    	<table cellpadding="0" cellspacing="0"  border="0"><tr><td width="10"><img src="images/network-server.png"  align="absmiddle"  width=15 height=15/></td><td><span class="marg_lef5"><s:text name='menu.equipmentManament'/></span></td></tr></table>
-	                    </li>
-                    </sec:authorize>
-                    
-                    
-                     <!--LT_hd_li改成了LT_hd_li_TM---------------->
-                     <sec:authorize code="uap_rackgroup_manament" required="true">
-	                    <li class="float_lef LT_hd_li_TM RackGroupManament">
-	                    	<table cellpadding="0" cellspacing="0"  border="0"><tr><td width="10"><img src="images/network-server.png" align="absmiddle"  width=15 height=15/></td><td><span class="marg_lef5">群组管理</span></td></tr></table>
-	                    </li>
-                      </sec:authorize>
-                    
-                    <!--LT_hd_li改成了LT_hd_li_TM-->
-					<sec:authorize code="uap_security_menu" required="true">
-						<li class="float_lef LT_hd_li_TM SecurityManament">
-	                    	<table cellpadding="0" cellspacing="0"  border="0"><tr><td width="10"><img src="images/sj.gif" align="absmiddle"  width=15 height=15/></td><td><span class="marg_lef5">数据管控</span></td></tr></table>
-	                    </li>
-                    </sec:authorize>
-                    <!--LT_hd_li改成了LT_hd_li_TM-->
-					<sec:authorize code="uap_goldbank_menu" required="true">
-						<li class="float_lef LT_hd_li_TM GoldBankManagement">
-	                    	<table cellpadding="0" cellspacing="0"  border="0"><tr><td width="10"><img src="images/sj.gif" align="absmiddle"  width=15 height=15/></td><td><span class="marg_lef5"><s:text name="menu.goldbank"></s:text></span></td></tr></table>
-	                    </li>
-                    </sec:authorize>
-                    <!--LT_hd_li改成了LT_hd_li_TM-->
-					<sec:authorize code="uap_domain_menu" required="true">
-						<li class="float_lef LT_hd_li_TM DomainManament">
-	                    	<table cellpadding="0" cellspacing="0"  border="0"><tr><td width="10"><img src="images/sj.gif" align="absmiddle"  width=15 height=15/></td><td><span class="marg_lef5">域管理</span></td></tr></table>
-	                    </li>
-                   </sec:authorize>
-					<!--LT_hd_li改成了LT_hd_li_TM-->
-					<sec:authorize code="uap_config_menu" required="true">
-	                    <li class="float_lef LT_hd_li_TM SystemConfiguration">
-	                    	<table cellpadding="0" cellspacing="0"  border="0"><tr><td width="10"><img src="images/system.gif" align="absmiddle"  width=15 height=15/></td><td><span class="marg_lef5"><s:text name="menu.syscfg"></s:text></span></td></tr></table>
-	                    </li>
-                    </sec:authorize>
-					<sec:authorize code="uap_report_menu" required="true">
-	                    <li class="float_lef LT_hd_li_TM ReportManament">
-		               		<table cellpadding="0" cellspacing="0"  border="0"><tr><td width="10"><img src="images/spreadsheet.png"  align="absmiddle"  width=15 height=15//></td><td><span class="marg_lef2">报表管理</span></td></tr></table>
-		             	</li>
-                    </sec:authorize>
-					<!--LT_hd_li改成了LT_hd_li_TM-->
-					<sec:authorize code="uap_platform_menu" required="true">
-	                    <li class="float_lef LT_hd_li_TM PlatformManagment">
-	                    	<table cellpadding="0" cellspacing="0"  border="0"><tr><td width="10"><img src="images/computer.png" align="absmiddle"  width=15 height=15/></td><td><span class="marg_lef5">平台管理</span></td></tr></table>
-	                    </li>
-                    </sec:authorize>
-                    <!--LT_hd_li改成了LT_hd_li_TM-->
-					<sec:authorize code="uap_job_menu" required="true">
-	                    <li class="float_lef LT_hd_li_TM TaskManagment">
-	                    	<table cellpadding="0" cellspacing="0"  border="0"><tr><td width="10"><img src="images/job.png" align="absmiddle"  width=15 height=15/></td><td><span class="marg_lef5">作业管理</span></td></tr></table>
-	                    </li>
-                    </sec:authorize>
-					<!--LT_hd_li改成了LT_hd_li_TM 浙江应用接入-->
-					<sec:authorize code="uap_app_con" required="true">
-						<li class="float_lef LT_hd_li_TM CutInApp">
-							<table cellpadding="0" cellspacing="0"  border="0"><tr><td width="10"><img src="images/job.png" align="absmiddle"  width=15 height=15/></td><td><span class="marg_lef5">应用接入</span></td></tr></table>
-						</li>
-					</sec:authorize>
-					<sec:authorize code="mainacctMng_zj" required="true">
-						<li class="float_lef LT_hd_li_TM mainacctCutin">
-	                    	<table cellpadding="0" cellspacing="0"  border="0"><tr><td width="10"><img src="images/system-users.gif" align="absmiddle" width=15 height=15 /></td><td><span class="marg_lef5"><s:text name="mainacct.zhgl" /></span></td></tr></table>
-	                    </li>
-                    </sec:authorize>
-					<!--LT_hd_li改成了LT_hd_li_TM-->
-					<!-- added by WangXianfeng 2013-05-21 begin -->
-                    <sec:authorize code="uap_main_acct_login_rate" required="true">
-	                    <li class="float_lef LT_hd_li_TM MainAcctLoginRate">
-	                    	<table cellpadding="0" cellspacing="0"  border="0"><tr><td width="10"><img src="images/job.png" align="absmiddle"  width=15 height=15/></td><td><span class="marg_lef5">帐号登录率</span></td></tr></table>
-	                    </li>
-                    </sec:authorize>
-                    <!-- added by WangXianfeng 2013-05-21 end -->
-                    
-                    <!-- added by ge.jiawei 2013-07-1 begin -->
-                    <sec:authorize code="union_acct_view" required="true">
-	                    <li class="float_lef LT_hd_li_TM UnionViewManagment">
-	                    	<table cellpadding="0" cellspacing="0"  border="0"><tr><td width="10"><img src="images/job.png" align="absmiddle"  width=15 height=15/></td><td><span class="marg_lef5">统一视图</span></td></tr></table>
-	                    </li>
-                    </sec:authorize>
-                    </c:if>
-                    <!-- added by ge.jiawei 2013-07-1 end -->
-                    <!-- <li class="float_lef LT_hd_li_TM">
-                    	<table cellpadding="0" cellspacing="0"  border="0" class="logout"><tr><td width="10"><img src="images/logout.png" align="absmiddle"  width=15 height=15/></td><td><span class="marg_lef5">登出系统</span></td></tr></table>
-                    </li>
-					-->
-                    <!-- 上海本地添加 -->
-					<sec:authorize code="uap_manu_menu" required="true">
-	                    <li class="float_lef LT_hd_li_TM ManuMannagent">
-	                     	<table cellpadding="0" cellspacing="0"  border="0"><tr><td width="10"><img src="images/system-users.gif" align="absmiddle"  width=15 height=15/></td><td><span class="marg_lef5" width="100">合作伙伴</span></td></tr></table>
-	                    </li>
-                    </sec:authorize>
-					 <sec:authorize code="uap_local_menu" required="true">
-	                    <li class="float_lef LT_hd_li_TM LocalManagment">
-	                     	<table cellpadding="0" cellspacing="0"  border="0"><tr><td width="10"><img src="images/job.png" align="absmiddle"  width=15 height=15/></td><td><span class="marg_lef5">本地功能</span></td></tr></table>
-	                    </li>
-                    </sec:authorize>
+                 <li class="float_lef LT_hd_li_TM LocalManagment">
+                  	<table cellpadding="0" cellspacing="0"  border="0"><tr>
+                  	<td width="10"><img src="images/job.png" align="absmiddle"  width=15 height=15/>
+                  	</td><td><span class="marg_lef5">本地功能</span></td></tr></table>
+                 </li>
+                 <li class="float_lef LT_hd_li_TM LocalManagment">
+                 	 <a href="${ctx}/jsp/creditCard/creditCardList.jsp">卡片管理</a>
+                  </li>
+                    <li class="float_lef LT_hd_li_TM LocalManagment">
+						<a href="${ctx}/jsp/postCard/postCardList.jsp">post机管理</a>
+				</li>
+				  <li class="float_lef LT_hd_li_TM LocalManagment">
+					<a href="${ctx}/jsp/user/userList.jsp">用户管理</a>
+				</li>
           </ul>
          </div><!--end LT_Fr_wrap_TM-->
        
@@ -410,7 +303,8 @@ function topMenuEff(){
 	
 	
 	<div class="LT_hide_ELe" id="LT_hide_ELe" style="vertical-align: bottom;background-color: #C0C0C0;padding: 0px;" >		
-				<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><img src="${ctx}/images/al_1.gif" id="showhideimg" name="showhideimg" style="cursor: hand;" />
+				<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+				<img src="${ctx}/images/al_1.gif" id="showhideimg" name="showhideimg" style="cursor: hand;" />
 	</div>
 	
 	
@@ -424,59 +318,14 @@ function topMenuEff(){
 	<table width="450" cellpadding="0" cellspacing="0" height="20">
 	      <tr>
 	        <td align="right"><img src="${ctx}/images/LT_footer_i1.jpg" title="用户名" align="middle" /></td>
-	        <td align="left" width="190"><span class="marg_lef5" style="vertical-align:middle;">:<s:property value="#session.securityContext.loginName"/></span></td>
+	        <td align="left" width="190"><span class="marg_lef5" style="vertical-align:middle;">:</td>
 	        <td align="right"><img src="${ctx}/images/LT_footer_i2.jpg" title="登录时间" align="middle" /></td>
-	        <td align="left"><span class="marg_lef5" style="vertical-align:middle;"><s:text name="common.logintime"></s:text>:${sessionScope.securityContext.loginTime}</span></td>
+	        <td align="left"></td>
 	      </tr>
 	    </table></td></tr>
 	</table>
 	 </div>
 	 </div>
-	 
-	 
-	 
-	 
-	 <!--帮助中心-->
-<div id="help_dialog">
-<!--start  contain容器-->
-<div class="contain">
-<div class="contain_wrap">
-<div class="contain_search">
-	<div class="contain_s_wrap">
-	<div id="tabs02">
-            <ul>
-                <li><a href="#tabs02-1">帮助信息</a></li>
-                <li><a href="#tabs02-2">版本信息</a></li>
-            </ul>
-            <div id="tabs02-1">
-               <!--start  contain容器-->
-                <div class="contain">
-                <div class="contain_wrap">
-                <div class="contain_search">
-                <div class="contain_s_wrap" onclick="window.open('${ctx}/help/index.html','_blank');"><a href="#">
-                    1.帮助文档</a><br/>
-                    </div>
-                    </div><!--end contain_search-->
-                    </div><!--end contain_wrap-->
-                    </div><!--end contain-->
-            </div><!--end tabs01-1-->
-            <div id="tabs02-2">
-             	<!--start  contain容器-->
-                <div class="contain">
-                	<div class="contain_wrap">
-               		 	<div class="contain_search" style="background:#e0f0ff;">
-                   			<div class="contain_s_wrap">
-                            	<img src="images/help_p1.jpg" />
-                            </div>
-                    	</div><!--end contain_search-->
-                    </div><!--end contain_wrap-->
-                </div><!--end contain-->
-            </div><!--end tabs01-2-->
-      </div><!--end tabs01-->
-      </div><!--end contain_s_wrap-->
-    </div><!--end contain_search-->
-    </div></div>
-</div><!--end help_dialog-->
 
   </body>
 

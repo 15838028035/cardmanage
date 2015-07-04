@@ -12,9 +12,9 @@
 	<%@ include file="/jsp/common/resource/styles_all.jsp" %>
 	<script type="">
 		$(document).ready(function(){
-			//contralEffect.contain();
-			//contralEffect.tablelist();
-			//contralEffect.blueButton();
+			contralEffect.contain();
+			contralEffect.tablelist();
+			contralEffect.blueButton();
 			//$("#tabs").tabs();
 			//manageApplicationDialog();//dialog
 			//Management_4A.AccentTree();
@@ -28,10 +28,15 @@
     document.onkeydown=function(event){            
     	var e = event || window.event || arguments.callee.caller.arguments[0]                    
     	if(e && e.keyCode==13){ // enter 键                 //要做的事情           
-    		var param = $("#param").val();
+    		var postCardNo = $("#postCardNoParam").val();
+	    	var manName = $("#manNameParam").val();
+	    	var bindBank = $("#bindBankParam").val();
 			jQuery("#list").jqGrid('setGridParam',{
 			    url:"${ctx}/jsp/postCard/postCardAction!list.action",
-				postData : {"param" : param},
+				postData : {"postCardNo" : postCardNo,
+							"manName" : manName,
+							"bindBank" : bindBank,
+				},
 			 	page:1
 			}).trigger("reloadGrid");
     	}; 
@@ -44,15 +49,15 @@
 				colNames:['编号','POS机编号','商户名字','费率','匹配最小额度','匹配最大额度','行业','绑定银行','卡号','姓名'],
 				colModel:[
 					 {name:'id',index:'id',align:'center',hidden:true},
-					 {name:'postCardNo',index:'postCardNo', width:280,align:'center',editable:false},
-					 {name:'manName',index:'manName', width:500,align:'center',editable:true},
-					 {name:'rate',index:'rate', width:500,align:'center',editable:true},
-					 {name:'minMoney',index:'minMoney', width:500,align:'center',editable:true},
-					 {name:'maxMoney',index:'maxMoney', width:500,align:'center',editable:true},
-					 {name:'trade',index:'trade', width:500,align:'center',editable:true},
-					 {name:'bindBank',index:'bindBank', width:500,align:'center',editable:true},
-					 {name:'cardNo',index:'cardNo', width:500,align:'center',editable:true},
-					 {name:'userName',index:'userName', width:500,align:'center',editable:true}
+					 {name:'postCardNo',index:'postCardNo', width:100,align:'center',editable:false},
+					 {name:'manName',index:'manName', width:100,align:'center',editable:true},
+					 {name:'rate',index:'rate', width:100,align:'center',editable:true},
+					 {name:'minMoney',index:'minMoney', width:100,align:'center',editable:true},
+					 {name:'maxMoney',index:'maxMoney', width:100,align:'center',editable:true},
+					 {name:'trade',index:'trade', width:100,align:'center',editable:true},
+					 {name:'bindBank',index:'bindBank', width:100,align:'center',editable:true},
+					 {name:'cardNo',index:'cardNo', width:200,align:'center',editable:true},
+					 {name:'userName',index:'userName', width:100,align:'center',editable:true}
 					 ],
 				pager: '#pager',
 				sortable: false,
@@ -67,7 +72,6 @@
 				rowList:[10,15,20],
 				sortname: 'id',
 				sortorder: 'desc',
-								
 				viewrecords: true,
 				caption: 'POS管理',
 				height: '100%',
@@ -91,7 +95,9 @@
 			    	<div class="contain_t_wrap">
 			            <div class="float_lef contain_t_text">
 			            <span class=""><img src="${ctx}/images/system16.png" align="absmiddle" /></span>
-			            <span class="marg_lef5"><a href="#"><s:text name="menu.syscfg"></s:text></a></span><span class="marg_lef5"><img src="${ctx}/images/next.gif" align="absmiddle" /></span><span class="marg_lef5"><s:text name="menu.syscfg.ip_rule.ip"></s:text></span>
+			            <span class="marg_lef5"><a href="#">post机管理</a></span>
+			            <span class="marg_lef5"><img src="${ctx}/images/next.gif" align="absmiddle" /></span>
+			            <span class="marg_lef5"></span>
 			            </div><!--end contain_t_text-->
 			            <div class="float_rig contain_t_check">
 			            	<div class="contain_icon"></div>
@@ -108,14 +114,14 @@
 						<input type="button" id="edit" class="window_button_centerInput" value="编辑" /></div>
 						<div class="window_button marg_lef10 float_lef"><input type="button" class="window_button_centerInput" value="删除" onclick="mulDelete();"/></div>
 					
-					<div class="window_button marg_lef10 float_lef">
-						<input type="button" class="window_button_centerInput" id="batchbtn" value='批量操作" />' />
-					</div>
 					<table>
 						<tr>
-						<td></td><td></td>
-						<td><s:text name='ipgroup.nameQuery' /></td>
-						<td><input name="param" id = "param" type="text"  value="" /></td>
+						<td>POS机编号</td>
+						<td><input name="postCardNoParam" id = "postCardNoParam" type="text"  value="" /></td>
+						<td>商户名字</td>
+						<td><input name="manNameParam" id = "manNameParam" type="text"  value="" /></td>
+						<td>绑定银行</td>
+						<td><input name="bindBankParam" id = "bindBankParam" type="text"  value="" /></td>
 						<td>		
 						<div class="window_button marg_lef10 float_lef">
 							<input class="window_button_centerInput" name="select" id = "select" type="button" value="查询" /></div>
@@ -137,10 +143,15 @@
 
 	  //查询
 	    $("#select").click(function() {
-	    	var param = $("#param").val();
+	    	var postCardNo = $("#postCardNoParam").val();
+	    	var manName = $("#manNameParam").val();
+	    	var bindBank = $("#bindBankParam").val();
 			jQuery("#list").jqGrid('setGridParam',{
 			    url:'${ctx}/jsp/postCard/postCardAction!list.action',
-				postData : {"param" : param},//FIXME 
+				postData : {"postCardNo" : postCardNo,
+							"manName" : manName,
+							"bindBank" : bindBank,
+				},
 			 	page:1
 			}).trigger("reloadGrid");
 	    })
@@ -166,30 +177,16 @@
         function mulDelete(){
         	var ids = jQuery("#list").jqGrid('getGridParam','selarrrow'); 
         	if(ids == ""){
-        		showModalMessage('<s:text name="delete.info.selectRowCount"/>');
+        		showModalMessage('请选择一条记录');
         		return;
         	}
-        	/**
-        	var rm = jQuery.ajax({
-	      	  url:"${ctx}/jsp/postCard/postCardAction!deleteValidate.action?multidelete=" + ids,
-	          async:false,
-	          cache:false,
-	          dataType:"json"
-		      }).responseText;
-		    var rms = eval("("+rm+")");
-		    var returnM = rms.opResult;
-		    if(returnM != ''){
-		    	showModalMessage(returnM);
-		    	return;
-		    }
-		    */
 
         	showModalConfirmation('确认要删除么',"doDelete()");
         }	
         function doDelete(){
         	var ids = jQuery("#list").jqGrid('getGridParam','selarrrow'); 
             var result = jQuery.ajax({
-		      	  url:"${ctx}/jsp/postCard/postCardAction!multidelete.action?id=" + ids,
+		      	  url:"${ctx}/jsp/postCard/postCardAction!multidelete.action?multidelete=" + ids,
 		          async:false,
 		          cache:false,
 		          dataType:"json"

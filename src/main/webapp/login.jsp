@@ -77,8 +77,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="login_form_wrap">
 		<form id="loginForm" action="${ctx}/loginAction!login.action" method="post">
         	<table cellpadding="0" cellspacing="0" border="0" width="364">
-            	<tr id="login_name"><td align="right"><label for="user">用户ID：</label></td><td align="left"><input id='mainAcctName' name='mainAcctName' type="text" class="login_inputext" value="admin" onfocus="changeCssOnfocus(this)" onblur="changeCssOnBlur(this)"/></td></tr>
-            	<tr id="login_pwd"><td align="right"><label for="password">密&nbsp;&nbsp;&nbsp;码：</label></td><td align="left"><input id='password' name='password' type="password" value="12345678" class="login_inputext" onfocus="changeCssOnfocus(this)" onblur="changeCssOnBlur(this)"/></td></tr>
+            	<tr id="login_name">
+	            	<td align="right"><label for="user">用户ID：</label></td>
+	            	<td align="left"><input id='loginNo' name='loginNo' type="text" class="login_inputext" value="system" onfocus="changeCssOnfocus(this)" onblur="changeCssOnBlur(this)"/></td>
+            	</tr>
+            	<tr id="login_pwd">
+	            	<td align="right"><label for="pwd">密&nbsp;&nbsp;&nbsp;码：</label></td>
+	            	<td align="left"><input id='pwd' name='pwd' type="password" value="12345678" class="login_inputext" onfocus="changeCssOnfocus(this)" onblur="changeCssOnBlur(this)"/></td>
+            	</tr>
                 <tr><td colspan="2" align="left"><span class="Warning">&nbsp;</span></td></tr>
             </table>
             <table cellpadding="0" cellspacing="0" border="0" width="364" style="margin-top:20px;">
@@ -90,7 +96,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <table id="btnSubmit" cellpadding="0" cellspacing="0" border="0" width="364" style="margin-top:20px;">
             	<tr><td align="center">
                 <div class="but but01">
-                	<a href="#" onClick="login();"> 登录
+                	<a href="#" onClick="login();">
                 		<div class="but01_hover">
                 			</div>
                     </a>

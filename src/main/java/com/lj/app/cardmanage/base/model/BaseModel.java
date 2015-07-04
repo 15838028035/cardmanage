@@ -1,6 +1,6 @@
 package com.lj.app.cardmanage.base.model;
 
-public class BaseModel<T> {
+public class BaseModel {
 
 	private String createBy;
 	private String createDate;
@@ -39,4 +39,11 @@ public class BaseModel<T> {
 	public void setEnableFlag(String enableFlag) {
 		this.enableFlag = enableFlag;
 	}
+	public String getLockStatus() {
+		return lockStatus;
+	}
+	public void setLockStatus(String lockStatus) {
+		this.lockStatus = lockStatus;
+	}
+	
 }

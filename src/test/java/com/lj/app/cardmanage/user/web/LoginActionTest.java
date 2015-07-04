@@ -18,8 +18,13 @@ public class LoginActionTest extends StrutsSpringTestCase{
 	 @Test
 	public void testLogin() {
 		ActionProxy proxy = null;
-		request.setParameter("param", "test...");
+		 request.setParameter("param", "test...");
+		 request.setParameter("loginNo", "system");
+	     request.setParameter("pwd", "system");
+	     
+		
 		 proxy=getActionProxy("/loginAction!login.action");  
+		
 		 loginAction = (LoginAction)proxy.getAction();
 
 		try {

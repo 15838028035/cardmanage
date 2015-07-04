@@ -12,9 +12,9 @@ function showModalMessage(msg,fun){
     	width:250,
     	bgiframe:true,
     	position:"center",
-    	title:'<s:text name="common.tips.info"/>',
+    	title:'提示信息',
     	buttons: {
-    		'<s:text name="common.options.ok"/>': function() {
+    		'确定': function() {
     		$(this).dialog('close');
     			eval(fun);
 			}
@@ -30,9 +30,9 @@ function showModalMessageNew(msg,fun){
     	width:250,
     	bgiframe:true,
     	position:"center",
-    	title:'<s:text name="common.tips.info"/>',
+    	title:'提示信息',
     	buttons: {
-    		'<s:text name="common.options.ok"/>': function() {
+    		'确定': function() {
     		$(this).dialog('close');
     		 location.reload() ;
     			eval(fun);
@@ -49,9 +49,9 @@ function showModalMessageWH(msg,width,height){
     	width:width,
     	bgiframe:true,
     	position:"center",
-    	title:'<s:text name="common.tips.info"/>',
+    	title:'提示信息',
     	buttons: {
-    		'<s:text name="common.options.ok"/>': function() {
+    		'操作成功': function() {
     		$(this).dialog('close');
 			}
 		}
@@ -66,9 +66,9 @@ function showModalMessageWHNoMargin(msg,width,height){
     	width:width,
     	bgiframe:true,
     	position:"center",
-    	title:'<s:text name="common.tips.info"/>',
+    	title:'提示信息',
     	buttons: {
-    		'<s:text name="common.options.ok"/>': function() {
+    		'确定': function() {
     		$(this).dialog('close');
 			}
 		}
@@ -83,9 +83,9 @@ function showModalMessageWHNoMargin(msg,width,height,fun){
     	width:width,
     	bgiframe:true,
     	position:"center",
-    	title:'<s:text name="common.tips.info"/>',
+    	title:'提示信息',
     	buttons: {
-    		'<s:text name="common.options.ok"/>': function() {
+    		'确定': function() {
     			eval(fun);
     			$(this).dialog('close');
 			}
@@ -101,13 +101,13 @@ function showModalConfirmation(msg,fun){
         dialogClass:'alert',
         bgiframe:true,
         position:"center",
-        title:'<s:text name="common.tips.info"/>',
+        title:'提示信息',
         height:180,
         buttons: {
-            '<s:text name="common.options.cancel"/>': function() {
+            '取消': function() {
                 $(this).dialog('close');
             },
-            '<s:text name="common.options.ok"/>': function() {
+            '确定': function() {
                 eval(fun);
                 $(this).dialog('close');
             }
@@ -124,14 +124,14 @@ function showModalConfirmationCancle(msg,fun,funCancle){
         dialogClass:'alert',
         bgiframe:true,
         position:"center",
-        title:'<s:text name="common.tips.info"/>',
+        title:'提示信息',
         height:180,
         buttons: {
-            '<s:text name="common.options.cancel"/>': function() {
+            '取消': function() {
             	eval(funCancle);
                 $(this).dialog('close');
             },
-            '<s:text name="common.options.ok"/>': function() {
+            '确定': function() {
                 eval(fun);
                 $(this).dialog('close');
             }
@@ -150,9 +150,9 @@ function showModalMessageWithSize(msg,width,height,fun){
     	width:width,
     	bgiframe:true,
     	position:"center",
-    	title:'<s:text name="common.tips.info"/>',
+    	title:'提示信息',
     	buttons: {
-    		'<s:text name="common.options.ok"/>': function() {
+    		'确定': function() {
     		$(this).dialog('close');
     			eval(fun);
 			}
@@ -168,14 +168,14 @@ function showModalConfirmationWH(title,msg,width,height,fun){
         dialogClass:'alert',
         bgiframe:true,
         position:"center",
-        title:'<s:text name="common.tips.info"/>',
+        title:'提示信息',
         height:height,
         width:width,
         buttons: {
-            '<s:text name="common.options.cancel"/>': function() {
+            '取消': function() {
                 $(this).dialog('close');
             },
-            '<s:text name="common.options.ok"/>': function() {
+            '确定': function() {
                 eval(fun);
                 $(this).dialog('close');
             }

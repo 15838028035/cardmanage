@@ -24,13 +24,13 @@ public interface BaseService<T> {
 
 	public BaseModel getInfoByKey(Object obj);
 
-	public List findBaseModeList(Object obj);
+	public List<T> findBaseModeList(Object obj);
 
-	public List findBaseModeList(String sqlId, Object obj);
+	public List<T> findBaseModeList(String sqlId, Object obj);
 
-	public List findBaseModePageList(Object obj);
+	public List<T> findBaseModePageList(Object obj);
 
-	public List findBaseModePageList(String sqlId, Object obj);
+	public List<T> findBaseModePageList(String sqlId, Object obj);
 
 	public void delete(Object obj);
 
@@ -38,14 +38,14 @@ public interface BaseService<T> {
 
 	public String getSqlMapNameSpace();
 
-	public List queryForList(String statementName) throws DataAccessException;
+	public List<T> queryForList(String statementName) throws DataAccessException;
 
-	public List queryForList(String statementName, Object parameterObject);
+	public List<T> queryForList(String statementName, Object parameterObject);
 
-	public List queryForList(String statementName, int skipResults,	int maxResults) throws DataAccessException;
+	public List<T> queryForList(String statementName, int skipResults,	int maxResults) throws DataAccessException;
 		
 
-	public List queryForList(String statementName, Object parameterObject,int skipResults, int maxResults) throws DataAccessException;
+	public List<T> queryForList(String statementName, Object parameterObject,int skipResults, int maxResults) throws DataAccessException;
 
 	public Page<T> findPageList(Page<T> page,Map<String,Object> condition, String sqlId);
 	

@@ -5,24 +5,32 @@
 <typeAlias alias="user" type="com.lj.app.cardmanage.user.model.User" />
 
 	<resultMap id="userResult" class="user">       
-	   <result property="userId" column="userId"/>      
-	   <result property="loginNo" column="loginNo"/>     
-       <result property="pwd" column="pwd"/>      
-       <result property="userName" column="userName"/>
-       <result property="cardNo" column="cardNo"/>
-       <result property="address" column="address"/>
+	   <result property="userId" column="USERID"/>      
+	   <result property="loginNo" column="LOGINNO"/>     
+       <result property="pwd" column="PWD"/>      
+       <result property="userName" column="USERNAME"/>
+       <result property="cardNo" column="CARDNO"/>
+       <result property="address" column="ADDRESS"/>
        <result property="mobile" column="MOBILE"/>
-       <result property="lockStatus" column="lockStatus"/>
-       <result property="enableFlag" column="enableFlag"/>
-	
+       <result property="lockStatus" column="LOCKSTATUS"/>
+       <result property="enableFlag" column="ENABLEFLAG"/>
+       <result property="createBy" column="CREATEBY"/>
+       <result property="createDate" column="CREATEDATE"/>
+       <result property="updateBy" column="UPDATEBY"/>
+      <result property="updateDate" column="UPDATEDATE"/>
    </resultMap>
    
 	<select id="select"  resultMap="userResult">
-		SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG FROM USER
+		SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,
+		CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY
+			,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER
+		
 	</select>
 	
-	<select id="pagenate" resultMap="userResult">
-		SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG FROM USER t
+	<select id="pagenate" parameterClass="java.util.HashMap" resultMap="userResult">
+		SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,
+		CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY
+			,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER t
 		<dynamic prepend="WHERE">
 		  	<isNotEmpty prepend="AND" property="loginNo"> t.loginNo = #loginNo#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="userName"> t.userName = #userName#</isNotEmpty>
@@ -34,7 +42,7 @@
 	</select>
 	
 	
-	 <select id="pagenate_count" resultClass="long">
+	 <select id="pagenate_count" parameterClass="java.util.HashMap" resultClass="long">
 				SELECT count(1) FROM USER t
   		<dynamic prepend="WHERE">
 			 	<isNotEmpty prepend="AND" property="loginNo"> t.loginNo = #loginNo#</isNotEmpty>
@@ -47,22 +55,25 @@
 	</select>
 	
 	<select id="getInfoByKey" parameterClass="int" resultMap="userResult">
-			SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG FROM USER	
+			SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,
+		CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY
+			,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER
 		WHERE userId=#userId:NUMBER#
 	</select>
 	
 	<insert id="insert" parameterClass="user" >
-			INSERT INTO USER(LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG)
+			INSERT INTO USER(LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,CREATEBY,CREATEDATE)
 						VALUES(#loginNo:VARCHAR#,
 						#pwd:VARCHAR#,
 						#userName:VARCHAR#,
 						#cardNo:VARCHAR#,
 						#address:VARCHAR#,
 						#mobile:VARCHAR#,
-						#lockStatus:VARCHAR#,
-						#enableFlag:VARCHAR#
+						'0',
+						'T',
+						#createBy:VARCHAR#,
+						STR_TO_DATE(#createDate:VARCHAR#, '%Y-%m-%d %h:%i:%s')
 						)
-       
 	</insert>
 	
 	<update id="update" parameterClass="user" >
@@ -74,7 +85,9 @@
 			 t.address = #address:VARCHAR#, 
 			 t.mobile=#mobile:VARCHAR#, 
 			 t.lockStatus=#lockStatus:VARCHAR#, 
-			 t.enableFlag=#enableFlag:VARCHAR# 
+			 t.enableFlag=#enableFlag:VARCHAR#,
+			 t.updateBy=#updateBy:VARCHAR#, 
+			 t.updateDate=STR_TO_DATE(#updateDate:VARCHAR#,'%Y-%m-%d %h:%i:%s')
 	 WHERE userId=#userId#
        
 	</update>

@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ include file="/jsp/common/taglibs.jsp"%>
-<%@ taglib prefix="h" uri="http://www.asiainfo.com/uac/html"%>
+<%@ taglib prefix="h" uri="http://www.asiainfo.com/uap/html"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -78,52 +78,6 @@
 			</td>
 		</tr>
 		</c:if>
-		<!--tr>
-			<td>备注：</td>
-			<td>${uapPwdRule.description}</td>
-		</tr-->	
-		
-		<tr><td>&nbsp;</td><td></td></tr>
-		<!--tr>
-			<td><font color="green"><b>密码事件：</b></font></td>
-			<td></td>
-		</tr>
-		<c:if test="${uapPwdRule.forceLoginEnabled == 1}">
-			<tr>
-				<td>恶意登录事件：</td>
-				<td>密码输错次数:${uapPwdRule.pwdWrongTimes }
-				<c:if test="${forceAcctLock == 1}">
-					<br>触发动作：帐号加锁
-				</c:if>
-				</td>
-			</tr>
-		</c:if>
-		
-		<c:if test="${uapPwdRule.pwdOverdueEnabled == 1}">
-			<tr>
-				<td>密码过期事件：</td>
-				<td>密码有效期:${uapPwdRule.effectPeriodValue }个${uapPwdRule.effectPeriodType == '1' ? '日':'月'}
-				<c:if test="${overdueAction != ''}">
-					<br>${overdueAction == '2' ? '帐号加锁':'自动更新密码'}
-				</c:if>
-				</td>
-			</tr>
-		</c:if>
-		
-		<c:if test="${uapPwdRule.pwdRemindEnabled == 1}">
-			<tr>
-				<td>密码过期提醒事件：</td>
-				<td>密码提醒周期:${uapPwdRule.remindDays }天
-				</td>
-			</tr>
-		</c:if>
-		
-		<c:if test="${uapPwdRule.pwdUpdateEnabled == 1}">
-			<tr>
-				<td>密码重置通知事件：</td>
-				<td></td>
-			</tr>
-		</c:if>-->
 
 	</table>
   </body>

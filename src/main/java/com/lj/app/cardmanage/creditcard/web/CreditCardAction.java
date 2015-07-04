@@ -3,7 +3,6 @@ package com.lj.app.cardmanage.creditcard.web;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -13,8 +12,6 @@ import org.springframework.stereotype.Controller;
 
 import com.lj.app.cardmanage.creditcard.model.CreditCard;
 import com.lj.app.cardmanage.creditcard.service.CreditCardService;
-import com.lj.app.cardmanage.postcard.model.PostCard;
-import com.lj.app.core.common.pagination.Page;
 import com.lj.app.core.common.pagination.PageTool;
 import com.lj.app.core.common.util.AjaxResult;
 import com.lj.app.core.common.web.AbstractBaseAction;
@@ -23,22 +20,15 @@ import com.lj.app.core.common.web.Struts2Utils;
 @Controller
 @Namespace("/jsp/creditCard")
 @Results({
-		@Result(name = AbstractBaseAction.EDIT, location = "/jsp/creditCard/creditCard-edit.jsp"),
-		@Result(name = AbstractBaseAction.INPUT, location = "creditCardAction!edit.action",type = "redirect")
+		@Result(name = AbstractBaseAction.INPUT, location = "/jsp/creditCard/creditCard-input.jsp"),
+		@Result(name = AbstractBaseAction.SAVE, location = "creditCardAction!edit.action",type = "redirect"),
+		@Result(name = AbstractBaseAction.LIST, location = "/jsp/creditCard/creditCardList.jsp"),
 
 })
 @SuppressWarnings("unchecked")
 
 @Action("creditCardAction")
 public class CreditCardAction  extends AbstractBaseAction<CreditCard> {
-	
-	/**
-	 * 多选删除
-	 */
-	private String multidelete;
-	
-	private Page<PostCard> page = new Page<PostCard>(PAGESIZE);
-	
 
 	@Autowired
 	private CreditCardService creditCardService;
@@ -65,10 +55,11 @@ public class CreditCardAction  extends AbstractBaseAction<CreditCard> {
 	@Override
 	public String list() throws Exception {
 		try {
-			String aa = "aa";
 			
-			String param = ServletActionContext.getRequest().getParameter("param");
 			Map condition = new HashMap();
+			condition.put("cardNo",cardNo);
+			condition.put("userName", userName);
+			condition.put("bankNo", bankNo);
 			this.creditCardService.findPageList(page, condition);
 			Struts2Utils.renderText(PageTool.pageToJsonJQGrid(this.page),new String[0]);
 			return null;
@@ -122,7 +113,7 @@ public class CreditCardAction  extends AbstractBaseAction<CreditCard> {
 				returnMessage = CREATE_SUCCESS;
 			}
 			
-			return INPUT;
+			return LIST;
 		}catch(Exception e){
 			returnMessage = CREATE_FAILURE;
 			e.printStackTrace();
@@ -138,12 +129,14 @@ public class CreditCardAction  extends AbstractBaseAction<CreditCard> {
 
 	@Override
 	protected void prepareModel() throws Exception {
-		
+		creditCard = (CreditCard)creditCardService.getInfoByKey(id);
+		if(creditCard == null) {
+			creditCard = new CreditCard();
+		}
 	}
 	
+	
 	public String multidelete() throws Exception {
-		String operateResult = null;//操作结果：1失败，0成功
-		
 		String returnMessage = "";
 		String[] multideleteTemp;
 		if (multidelete.indexOf(",") > 0) {
@@ -153,11 +146,11 @@ public class CreditCardAction  extends AbstractBaseAction<CreditCard> {
 			multideleteTemp = new String[]{multidelete};
 		}
 		for (int i = 0; i < multideleteTemp.length; i++) {
-			long deleteId = Long.parseLong(multideleteTemp[i].trim());
+			int deleteId = Integer.parseInt(multideleteTemp[i].trim());
 			
 			try{
 				// 循环删除
-				creditCardService.delete("delete");
+				creditCardService.delete(deleteId);
 			}catch(Exception e){
 				returnMessage = "删除失败";
 				e.printStackTrace();
@@ -167,9 +160,9 @@ public class CreditCardAction  extends AbstractBaseAction<CreditCard> {
 		}
 		AjaxResult ar = new AjaxResult();
 		if (returnMessage.equals("")) {
-			ar.setOpResult("删除成功");//删除成功！
+			ar.setOpResult(DELETE_SUCCESS);//删除成功！
 		}else{
-			ar.setOpResult(returnMessage);
+			ar.setOpResult(DELETE_FAILURE);
 		}
 		
 		Struts2Utils.renderJson(ar);
@@ -182,14 +175,6 @@ public class CreditCardAction  extends AbstractBaseAction<CreditCard> {
 
 	public void setMultidelete(String multidelete) {
 		this.multidelete = multidelete;
-	}
-
-	public Page<PostCard> getPage() {
-		return page;
-	}
-
-	public void setPage(Page<PostCard> page) {
-		this.page = page;
 	}
 
 	public CreditCardService getCreditCardService() {
@@ -279,5 +264,6 @@ public class CreditCardAction  extends AbstractBaseAction<CreditCard> {
 	public void setRepaymentDate(int repaymentDate) {
 		this.repaymentDate = repaymentDate;
 	}
+	
 
 }

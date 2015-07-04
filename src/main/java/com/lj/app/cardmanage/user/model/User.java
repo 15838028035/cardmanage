@@ -12,8 +12,6 @@ public class User extends BaseModel{
 	private String address;
 	private String mobile;
 	
-	private String lockStatus;
-	private String enableFlag;
 	
 	public int getUserId() {
 		return userId;
@@ -56,18 +54,6 @@ public class User extends BaseModel{
 	}
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
-	}
-	public String getLockStatus() {
-		return lockStatus;
-	}
-	public void setLockStatus(String lockStatus) {
-		this.lockStatus = lockStatus;
-	}
-	public String getEnableFlag() {
-		return enableFlag;
-	}
-	public void setEnableFlag(String enableFlag) {
-		this.enableFlag = enableFlag;
 	}
 	
 }

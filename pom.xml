@@ -9,7 +9,7 @@
 	<url>http://localhost:8080</url>
 
 	<description>
- 		卡片管理系统
+ 		cardmanage
     </description>
 
 	<developers>
@@ -38,6 +38,11 @@
         <aspectjweaver.version>1.5.4</aspectjweaver.version>
         <cglib-nodep.version>2.2</cglib-nodep.version>
 
+         <deploymentManagerRestHost>10.50.50.52</deploymentManagerRestHost>
+         <deploymentManagerRestPort>58090</deploymentManagerRestPort>
+         <deploymentManagerRestUsername>username</deploymentManagerRestUsername>
+         <deploymentManagerRestPassword>password</deploymentManagerRestPassword>
+        
 
 		<!-- Plugin的属性定义 -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -52,6 +57,7 @@
 			<id>central</id>
 			<name>Central Repository</name>
 			<url>http://repo.maven.apache.org/maven2</url>
+<!-- 			<url>http://search.maven.org</url> -->
 			<!-- <url>http://repository.jboss.com/maven2/</url> -->
 			<snapshots>
 				<enabled>false</enabled>
@@ -183,17 +189,16 @@
 			<version>1.3</version>
 		</dependency>
 
+   		<dependency>  
+             <groupId>net.sf.ezmorph</groupId>  
+             <artifactId>ezmorph</artifactId>  
+             <version>1.0.4</version>  
+         </dependency>  
 		<dependency>
-			<groupId>net.sf.json-lib</groupId>
-			<artifactId>json-lib</artifactId>
-			<version>2.4</version>
-			<classifier>jdk15</classifier>
-		</dependency>
-
-		<dependency>
-			<groupId>net.sf.ezmorph</groupId>
-			<artifactId>ezmorph</artifactId>
-			<version>1.0.6</version>
+		    <groupId>net.sf.json-lib</groupId>
+		    <artifactId>json-lib</artifactId>
+		    <version>2.4</version>
+		    <classifier>jdk15</classifier>
 		</dependency>
 
 		<dependency>
@@ -293,6 +298,7 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
+		
 
 	</dependencies>
 
@@ -301,8 +307,8 @@
 		<!-- <outputDirectory>${project.build.directory}/classes</outputDirectory> -->
 		<!-- <testOutputDirectory>${project.build.directory}/test-classes</testOutputDirectory> -->
 
-		<outputDirectory>${project.basedir}/WebRoot/Web-INF/classes</outputDirectory>
-		<testOutputDirectory>${project.basedir}/WebRoot/Web-INF/classes</testOutputDirectory>
+		<outputDirectory>${project.basedir}/src/main/webapp/Web-INF/classes</outputDirectory>
+		<testOutputDirectory>${project.basedir}/scr/main/webapp/Web-INF/classes</testOutputDirectory>
 		
 		<resources>
 	      <resource>
@@ -421,18 +427,6 @@
 				</configuration>
 			</plugin>
 			
-			<!--  
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>tomcat-maven-plugin</artifactId>
-				<configuration>
-				<url>http://localhost:8080/manager/html</url>
-				<server>tomcat</server>
-				<path>/lvjianjunan</path>
-				</configuration>
-				<version>1.1</version>
-			</plugin>
-			-->
 		<plugin>
         <groupId>org.apache.tomcat.maven</groupId>
         <artifactId>tomcat6-maven-plugin</artifactId>
@@ -448,6 +442,25 @@
         </configuration>
       </plugin>
 
+		<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>
+								${project.basedir}/src/main/webapp/WEB-INF/lib
+							</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+		</plugin>
+            
 		</plugins>
 
 	</build>

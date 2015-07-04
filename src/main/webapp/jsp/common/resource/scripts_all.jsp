@@ -1,8 +1,9 @@
+﻿<%@page language="java" isELIgnored="false"%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ include file="/jsp/common/taglibs.jsp" %>
 
 	<!-- modalmessage -->	
-<!-- 	<script src="${ctx}/scripts/modal/modalmsg.jsp" type="text/javascript"></script> -->
+	<script src="${ctx}/scripts/modal/modalmsg.jsp" type="text/javascript"></script>
 <!-- 	<script src="${ctx}/jsp/common/goldbank.jsp" type="text/javascript"></script> -->
 	
 	<!-- core -->	

@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.sf.json.JSONObject;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 
@@ -150,6 +152,8 @@ public class Struts2Utils {
 	public static void renderJson(final Object data, final String... headers) {
 		HttpServletResponse response = initResponseHeader(ServletUtils.JSON_TYPE, headers);
 		try {
+			JSONObject jsonObj =JSONObject.fromObject(data);
+			renderText(jsonObj.toString(), headers);
 		} catch (Exception e) {
 			throw new IllegalArgumentException(e);
 		}
@@ -164,7 +168,7 @@ public class Struts2Utils {
 	public static void renderJsonp(final String callbackName, final Object object, final String... headers) {
 		String jsonString = null;
 		try {
-			
+			//TODO: 输出jsonp格式数据
 		} catch (Exception e) {
 			throw new IllegalArgumentException(e);
 		}

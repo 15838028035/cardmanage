@@ -3,7 +3,6 @@ package com.lj.app.cardmanage.postcard.web;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -22,8 +21,10 @@ import com.lj.app.core.common.web.Struts2Utils;
 @Controller
 @Namespace("/jsp/postCard")
 @Results({
-		@Result(name = AbstractBaseAction.EDIT, location = "/jsp/postCard/postCard-edit.jsp"),
-		@Result(name = AbstractBaseAction.INPUT, location = "postCardAction!edit.action",type = "redirect")
+		@Result(name = AbstractBaseAction.INPUT, location = "/jsp/postCard/postCard-input.jsp"),
+		@Result(name = AbstractBaseAction.SAVE, location = "postCardAction!edit.action",type = "redirect"),
+		@Result(name = AbstractBaseAction.LIST, location = "/jsp/postCard/postCardList.jsp"),
+		
 
 })
 @SuppressWarnings("unchecked")
@@ -81,24 +82,26 @@ public class PostCardAction  extends AbstractBaseAction<PostCard> {
 	
 
 	@Autowired
-	private PostCardService PostCardService;
+	private PostCardService postCardService;
 	
 	private PostCard PostCard;
 	
 	
 	@Override
 	public PostCard getModel() {
-		PostCard = (PostCard)PostCardService.getInfoByKey(id);
+		PostCard = (PostCard)postCardService.getInfoByKey(id);
 		return PostCard;
 	}
 
 	@Override
 	public String list() throws Exception {
 		try {
-			String param = ServletActionContext.getRequest().getParameter("param");
 			Map condition = new HashMap();
+			condition.put("postCardNo", postCardNo);
+			condition.put("manName", manName);
+			condition.put("bindBank", bindBank);
 			
-			this.PostCardService.findPageList(page, condition);
+			this.postCardService.findPageList(page, condition);
 			Struts2Utils.renderText(PageTool.pageToJsonJQGrid(this.page),new String[0]);
 			return null;
 		} catch (Exception e) {
@@ -113,18 +116,49 @@ public class PostCardAction  extends AbstractBaseAction<PostCard> {
 
 	@Override
 	public String save() throws Exception {
-		PostCard postCard = new PostCard();
-		postCard.setPostCardNo(postCardNo);
-		postCard.setManName(manName);
-		postCard.setRate(rate);
-		postCard.setMinMoney(minMoney);
-		postCard.setMaxMoney(maxMoney);
-		postCard.setTrade(trade);
-		postCard.setBindBank(bindBank);
-		postCard.setCardNo(cardNo);
-		postCard.setUserName(userName);
-		PostCardService.insertObject(postCard);
-		return null;
+		boolean isSave = true;//是否保存操作
+		
+		try{
+			if (operate != null && operate.equals("edit")) {
+				isSave = false;
+				PostCard postCard = new PostCard();
+				postCard.setId(id);
+				postCard.setPostCardNo(postCardNo);
+				postCard.setManName(manName);
+				postCard.setRate(rate);
+				postCard.setMinMoney(minMoney);
+				postCard.setMaxMoney(maxMoney);
+				postCard.setTrade(trade);
+				postCard.setBindBank(bindBank);
+				postCard.setCardNo(cardNo);
+				postCard.setUserName(userName);
+				
+				postCardService.updateObject(postCard);
+				
+				returnMessage = UPDATE_SUCCESS;
+			}else{
+				PostCard postCard = new PostCard();
+				postCard.setPostCardNo(postCardNo);
+				postCard.setManName(manName);
+				postCard.setRate(rate);
+				postCard.setMinMoney(minMoney);
+				postCard.setMaxMoney(maxMoney);
+				postCard.setTrade(trade);
+				postCard.setBindBank(bindBank);
+				postCard.setCardNo(cardNo);
+				postCard.setUserName(userName);
+				
+				postCardService.insertObject(postCard);
+				returnMessage = CREATE_SUCCESS;
+			}
+			
+			return LIST;
+		}catch(Exception e){
+			returnMessage = CREATE_FAILURE;
+			e.printStackTrace();
+			throw e;
+		}finally{
+		}
 	}
 
 	@Override
@@ -149,11 +183,11 @@ public class PostCardAction  extends AbstractBaseAction<PostCard> {
 			multideleteTemp = new String[]{multidelete};
 		}
 		for (int i = 0; i < multideleteTemp.length; i++) {
-			long deleteId = Long.parseLong(multideleteTemp[i].trim());
+			int deleteId = Integer.parseInt(multideleteTemp[i].trim());
 			
 			try{
 				// 循环删除
-				PostCardService.delete("delete");
+				postCardService.delete(deleteId);
 			}catch(Exception e){
 				e.printStackTrace();
 				throw e;
@@ -162,9 +196,9 @@ public class PostCardAction  extends AbstractBaseAction<PostCard> {
 		}
 		AjaxResult ar = new AjaxResult();
 		if (returnMessage.equals("")) {
-			ar.setOpResult(getText("deleteSuccess"));//删除成功！
+			ar.setOpResult(DELETE_SUCCESS);//删除成功！
 		}else{
-			ar.setOpResult(returnMessage);
+			ar.setOpResult(DELETE_FAILURE);
 		}
 		
 		Struts2Utils.renderJson(ar);
@@ -267,13 +301,6 @@ public class PostCardAction  extends AbstractBaseAction<PostCard> {
 		this.page = page;
 	}
 
-	public PostCardService getPostCardService() {
-		return PostCardService;
-	}
-
-	public void setPostCardService(PostCardService postCardService) {
-		PostCardService = postCardService;
-	}
 
 	public PostCard getPostCard() {
 		return PostCard;
@@ -281,6 +308,14 @@ public class PostCardAction  extends AbstractBaseAction<PostCard> {
 
 	public void setPostCard(PostCard postCard) {
 		PostCard = postCard;
+	}
+
+	public PostCardService getPostCardService() {
+		return postCardService;
+	}
+
+	public void setPostCardService(PostCardService postCardService) {
+		this.postCardService = postCardService;
 	}
 	
 }

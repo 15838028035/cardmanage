@@ -1,5 +1,8 @@
 package com.lj.app.cardmanage.user.web;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -7,20 +10,21 @@ import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import com.lj.app.cardmanage.creditcard.model.CreditCard;
 import com.lj.app.cardmanage.user.model.User;
 import com.lj.app.cardmanage.user.service.UserService;
+import com.lj.app.core.common.pagination.PageTool;
 import com.lj.app.core.common.util.AjaxResult;
+import com.lj.app.core.common.util.DateUtil;
+import com.lj.app.core.common.util.des.DesUtil;
 import com.lj.app.core.common.web.AbstractBaseAction;
 import com.lj.app.core.common.web.Struts2Utils;
 
 @Controller
 @Namespace("/jsp/user")
 @Results({
-		@Result(name = AbstractBaseAction.EDIT, location = "user-edit.jsp"),
-		@Result(name = AbstractBaseAction.INPUT, location = "userAction!edit.action",type = "redirect"),
-		@Result(name = "appAcctExportType", location = "AppAcctExportType.jsp")
-
+		@Result(name = AbstractBaseAction.INPUT, location = "/jsp/user/user-input.jsp"),
+		@Result(name = AbstractBaseAction.SAVE, location = "userAction!edit.action",type = "redirect"),
+		@Result(name = AbstractBaseAction.LIST, location = "/jsp/user/userList.jsp"),
 })
 @SuppressWarnings("unchecked")
 
@@ -37,13 +41,7 @@ public class UserAction  extends AbstractBaseAction<User> {
 	
 	private String lockStatus;
 	private String enableFlag;
-
-	/**
-	 * 多选删除
-	 */
-	private String multidelete;
 	
-
 	@Autowired
 	private UserService userService;
 	
@@ -58,12 +56,25 @@ public class UserAction  extends AbstractBaseAction<User> {
 
 	@Override
 	public String list() throws Exception {
-		return null;
+		try {
+			Map condition = new HashMap();
+			condition.put("userName", userName);
+			condition.put("cardNo", cardNo);
+			condition.put("address", address);
+			condition.put("mobile", mobile);
+			condition.put("lockStatus", lockStatus);
+			this.userService.findPageList(page, condition);
+			Struts2Utils.renderText(PageTool.pageToJsonJQGrid(this.page),new String[0]);
+			return null;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
 	}
 
 	@Override
 	public String input() throws Exception {
-		return null;
+		return INPUT;
 	}
 
 	@Override
@@ -76,12 +87,15 @@ public class UserAction  extends AbstractBaseAction<User> {
 				User user = new User();
 				user.setUserId(userId);
 				user.setLoginNo(loginNo);
-				user.setPwd(pwd);
+				user.setPwd(DesUtil.encrypt(pwd));
 				user.setUserName(userName);
 				user.setCardNo(cardNo);
 				user.setAddress(address);
 				user.setMobile(mobile);
 				
+				
+				user.setUpdateBy(getLoginUserId());
+				user.setUpdateDate(DateUtil.getNowDateYYYYMMddHHMMSS());
 				userService.updateObject(user);
 				
 				returnMessage = UPDATE_SUCCESS;
@@ -89,17 +103,19 @@ public class UserAction  extends AbstractBaseAction<User> {
 				User user = new User();
 				user.setUserId(userId);
 				user.setLoginNo(loginNo);
-				user.setPwd(pwd);
+				user.setPwd(DesUtil.encrypt(pwd));
 				user.setUserName(userName);
 				user.setCardNo(cardNo);
 				user.setAddress(address);
 				user.setMobile(mobile);
 				
+				user.setCreateBy(getLoginUserId());
+				user.setCreateDate(DateUtil.getNowDateYYYYMMddHHMMSS());
 				userService.insertObject(user);
 				returnMessage = CREATE_SUCCESS;
 			}
 			
-			return INPUT;
+			return LIST;
 		}catch(Exception e){
 			returnMessage = CREATE_FAILURE;
 			e.printStackTrace();
@@ -126,11 +142,11 @@ public class UserAction  extends AbstractBaseAction<User> {
 			multideleteTemp = new String[]{multidelete};
 		}
 		for (int i = 0; i < multideleteTemp.length; i++) {
-			long deleteId = Long.parseLong(multideleteTemp[i].trim());
+			int deleteId = Integer.parseInt(multideleteTemp[i].trim());
 			
 			try{
 				// 循环删除
-				userService.delete("delete");
+				userService.delete(deleteId);
 			}catch(Exception e){
 				returnMessage = "删除失败";
 				e.printStackTrace();
@@ -149,11 +165,10 @@ public class UserAction  extends AbstractBaseAction<User> {
 		return null;
 	}
 
-	
 
 	@Override
 	protected void prepareModel() throws Exception {
-		
+		user = (User)userService.getInfoByKey(userId);
 	}
 
 	public int getUserId() {

@@ -27,7 +27,7 @@
 		WHERE id=#id:NUMBER#
 	</select>
 	
-	<select id="pagenate" resultMap="postCardResult">
+	<select id="pagenate" parameterClass="java.util.HashMap" resultMap="postCardResult">
 		SELECT ID,POSTCARDNO,MANNAME,RATE,MINMONEY,MAXMONEY,TRADE,BINDBANK,CARDNO,USERNAME FROM POSTCARD t
 		<dynamic prepend="WHERE">
 		  	<isNotEmpty prepend="AND" property="postCardNo"> t.postCardNo = #postCardNo#</isNotEmpty>
@@ -40,7 +40,7 @@
 	</select>
 	
 	
-	 <select id="pagenate_count" resultClass="long">
+	 <select id="pagenate_count" parameterClass="java.util.HashMap"  resultClass="long">
 				SELECT count(1) FROM POSTCARD t
   		<dynamic prepend="WHERE">
 			<isNotEmpty prepend="AND" property="postCardNo"> t.postCardNo = #postCardNo#</isNotEmpty>

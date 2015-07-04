@@ -1,5 +1,8 @@
 package com.lj.app.core.common.web;
 
+import com.lj.app.cardmanage.user.model.User;
+import com.lj.app.core.common.pagination.Page;
+import com.lj.app.core.common.util.SessionCode;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
@@ -18,9 +21,13 @@ public abstract class AbstractBaseAction<T> extends ActionSupport implements Mod
 	/** 进行增删改操作后,以redirect方式重新打开action默认页的result名.*/
 	public static final String RELOAD = "reload";
 	
-	public static final String  EDIT = "edit";
-	
 	public static final String INPUT = "input";
+	public static final String EDIT = "edit";
+	public static final String SAVE = "save";
+	public static final String LIST = "list";
+	
+	
+	protected Page<T> page = new Page<T>(PAGESIZE);
 	
 	public static int PAGESIZE = 20;
 	
@@ -33,6 +40,8 @@ public abstract class AbstractBaseAction<T> extends ActionSupport implements Mod
 	public static final String DELETE_FAILURE = "删除失败";
 	
 	protected  String returnMessage = "";
+	
+	protected String multidelete;
 	
 	
 	public  String operate;//操作
@@ -53,6 +62,28 @@ public abstract class AbstractBaseAction<T> extends ActionSupport implements Mod
 		this.operate = operate;
 	}
 
+	
+	public Page<T> getPage() {
+		return page;
+	}
+
+	public void setPage(Page<T> page) {
+		this.page = page;
+	}
+
+	public String getMultidelete() {
+		return multidelete;
+	}
+
+	public void setMultidelete(String multidelete) {
+		this.multidelete = multidelete;
+	}
+
+	public String getLoginUserId() {
+		User user = (User)Struts2Utils.getSessionAttribute(SessionCode.MAIN_ACCT);
+		return String.valueOf(user.getUserId());
+	}
+	
 	/**
 	 * Action函数, 默认的action函数, 默认调用list()函数.
 	 */

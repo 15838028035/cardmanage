@@ -459,6 +459,11 @@
 						</configuration>
 					</execution>
 				</executions>
+				<configuration>  
+						<excludeScope>provided</excludeScope>
+						<excludeArtifactIds>jsp-api,servlet-api</excludeArtifactIds>
+        				<includeScope>runtime</includeScope>  
+   				 </configuration> 
 		</plugin>
             
 		</plugins>

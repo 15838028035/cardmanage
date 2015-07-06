@@ -21,6 +21,8 @@ public abstract class AbstractBaseAction<T> extends ActionSupport implements Mod
 	/** 进行增删改操作后,以redirect方式重新打开action默认页的result名.*/
 	public static final String RELOAD = "reload";
 	
+	public static final String REDIRECT = "redirect";
+	
 	public static final String INPUT = "input";
 	public static final String EDIT = "edit";
 	public static final String SAVE = "save";
@@ -38,6 +40,9 @@ public abstract class AbstractBaseAction<T> extends ActionSupport implements Mod
 	public static final String CREATE_FAILURE = "保存失败";
 	public static final String UPDATE_FAILURE = "修改失败";
 	public static final String DELETE_FAILURE = "删除失败";
+	
+	
+	public static final String CREATE_BY = "createBy";
 	
 	protected  String returnMessage = "";
 	
@@ -79,9 +84,9 @@ public abstract class AbstractBaseAction<T> extends ActionSupport implements Mod
 		this.multidelete = multidelete;
 	}
 
-	public String getLoginUserId() {
+	public int getLoginUserId() {
 		User user = (User)Struts2Utils.getSessionAttribute(SessionCode.MAIN_ACCT);
-		return String.valueOf(user.getUserId());
+		return user.getUserId();
 	}
 	
 	/**

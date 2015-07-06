@@ -6,30 +6,46 @@
 
 	<resultMap id="postCardResult" class="postCard">       
 	   <result property="id" column="ID"/>      
-	   <result property="postCardNo" column="POSTCARDNO"/>     
-       <result property="manName" column="MANNAME"/>      
+	   <result property="postCardNo" column="POSTCARDNO" nullValue=""/>    
+       <result property="manName" column="MANNAME" nullValue=""/>      
        <result property="rate" column="RATE"/>
-       <result property="minMoney" column="MINMONEY"/>
-       <result property="maxMoney" column="MAXMONEY"/>
-       <result property="trade" column="TRADE"/>
-       <result property="bindBank" column="BINDBANK"/>
-       <result property="cardNo" column="CARDNO"/>
-       <result property="userName" column="USERNAME"/>
+       <result property="minMoney" column="MINMONEY" nullValue=""/>
+       <result property="maxMoney" column="MAXMONEY" nullValue=""/>
+       <result property="trade" column="TRADE" nullValue=""/>
+       <result property="bindBank" column="BINDBANK" nullValue=""/>
+       <result property="cardNo" column="CARDNO" nullValue=""/>
+       <result property="userName" column="USERNAME" nullValue=""/>
+       <result property="lockStatus" column="LOCKSTATUS" nullValue=""/>
+       <result property="enableFlag" column="ENABLEFLAG" nullValue=""/>
+       <result property="createBy" column="CREATEBY" nullValue="0"/>
+       <result property="createDate" column="CREATEDATE" nullValue=""/>
+       <result property="updateBy" column="UPDATEBY" nullValue="0"/>
+      <result property="updateDate" column="UPDATEDATE" nullValue=""/>
 	
    </resultMap>
    
 	<select id="select"  resultMap="postCardResult">
-		SELECT ID,POSTCARDNO,MANNAME,RATE,MINMONEY,MAXMONEY,TRADE,BINDBANK,CARDNO,USERNAME FROM POSTCARD
+		SELECT ID,POSTCARDNO,MANNAME,RATE,MINMONEY,MAXMONEY,TRADE,BINDBANK,CARDNO,USERNAME,
+		LOCKSTATUS,ENABLEFLAG, CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY
+		,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM POSTCARD
 	</select>
 	
 	<select id="getInfoByKey" parameterClass="int" resultMap="postCardResult">
-			SELECT ID,POSTCARDNO,MANNAME,RATE,MINMONEY,MAXMONEY,TRADE,BINDBANK,CARDNO,USERNAME FROM POSTCARD
+			SELECT ID,POSTCARDNO,MANNAME,RATE,MINMONEY,MAXMONEY,TRADE,BINDBANK,CARDNO,USERNAME,
+			LOCKSTATUS,ENABLEFLAG,CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY
+			,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE  FROM POSTCARD
+			
 		WHERE id=#id:NUMBER#
 	</select>
 	
 	<select id="pagenate" parameterClass="java.util.HashMap" resultMap="postCardResult">
-		SELECT ID,POSTCARDNO,MANNAME,RATE,MINMONEY,MAXMONEY,TRADE,BINDBANK,CARDNO,USERNAME FROM POSTCARD t
+		SELECT ID,POSTCARDNO,MANNAME,RATE,MINMONEY,MAXMONEY,TRADE,BINDBANK,CARDNO,USERNAME,
+			LOCKSTATUS,ENABLEFLAG,CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY
+			,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE  FROM POSTCARD t
 		<dynamic prepend="WHERE">
+			<isGreaterEqual	prepend="AND" property="createBy" compareValue="1"> 
+				t.createBy = #createBy# 
+			</isGreaterEqual>
 		  	<isNotEmpty prepend="AND" property="postCardNo"> t.postCardNo = #postCardNo#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="manName"> t.manName = #manName#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="cardNo"> t.cardNo = #cardNo#</isNotEmpty>
@@ -43,6 +59,9 @@
 	 <select id="pagenate_count" parameterClass="java.util.HashMap"  resultClass="long">
 				SELECT count(1) FROM POSTCARD t
   		<dynamic prepend="WHERE">
+  			<isGreaterEqual	prepend="AND" property="createBy" compareValue="1"> 
+				t.createBy = #createBy# 
+			</isGreaterEqual> 
 			<isNotEmpty prepend="AND" property="postCardNo"> t.postCardNo = #postCardNo#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="manName"> t.manName = #manName#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="cardNo"> t.cardNo = #cardNo#</isNotEmpty>
@@ -53,7 +72,7 @@
 	</select>
 	
 	<insert id="insert" parameterClass="postCard" >
-			INSERT INTO postCard(POSTCARDNO,MANNAME,RATE,MINMONEY,MAXMONEY,TRADE,BINDBANK,CARDNO,USERNAME)
+			INSERT INTO postCard(POSTCARDNO,MANNAME,RATE,MINMONEY,MAXMONEY,TRADE,BINDBANK,CARDNO,USERNAME,LOCKSTATUS,ENABLEFLAG,CREATEBY,CREATEDATE)
 						VALUES(#postCardNo:VARCHAR#,
 						#manName:VARCHAR#,
 						#rate:NUMBER#,
@@ -62,7 +81,11 @@
 						#trade:VARCHAR#,
 						#bindBank:VARCHAR#,
 						#cardNo:VARCHAR#,
-						#userName:VARCHAR#
+						#userName:VARCHAR#,
+						'0',
+						'T',
+						#createBy:NUMBER#,
+						STR_TO_DATE(#createDate:VARCHAR#, '%Y-%m-%d %h:%i:%s')
 						)
 						
 	</insert>
@@ -77,7 +100,11 @@
 		    t.trade=#trade:VARCHAR#, 
 			t.bindBank=#bindBank:VARCHAR#, 
 			t.cardNo=#cardNo:VARCHAR#, 
-			t.userName=#userName:VARCHAR# 
+			t.userName=#userName:VARCHAR#,
+			t.lockStatus=#lockStatus:VARCHAR#, 
+			t.enableFlag=#enableFlag:VARCHAR#,
+			t.updateBy=#updateBy:NUMBER#, 
+			t.updateDate=STR_TO_DATE(#updateDate:VARCHAR#,'%Y-%m-%d %h:%i:%s')
 	 WHERE id=#id#
 	</update>
 	

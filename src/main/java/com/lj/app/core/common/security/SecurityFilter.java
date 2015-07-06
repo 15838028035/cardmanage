@@ -11,7 +11,6 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -19,6 +18,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.lj.app.cardmanage.sysconfig.service.CMPermissionService;
+import com.lj.app.core.common.util.SpringContextHolder;
 import com.lj.app.core.common.util.ValidateUtil;
 
 public class SecurityFilter implements Filter {
@@ -65,9 +66,9 @@ public class SecurityFilter implements Filter {
 		}
 		
 		//加载uap_permission中需要验证的url集合
-		//SecurityApiService securityApiService = SpringContextHolder.getBean(SecurityApiService.class);
+		CMPermissionService cMPermissionService = SpringContextHolder.getBean(CMPermissionService.class);
 		logger.info("needValidateUrlSet load......");
-		//needValidateUrlSet = securityApiService.findPermissionUrlByDomainId(2);
+		needValidateUrlSet = cMPermissionService.findPermissionUrl();
 		logger.info("needValidateUrlSet load success");
 		//加载uap_permission中不可访问的url集合
 		logger.info("disabledAccessUrlSet load......");
@@ -115,16 +116,29 @@ public class SecurityFilter implements Filter {
 			if(null != queryStr && !"".equals(queryStr)){
 				fullRequestUri += "?" + queryStr;
 			}
-			/*
-			 * 如果访问的地址在uap_permission表中state=1，就不允许访问
-			 */
-			for (Iterator iter = disabledAccessUrlSet.iterator(); iter.hasNext();) {
-				String url = contextPath + (String) iter.next();
-				if(fullRequestUri.indexOf(url) != -1){
-					response.sendRedirect(contextPath + "/jsp/common/nopermission.jsp");
-					return;
-				}
-			}
+			
+//			try{
+//				Object loginUserObj =Struts2Utils.getSessionAttribute(SessionCode.MAIN_ACCT);
+//			
+//				if(loginUserObj == null) {
+//					response.sendRedirect(contextPath+ "/login.jsp");
+//					return;
+//				}
+//			}catch(Exception e) {
+//				response.sendRedirect(contextPath+ "/login.jsp");
+//				return;
+//			}
+//			
+//			/*
+//			 * 如果访问的地址在uap_permission表中state=1，就不允许访问
+//			 */
+////			for (Iterator iter = disabledAccessUrlSet.iterator(); iter.hasNext();) {
+////				String url = contextPath + (String) iter.next();
+////				if(fullRequestUri.indexOf(url) != -1){
+////					response.sendRedirect(contextPath + "/jsp/common/nopermission.jsp");
+////					return;
+////				}
+////			}
 			/*
 			 * 权限验证(防止在地址栏直接输入)
 			 * 1.如果访问地址在uap_permission表中存在，判断当前主帐号没有该权限，没有就跳转到nopermission.jsp页面。
@@ -139,17 +153,18 @@ public class SecurityFilter implements Filter {
 					}
 				}
 			}
-				
-			Cookie[] cookies = request.getCookies();
-			if(cookies!=null){
-				for (Cookie cookie : cookies){
-					if (cookie.getName()!=null && cookie.getName().equalsIgnoreCase("JSESSIONID")){
-						response.setHeader("SET-COOKIE", String.format("%s=%s; HttpOnly;path=/" + contextPath + "/", cookie.getName(), session.getId() ));
-					}else{
-						response.setHeader("SET-COOKIE", String.format("%s=%s ;HttpOnly", cookie.getName(), cookie.getValue()));
-					}
-				}
-			}
+//				
+//			Cookie[] cookies = request.getCookies();
+//			if(cookies!=null){
+//				for (Cookie cookie : cookies){
+//					if (cookie.getName()!=null && cookie.getName().equalsIgnoreCase("JSESSIONID")){
+//						response.setHeader("SET-COOKIE", String.format("%s=%s; HttpOnly;path=/" + contextPath + "/", cookie.getName(), session.getId() ));
+//					}else{
+//						response.setHeader("SET-COOKIE", String.format("%s=%s ;HttpOnly", cookie.getName(), cookie.getValue()));
+//					}
+//				}
+//			}
+			
 			
 			filterChain.doFilter(servletRequest, servletResponse);
 

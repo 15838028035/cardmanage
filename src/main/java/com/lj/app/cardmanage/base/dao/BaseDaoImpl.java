@@ -85,5 +85,11 @@ public class BaseDaoImpl<T> extends SqlMapClientDaoSupport implements BaseDao{
 	public List queryForList(String statementName, Object parameterObject,int skipResults, int maxResults) throws DataAccessException {
 		return getSqlMapClientTemplate().queryForList(statementName,parameterObject,skipResults,maxResults);
 	}
+
+	@Override
+	public int countObject(String sqlId, Object obj) {
+		int count  = (Integer)getSqlMapClientTemplate().queryForObject(sqlId, obj);
+		return count;
+	}
 	
 }

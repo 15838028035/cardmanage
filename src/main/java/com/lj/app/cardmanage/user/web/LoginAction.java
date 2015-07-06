@@ -14,12 +14,14 @@ import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import com.lj.app.cardmanage.sysconfig.service.CMPermissionService;
 import com.lj.app.cardmanage.user.model.User;
 import com.lj.app.cardmanage.user.service.UserService;
 import com.lj.app.core.common.audit.CMCode;
 import com.lj.app.core.common.security.CMSecurityContext;
 import com.lj.app.core.common.security.SecurityConstants;
 import com.lj.app.core.common.util.SessionCode;
+import com.lj.app.core.common.util.SpringContextHolder;
 import com.lj.app.core.common.util.ValidateUtil;
 import com.lj.app.core.common.util.des.DesUtil;
 import com.lj.app.core.common.web.AbstractBaseAction;
@@ -90,9 +92,16 @@ public class LoginAction extends AbstractBaseAction<User> {
 //							.getRequest().getContextPath(),
 //							SecurityConstants.DOMAIN_CARD_MANAGE);
 			//FIXME :修改信息，修改为查询信息
+			
+			CMPermissionService cMPermissionService = SpringContextHolder.getBean(CMPermissionService.class);
+			logger.info("needValidateUrlSet load......");
+			
 			CMSecurityContext securityContext = new CMSecurityContext();
-			Struts2Utils.getSession().setAttribute(
-					SecurityConstants.SECURITY_CONTEXT, securityContext);
+			securityContext.setMainAcctId(Long.getLong(String.valueOf(user.getUserId())));
+			securityContext.setLoginName(user.getUserName());
+			securityContext.setUrls(cMPermissionService.findPermissionUrl());
+			
+			Struts2Utils.getSession().setAttribute(SecurityConstants.SECURITY_CONTEXT, securityContext);
 			Struts2Utils.getSession().setAttribute(SessionCode.MAIN_ACCT,loginUser);
 					
 		}

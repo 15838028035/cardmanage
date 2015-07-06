@@ -23,15 +23,15 @@ import com.lj.app.core.common.web.Struts2Utils;
 @Namespace("/jsp/user")
 @Results({
 		@Result(name = AbstractBaseAction.INPUT, location = "/jsp/user/user-input.jsp"),
-		@Result(name = AbstractBaseAction.SAVE, location = "userAction!edit.action",type = "redirect"),
-		@Result(name = AbstractBaseAction.LIST, location = "/jsp/user/userList.jsp"),
+		@Result(name = AbstractBaseAction.SAVE, location = "userAction!edit.action",type=AbstractBaseAction.REDIRECT),
+		@Result(name = AbstractBaseAction.LIST, location = "/jsp/user/userList.jsp", type=AbstractBaseAction.REDIRECT)
 })
 @SuppressWarnings("unchecked")
 
 @Action("userAction")
 public class UserAction  extends AbstractBaseAction<User> {
 	
-	private int userId;
+	private int userId=-1;
 	private String loginNo;
 	private String pwd;
 	private String userName;
@@ -63,6 +63,7 @@ public class UserAction  extends AbstractBaseAction<User> {
 			condition.put("address", address);
 			condition.put("mobile", mobile);
 			condition.put("lockStatus", lockStatus);
+			condition.put(CREATE_BY, getLoginUserId());
 			this.userService.findPageList(page, condition);
 			Struts2Utils.renderText(PageTool.pageToJsonJQGrid(this.page),new String[0]);
 			return null;

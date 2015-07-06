@@ -156,4 +156,18 @@ public abstract class BaseServiceImpl<T> implements BaseService {
 		
 	}
 	
+
+	@Override
+	public int countObject(String sqlId, Object obj) {
+		return baseDao.countObject(getSqlMapNameSpace()+NAMESPACE_SPLIT+sqlId,obj);
+	}
+
+	public BaseDao getBaseDao() {
+		return baseDao;
+	}
+
+	public void setBaseDao(BaseDao baseDao) {
+		this.baseDao = baseDao;
+	}
+	
 }

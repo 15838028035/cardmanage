@@ -2,17 +2,17 @@ package com.lj.app.cardmanage.base.model;
 
 public class BaseModel {
 
-	private String createBy;
+	private int createBy;
 	private String createDate;
-	private String updateBy;
+	private int updateBy;
 	private String updateDate;
 	private String enableFlag="T";
 	private String lockStatus = "0";
 	
-	public String getCreateBy() {
+	public int getCreateBy() {
 		return createBy;
 	}
-	public void setCreateBy(String createBy) {
+	public void setCreateBy(int createBy) {
 		this.createBy = createBy;
 	}
 	public String getCreateDate() {
@@ -21,10 +21,10 @@ public class BaseModel {
 	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
-	public String getUpdateBy() {
+	public int getUpdateBy() {
 		return updateBy;
 	}
-	public void setUpdateBy(String updateBy) {
+	public void setUpdateBy(int updateBy) {
 		this.updateBy = updateBy;
 	}
 	public String getUpdateDate() {
@@ -45,5 +45,6 @@ public class BaseModel {
 	public void setLockStatus(String lockStatus) {
 		this.lockStatus = lockStatus;
 	}
+	
 	
 }

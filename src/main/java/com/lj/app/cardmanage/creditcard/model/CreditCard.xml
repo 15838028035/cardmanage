@@ -6,20 +6,20 @@
 
 	<resultMap id="creditCardResult" class="creditCard">       
 	   <result property="id" column="id"/>      
-	   <result property="cardNo" column="cardNo"/>     
-       <result property="bankNo" column="bankNo"/>      
-       <result property="userName" column="userName"/>
-       <result property="maxLimit" column="maxLimit"/>
-       <result property="secNo" column="secNo"/>
-       <result property="validateDate" column="validateDate"/>
-       <result property="billDate" column="billDate"/>
-       <result property="repaymentDate" column="repaymentDate"/>
-       <result property="lockStatus" column="lockStatus"/>
-       <result property="enableFlag" column="enableFlag"/>
-       <result property="createBy" column="createBy"/>
-       <result property="createDate" column="createDate"/>
-       <result property="updateBy" column="updateBy"/>
-       <result property="updateDate" column="updateDate"/>
+	   <result property="cardNo" column="cardNo"  nullValue=""/>    
+       <result property="bankNo" column="bankNo"  nullValue=""/>     
+       <result property="userName" column="userName"  nullValue=""/>
+       <result property="maxLimit" column="maxLimit"  nullValue=""/>
+       <result property="secNo" column="secNo"  nullValue=""/>
+       <result property="validateDate" column="validateDate"  nullValue=""/>
+       <result property="billDate" column="billDate"  nullValue=""/>
+       <result property="repaymentDate" column="repaymentDate"  nullValue=""/>
+       <result property="lockStatus" column="lockStatus"  nullValue=""/>
+       <result property="enableFlag" column="enableFlag"  nullValue=""/>
+       <result property="createBy" column="createBy"  nullValue="0"/>
+       <result property="createDate" column="createDate"  nullValue=""/>
+       <result property="updateBy" column="updateBy"  nullValue="0"/>
+       <result property="updateDate" column="updateDate"  nullValue=""/>
      
    </resultMap>
    
@@ -45,6 +45,9 @@
 			,DATE_FORMAT(UPDATEDATE, '%Y-%m-%d %h:%i:%s') UPDATEDATE
 		 FROM CREDITCARD t
 		<dynamic prepend="WHERE">
+			<isGreaterEqual	prepend="AND" property="createBy" compareValue="1">
+				t.createBy = #createBy#
+			</isGreaterEqual>
 		  	<isNotEmpty prepend="AND" property="cardNo"> t.cardNo = #cardNo#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="bankNo"> t.bankNo = #bankNo#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="userName"> t.userName = #userName#</isNotEmpty>
@@ -58,6 +61,9 @@
 	 <select id="pagenate_count" parameterClass="java.util.HashMap" resultClass="long">
 				SELECT count(1) FROM CREDITCARD t
   		<dynamic prepend="WHERE">
+  			<isGreaterEqual	prepend="AND" property="createBy" compareValue="1">
+					t.createBy = #createBy#
+			</isGreaterEqual>
 			 <isNotEmpty prepend="AND" property="cardNo"> t.cardNo = #cardNo#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="bankNo"> t.bankNo = #bankNo#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="userName"> t.userName = #userName#</isNotEmpty>
@@ -80,7 +86,7 @@
 						#repaymentDate:NUMBER#,
 						#lockStatus:VARCHAR#,
 						#enableFlag:VARCHAR#,
-						#createBy:VARCHAR#,
+						#createBy:NUMBER#,
 						STR_TO_DATE(#createDate:VARCHAR#, '%Y-%m-%d %h:%i:%s')
 						)
 			
@@ -99,7 +105,7 @@
 			 t.repaymentDate=#repaymentDate:NUMBER#, 
 			 t.lockStatus=#lockStatus:VARCHAR#,
 			 t.enableFlag=#enableFlag:VARCHAR#,
-			 t.updateBy=#updateBy:VARCHAR#,
+			 t.updateBy=#updateBy:NUMBER#,
 			 t.updateDate=STR_TO_DATE(#updateDate:VARCHAR#,'%Y-%m-%d %h:%i:%s')
 	 WHERE id=#id#
 	</update>

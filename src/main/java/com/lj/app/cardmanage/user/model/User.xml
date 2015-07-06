@@ -5,25 +5,33 @@
 <typeAlias alias="user" type="com.lj.app.cardmanage.user.model.User" />
 
 	<resultMap id="userResult" class="user">       
-	   <result property="userId" column="USERID"/>      
-	   <result property="loginNo" column="LOGINNO"/>     
-       <result property="pwd" column="PWD"/>      
-       <result property="userName" column="USERNAME"/>
-       <result property="cardNo" column="CARDNO"/>
-       <result property="address" column="ADDRESS"/>
-       <result property="mobile" column="MOBILE"/>
-       <result property="lockStatus" column="LOCKSTATUS"/>
-       <result property="enableFlag" column="ENABLEFLAG"/>
-       <result property="createBy" column="CREATEBY"/>
-       <result property="createDate" column="CREATEDATE"/>
-       <result property="updateBy" column="UPDATEBY"/>
-      <result property="updateDate" column="UPDATEDATE"/>
+	   <result property="userId" column="USERID" nullValue=""/>    
+	   <result property="loginNo" column="LOGINNO" nullValue=""/>  
+       <result property="pwd" column="PWD" nullValue=""/>    
+       <result property="userName" column="USERNAME" nullValue=""/>
+       <result property="cardNo" column="CARDNO" nullValue=""/>
+       <result property="address" column="ADDRESS" nullValue=""/>
+       <result property="mobile" column="MOBILE" nullValue=""/>
+       <result property="lockStatus" column="LOCKSTATUS" nullValue=""/>
+       <result property="enableFlag" column="ENABLEFLAG" nullValue=""/>
+       <result property="createBy" column="CREATEBY" nullValue="0"/>
+       <result property="createDate" column="CREATEDATE" nullValue=""/>
+       <result property="updateBy" column="UPDATEBY" nullValue="0"/>
+      <result property="updateDate" column="UPDATEDATE" nullValue=""/>
    </resultMap>
    
-	<select id="select"  resultMap="userResult">
+	<select id="select"  parameterClass="user" resultMap="userResult">
 		SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,
 		CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY
-			,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER
+			,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER t
+			<dynamic prepend="WHERE">
+			  	<isNotEmpty prepend="AND" property="loginNo"> t.loginNo = #loginNo#</isNotEmpty>
+				 <isNotEmpty prepend="AND" property="userName"> t.userName = #userName#</isNotEmpty>
+				 <isNotEmpty prepend="AND" property="cardNo"> t.cardNo = #cardNo#</isNotEmpty>
+				 <isNotEmpty prepend="AND" property="userName"> t.userName = #userName#</isNotEmpty>
+				 <isNotEmpty prepend="AND" property="address"> t.address = #address#</isNotEmpty>
+				 <isNotEmpty prepend="AND" property="mobile"> t.mobile = #mobile#</isNotEmpty>
+		</dynamic>
 		
 	</select>
 	
@@ -32,6 +40,9 @@
 		CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY
 			,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER t
 		<dynamic prepend="WHERE">
+			<isGreaterEqual	prepend="AND" property="createBy" compareValue="1"> 
+				t.createBy = #createBy# 
+			</isGreaterEqual> 
 		  	<isNotEmpty prepend="AND" property="loginNo"> t.loginNo = #loginNo#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="userName"> t.userName = #userName#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="cardNo"> t.cardNo = #cardNo#</isNotEmpty>
@@ -45,7 +56,10 @@
 	 <select id="pagenate_count" parameterClass="java.util.HashMap" resultClass="long">
 				SELECT count(1) FROM USER t
   		<dynamic prepend="WHERE">
-			 	<isNotEmpty prepend="AND" property="loginNo"> t.loginNo = #loginNo#</isNotEmpty>
+  			<isGreaterEqual	prepend="AND" property="createBy" compareValue="1"> 
+				t.createBy = #createBy# 
+			</isGreaterEqual> 
+			 <isNotEmpty prepend="AND" property="loginNo"> t.loginNo = #loginNo#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="userName"> t.userName = #userName#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="cardNo"> t.cardNo = #cardNo#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="userName"> t.userName = #userName#</isNotEmpty>
@@ -71,7 +85,7 @@
 						#mobile:VARCHAR#,
 						'0',
 						'T',
-						#createBy:VARCHAR#,
+						#createBy:NUMBER#,
 						STR_TO_DATE(#createDate:VARCHAR#, '%Y-%m-%d %h:%i:%s')
 						)
 	</insert>
@@ -86,7 +100,7 @@
 			 t.mobile=#mobile:VARCHAR#, 
 			 t.lockStatus=#lockStatus:VARCHAR#, 
 			 t.enableFlag=#enableFlag:VARCHAR#,
-			 t.updateBy=#updateBy:VARCHAR#, 
+			 t.updateBy=#updateBy:NUMBER#, 
 			 t.updateDate=STR_TO_DATE(#updateDate:VARCHAR#,'%Y-%m-%d %h:%i:%s')
 	 WHERE userId=#userId#
        

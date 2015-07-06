@@ -14,6 +14,7 @@ import com.lj.app.cardmanage.creditcard.model.CreditCard;
 import com.lj.app.cardmanage.creditcard.service.CreditCardService;
 import com.lj.app.core.common.pagination.PageTool;
 import com.lj.app.core.common.util.AjaxResult;
+import com.lj.app.core.common.util.DateUtil;
 import com.lj.app.core.common.web.AbstractBaseAction;
 import com.lj.app.core.common.web.Struts2Utils;
 
@@ -21,8 +22,8 @@ import com.lj.app.core.common.web.Struts2Utils;
 @Namespace("/jsp/creditCard")
 @Results({
 		@Result(name = AbstractBaseAction.INPUT, location = "/jsp/creditCard/creditCard-input.jsp"),
-		@Result(name = AbstractBaseAction.SAVE, location = "creditCardAction!edit.action",type = "redirect"),
-		@Result(name = AbstractBaseAction.LIST, location = "/jsp/creditCard/creditCardList.jsp"),
+		@Result(name = AbstractBaseAction.SAVE, location = "creditCardAction!edit.action",type=AbstractBaseAction.REDIRECT),
+		@Result(name = AbstractBaseAction.LIST, location = "/jsp/creditCard/creditCardList.jsp" ,type=AbstractBaseAction.REDIRECT),
 
 })
 @SuppressWarnings("unchecked")
@@ -60,6 +61,7 @@ public class CreditCardAction  extends AbstractBaseAction<CreditCard> {
 			condition.put("cardNo",cardNo);
 			condition.put("userName", userName);
 			condition.put("bankNo", bankNo);
+			condition.put(CREATE_BY, getLoginUserId());
 			this.creditCardService.findPageList(page, condition);
 			Struts2Utils.renderText(PageTool.pageToJsonJQGrid(this.page),new String[0]);
 			return null;
@@ -93,6 +95,9 @@ public class CreditCardAction  extends AbstractBaseAction<CreditCard> {
 				creditCard.setBillDate(billDate);
 				creditCard.setRepaymentDate(repaymentDate);
 				
+				creditCard.setUpdateBy(getLoginUserId());
+				creditCard.setUpdateDate(DateUtil.getNowDateYYYYMMddHHMMSS());
+				
 				creditCardService.updateObject(creditCard);
 				
 				returnMessage = UPDATE_SUCCESS;
@@ -109,6 +114,8 @@ public class CreditCardAction  extends AbstractBaseAction<CreditCard> {
 				creditCard.setBillDate(billDate);
 				creditCard.setRepaymentDate(repaymentDate);
 				
+				creditCard.setCreateBy(getLoginUserId());
+				creditCard.setCreateDate(DateUtil.getNowDateYYYYMMddHHMMSS());
 				creditCardService.insertObject(creditCard);
 				returnMessage = CREATE_SUCCESS;
 			}

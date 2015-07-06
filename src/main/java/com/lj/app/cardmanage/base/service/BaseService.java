@@ -50,4 +50,6 @@ public interface BaseService<T> {
 	public Page<T> findPageList(Page<T> page,Map<String,Object> condition, String sqlId);
 	
 	public Page<T> findPageList(Page<T> page,Map<String,Object> condition);
+	
+	public int countObject(String sqlId, Object obj);
 }

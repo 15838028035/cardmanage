@@ -31,5 +31,7 @@ public interface BaseDao<T>{
     
     public List queryForList(String statementName, Object parameterObject, int skipResults, int maxResults)
     	    throws DataAccessException;
+    
+    public int countObject(String sqlId, Object obj);
 
 }

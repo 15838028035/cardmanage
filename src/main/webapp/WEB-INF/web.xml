@@ -92,18 +92,15 @@
 		</init-param>
 	</filter>
 	
-	<!--  TODO:取消注释，添加权限验证。
 	<filter-mapping>
 	   <filter-name>CheckLoginFilter</filter-name>
 	   <url-pattern>*.action</url-pattern>
 	</filter-mapping>
-	<filter-mapping>
 	
-	   <filter-name>CheckLoginFilter</filter-name>
+	<filter-mapping>
+	 <filter-name>CheckLoginFilter</filter-name>
 	   <url-pattern>*.jsp</url-pattern>
 	</filter-mapping>
-	
-	-->
 	
     <!-- log4j config -->	
 	<context-param>

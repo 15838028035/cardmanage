@@ -7,6 +7,7 @@ import java.util.Date;
 public class DateUtil {
 	
 	public static final String DATE_FOMRAT_yyyyMMddhhMMss = "yyyy-MM-dd hh:mm:ss";
+	public static final String DATE_FORMAT_YYYYMMDDHHMMSS ="yyyyMMdd hhmmss";
 	
 	public static final String getNowDateYYYYMMddHHMMSS() {
 		return getNowDate(DATE_FOMRAT_yyyyMMddhhMMss);
@@ -23,6 +24,7 @@ public class DateUtil {
 		
 		return date;
 	}
+	
 	
 	/**格式化字符串为Date对象
 	 * @param date

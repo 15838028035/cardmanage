@@ -15,6 +15,7 @@ import com.lj.app.cardmanage.postcard.service.PostCardService;
 import com.lj.app.core.common.pagination.Page;
 import com.lj.app.core.common.pagination.PageTool;
 import com.lj.app.core.common.util.AjaxResult;
+import com.lj.app.core.common.util.DateUtil;
 import com.lj.app.core.common.web.AbstractBaseAction;
 import com.lj.app.core.common.web.Struts2Utils;
 
@@ -22,8 +23,8 @@ import com.lj.app.core.common.web.Struts2Utils;
 @Namespace("/jsp/postCard")
 @Results({
 		@Result(name = AbstractBaseAction.INPUT, location = "/jsp/postCard/postCard-input.jsp"),
-		@Result(name = AbstractBaseAction.SAVE, location = "postCardAction!edit.action",type = "redirect"),
-		@Result(name = AbstractBaseAction.LIST, location = "/jsp/postCard/postCardList.jsp"),
+		@Result(name = AbstractBaseAction.SAVE, location = "postCardAction!edit.action",type=AbstractBaseAction.REDIRECT),
+		@Result(name = AbstractBaseAction.LIST, location = "/jsp/postCard/postCardList.jsp",type=AbstractBaseAction.REDIRECT),
 		
 
 })
@@ -73,13 +74,6 @@ public class PostCardAction  extends AbstractBaseAction<PostCard> {
 	 */
 	private String userName;
 	
-	/**
-	 * 多选删除
-	 */
-	private String multidelete;
-	
-	private Page<PostCard> page = new Page<PostCard>(PAGESIZE);
-	
 
 	@Autowired
 	private PostCardService postCardService;
@@ -100,7 +94,7 @@ public class PostCardAction  extends AbstractBaseAction<PostCard> {
 			condition.put("postCardNo", postCardNo);
 			condition.put("manName", manName);
 			condition.put("bindBank", bindBank);
-			
+			condition.put(CREATE_BY, getLoginUserId());
 			this.postCardService.findPageList(page, condition);
 			Struts2Utils.renderText(PageTool.pageToJsonJQGrid(this.page),new String[0]);
 			return null;
@@ -133,6 +127,9 @@ public class PostCardAction  extends AbstractBaseAction<PostCard> {
 				postCard.setCardNo(cardNo);
 				postCard.setUserName(userName);
 				
+				postCard.setUpdateBy(getLoginUserId());
+				postCard.setUpdateDate(DateUtil.getNowDateYYYYMMddHHMMSS());
+				
 				postCardService.updateObject(postCard);
 				
 				returnMessage = UPDATE_SUCCESS;
@@ -147,6 +144,9 @@ public class PostCardAction  extends AbstractBaseAction<PostCard> {
 				postCard.setBindBank(bindBank);
 				postCard.setCardNo(cardNo);
 				postCard.setUserName(userName);
+				
+				postCard.setCreateBy(getLoginUserId());
+				postCard.setCreateDate(DateUtil.getNowDateYYYYMMddHHMMSS());
 				
 				postCardService.insertObject(postCard);
 				returnMessage = CREATE_SUCCESS;

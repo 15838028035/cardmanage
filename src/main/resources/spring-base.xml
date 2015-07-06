@@ -77,4 +77,6 @@
 			<tx:method name="delete*" propagation="REQUIRED" isolation="REPEATABLE_READ" />
 		</tx:attributes>
 	</tx:advice>
+	
+	 <bean id="springContextHolder" class="com.lj.app.core.common.util.SpringContextHolder" lazy-init="false"/>
 </beans>

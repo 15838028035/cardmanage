@@ -44,11 +44,16 @@
 		<dispatcher>FORWARD</dispatcher>        
     </filter-mapping>
     
-    
+  
  <listener>
   <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
  </listener>
  
+  <listener>
+		<listener-class>com.lj.app.core.common.init.InitContextListener</listener-class>
+ </listener>
+    
+    
  <!-- 检查用户是否登录，并检查权限-->
 	<filter>
 	    <filter-name>CheckLoginFilter</filter-name>

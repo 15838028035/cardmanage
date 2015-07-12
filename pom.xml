@@ -404,7 +404,7 @@
 							<!-- 目标路径 -->
 							<!-- <targetPath>WEB-INF</targetPath> -->
 							<!-- <directory>WebRoot</directory> -->
-							<directory>WebRoot</directory>
+							<directory>${project.basedir}/src/main/webapp</directory>
 
 						</resource>
 					</webResources>
@@ -460,10 +460,10 @@
 					</execution>
 				</executions>
 				<configuration>  
-						<excludeScope>provided</excludeScope>
+						<excludeScope>provided</excludeScope> 
 						<excludeArtifactIds>jsp-api,servlet-api</excludeArtifactIds>
-        				<includeScope>runtime</includeScope>  
-   				 </configuration> 
+       					<includeScope>runtime</includeScope>   
+   				 </configuration>  
 		</plugin>
             
 		</plugins>

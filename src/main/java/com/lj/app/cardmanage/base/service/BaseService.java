@@ -23,6 +23,8 @@ public interface BaseService<T> {
 	public BaseModel getInfoByKey(String sqlId, Object obj);
 
 	public BaseModel getInfoByKey(Object obj);
+	
+	public Object queryObject(String sqlId, Object obj);
 
 	public List<T> findBaseModeList(Object obj);
 

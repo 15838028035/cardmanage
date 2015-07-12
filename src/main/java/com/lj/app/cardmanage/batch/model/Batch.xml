@@ -4,7 +4,7 @@
 <sqlMap namespace="batch">
 <typeAlias alias="batch" type="com.lj.app.cardmanage.batch.model.Batch" />
 
-	<resultMap id="batchResult" class="user">       
+	<resultMap id="batchResult" class="batch">       
 	   <result property="id" column="id" nullValue=""/>    
 	   <result property="batchCode" column="batchCode" nullValue=""/>  
        <result property="lockStatus" column="LOCKSTATUS" nullValue=""/>

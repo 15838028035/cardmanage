@@ -12,5 +12,6 @@
       <sqlMap resource="com/lj/app/cardmanage/creditcard/model/CreditCard.xml"/>
        <sqlMap resource="com/lj/app/cardmanage/batch/model/Batch.xml"/>
       <sqlMap resource="com/lj/app/cardmanage/sysconfig/model/CMPermission.xml"/>
+      <sqlMap resource="com/lj/app/cardmanage/plan/model/Plan.xml"/>
 </sqlMapConfig>
     

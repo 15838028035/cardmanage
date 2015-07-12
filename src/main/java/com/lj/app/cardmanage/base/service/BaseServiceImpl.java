@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.ibatis.common.logging.Log;
+import com.ibatis.common.logging.LogFactory;
 import com.lj.app.cardmanage.base.dao.BaseDao;
 import com.lj.app.cardmanage.base.model.BaseModel;
 import com.lj.app.core.common.pagination.Page;
@@ -18,7 +20,6 @@ public abstract class BaseServiceImpl<T> implements BaseService {
 	private static final String NAMESPACE_SPLIT=".";
 	private static final String PAGE_QUERY_SUBFIX = "_count";
 	private static final String DEFAULT_PAGENATION_NAME = "pagenate";
-	
 
 	@Autowired
 	private BaseDao baseDao;
@@ -58,6 +59,11 @@ public abstract class BaseServiceImpl<T> implements BaseService {
 		return baseDao.getInfoByKey(getSqlMapNameSpace()+NAMESPACE_SPLIT+"getInfoByKey",obj);
 	}
 
+	public Object queryObject(String sqlId, Object obj){
+		return baseDao.findObject(getSqlMapNameSpace()+NAMESPACE_SPLIT+sqlId,obj);
+	}
+	
+	
 	@Override
 	public List<BaseModel> findBaseModeList(Object obj) {
 		return findBaseModeList("select",obj);

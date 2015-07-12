@@ -1,6 +1,0 @@
-[DEBUG] [20:02:38] java.sql.Connection - {conn-100000} Connection
-[DEBUG] [20:02:38] java.sql.Connection - {conn-100000} Preparing Statement:    SELECT ID,code,name,url,   LOCKSTATUS,ENABLEFLAG, CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY   ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM CMPermission  
-[DEBUG] [20:04:03] java.sql.Connection - {conn-100003} Connection
-[DEBUG] [20:04:03] java.sql.Connection - {conn-100003} Preparing Statement:    SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,   CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY    ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER t    WHERE        t.loginNo = ?                                      
-[DEBUG] [20:04:05] java.sql.Connection - {conn-100006} Connection
-[DEBUG] [20:04:05] java.sql.Connection - {conn-100006} Preparing Statement:    SELECT ID,code,name,url,   LOCKSTATUS,ENABLEFLAG, CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY   ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM CMPermission  

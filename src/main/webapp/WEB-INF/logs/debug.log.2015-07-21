@@ -1,0 +1,2 @@
+[DEBUG] [19:50:06] java.sql.Connection - {conn-100000} Connection
+[DEBUG] [19:50:06] java.sql.Connection - {conn-100000} Preparing Statement:    SELECT ID,code,name,url,   LOCKSTATUS,ENABLEFLAG, CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY   ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM CMPermission  

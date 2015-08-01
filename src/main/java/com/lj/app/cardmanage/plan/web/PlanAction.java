@@ -35,6 +35,14 @@ public class PlanAction extends AbstractBaseAction<Plan> {
 	private String lockStatus;
 	private String enableFlag;
 	
+	private String userName;
+	private String cardNo;
+	
+	private int inMoney;
+	private int outMoney;
+	private int remainMoney;
+	
+	
 	@Autowired
 	private PlanService planService;
 	
@@ -51,6 +59,9 @@ public class PlanAction extends AbstractBaseAction<Plan> {
 	public String list() throws Exception {
 		try {
 			Map condition = new HashMap();
+			condition.put("userName", userName);
+			condition.put("cardNo", cardNo);
+			
 			this.planService.findPageList(page, condition);
 			Struts2Utils.renderText(PageTool.pageToJsonJQGrid(this.page),new String[0]);
 			return null;
@@ -75,6 +86,10 @@ public class PlanAction extends AbstractBaseAction<Plan> {
 				isSave = false;
 				Plan plan = new Plan();
 				
+				plan.setId(id);
+				plan.setInMoney(inMoney);
+				plan.setOutMoney(outMoney);
+				plan.setRemainMoney(remainMoney);
 				
 				plan.setUpdateBy(getLoginUserId());
 				plan.setUpdateDate(DateUtil.getNowDateYYYYMMddHHMMSS());
@@ -83,6 +98,11 @@ public class PlanAction extends AbstractBaseAction<Plan> {
 				returnMessage = UPDATE_SUCCESS;
 			}else{
 				Plan plan = new Plan();
+				
+				plan.setId(id);
+				plan.setInMoney(inMoney);
+				plan.setOutMoney(outMoney);
+				plan.setRemainMoney(remainMoney);
 				
 				plan.setCreateBy(getLoginUserId());
 				plan.setCreateDate(DateUtil.getNowDateYYYYMMddHHMMSS());
@@ -140,10 +160,131 @@ public class PlanAction extends AbstractBaseAction<Plan> {
 		return null;
 	}
 
+	
+	public String multiExecute() throws Exception {
+		String operateResult = null;//操作结果：1失败，0成功
+		
+		String returnMessage = "";
+		String[] multideleteTemp;
+		if (multidExecute.indexOf(",") > 0) {
+			multideleteTemp = multidExecute.split(",");
+		}
+		else{
+			multideleteTemp = new String[]{multidExecute};
+		}
+		for (int i = 0; i < multideleteTemp.length; i++) {
+			int multidExecuteId = Integer.parseInt(multideleteTemp[i].trim());
+			
+			try{
+				Plan p = new Plan();
+				p.setId(multidExecuteId);
+				p.setExcuteFlag("T");
+				planService.updateObject(p);
+			}catch(Exception e){
+				returnMessage = "执行失败";
+				e.printStackTrace();
+				throw e;
+			}finally{
+			}
+		}
+		AjaxResult ar = new AjaxResult();
+		if (returnMessage.equals("")) {
+			ar.setOpResult("执行成功");
+		}else{
+			ar.setOpResult(returnMessage);
+		}
+		
+		Struts2Utils.renderJson(ar);
+		return null;
+	}
+
+	
 
 	@Override
 	protected void prepareModel() throws Exception {
 		plan = (Plan)planService.getInfoByKey(id);
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getLockStatus() {
+		return lockStatus;
+	}
+
+	public void setLockStatus(String lockStatus) {
+		this.lockStatus = lockStatus;
+	}
+
+	public String getEnableFlag() {
+		return enableFlag;
+	}
+
+	public void setEnableFlag(String enableFlag) {
+		this.enableFlag = enableFlag;
+	}
+
+	public PlanService getPlanService() {
+		return planService;
+	}
+
+	public void setPlanService(PlanService planService) {
+		this.planService = planService;
+	}
+
+	public Plan getPlan() {
+		return plan;
+	}
+
+	public void setPlan(Plan plan) {
+		this.plan = plan;
+	}
+
+	public int getInMoney() {
+		return inMoney;
+	}
+
+	public void setInMoney(int inMoney) {
+		this.inMoney = inMoney;
+	}
+
+	public int getOutMoney() {
+		return outMoney;
+	}
+
+	public void setOutMoney(int outMoney) {
+		this.outMoney = outMoney;
+	}
+
+	public int getRemainMoney() {
+		return remainMoney;
+	}
+
+	public void setRemainMoney(int remainMoney) {
+		this.remainMoney = remainMoney;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getCardNo() {
+		return cardNo;
+	}
+
+	public void setCardNo(String cardNo) {
+		this.cardNo = cardNo;
+	}
+	
+	
 
 }

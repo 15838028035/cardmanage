@@ -131,24 +131,6 @@ public class Page {
 		return nextPageRecordsIndexEnd-1;
 	}
 	
-	/*public int getNextPageRecordesIndexStart() {
-		int temp = this.currentPage*this.recordsOfPage+1;
-		if(temp>totalRecords){
-			
-		}else{
-			nextPageRecordesIndexStart = temp;
-		}
-		return nextPageRecordesIndexStart;
-	}
-
-	public int getNextPageRecordsIndexEnd() {
-		nextPageRecordsIndexEnd = (this.currentPage+1)*this.recordsOfPage;
-		if(nextPageRecordsIndexEnd>totalRecords){
-			nextPageRecordsIndexEnd = totalRecords;
-		}
-		return nextPageRecordsIndexEnd;
-	}*/
-	
 	public String getSortorder() {
 		return sortorder;
 	}
@@ -174,6 +156,7 @@ public class Page {
 		log.debug(jsonString);
 		return jsonString ;
 	}
+	
 	public static String toJsonString(Object object){
 		 
 		JsonConfig cfg = new JsonConfig();		

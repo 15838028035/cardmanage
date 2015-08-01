@@ -6,12 +6,6 @@ import java.util.Date;
 import net.sf.json.JsonConfig;
 import net.sf.json.processors.JsonValueProcessor;
 
-/**
- * @author liuww2
- * @date Nov 1, 2010
- * @description 
- **/
-
 public class DateJsonFormat implements JsonValueProcessor {
 	private static final String format = "yyyy-MM-dd HH:mm:ss";
 

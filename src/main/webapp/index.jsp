@@ -288,6 +288,9 @@ function topMenuEff(){
 				  <li class="float_lef LT_hd_li_TM LocalManagment">
 					<a href="${ctx}/jsp/user/userList.jsp">用户管理</a>
 				</li>
+				<li class="float_lef LT_hd_li_TM LocalManagment">
+					<a href="${ctx}/jsp/plan/planList.jsp">计划管理</a>
+				</li>
           </ul>
          </div><!--end LT_Fr_wrap_TM-->
        

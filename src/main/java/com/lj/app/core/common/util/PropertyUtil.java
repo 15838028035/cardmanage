@@ -22,7 +22,6 @@ public class PropertyUtil {
 	private static Logger logger = Logger.getLogger(PropertyUtil.class);
 
 	private static PropertiesPersister propertiesPersister = new DefaultPropertiesPersister();
-
 	
 	/**
 	 * 载入多个ClassPath中的properties文件, 相同的属性将会覆盖之前的载入.

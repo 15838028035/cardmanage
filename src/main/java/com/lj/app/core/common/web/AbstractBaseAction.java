@@ -48,7 +48,17 @@ public abstract class AbstractBaseAction<T> extends ActionSupport implements Mod
 	
 	protected String multidelete;
 	
+	protected String multidExecute;
 	
+	
+	public String getMultidExecute() {
+		return multidExecute;
+	}
+
+	public void setMultidExecute(String multidExecute) {
+		this.multidExecute = multidExecute;
+	}
+
 	public  String operate;//操作
 	
 	public String getReturnMessage() {

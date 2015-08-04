@@ -18,6 +18,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<input type="button" value="submit"/>
            </form>
 
-	<a href="<%=basePath %>loginAction!login.action?loginNo=system&pwd=123">login</a>
 </body>
 </html>

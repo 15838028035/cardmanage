@@ -1,4 +1,5 @@
 ﻿﻿<%@ page contentType="text/html;charset=UTF-8" %>
+﻿<%@ page import = "com.lj.app.cardmanage.user.model.User,com.lj.app.core.common.util.SessionCode" %>
 <%@ include file="/jsp/common/taglibs.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -183,58 +184,12 @@ function topMenuEff(){
 			theObjTable.style.width=obj.pareneTableW*1+event.clientX*1-obj.mouseDownX; 
 			} 
 		} 
+		
 		function MouseUpToResize(obj){ 
 			obj.releaseCapture(); 
 			obj.mouseDownX=0; 
 		} 
 		
-		function initDomain(para){
-			jQuery.FrameDialog.create({
-				url: "${ctx}/jsp/domain/domain_init.jsp?domainId="+para,
-				title: '初始化',
-				width: 600,
-				height: 300,
-				//show: 'slide',
-				hide: 'slide',
-				buttons:{}	
-			});	
-		}
-		
-		function deleteConfirm(ojectId,objectClass){
-			$("<div>确定要删除对象吗？</div>").dialog({
-				resizable: false,
-				height:200,
-				modal: true,
-				title:"请确认您的操作",
-				buttons: {
-					"取消": function() {
-							$(this).dialog('close');
-						},
-					"确定": function() {
-						var result = jQuery.ajax({
-				          	url:"${ctx}/jsp/domain/domainrightcontent!deleteStruct.action?objectClass=" + objectClass + "&objectId=" + ojectId,
-				          	async:false,
-				          	dataType:"text"
-				        	}).responseText;
-				        		//parent.LT_main.location.reload();
-								//window.LT_menu.$("#tree").jstree("remove",obj);				        	
-				        	if(result == "1") {
-				        		showModalMessage("删除成功");
-				        		window.LT_menu.location.reload();
-				        		window.LT_main.location = "${ctx}/jsp/domain/domainmanage!domainIndex.action";
-				        		$(this).dialog('close');
-				        	}else if(result == "2"){
-				        		showModalMessage("无此权限");	
-								$(this).dialog('close');
-							}else{
-								showModalMessage("删除失败");
-								$(this).dialog('close');
-							}
-					}
-				}
-				});
-		
-		}
 	</script>	
   </head>
   
@@ -272,25 +227,29 @@ function topMenuEff(){
 <div class="subTopMenu" id="subTopMenu">
 	<div class="subTopMenu_wrap">
     
-    	<div class="LT_Fr_wrap_TM" id="LT_Fr_wrap_TM">
+    	<div class="LT_Fr_wrap_TM" id="LT_Fr_wrap_TM" style="float:left">
         	<ul>
                  <li class="float_lef LT_hd_li_TM LocalManagment">
                   	<table cellpadding="0" cellspacing="0"  border="0"><tr>
                   	<td width="10"><img src="images/job.png" align="absmiddle"  width=15 height=15/>
                   	</td><td><span class="marg_lef5">本地功能</span></td></tr></table>
                  </li>
-                 <li class="float_lef LT_hd_li_TM LocalManagment">
-                 	 <a href="${ctx}/jsp/creditCard/creditCardList.jsp">卡片管理</a>
+                 <li class="float_lef LT_hd_li_TM LocalManagment" style="font-size:16px;float:none">
+                 	 <a href="${ctx}/jsp/creditCard/creditCardList.jsp"  target="LT_main" >卡片管理</a>
                   </li>
-                    <li class="float_lef LT_hd_li_TM LocalManagment">
-						<a href="${ctx}/jsp/postCard/postCardList.jsp">post机管理</a>
+                    <li class="float_lef LT_hd_li_TM LocalManagment" style="font-size:16px;float:none">
+						<a href="${ctx}/jsp/postCard/postCardList.jsp" target="LT_main" >post机管理</a>
 				</li>
-				  <li class="float_lef LT_hd_li_TM LocalManagment">
-					<a href="${ctx}/jsp/user/userList.jsp">用户管理</a>
+				<li class="float_lef LT_hd_li_TM LocalManagment" style="font-size:16px;float:none">
+					<a href="${ctx}/jsp/plan/planList.jsp" target="LT_main" >计划管理</a>
 				</li>
-				<li class="float_lef LT_hd_li_TM LocalManagment">
-					<a href="${ctx}/jsp/plan/planList.jsp">计划管理</a>
-				</li>
+				
+				<c:if test="${sessionScope.securityContext.loginName=='system'}">
+					 <li class="float_lef LT_hd_li_TM LocalManagment" style="font-size:16px;float:none">
+						<a href="${ctx}/jsp/user/userList.jsp" target="LT_main" >用户管理</a>
+					</li>
+				</c:if>
+					
           </ul>
          </div><!--end LT_Fr_wrap_TM-->
        
@@ -298,9 +257,10 @@ function topMenuEff(){
 </div><!--end subTopMenu-->
 
 
-	<div class="LT_left" id="LT_left">
+	<div class="LT_left" id="LT_left" style="width:80px">
 		
-	   	<iframe class="LT_menu" style="margin: 0px"  id="LT_menu" src="" width="100%" frameborder="0" allowTransparency="true" scrolling="auto"></iframe>
+	   	<iframe class="LT_menu" style="margin: 0px"  id="LT_menu" src="" width="100%" frameborder="0" allowTransparency="true" scrolling="auto">
+	   	</iframe>
 	   
 	</div><!--end LT_left-->
 	

@@ -97,7 +97,7 @@ a:active{color:#2c6795; text-decoration:none; font-weight:normal;}
 /*----end hd----*/
 /* 修改以下三项把原来的41改成76px
 */
-.LT_left{position:absolute; top:80px; left:0px; background:#eeeded;}
+.LT_left{position:absolute; top:80px; left:0px;width:80px; background:#eeeded;}
 .LT_hide_ELe{position:absolute; top:80px;   no-repeat left ; cursor:e-resize;vertical-align: middle;}
 .LT_show_ELe{position:absolute; display:none; top:76px; left:0px; cursor:pointer; width:9px; background:url(../images/LT_show_ELe_bg.jpg) no-repeat left top;}
 .LT_main{position:absolute; top:80px; background:#eeeded; /*background:#ffffff url(../images/layout_t_main_bg.jpg) repeat-x left top;*/}

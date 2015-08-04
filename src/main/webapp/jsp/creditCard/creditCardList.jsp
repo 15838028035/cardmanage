@@ -75,6 +75,7 @@
 								
 				viewrecords: true,
 				caption: '卡片管理',
+				width: '100%',
 				height: '100%',
 				hidegrid: false,
 				altRows:true,

@@ -82,10 +82,10 @@
 				id:"0"        		    
 				},
 			viewrecords: true,
+			width: '100%',
 			height: '100%',
 			sortname:'loginNo',
 			sortorder:'asc',
-			width:'940',
 			hidegrid: false,
 			loadtext: '正在加载,请稍等..',
 			scrollrows: true,

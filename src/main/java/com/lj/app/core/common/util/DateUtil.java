@@ -50,4 +50,26 @@ public class DateUtil {
         return sDateFormat.format(date);
 	}
 	
+	public static int getIntervalDays(Date fDate, Date oDate) {
+
+       if (null == fDate || null == oDate) {
+           return -1;
+       }
+
+       long intervalMilli = oDate.getTime() - fDate.getTime();
+       return (int) (intervalMilli / (24 * 60 * 60 * 1000));
+    }
+	
+	public static int getIntervalDays(String fDateStr, String oDateStr) {
+	       if (null == fDateStr || null == oDateStr) {
+	           return -1;
+	       }
+
+	       Date fDate = formatDate(fDateStr,DATE_FOMRAT_yyyyMMddhhMMss);
+	       Date oDate = formatDate(oDateStr,DATE_FOMRAT_yyyyMMddhhMMss);
+	       
+	       long intervalMilli = fDate.getTime() - oDate.getTime();
+	       return (int) (intervalMilli / (24 * 60 * 60 * 1000));
+	}
+	
 }

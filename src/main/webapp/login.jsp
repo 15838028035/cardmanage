@@ -79,11 +79,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<table cellpadding="0" cellspacing="0" border="0" width="364">
             	<tr id="login_name">
 	            	<td align="right"><label for="user">用户ID：</label></td>
-	            	<td align="left"><input id='loginNo' name='loginNo' type="text" class="login_inputext" value="system" onfocus="changeCssOnfocus(this)" onblur="changeCssOnBlur(this)"/></td>
+	            	<td align="left"><input id='loginNo' name='loginNo' type="text" class="login_inputext" value="" onfocus="changeCssOnfocus(this)" onblur="changeCssOnBlur(this)"/></td>
             	</tr>
             	<tr id="login_pwd">
 	            	<td align="right"><label for="pwd">密&nbsp;&nbsp;&nbsp;码：</label></td>
-	            	<td align="left"><input id='pwd' name='pwd' type="password" value="12345678" class="login_inputext" onfocus="changeCssOnfocus(this)" onblur="changeCssOnBlur(this)"/></td>
+	            	<td align="left"><input id='pwd' name='pwd' type="password" value="" class="login_inputext" onfocus="changeCssOnfocus(this)" onblur="changeCssOnBlur(this)"/></td>
             	</tr>
                 <tr><td colspan="2" align="left"><span class="Warning">&nbsp;</span></td></tr>
             </table>

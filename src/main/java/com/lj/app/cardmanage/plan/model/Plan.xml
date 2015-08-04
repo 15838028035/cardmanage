@@ -33,6 +33,13 @@
         <result property="repaymentDate" column="repaymentDate" nullValue=""/>
         <result property="excuteFlag" column="excuteFlag" nullValue=""/>
    </resultMap>
+   
+   <resultMap id="userAndPCardesult" class="plan">
+	   <result property="userId" column="userId" nullValue=""/>  
+       <result property="creditCardId" column="creditCardId" nullValue=""/>    
+       <result property="postCardId" column="postCardId" nullValue=""/>
+        <result property="maxLimit" column="maxLimit" nullValue=""/>
+   </resultMap>
 	
 	<select id="getInfoByKey" parameterClass="int" resultMap="planResult">
 	SELECT p.id, p.batchNo, p.userId, p.creditCardId, p.postCardId, p.saleDate, p.sumAllMoney,
@@ -131,5 +138,18 @@
 		</dynamic>
  		WHERE id=#id:NUMBER#
 	 </update>
+	 
+	 <select id="selectUserAndCardOfBillDay"  parameterClass="plan" resultMap="userAndPCardesult">
+		SELECT u.userId,c.id as creditCardid, pc.id as postCardId,c.cardNo, c.maxLimit FROM USER U,POSTCARD  pc,creditCard c
+		  where u.createBy = pc.createBy
+		  AND u.createBy = c.createBy
+		  AND pc.createBy = c.createBy
+		  AND u.enableFlag='T'
+		  AND pc.enableFlag='T'
+		  AND c.enableFlag='T'
+		<dynamic prepend="WHERE">
+		  	<isNotEmpty prepend="AND" property="billDate"> c.billDate = #billDate:NUMBER#</isNotEmpty>
+		</dynamic>
+	</select>
     
 </sqlMap>

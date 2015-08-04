@@ -98,7 +98,7 @@ public class LoginAction extends AbstractBaseAction<User> {
 			
 			CMSecurityContext securityContext = new CMSecurityContext();
 			securityContext.setMainAcctId(Long.getLong(String.valueOf(user.getUserId())));
-			securityContext.setLoginName(user.getUserName());
+			securityContext.setLoginName(loginUser.getUserName());
 			securityContext.setUrls(cMPermissionService.findPermissionUrl());
 			
 			Struts2Utils.getSession().setAttribute(SecurityConstants.SECURITY_CONTEXT, securityContext);
@@ -113,7 +113,9 @@ public class LoginAction extends AbstractBaseAction<User> {
 		} else {
 			Struts2Utils.getSession().setAttribute("isPermissionTree", "N");
 		}
-		Struts2Utils.getSession().getAttribute(SessionCode.MAIN_ACCT);
+		Struts2Utils.getSession().setAttribute(SessionCode.MAIN_ACCT,user);
+		Struts2Utils.getSession().setAttribute(SessionCode.LOGIN_NAME,user.getLoginNo());
+		
 		Struts2Utils.getResponse().sendRedirect(Struts2Utils.getRequest().getContextPath() + "/index.jsp");
 		return null;
 	}

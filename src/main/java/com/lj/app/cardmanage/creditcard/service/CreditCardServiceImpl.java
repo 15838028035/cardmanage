@@ -7,4 +7,9 @@ import com.lj.app.cardmanage.base.service.BaseServiceImpl;
 @Service("creditCardService")
 public class CreditCardServiceImpl extends BaseServiceImpl implements CreditCardService{
 
+	@Override
+	public int getCreditBillDateCount(int billDate) {
+		return countObject("getCreditBillDateCount",billDate);
+	}
+	
 }

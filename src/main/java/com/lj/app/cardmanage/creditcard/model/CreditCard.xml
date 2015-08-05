@@ -114,7 +114,7 @@
 		DELETE FROM   creditCard WHERE  id=#id#
 	</delete>
 	
-	<select id="getCreditBillDateCount" parameterClass="java.Lang.Integer" resultClass="java.Lang.Integer">
+	<select id="getCreditBillDateCount" parameterClass="int" resultClass="int">
 				SELECT count(1)  FROM CREDITCARD  F where f.billDate=#billDate:NUMBER#
 	</select>
 	

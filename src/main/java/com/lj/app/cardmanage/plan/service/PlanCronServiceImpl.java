@@ -9,7 +9,7 @@ import com.lj.app.core.common.util.SpringContextHolder;
 public class PlanCronServiceImpl implements PlanCronService {  
 	
 	
-    @Scheduled(cron="* * 10  * * ? ")   //每5秒执行一次  
+    @Scheduled(cron="*/10 * *  * * ? ")   //每5秒执行一次  
     @Override  
 	public void exceutePlanCron(){
     	PlanService planService = (PlanService) SpringContextHolder.getBean("planService");

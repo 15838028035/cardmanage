@@ -70,6 +70,13 @@ public interface PlanService<Plan> extends BaseService{
 	public int generateBillSaleRate();
 	
 	/**
+	 * 生成计划消费的日期
+	 * @param days
+	 * @return
+	 */
+	public void  generatePlanDayTmp(int days);
+	
+	/**
 	 *是否是消费日
 	 * @return
 	 */
@@ -82,6 +89,14 @@ public interface PlanService<Plan> extends BaseService{
 	 * @return
 	 */
 	public int getPostCardId(int outMoney,int userId);
+	
+	/**
+	 * 获取下一个日期
+	 * @param outMoney
+	 * @param userId
+	 * @return
+	 */
+	public String getSaleDay(String saleDay,int interOfDay);
 	
 	/**
 	 * 根据java代码执行计划

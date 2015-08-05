@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
-import com.ibatis.common.logging.Log;
-import com.ibatis.common.logging.LogFactory;
 import com.lj.app.cardmanage.base.dao.BaseDao;
 import com.lj.app.cardmanage.base.model.BaseModel;
 import com.lj.app.core.common.pagination.Page;
@@ -59,10 +57,15 @@ public abstract class BaseServiceImpl<T> implements BaseService {
 		return baseDao.getInfoByKey(getSqlMapNameSpace()+NAMESPACE_SPLIT+"getInfoByKey",obj);
 	}
 
+	@Override
 	public Object queryObject(String sqlId, Object obj){
 		return baseDao.findObject(getSqlMapNameSpace()+NAMESPACE_SPLIT+sqlId,obj);
 	}
 	
+	@Override
+	public Object  queryForObject(String sqlId, Object obj){
+		return baseDao.queryForObject(getSqlMapNameSpace()+NAMESPACE_SPLIT+sqlId,obj);
+	}
 	
 	@Override
 	public List<BaseModel> findBaseModeList(Object obj) {
@@ -116,12 +119,12 @@ public abstract class BaseServiceImpl<T> implements BaseService {
 
 	@Override
 	public List queryForList(String statementName) throws DataAccessException {
-		return baseDao.queryForList(statementName);
+		return queryForList(statementName,"select");
 	}
 
 	@Override
 	public List queryForList(String statementName, Object parameterObject) {
-		return baseDao.queryForList(statementName,parameterObject);
+		return baseDao.queryForList(getSqlMapNameSpace()+NAMESPACE_SPLIT+statementName,parameterObject);
 	}
 
 	@Override

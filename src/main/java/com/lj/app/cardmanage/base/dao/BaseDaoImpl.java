@@ -45,6 +45,7 @@ public class BaseDaoImpl<T> extends SqlMapClientDaoSupport implements BaseDao{
 	public BaseModel findObject(String sqlId, Object obj) {
 		return (BaseModel)getSqlMapClientTemplate().queryForObject(sqlId, obj);
 	}
+	
 	@Override
 	public Object queryForObject(String sqlId, Object obj) {
 		return getSqlMapClientTemplate().queryForObject(sqlId, obj);

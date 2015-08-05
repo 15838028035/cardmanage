@@ -1,5 +1,6 @@
 package com.lj.app.cardmanage.plan.service;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -77,6 +78,14 @@ public class PlanServiceTest {
 	
 	@Test
 	public void exceutePlanFromJavaTest() {
-		
+		planService.exceutePlanFromJava();
+	}
+	
+	
+	@Test
+	public void getSaleDayTest(){
+		String getSaleDay = planService.getSaleDay("2015-08-03 10:00:00", 1);
+		String expetedDay = "2015-08-04 10:00:00";
+		assertEquals(expetedDay,getSaleDay);
 	}
 }

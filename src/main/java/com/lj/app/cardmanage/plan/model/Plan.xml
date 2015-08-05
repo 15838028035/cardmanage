@@ -59,7 +59,6 @@
 	
 	</select>
 	
-	
 	<select id="pagenate" parameterClass="java.util.HashMap" resultMap="planResult">
 		SELECT p.id, p.batchNo, p.userId, p.creditCardId, p.postCardId, p.saleDate, p.sumAllMoney,
 		 p.inMoney, p.outMoney, p.remainMoney,
@@ -104,18 +103,25 @@
 	<delete id="delete" parameterClass="int">
 		DELETE FROM   Plan WHERE id=#id#
 	</delete>
-   
-<parameterMap id="exceutePlanCronParam" class="java.util.HashMap">
-	<parameter property="param1" jdbcType="String" javaType="String" mode="IN" />
-	<parameter property="param2" jdbcType="String" javaType="String" mode="IN" />
-	<parameter property="p_val" jdbcType="int" javaType="java.lang.Integer" mode="OUT" />
-</parameterMap>
-
-
-<procedure id="exceutePlanCron" parameterMap="exceutePlanCronParam">
-    	{CALL exceutePlanCron (?,?,?)}
- </procedure>   
  
+	<insert id="insert" parameterClass="plan" >
+			INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)
+						VALUES(#batchNo:VARCHAR#,
+						#userId:NUMBER#,
+						#postCardId:NUMBER#,
+						#creditCardId:NUMBER#,
+						STR_TO_DATE(#saleDate:VARCHAR#, '%Y-%m-%d %h:%i:%s'),
+						#sumAllMoney:NUMBER#,
+						#inMoney:NUMBER#,
+						#outMoney:NUMBER#,
+						#remainMoney:NUMBER#,
+						#excuteFlag:VARCHAR#,
+						#createBy:NUMBER#,
+						STR_TO_DATE(#createDate:VARCHAR#, '%Y-%m-%d %h:%i:%s')
+						)
+				
+	</insert>
+	
  <update id="update" parameterClass="plan" >
 		UPDATE  plan t 
 		<dynamic prepend="set" >
@@ -139,17 +145,28 @@
  		WHERE id=#id:NUMBER#
 	 </update>
 	 
-	 <select id="selectUserAndCardOfBillDay"  parameterClass="plan" resultMap="userAndPCardesult">
-		SELECT u.userId,c.id as creditCardid, pc.id as postCardId,c.cardNo, c.maxLimit FROM USER U,POSTCARD  pc,creditCard c
+	 <select id="selectUserAndCardOfBillDay"  parameterClass="int" resultMap="userAndPCardesult">
+		SELECT u.userId,c.id as creditCardId, pc.id as postCardId,c.cardNo, c.maxLimit FROM USER U,POSTCARD  pc,creditCard c
 		  where u.createBy = pc.createBy
 		  AND u.createBy = c.createBy
 		  AND pc.createBy = c.createBy
 		  AND u.enableFlag='T'
 		  AND pc.enableFlag='T'
 		  AND c.enableFlag='T'
-		<dynamic prepend="WHERE">
-		  	<isNotEmpty prepend="AND" property="billDate"> c.billDate = #billDate:NUMBER#</isNotEmpty>
-		</dynamic>
+		  AND c.billDate = #billDate:NUMBER#
+			
 	</select>
+	
+	<select id="generatePlanDayTmp"   parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+		SELECT F_GENERATE_PLAN_DAY_TMP(#days#)
+ 	</select>
+ 	
+ 	<select id="checkSaleDay" parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+		SELECT  F_CHECK_SALE_DAY(#day#)  AS   F_CHECK_SALE_DAY
+ 	</select>
+ 	
+ 	<select id="getPostCardId"   parameterClass="java.util.HashMap"   resultClass="java.util.HashMap">
+		SELECT F_GET_POST_CARDID(#outMoney#,#userId#) AS  F_GET_POST_CARDID
+ 	</select>
     
 </sqlMap>

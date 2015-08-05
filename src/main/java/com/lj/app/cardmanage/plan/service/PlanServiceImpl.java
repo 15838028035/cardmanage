@@ -115,7 +115,7 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 	 * @return
 	 */
 	public List<Plan> selectUserAndCardOfBillDay(int billDay){
-		return this.queryForList("selectUserAndCardOfBillDay", billDay);
+		return queryForList("selectUserAndCardOfBillDay", billDay);
 	}
 	
 	/**
@@ -129,13 +129,32 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 	}
 
 	/**
+	 * 生成计划消费的日期
+	 * @param days
+	 * @return
+	 */
+	public void  generatePlanDayTmp(int days) {
+		Map<String,Integer> queryMap = new HashMap<String,Integer>();
+		queryMap.put("days", days);
+		queryForObject("generatePlanDayTmp", queryMap);
+	}
+	
+	/**
 	 *是否是消费日
 	 * @return
 	 */
 	public int checkSaleDay(int day) {
 		
-		//TODO:fixme 
-		return 1;
+		int result = 0;
+		try{
+			Map<String,Integer> queryMap = new HashMap<String,Integer>();
+			queryMap.put("day", day);
+			Map obj  = (HashMap)queryForObject("checkSaleDay", queryMap);
+			result = Integer.parseInt(String.valueOf(obj.get("F_CHECK_SALE_DAY")));
+		  }catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
 	/**
@@ -145,7 +164,30 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 	 * @return
 	 */
 	public int getPostCardId(int outMoney,int userId){
-		return 0;//FIXME 
+		int result = 0;
+		try{
+			Map<String,Integer> queryMap = new HashMap<String,Integer>();
+			queryMap.put("outMoney", outMoney);
+			queryMap.put("userId", userId);
+			Map obj  = (HashMap) queryForObject("getPostCardId", queryMap);
+			result = Integer.parseInt(String.valueOf(obj.get("F_GET_POST_CARDID")));
+		  }catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	/**
+	 * 获取下一个日期
+	 * @param outMoney
+	 * @param userId
+	 * @return
+	 */
+	public String getSaleDay(String saleDay,int interOfDay){
+		 Calendar calendar = Calendar.getInstance();
+		 calendar.setTime(DateUtil.formatDate(saleDay,DateUtil.DATE_FOMRAT_yyyyMMddhhMMss));
+	     calendar.add(Calendar.DAY_OF_MONTH, interOfDay);
+	     return DateUtil.formatDate(calendar.getTime(),DateUtil.DATE_FOMRAT_yyyyMMddhhMMss);
 	}
 	
 	@Override
@@ -161,43 +203,64 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 		credit_bill_date_count = creditCardService.getCreditBillDateCount(billDate);
 		billSaleRate = generateBillSaleRate();//70-80
 		inMoney = 0;
+		
+		saleDate = getCurrentDate();
+	
+		//生计划消费日
+		generatePlanDayTmp(getIntervalDaysOfBill);
 	
 		
 		if(credit_bill_date_count>0) { //账单日数量大于0,开始排计划
 			selectUserAndCardOfBillDayList = this.selectUserAndCardOfBillDay(billDate);
 			for(int i = 0; i<selectUserAndCardOfBillDayList.size();i++){
 				Plan p = (Plan)selectUserAndCardOfBillDayList.get(i);
-				sumAllMoney = p.getMaxLimit();
-				cuurentSaleSumMoney = sumAllMoney*billSaleRate/100;
-				remainMoney = cuurentSaleSumMoney;
-				checkSaleDay =checkSaleDay(i);
-				
-				userId = p.getUserId();
-				
-				if (i<10){
-					outMoney=  new BigDecimal(remainMoney*0.25).intValue();
-				}else {
-					outMoney=  new BigDecimal(remainMoney*Math.floor(5 + (Math.random() * 10))/100).intValue();
-				}
 			
-				if(checkSaleDay != 1){
-					outMoney = 0;
+				
+				for(int j=0; j<getIntervalDaysOfBill;j++){
+					sumAllMoney = p.getMaxLimit();
+					checkSaleDay =checkSaleDay(j+1);
+					
+					if(j==0){
+						cuurentSaleSumMoney = sumAllMoney*billSaleRate/100;
+						remainMoney = cuurentSaleSumMoney;
+					}
+					
+					userId = p.getUserId();
+					
+					if (j<5){
+						outMoney=  new BigDecimal(remainMoney*0.25).intValue();
+					}else {
+						outMoney=  new BigDecimal(remainMoney*Math.floor(5 + (Math.random() * 10))/100).intValue();
+					}
+					
+					if(outMoney<=SIGLE_SALE_MIN_MONEY){
+						outMoney = 0;
+					}
+				
+					if(checkSaleDay != 1){
+						outMoney = 0;
+					}
+					
+					remainMoney =remainMoney-outMoney;
+					
+					postCardId = getPostCardId(outMoney,userId);
+					
+					saleDate = getSaleDay(saleDate,1);
+					
+					p.setBatchNo(batchNo);
+					p.setUserId(userId);
+					p.setPostCardId(postCardId);
+					p.setSaleDate(saleDate);
+					p.setSumAllMoney(sumAllMoney);
+					p.setInMoney(inMoney);
+					p.setOutMoney(outMoney);
+					p.setRemainMoney(remainMoney);
+					p.setExcuteFlag("F");
+					p.setCreateBy(userId);
+					p.setCreateDate(DateUtil.getNowDateYYYYMMddHHMMSS());
+					
+					insertObject(p);
 				}
-				
-				remainMoney =remainMoney-outMoney;
-				
-				postCardId = getPostCardId(outMoney,userId);
-				
-				p.setBatchNo(batchNo);
-				p.setUserId(userId);
-				p.setPostCardId(postCardId);
-				p.setSaleDate(saleDate);
-				p.setSumAllMoney(sumAllMoney);
-				p.setInMoney(inMoney);
-				p.setOutMoney(outMoney);
-				p.setRemainMoney(remainMoney);
-				p.setExcuteFlag("F");
-				p.setCreateBy(userId);
 					
 				i++;
 			}

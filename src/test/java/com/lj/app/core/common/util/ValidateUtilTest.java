@@ -1,11 +1,19 @@
 package com.lj.app.core.common.util;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class ValidateUtilTest {
+	
+	private ValidateUtil ValidateUtil;
+	
+	@Before
+	public void setUp() {
+		ValidateUtil = new ValidateUtil();
+	}
 
 	@Test
 	public void isNotEmptyTest() {

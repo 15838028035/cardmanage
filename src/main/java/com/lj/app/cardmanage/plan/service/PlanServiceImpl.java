@@ -15,6 +15,7 @@ import com.lj.app.cardmanage.base.service.BaseServiceImpl;
 import com.lj.app.cardmanage.creditcard.service.CreditCardService;
 import com.lj.app.cardmanage.plan.model.Plan;
 import com.lj.app.core.common.util.DateUtil;
+import com.lj.app.core.common.util.PropertyUtil;
 
 @Service("planService")
 public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanService<Plan>{
@@ -208,7 +209,7 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 	
 		//生计划消费日
 		generatePlanDayTmp(getIntervalDaysOfBill);
-	
+		
 		
 		if(credit_bill_date_count>0) { //账单日数量大于0,开始排计划
 			selectUserAndCardOfBillDayList = this.selectUserAndCardOfBillDay(billDate);
@@ -262,7 +263,6 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 					insertObject(p);
 				}
 					
-				i++;
 			}
 		}
 	}

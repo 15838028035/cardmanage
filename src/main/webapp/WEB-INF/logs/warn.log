@@ -496,3 +496,551 @@ Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.user.we
 Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sidx' with value ['loginNo', ]
 [ERROR] [11:25:39] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
 Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sord' with value ['asc', ]
+[ERROR] [15:18:07] com.opensymphony.xwork2.util.finder.ClassFinder - Unable to read class [com.lj.app.cardmanage.creditcard.web.CreditCardActionTest]
+Could not load junit/framework/TestCase.class - [unknown location]
+	at com.opensymphony.xwork2.util.finder.ClassFinder.readClassDef(ClassFinder.java:722)
+	at com.opensymphony.xwork2.util.finder.ClassFinder.access$400(ClassFinder.java:70)
+	at com.opensymphony.xwork2.util.finder.ClassFinder$InfoBuildingVisitor.extractSuperInterfaces(ClassFinder.java:767)
+	at com.opensymphony.xwork2.util.finder.ClassFinder$InfoBuildingVisitor.visit(ClassFinder.java:754)
+	at org.objectweb.asm.ClassReader.accept(Unknown Source)
+	at org.objectweb.asm.ClassReader.accept(Unknown Source)
+	at com.opensymphony.xwork2.util.finder.ClassFinder.readClassDef(ClassFinder.java:717)
+	at com.opensymphony.xwork2.util.finder.ClassFinder.access$400(ClassFinder.java:70)
+	at com.opensymphony.xwork2.util.finder.ClassFinder$InfoBuildingVisitor.extractSuperInterfaces(ClassFinder.java:767)
+	at com.opensymphony.xwork2.util.finder.ClassFinder$InfoBuildingVisitor.visit(ClassFinder.java:754)
+	at org.objectweb.asm.ClassReader.accept(Unknown Source)
+	at org.objectweb.asm.ClassReader.accept(Unknown Source)
+	at com.opensymphony.xwork2.util.finder.ClassFinder.readClassDef(ClassFinder.java:717)
+	at com.opensymphony.xwork2.util.finder.ClassFinder.access$400(ClassFinder.java:70)
+	at com.opensymphony.xwork2.util.finder.ClassFinder$InfoBuildingVisitor.extractSuperInterfaces(ClassFinder.java:767)
+	at com.opensymphony.xwork2.util.finder.ClassFinder$InfoBuildingVisitor.visit(ClassFinder.java:754)
+	at org.objectweb.asm.ClassReader.accept(Unknown Source)
+	at org.objectweb.asm.ClassReader.accept(Unknown Source)
+	at com.opensymphony.xwork2.util.finder.ClassFinder.readClassDef(ClassFinder.java:717)
+	at com.opensymphony.xwork2.util.finder.ClassFinder.access$400(ClassFinder.java:70)
+	at com.opensymphony.xwork2.util.finder.ClassFinder$InfoBuildingVisitor.extractSuperInterfaces(ClassFinder.java:767)
+	at com.opensymphony.xwork2.util.finder.ClassFinder$InfoBuildingVisitor.visit(ClassFinder.java:754)
+	at org.objectweb.asm.ClassReader.accept(Unknown Source)
+	at org.objectweb.asm.ClassReader.accept(Unknown Source)
+	at com.opensymphony.xwork2.util.finder.ClassFinder.readClassDef(ClassFinder.java:717)
+	at com.opensymphony.xwork2.util.finder.ClassFinder.<init>(ClassFinder.java:112)
+	at org.apache.struts2.convention.PackageBasedActionConfigBuilder.findActions(PackageBasedActionConfigBuilder.java:390)
+	at org.apache.struts2.convention.PackageBasedActionConfigBuilder.buildActionConfigs(PackageBasedActionConfigBuilder.java:347)
+	at org.apache.struts2.convention.ClasspathPackageProvider.loadPackages(ClasspathPackageProvider.java:53)
+	at com.opensymphony.xwork2.config.impl.DefaultConfiguration.reloadContainer(DefaultConfiguration.java:268)
+	at com.opensymphony.xwork2.config.ConfigurationManager.getConfiguration(ConfigurationManager.java:67)
+	at org.apache.struts2.dispatcher.Dispatcher.init_PreloadConfiguration(Dispatcher.java:445)
+	at org.apache.struts2.dispatcher.Dispatcher.init(Dispatcher.java:489)
+	at org.apache.struts2.dispatcher.ng.InitOperations.initDispatcher(InitOperations.java:74)
+	at org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter.init(StrutsPrepareAndExecuteFilter.java:57)
+	at org.apache.catalina.core.ApplicationFilterConfig.getFilter(ApplicationFilterConfig.java:275)
+	at org.apache.catalina.core.ApplicationFilterConfig.setFilterDef(ApplicationFilterConfig.java:397)
+	at org.apache.catalina.core.ApplicationFilterConfig.<init>(ApplicationFilterConfig.java:108)
+	at org.apache.catalina.core.StandardContext.filterStart(StandardContext.java:3709)
+	at org.apache.catalina.core.StandardContext.start(StandardContext.java:4363)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:791)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:771)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:525)
+	at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:627)
+	at org.apache.catalina.startup.HostConfig.deployDescriptors(HostConfig.java:553)
+	at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:488)
+	at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1149)
+	at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:311)
+	at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:117)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1053)
+	at org.apache.catalina.core.StandardHost.start(StandardHost.java:719)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1045)
+	at org.apache.catalina.core.StandardEngine.start(StandardEngine.java:443)
+	at org.apache.catalina.core.StandardService.start(StandardService.java:516)
+	at org.apache.catalina.core.StandardServer.start(StandardServer.java:710)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:578)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:288)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:413)
+[ERROR] [15:18:07] com.opensymphony.xwork2.util.finder.ClassFinder - Error loading class [com.lj.app.cardmanage.creditcard.web.CreditCardActionTest]
+java.lang.NoClassDefFoundError: junit/framework/TestCase
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClassCond(Unknown Source)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.security.SecureClassLoader.defineClass(Unknown Source)
+	at org.apache.catalina.loader.WebappClassLoader.findClassInternal(WebappClassLoader.java:1847)
+	at org.apache.catalina.loader.WebappClassLoader.findClass(WebappClassLoader.java:890)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1354)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1233)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClassCond(Unknown Source)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.security.SecureClassLoader.defineClass(Unknown Source)
+	at org.apache.catalina.loader.WebappClassLoader.findClassInternal(WebappClassLoader.java:1847)
+	at org.apache.catalina.loader.WebappClassLoader.findClass(WebappClassLoader.java:890)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1354)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1233)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClassCond(Unknown Source)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.security.SecureClassLoader.defineClass(Unknown Source)
+	at org.apache.catalina.loader.WebappClassLoader.findClassInternal(WebappClassLoader.java:1847)
+	at org.apache.catalina.loader.WebappClassLoader.findClass(WebappClassLoader.java:890)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1354)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1233)
+	at com.opensymphony.xwork2.util.classloader.ResourceStoreClassLoader.loadClass(ResourceStoreClassLoader.java:62)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClassCond(Unknown Source)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at com.opensymphony.xwork2.util.classloader.ResourceStoreClassLoader.fastFindClass(ResourceStoreClassLoader.java:45)
+	at com.opensymphony.xwork2.util.classloader.ResourceStoreClassLoader.loadClass(ResourceStoreClassLoader.java:57)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at com.opensymphony.xwork2.util.classloader.ReloadingClassLoader.loadClass(ReloadingClassLoader.java:144)
+	at com.opensymphony.xwork2.util.finder.ClassLoaderInterfaceDelegate.loadClass(ClassLoaderInterfaceDelegate.java:34)
+	at com.opensymphony.xwork2.util.finder.ClassFinder$ClassInfo.get(ClassFinder.java:562)
+	at org.apache.struts2.convention.PackageBasedActionConfigBuilder$3.test(PackageBasedActionConfigBuilder.java:620)
+	at org.apache.struts2.convention.PackageBasedActionConfigBuilder$3.test(PackageBasedActionConfigBuilder.java:607)
+	at com.opensymphony.xwork2.util.finder.ClassFinder.findClasses(ClassFinder.java:342)
+	at org.apache.struts2.convention.PackageBasedActionConfigBuilder.findActions(PackageBasedActionConfigBuilder.java:393)
+	at org.apache.struts2.convention.PackageBasedActionConfigBuilder.buildActionConfigs(PackageBasedActionConfigBuilder.java:347)
+	at org.apache.struts2.convention.ClasspathPackageProvider.loadPackages(ClasspathPackageProvider.java:53)
+	at com.opensymphony.xwork2.config.impl.DefaultConfiguration.reloadContainer(DefaultConfiguration.java:268)
+	at com.opensymphony.xwork2.config.ConfigurationManager.getConfiguration(ConfigurationManager.java:67)
+	at org.apache.struts2.dispatcher.Dispatcher.init_PreloadConfiguration(Dispatcher.java:445)
+	at org.apache.struts2.dispatcher.Dispatcher.init(Dispatcher.java:489)
+	at org.apache.struts2.dispatcher.ng.InitOperations.initDispatcher(InitOperations.java:74)
+	at org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter.init(StrutsPrepareAndExecuteFilter.java:57)
+	at org.apache.catalina.core.ApplicationFilterConfig.getFilter(ApplicationFilterConfig.java:275)
+	at org.apache.catalina.core.ApplicationFilterConfig.setFilterDef(ApplicationFilterConfig.java:397)
+	at org.apache.catalina.core.ApplicationFilterConfig.<init>(ApplicationFilterConfig.java:108)
+	at org.apache.catalina.core.StandardContext.filterStart(StandardContext.java:3709)
+	at org.apache.catalina.core.StandardContext.start(StandardContext.java:4363)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:791)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:771)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:525)
+	at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:627)
+	at org.apache.catalina.startup.HostConfig.deployDescriptors(HostConfig.java:553)
+	at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:488)
+	at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1149)
+	at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:311)
+	at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:117)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1053)
+	at org.apache.catalina.core.StandardHost.start(StandardHost.java:719)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1045)
+	at org.apache.catalina.core.StandardEngine.start(StandardEngine.java:443)
+	at org.apache.catalina.core.StandardService.start(StandardService.java:516)
+	at org.apache.catalina.core.StandardServer.start(StandardServer.java:710)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:578)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:288)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:413)
+Caused by: java.lang.ClassNotFoundException: junit.framework.TestCase
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1387)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1233)
+	... 75 more
+[ERROR] [15:18:08] com.opensymphony.xwork2.util.finder.ClassFinder - Error loading class [com.lj.app.cardmanage.user.web.LoginActionTest]
+java.lang.NoClassDefFoundError: junit/framework/TestCase
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClassCond(Unknown Source)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.security.SecureClassLoader.defineClass(Unknown Source)
+	at org.apache.catalina.loader.WebappClassLoader.findClassInternal(WebappClassLoader.java:1847)
+	at org.apache.catalina.loader.WebappClassLoader.findClass(WebappClassLoader.java:890)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1354)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1233)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClassCond(Unknown Source)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.security.SecureClassLoader.defineClass(Unknown Source)
+	at org.apache.catalina.loader.WebappClassLoader.findClassInternal(WebappClassLoader.java:1847)
+	at org.apache.catalina.loader.WebappClassLoader.findClass(WebappClassLoader.java:890)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1354)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1233)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClassCond(Unknown Source)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.security.SecureClassLoader.defineClass(Unknown Source)
+	at org.apache.catalina.loader.WebappClassLoader.findClassInternal(WebappClassLoader.java:1847)
+	at org.apache.catalina.loader.WebappClassLoader.findClass(WebappClassLoader.java:890)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1354)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1233)
+	at com.opensymphony.xwork2.util.classloader.ResourceStoreClassLoader.loadClass(ResourceStoreClassLoader.java:62)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClassCond(Unknown Source)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at com.opensymphony.xwork2.util.classloader.ResourceStoreClassLoader.fastFindClass(ResourceStoreClassLoader.java:45)
+	at com.opensymphony.xwork2.util.classloader.ResourceStoreClassLoader.loadClass(ResourceStoreClassLoader.java:57)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at com.opensymphony.xwork2.util.classloader.ReloadingClassLoader.loadClass(ReloadingClassLoader.java:144)
+	at com.opensymphony.xwork2.util.finder.ClassLoaderInterfaceDelegate.loadClass(ClassLoaderInterfaceDelegate.java:34)
+	at com.opensymphony.xwork2.util.finder.ClassFinder$ClassInfo.get(ClassFinder.java:562)
+	at org.apache.struts2.convention.PackageBasedActionConfigBuilder$3.test(PackageBasedActionConfigBuilder.java:620)
+	at org.apache.struts2.convention.PackageBasedActionConfigBuilder$3.test(PackageBasedActionConfigBuilder.java:607)
+	at com.opensymphony.xwork2.util.finder.ClassFinder.findClasses(ClassFinder.java:342)
+	at org.apache.struts2.convention.PackageBasedActionConfigBuilder.findActions(PackageBasedActionConfigBuilder.java:393)
+	at org.apache.struts2.convention.PackageBasedActionConfigBuilder.buildActionConfigs(PackageBasedActionConfigBuilder.java:347)
+	at org.apache.struts2.convention.ClasspathPackageProvider.loadPackages(ClasspathPackageProvider.java:53)
+	at com.opensymphony.xwork2.config.impl.DefaultConfiguration.reloadContainer(DefaultConfiguration.java:268)
+	at com.opensymphony.xwork2.config.ConfigurationManager.getConfiguration(ConfigurationManager.java:67)
+	at org.apache.struts2.dispatcher.Dispatcher.init_PreloadConfiguration(Dispatcher.java:445)
+	at org.apache.struts2.dispatcher.Dispatcher.init(Dispatcher.java:489)
+	at org.apache.struts2.dispatcher.ng.InitOperations.initDispatcher(InitOperations.java:74)
+	at org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter.init(StrutsPrepareAndExecuteFilter.java:57)
+	at org.apache.catalina.core.ApplicationFilterConfig.getFilter(ApplicationFilterConfig.java:275)
+	at org.apache.catalina.core.ApplicationFilterConfig.setFilterDef(ApplicationFilterConfig.java:397)
+	at org.apache.catalina.core.ApplicationFilterConfig.<init>(ApplicationFilterConfig.java:108)
+	at org.apache.catalina.core.StandardContext.filterStart(StandardContext.java:3709)
+	at org.apache.catalina.core.StandardContext.start(StandardContext.java:4363)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:791)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:771)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:525)
+	at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:627)
+	at org.apache.catalina.startup.HostConfig.deployDescriptors(HostConfig.java:553)
+	at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:488)
+	at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1149)
+	at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:311)
+	at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:117)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1053)
+	at org.apache.catalina.core.StandardHost.start(StandardHost.java:719)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1045)
+	at org.apache.catalina.core.StandardEngine.start(StandardEngine.java:443)
+	at org.apache.catalina.core.StandardService.start(StandardService.java:516)
+	at org.apache.catalina.core.StandardServer.start(StandardServer.java:710)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:578)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:288)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:413)
+Caused by: java.lang.ClassNotFoundException: junit.framework.TestCase
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1387)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1233)
+	... 75 more
+[ERROR] [15:18:51] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [15:18:51] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression 'nd' with value ['1439018330684', ]
+[ERROR] [15:18:51] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [15:18:51] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression 'sord' with value ['desc', ]
+[ERROR] [15:18:51] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [15:18:51] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression 'nd' with value ['1439018330684', ]
+[ERROR] [15:18:51] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [15:18:51] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression 'sord' with value ['desc', ]
+[ERROR] [15:18:59] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [15:18:59] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'nd' with value ['1439018339399', ]
+[ERROR] [15:18:59] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sidx' with value ['loginNo', ]
+[ERROR] [15:18:59] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sord' with value ['asc', ]
+[ERROR] [15:18:59] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [15:18:59] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'nd' with value ['1439018339399', ]
+[ERROR] [15:18:59] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sidx' with value ['loginNo', ]
+[ERROR] [15:18:59] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sord' with value ['asc', ]
+[ERROR] [15:19:16] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [15:19:16] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'nd' with value ['1439018356548', ]
+[ERROR] [15:19:16] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sidx' with value ['loginNo', ]
+[ERROR] [15:19:16] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sord' with value ['asc', ]
+[ERROR] [15:19:16] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [15:19:16] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'nd' with value ['1439018356548', ]
+[ERROR] [15:19:16] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sidx' with value ['loginNo', ]
+[ERROR] [15:19:16] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sord' with value ['asc', ]
+[ERROR] [15:20:00] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [15:20:00] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression 'nd' with value ['1439018399966', ]
+[ERROR] [15:20:00] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [15:20:00] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression 'sord' with value ['desc', ]
+[ERROR] [15:20:00] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [15:20:00] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression 'nd' with value ['1439018399966', ]
+[ERROR] [15:20:00] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [15:20:00] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression 'sord' with value ['desc', ]
+[ERROR] [15:21:09] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [15:21:09] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression 'nd' with value ['1439018469400', ]
+[ERROR] [15:21:09] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [15:21:09] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression 'sord' with value ['desc', ]
+[ERROR] [15:21:09] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [15:21:09] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression 'nd' with value ['1439018469400', ]
+[ERROR] [15:21:09] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [15:21:09] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression 'sord' with value ['desc', ]
+[ERROR] [15:26:10] com.opensymphony.xwork2.util.finder.ClassFinder - Unable to read class [com.lj.app.cardmanage.creditcard.web.CreditCardActionTest]
+Could not load junit/framework/TestCase.class - [unknown location]
+	at com.opensymphony.xwork2.util.finder.ClassFinder.readClassDef(ClassFinder.java:722)
+	at com.opensymphony.xwork2.util.finder.ClassFinder.access$400(ClassFinder.java:70)
+	at com.opensymphony.xwork2.util.finder.ClassFinder$InfoBuildingVisitor.extractSuperInterfaces(ClassFinder.java:767)
+	at com.opensymphony.xwork2.util.finder.ClassFinder$InfoBuildingVisitor.visit(ClassFinder.java:754)
+	at org.objectweb.asm.ClassReader.accept(Unknown Source)
+	at org.objectweb.asm.ClassReader.accept(Unknown Source)
+	at com.opensymphony.xwork2.util.finder.ClassFinder.readClassDef(ClassFinder.java:717)
+	at com.opensymphony.xwork2.util.finder.ClassFinder.access$400(ClassFinder.java:70)
+	at com.opensymphony.xwork2.util.finder.ClassFinder$InfoBuildingVisitor.extractSuperInterfaces(ClassFinder.java:767)
+	at com.opensymphony.xwork2.util.finder.ClassFinder$InfoBuildingVisitor.visit(ClassFinder.java:754)
+	at org.objectweb.asm.ClassReader.accept(Unknown Source)
+	at org.objectweb.asm.ClassReader.accept(Unknown Source)
+	at com.opensymphony.xwork2.util.finder.ClassFinder.readClassDef(ClassFinder.java:717)
+	at com.opensymphony.xwork2.util.finder.ClassFinder.access$400(ClassFinder.java:70)
+	at com.opensymphony.xwork2.util.finder.ClassFinder$InfoBuildingVisitor.extractSuperInterfaces(ClassFinder.java:767)
+	at com.opensymphony.xwork2.util.finder.ClassFinder$InfoBuildingVisitor.visit(ClassFinder.java:754)
+	at org.objectweb.asm.ClassReader.accept(Unknown Source)
+	at org.objectweb.asm.ClassReader.accept(Unknown Source)
+	at com.opensymphony.xwork2.util.finder.ClassFinder.readClassDef(ClassFinder.java:717)
+	at com.opensymphony.xwork2.util.finder.ClassFinder.access$400(ClassFinder.java:70)
+	at com.opensymphony.xwork2.util.finder.ClassFinder$InfoBuildingVisitor.extractSuperInterfaces(ClassFinder.java:767)
+	at com.opensymphony.xwork2.util.finder.ClassFinder$InfoBuildingVisitor.visit(ClassFinder.java:754)
+	at org.objectweb.asm.ClassReader.accept(Unknown Source)
+	at org.objectweb.asm.ClassReader.accept(Unknown Source)
+	at com.opensymphony.xwork2.util.finder.ClassFinder.readClassDef(ClassFinder.java:717)
+	at com.opensymphony.xwork2.util.finder.ClassFinder.<init>(ClassFinder.java:112)
+	at org.apache.struts2.convention.PackageBasedActionConfigBuilder.findActions(PackageBasedActionConfigBuilder.java:390)
+	at org.apache.struts2.convention.PackageBasedActionConfigBuilder.buildActionConfigs(PackageBasedActionConfigBuilder.java:347)
+	at org.apache.struts2.convention.ClasspathPackageProvider.loadPackages(ClasspathPackageProvider.java:53)
+	at com.opensymphony.xwork2.config.impl.DefaultConfiguration.reloadContainer(DefaultConfiguration.java:268)
+	at com.opensymphony.xwork2.config.ConfigurationManager.getConfiguration(ConfigurationManager.java:67)
+	at org.apache.struts2.dispatcher.Dispatcher.init_PreloadConfiguration(Dispatcher.java:445)
+	at org.apache.struts2.dispatcher.Dispatcher.init(Dispatcher.java:489)
+	at org.apache.struts2.dispatcher.ng.InitOperations.initDispatcher(InitOperations.java:74)
+	at org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter.init(StrutsPrepareAndExecuteFilter.java:57)
+	at org.apache.catalina.core.ApplicationFilterConfig.getFilter(ApplicationFilterConfig.java:275)
+	at org.apache.catalina.core.ApplicationFilterConfig.setFilterDef(ApplicationFilterConfig.java:397)
+	at org.apache.catalina.core.ApplicationFilterConfig.<init>(ApplicationFilterConfig.java:108)
+	at org.apache.catalina.core.StandardContext.filterStart(StandardContext.java:3709)
+	at org.apache.catalina.core.StandardContext.start(StandardContext.java:4363)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:791)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:771)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:525)
+	at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:627)
+	at org.apache.catalina.startup.HostConfig.deployDescriptors(HostConfig.java:553)
+	at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:488)
+	at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1149)
+	at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:311)
+	at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:117)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1053)
+	at org.apache.catalina.core.StandardHost.start(StandardHost.java:719)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1045)
+	at org.apache.catalina.core.StandardEngine.start(StandardEngine.java:443)
+	at org.apache.catalina.core.StandardService.start(StandardService.java:516)
+	at org.apache.catalina.core.StandardServer.start(StandardServer.java:710)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:578)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:288)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:413)
+[ERROR] [15:26:11] com.opensymphony.xwork2.util.finder.ClassFinder - Error loading class [com.lj.app.cardmanage.creditcard.web.CreditCardActionTest]
+java.lang.NoClassDefFoundError: junit/framework/TestCase
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClassCond(Unknown Source)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.security.SecureClassLoader.defineClass(Unknown Source)
+	at org.apache.catalina.loader.WebappClassLoader.findClassInternal(WebappClassLoader.java:1847)
+	at org.apache.catalina.loader.WebappClassLoader.findClass(WebappClassLoader.java:890)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1354)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1233)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClassCond(Unknown Source)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.security.SecureClassLoader.defineClass(Unknown Source)
+	at org.apache.catalina.loader.WebappClassLoader.findClassInternal(WebappClassLoader.java:1847)
+	at org.apache.catalina.loader.WebappClassLoader.findClass(WebappClassLoader.java:890)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1354)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1233)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClassCond(Unknown Source)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.security.SecureClassLoader.defineClass(Unknown Source)
+	at org.apache.catalina.loader.WebappClassLoader.findClassInternal(WebappClassLoader.java:1847)
+	at org.apache.catalina.loader.WebappClassLoader.findClass(WebappClassLoader.java:890)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1354)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1233)
+	at com.opensymphony.xwork2.util.classloader.ResourceStoreClassLoader.loadClass(ResourceStoreClassLoader.java:62)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClassCond(Unknown Source)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at com.opensymphony.xwork2.util.classloader.ResourceStoreClassLoader.fastFindClass(ResourceStoreClassLoader.java:45)
+	at com.opensymphony.xwork2.util.classloader.ResourceStoreClassLoader.loadClass(ResourceStoreClassLoader.java:57)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at com.opensymphony.xwork2.util.classloader.ReloadingClassLoader.loadClass(ReloadingClassLoader.java:144)
+	at com.opensymphony.xwork2.util.finder.ClassLoaderInterfaceDelegate.loadClass(ClassLoaderInterfaceDelegate.java:34)
+	at com.opensymphony.xwork2.util.finder.ClassFinder$ClassInfo.get(ClassFinder.java:562)
+	at org.apache.struts2.convention.PackageBasedActionConfigBuilder$3.test(PackageBasedActionConfigBuilder.java:620)
+	at org.apache.struts2.convention.PackageBasedActionConfigBuilder$3.test(PackageBasedActionConfigBuilder.java:607)
+	at com.opensymphony.xwork2.util.finder.ClassFinder.findClasses(ClassFinder.java:342)
+	at org.apache.struts2.convention.PackageBasedActionConfigBuilder.findActions(PackageBasedActionConfigBuilder.java:393)
+	at org.apache.struts2.convention.PackageBasedActionConfigBuilder.buildActionConfigs(PackageBasedActionConfigBuilder.java:347)
+	at org.apache.struts2.convention.ClasspathPackageProvider.loadPackages(ClasspathPackageProvider.java:53)
+	at com.opensymphony.xwork2.config.impl.DefaultConfiguration.reloadContainer(DefaultConfiguration.java:268)
+	at com.opensymphony.xwork2.config.ConfigurationManager.getConfiguration(ConfigurationManager.java:67)
+	at org.apache.struts2.dispatcher.Dispatcher.init_PreloadConfiguration(Dispatcher.java:445)
+	at org.apache.struts2.dispatcher.Dispatcher.init(Dispatcher.java:489)
+	at org.apache.struts2.dispatcher.ng.InitOperations.initDispatcher(InitOperations.java:74)
+	at org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter.init(StrutsPrepareAndExecuteFilter.java:57)
+	at org.apache.catalina.core.ApplicationFilterConfig.getFilter(ApplicationFilterConfig.java:275)
+	at org.apache.catalina.core.ApplicationFilterConfig.setFilterDef(ApplicationFilterConfig.java:397)
+	at org.apache.catalina.core.ApplicationFilterConfig.<init>(ApplicationFilterConfig.java:108)
+	at org.apache.catalina.core.StandardContext.filterStart(StandardContext.java:3709)
+	at org.apache.catalina.core.StandardContext.start(StandardContext.java:4363)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:791)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:771)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:525)
+	at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:627)
+	at org.apache.catalina.startup.HostConfig.deployDescriptors(HostConfig.java:553)
+	at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:488)
+	at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1149)
+	at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:311)
+	at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:117)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1053)
+	at org.apache.catalina.core.StandardHost.start(StandardHost.java:719)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1045)
+	at org.apache.catalina.core.StandardEngine.start(StandardEngine.java:443)
+	at org.apache.catalina.core.StandardService.start(StandardService.java:516)
+	at org.apache.catalina.core.StandardServer.start(StandardServer.java:710)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:578)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:288)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:413)
+Caused by: java.lang.ClassNotFoundException: junit.framework.TestCase
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1387)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1233)
+	... 75 more
+[ERROR] [15:26:11] com.opensymphony.xwork2.util.finder.ClassFinder - Error loading class [com.lj.app.cardmanage.user.web.LoginActionTest]
+java.lang.NoClassDefFoundError: junit/framework/TestCase
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClassCond(Unknown Source)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.security.SecureClassLoader.defineClass(Unknown Source)
+	at org.apache.catalina.loader.WebappClassLoader.findClassInternal(WebappClassLoader.java:1847)
+	at org.apache.catalina.loader.WebappClassLoader.findClass(WebappClassLoader.java:890)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1354)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1233)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClassCond(Unknown Source)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.security.SecureClassLoader.defineClass(Unknown Source)
+	at org.apache.catalina.loader.WebappClassLoader.findClassInternal(WebappClassLoader.java:1847)
+	at org.apache.catalina.loader.WebappClassLoader.findClass(WebappClassLoader.java:890)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1354)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1233)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClassCond(Unknown Source)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.security.SecureClassLoader.defineClass(Unknown Source)
+	at org.apache.catalina.loader.WebappClassLoader.findClassInternal(WebappClassLoader.java:1847)
+	at org.apache.catalina.loader.WebappClassLoader.findClass(WebappClassLoader.java:890)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1354)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1233)
+	at com.opensymphony.xwork2.util.classloader.ResourceStoreClassLoader.loadClass(ResourceStoreClassLoader.java:62)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClassCond(Unknown Source)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at com.opensymphony.xwork2.util.classloader.ResourceStoreClassLoader.fastFindClass(ResourceStoreClassLoader.java:45)
+	at com.opensymphony.xwork2.util.classloader.ResourceStoreClassLoader.loadClass(ResourceStoreClassLoader.java:57)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at com.opensymphony.xwork2.util.classloader.ReloadingClassLoader.loadClass(ReloadingClassLoader.java:144)
+	at com.opensymphony.xwork2.util.finder.ClassLoaderInterfaceDelegate.loadClass(ClassLoaderInterfaceDelegate.java:34)
+	at com.opensymphony.xwork2.util.finder.ClassFinder$ClassInfo.get(ClassFinder.java:562)
+	at org.apache.struts2.convention.PackageBasedActionConfigBuilder$3.test(PackageBasedActionConfigBuilder.java:620)
+	at org.apache.struts2.convention.PackageBasedActionConfigBuilder$3.test(PackageBasedActionConfigBuilder.java:607)
+	at com.opensymphony.xwork2.util.finder.ClassFinder.findClasses(ClassFinder.java:342)
+	at org.apache.struts2.convention.PackageBasedActionConfigBuilder.findActions(PackageBasedActionConfigBuilder.java:393)
+	at org.apache.struts2.convention.PackageBasedActionConfigBuilder.buildActionConfigs(PackageBasedActionConfigBuilder.java:347)
+	at org.apache.struts2.convention.ClasspathPackageProvider.loadPackages(ClasspathPackageProvider.java:53)
+	at com.opensymphony.xwork2.config.impl.DefaultConfiguration.reloadContainer(DefaultConfiguration.java:268)
+	at com.opensymphony.xwork2.config.ConfigurationManager.getConfiguration(ConfigurationManager.java:67)
+	at org.apache.struts2.dispatcher.Dispatcher.init_PreloadConfiguration(Dispatcher.java:445)
+	at org.apache.struts2.dispatcher.Dispatcher.init(Dispatcher.java:489)
+	at org.apache.struts2.dispatcher.ng.InitOperations.initDispatcher(InitOperations.java:74)
+	at org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter.init(StrutsPrepareAndExecuteFilter.java:57)
+	at org.apache.catalina.core.ApplicationFilterConfig.getFilter(ApplicationFilterConfig.java:275)
+	at org.apache.catalina.core.ApplicationFilterConfig.setFilterDef(ApplicationFilterConfig.java:397)
+	at org.apache.catalina.core.ApplicationFilterConfig.<init>(ApplicationFilterConfig.java:108)
+	at org.apache.catalina.core.StandardContext.filterStart(StandardContext.java:3709)
+	at org.apache.catalina.core.StandardContext.start(StandardContext.java:4363)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:791)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:771)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:525)
+	at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:627)
+	at org.apache.catalina.startup.HostConfig.deployDescriptors(HostConfig.java:553)
+	at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:488)
+	at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1149)
+	at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:311)
+	at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:117)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1053)
+	at org.apache.catalina.core.StandardHost.start(StandardHost.java:719)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1045)
+	at org.apache.catalina.core.StandardEngine.start(StandardEngine.java:443)
+	at org.apache.catalina.core.StandardService.start(StandardService.java:516)
+	at org.apache.catalina.core.StandardServer.start(StandardServer.java:710)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:578)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:288)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:413)
+Caused by: java.lang.ClassNotFoundException: junit.framework.TestCase
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1387)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1233)
+	... 75 more
+[ERROR] [15:26:47] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [15:26:47] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression 'nd' with value ['1439018807488', ]
+[ERROR] [15:26:47] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [15:26:47] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression 'sord' with value ['desc', ]
+[ERROR] [15:26:47] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [15:26:47] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression 'nd' with value ['1439018807488', ]
+[ERROR] [15:26:47] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [15:26:47] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.postcard.web.PostCardAction: Error setting expression 'sord' with value ['desc', ]

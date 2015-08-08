@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="postCard">
+<typeAlias alias="postCard" type="com.lj.app.cardmanage.postcard.model.PostCard" />
+
+	<resultMap id="postCardResult" class="postCard">       
+	   <result property="id" column="ID"/>      
+	   <result property="postCardNo" column="POSTCARDNO" nullValue=""/>    
+       <result property="manName" column="MANNAME" nullValue=""/>      
+       <result property="rate" column="RATE"/>
+       <result property="minMoney" column="MINMONEY" nullValue=""/>
+       <result property="maxMoney" column="MAXMONEY" nullValue=""/>
+       <result property="trade" column="TRADE" nullValue=""/>
+       <result property="bindBank" column="BINDBANK" nullValue=""/>
+       <result property="cardNo" column="CARDNO" nullValue=""/>
+       <result property="userName" column="USERNAME" nullValue=""/>
+       <result property="lockStatus" column="LOCKSTATUS" nullValue=""/>
+       <result property="enableFlag" column="ENABLEFLAG" nullValue=""/>
+       <result property="createBy" column="CREATEBY" nullValue="0"/>
+       <result property="createDate" column="CREATEDATE" nullValue=""/>
+       <result property="updateBy" column="UPDATEBY" nullValue="0"/>
+      <result property="updateDate" column="UPDATEDATE" nullValue=""/>
+	
+   </resultMap>
+   
+	<select id="select"  resultMap="postCardResult">
+		SELECT ID,POSTCARDNO,MANNAME,RATE,MINMONEY,MAXMONEY,TRADE,BINDBANK,CARDNO,USERNAME,
+		LOCKSTATUS,ENABLEFLAG, CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY
+		,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM POSTCARD
+	</select>
+	
+	<select id="getInfoByKey" parameterClass="int" resultMap="postCardResult">
+			SELECT ID,POSTCARDNO,MANNAME,RATE,MINMONEY,MAXMONEY,TRADE,BINDBANK,CARDNO,USERNAME,
+			LOCKSTATUS,ENABLEFLAG,CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY
+			,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE  FROM POSTCARD
+			
+		WHERE id=#id:NUMBER#
+	</select>
+	
+	<select id="pagenate" parameterClass="java.util.HashMap" resultMap="postCardResult">
+		SELECT ID,POSTCARDNO,MANNAME,RATE,MINMONEY,MAXMONEY,TRADE,BINDBANK,CARDNO,USERNAME,
+			LOCKSTATUS,ENABLEFLAG,CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY
+			,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE  FROM POSTCARD t
+		<dynamic prepend="WHERE">
+			<isGreaterEqual	prepend="AND" property="createBy" compareValue="1"> 
+				t.createBy = #createBy# 
+			</isGreaterEqual>
+		  	<isNotEmpty prepend="AND" property="postCardNo"> t.postCardNo = #postCardNo#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="manName"> t.manName = #manName#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="cardNo"> t.cardNo = #cardNo#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="bindBank"> t.bindBank = #bindBank#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="cardNo"> t.cardNo = #cardNo#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="userName"> t.userName = #userName#</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	
+	 <select id="pagenate_count" parameterClass="java.util.HashMap"  resultClass="long">
+				SELECT count(1) FROM POSTCARD t
+  		<dynamic prepend="WHERE">
+  			<isGreaterEqual	prepend="AND" property="createBy" compareValue="1"> 
+				t.createBy = #createBy# 
+			</isGreaterEqual> 
+			<isNotEmpty prepend="AND" property="postCardNo"> t.postCardNo = #postCardNo#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="manName"> t.manName = #manName#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="cardNo"> t.cardNo = #cardNo#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="bindBank"> t.bindBank = #bindBank#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="cardNo"> t.cardNo = #cardNo#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="userName"> t.userName = #userName#</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<insert id="insert" parameterClass="postCard" >
+			INSERT INTO postCard(POSTCARDNO,MANNAME,RATE,MINMONEY,MAXMONEY,TRADE,BINDBANK,CARDNO,USERNAME,LOCKSTATUS,ENABLEFLAG,CREATEBY,CREATEDATE)
+						VALUES(#postCardNo:VARCHAR#,
+						#manName:VARCHAR#,
+						#rate:NUMBER#,
+						#minMoney:NUMBER#,
+						#maxMoney:NUMBER#,
+						#trade:VARCHAR#,
+						#bindBank:VARCHAR#,
+						#cardNo:VARCHAR#,
+						#userName:VARCHAR#,
+						'0',
+						'T',
+						#createBy:NUMBER#,
+						STR_TO_DATE(#createDate:VARCHAR#, '%Y-%m-%d %h:%i:%s')
+						)
+						
+	</insert>
+	
+	<update id="update" parameterClass="postCard" >
+			UPDATE  postCard t 
+			SET t.postCardNo = #postCardNo:VARCHAR#, 
+			t.manName=#manName:VARCHAR#,
+			t.rate=#rate:NUMBER#,
+			t.minMoney=#minMoney:NUMBER#,
+			t.maxMoney =#maxMoney:NUMBER#,
+		    t.trade=#trade:VARCHAR#, 
+			t.bindBank=#bindBank:VARCHAR#, 
+			t.cardNo=#cardNo:VARCHAR#, 
+			t.userName=#userName:VARCHAR#,
+			t.lockStatus=#lockStatus:VARCHAR#, 
+			t.enableFlag=#enableFlag:VARCHAR#,
+			t.updateBy=#updateBy:NUMBER#, 
+			t.updateDate=STR_TO_DATE(#updateDate:VARCHAR#,'%Y-%m-%d %h:%i:%s')
+	 WHERE id=#id#
+	</update>
+	
+	<delete id="delete" parameterClass="int">
+		DELETE FROM   postCard WHERE id=#id#
+	</delete>
+	
+</sqlMap>

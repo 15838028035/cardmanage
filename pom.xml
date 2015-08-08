@@ -37,6 +37,8 @@
 		 <aspectjrt.version>1.5.4</aspectjrt.version>
         <aspectjweaver.version>1.5.4</aspectjweaver.version>
         <cglib-nodep.version>2.2</cglib-nodep.version>
+        
+		<maven-antrun-plugin.version>1.6</maven-antrun-plugin.version>
 
          <deploymentManagerRestHost>10.50.50.52</deploymentManagerRestHost>
          <deploymentManagerRestPort>58090</deploymentManagerRestPort>
@@ -49,6 +51,7 @@
 		<jdk.version>1.6</jdk.version>
 		<project.name>cardmanage</project.name>
 		<project.build.finalName>cardmanage</project.build.finalName>
+		
 	</properties>
 
 	<!-- 设定除中央仓库(repo1.maven.org/maven2/)外的其他仓库,按设定顺序进行查找. -->
@@ -465,6 +468,29 @@
        					<includeScope>runtime</includeScope>   
    				 </configuration>  
 		</plugin>
+		
+		<plugin>
+                 <artifactId>maven-antrun-plugin</artifactId>
+                <version>${maven-antrun-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <phase> package </phase>
+                        <configuration>
+                             <target>
+                                 <checksum>
+                                     <fileset dir="${project.basedir}/src/main/webapp/WEB-INF/classes">
+                                         <include name="*" />
+                                     </fileset>
+                                 </checksum>
+                            </target>
+
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                     </execution>
+                 </executions>
+             </plugin>
             
 		</plugins>
 

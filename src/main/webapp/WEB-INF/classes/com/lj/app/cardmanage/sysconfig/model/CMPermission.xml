@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="cMPermission">
+<typeAlias alias="CMPermission" type="com.lj.app.cardmanage.sysconfig.model.CMPermission" />
+
+	<resultMap id="CMPermissionResult" class="CMPermission">       
+	   <result property="id" column="ID"/>      
+	   <result property="code" column="code" nullValue=""/>    
+       <result property="name" column="name" nullValue=""/>      
+       <result property="url" column="url"/>
+       
+       <result property="enableFlag" column="ENABLEFLAG" nullValue=""/>
+       <result property="createBy" column="CREATEBY" nullValue="0"/>
+       <result property="createDate" column="CREATEDATE" nullValue=""/>
+       <result property="updateBy" column="UPDATEBY" nullValue="0"/>
+      <result property="updateDate" column="UPDATEDATE" nullValue=""/>
+	
+   </resultMap>
+   
+	<select id="select"  resultMap="CMPermissionResult">
+		SELECT ID,code,name,url,
+		LOCKSTATUS,ENABLEFLAG, CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY
+		,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM CMPermission
+	</select>
+	
+	<select id="getInfoByKey" parameterClass="int" resultMap="CMPermissionResult">
+		SELECT ID,code,name,url,
+		LOCKSTATUS,ENABLEFLAG, CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY
+		,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM CMPermission
+			
+		WHERE id=#id:NUMBER#
+	</select>
+	
+	<select id="pagenate" parameterClass="java.util.HashMap" resultMap="CMPermissionResult">
+		SELECT ID,code,name,url,
+		LOCKSTATUS,ENABLEFLAG, CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY
+		,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM CMPermission t
+		<dynamic prepend="WHERE">
+			<isGreaterEqual	prepend="AND" property="createBy" compareValue="1"> 
+				t.createBy = #createBy# 
+			</isGreaterEqual>
+		  	<isNotEmpty prepend="AND" property="code"> t.code = #code#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="name"> t.name = #name#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="url"> t.url = #url#</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	
+	 <select id="pagenate_count" parameterClass="java.util.HashMap"  resultClass="long">
+				SELECT count(1) FROM CMPermission t
+  		<dynamic prepend="WHERE">
+  			<isGreaterEqual	prepend="AND" property="createBy" compareValue="1"> 
+				t.createBy = #createBy# 
+			</isGreaterEqual> 
+			<isNotEmpty prepend="AND" property="code"> t.code = #code#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="name"> t.name = #name#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="url"> t.url = #url#</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<insert id="insert" parameterClass="CMPermission" >
+			INSERT INTO CMPermission(code,name,url,LOCKSTATUS,ENABLEFLAG,CREATEBY,CREATEDATE)
+						VALUES(#code:VARCHAR#,
+						#name:VARCHAR#,
+						#url:VARCHAR#,
+						'0',
+						'T',
+						#createBy:NUMBER#,
+						STR_TO_DATE(#createDate:VARCHAR#, '%Y-%m-%d %h:%i:%s')
+						)
+						
+	</insert>
+	
+	<update id="update" parameterClass="CMPermission" >
+			UPDATE  CMPermission t 
+			SET t.code = #code:VARCHAR#, 
+			t.name=#name:VARCHAR#,
+		    t.url=#url:VARCHAR#, 
+			t.lockStatus=#lockStatus:VARCHAR#, 
+			t.enableFlag=#enableFlag:VARCHAR#,
+			t.updateBy=#updateBy:NUMBER#, 
+			t.updateDate=STR_TO_DATE(#updateDate:VARCHAR#,'%Y-%m-%d %h:%i:%s')
+	 WHERE id=#id#
+	</update>
+       
+	<delete id="delete" parameterClass="int">
+		DELETE FROM   CMPermission WHERE id=#id#
+	</delete>
+	
+</sqlMap>

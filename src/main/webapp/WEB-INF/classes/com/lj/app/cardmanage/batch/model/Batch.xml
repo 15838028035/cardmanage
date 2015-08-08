@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="batch">
+<typeAlias alias="batch" type="com.lj.app.cardmanage.batch.model.Batch" />
+
+	<resultMap id="batchResult" class="batch">       
+	   <result property="id" column="id" nullValue=""/>    
+	   <result property="batchCode" column="batchCode" nullValue=""/>  
+       <result property="lockStatus" column="LOCKSTATUS" nullValue=""/>
+       <result property="enableFlag" column="ENABLEFLAG" nullValue=""/>
+       <result property="createBy" column="CREATEBY" nullValue="0"/>
+       <result property="createDate" column="CREATEDATE" nullValue=""/>
+       <result property="updateBy" column="UPDATEBY" nullValue="0"/>
+      <result property="updateDate" column="UPDATEDATE" nullValue=""/>
+   </resultMap>
+   
+	<select id="select"  parameterClass="batch" resultMap="batchResult">
+		SELECT ID, BATCHCODE,LOCKSTATUS,ENABLEFLAG,
+		CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY
+			,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM BATCH t
+			<dynamic prepend="WHERE">
+			  	<isNotEmpty prepend="AND" property="batchCode"> t.batchCode = #batchCode#</isNotEmpty>
+		</dynamic>
+		
+	</select>
+	
+	<select id="pagenate" parameterClass="java.util.HashMap" resultMap="batchResult">
+		SELECT ID, BATCHCODE,LOCKSTATUS,ENABLEFLAG,
+		CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY
+			,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM BATCH t
+		<dynamic prepend="WHERE">
+			<isGreaterEqual	prepend="AND" property="createBy" compareValue="1"> 
+				t.createBy = #createBy# 
+			</isGreaterEqual> 
+		  	<isNotEmpty prepend="AND" property="batchCode"> t.batchCode = #batchCode#</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	
+	 <select id="pagenate_count" parameterClass="java.util.HashMap" resultClass="long">
+				SELECT count(1) FROM BATCH t
+  		<dynamic prepend="WHERE">
+  			<isGreaterEqual	prepend="AND" property="createBy" compareValue="1"> 
+				t.createBy = #createBy# 
+			</isGreaterEqual> 
+			 <isNotEmpty prepend="AND" property="batchCode"> t.batchCode = #batchCode#</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="getInfoByKey" parameterClass="int" resultMap="batchResult">
+			SELECT ID, BATCHCODE,LOCKSTATUS,ENABLEFLAG,
+		CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY
+			,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM BATCH t
+		WHERE id=#id:NUMBER#
+	</select>
+	
+	<insert id="insert" parameterClass="batch" >
+			INSERT INTO BATCH(batchCode,LOCKSTATUS,ENABLEFLAG,CREATEBY,CREATEDATE)
+						VALUES(#batchCode:VARCHAR#,
+						'0',
+						'T',
+						#createBy:NUMBER#,
+						STR_TO_DATE(#createDate:VARCHAR#, '%Y-%m-%d %h:%i:%s')
+						)
+	</insert>
+	
+	<update id="update" parameterClass="batch" >
+			UPDATE  BATCH t 
+			SET t.batchCode = #batchCode:VARCHAR#, 
+			 t.lockStatus=#lockStatus:VARCHAR#, 
+			 t.enableFlag=#enableFlag:VARCHAR#,
+			 t.updateBy=#updateBy:NUMBER#, 
+			 t.updateDate=STR_TO_DATE(#updateDate:VARCHAR#,'%Y-%m-%d %h:%i:%s')
+	 WHERE id=#id#
+       
+	</update>
+	
+	<delete id="delete" parameterClass="int">
+		DELETE FROM   USER BATCH id=#id#
+	</delete>
+	
+	<select id="selectMaxId"  resultClass="int">
+		SELECT MAX(ID) FROM BATCH
+	</select>
+	
+</sqlMap>

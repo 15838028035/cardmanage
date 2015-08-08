@@ -113,7 +113,7 @@ public class LoginAction extends AbstractBaseAction<User> {
 		} else {
 			Struts2Utils.getSession().setAttribute("isPermissionTree", "N");
 		}
-		Struts2Utils.getSession().setAttribute(SessionCode.MAIN_ACCT,user);
+		Struts2Utils.getSession().setAttribute(SessionCode.MAIN_ACCT,loginUser);
 		Struts2Utils.getSession().setAttribute(SessionCode.LOGIN_NAME,user.getLoginNo());
 		
 		Struts2Utils.getResponse().sendRedirect(Struts2Utils.getRequest().getContextPath() + "/index.jsp");

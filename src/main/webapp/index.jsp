@@ -41,22 +41,22 @@ function topMenuEff(){
 			//contralEffect.logout();
 			contralEffect.menu();
 			contralEffect.blueButton();
-			Management_4A.Refresh();
-			Management_4A.cteat();//左侧menu
-			Management_4A.T_Menu();//顶部导航
-			Management_4A.BulkImport();
+			//Management_4A.Refresh();
+			//Management_4A.cteat();//左侧menu
+			//Management_4A.T_Menu();//顶部导航
+			//Management_4A.BulkImport();
 			
 			//Management_4A.tabs();
-			contral_4A_dialog.indexLockPing();
-			contral_4A_dialog.SystemConfiguration();
-			contral_4A_dialog.Announcement();//页面刷新弹出层
+			//contral_4A_dialog.indexLockPing();
+			//contral_4A_dialog.SystemConfiguration();
+			//contral_4A_dialog.Announcement();//页面刷新弹出层
 			
 			//全屏，默认进入页面不采用全屏显示。
 			$("#fullscreen").click(function(){
 				Fkey();
 		    });
 		    
-			 Management_4A.tabs();
+			// Management_4A.tabs();
 			 
 			 var isshow = "1";
 			 var oriLeftFrmWidth = $("#LT_left").width();
@@ -271,7 +271,8 @@ function topMenuEff(){
 	</div>
 	
 	
-	<iframe class="LT_main" id="LT_main" src="" scrolling="auto" frameborder="0" allowTransparency="true" name="LT_main"></iframe><!--end LT_main-->
+	<iframe class="LT_main" id="LT_main" src="" scrolling="auto" frameborder="0" allowTransparency="true" name="LT_main">
+	</iframe><!--end LT_main-->
 	<div class="clear"></div>
 	<div class="LT_footer">
 	<div class="LT_ft_wrap">

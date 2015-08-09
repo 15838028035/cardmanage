@@ -7,25 +7,15 @@ import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.lj.app.cardmanage.user.model.User;
 import com.lj.app.core.common.pagination.Page;
 import com.lj.app.core.common.pagination.PageTool;
+import com.lj.app.core.common.util.AbstractBaseSpringTransactionTestCase;
 import com.lj.app.core.common.util.DateUtil;
-import com.lj.app.core.common.util.des.DesUtil;
 
-
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-base.xml")
-@Transactional  
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)  
-public class UserServiceTest {
+public class UserServiceTest extends AbstractBaseSpringTransactionTestCase {
 
 	@Autowired
 	private UserService userService;

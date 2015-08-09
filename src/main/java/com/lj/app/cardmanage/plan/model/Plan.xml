@@ -37,7 +37,6 @@
    <resultMap id="userAndPCardesult" class="plan">
 	   <result property="userId" column="userId" nullValue=""/>  
        <result property="creditCardId" column="creditCardId" nullValue=""/>    
-       <result property="postCardId" column="postCardId" nullValue=""/>
         <result property="maxLimit" column="maxLimit" nullValue=""/>
    </resultMap>
 	
@@ -146,12 +145,10 @@
 	 </update>
 	 
 	 <select id="selectUserAndCardOfBillDay"  parameterClass="int" resultMap="userAndPCardesult">
-		SELECT u.userId,c.id as creditCardId, pc.id as postCardId,c.cardNo, c.maxLimit FROM USER U,POSTCARD  pc,creditCard c
-		  where u.createBy = pc.createBy
-		  AND u.createBy = c.createBy
-		  AND pc.createBy = c.createBy
+		SELECT u.userId,c.id as creditCardId,c.cardNo, c.maxLimit FROM USER U,creditCard c
+		  where 
+		   u.createBy = c.createBy
 		  AND u.enableFlag='T'
-		  AND pc.enableFlag='T'
 		  AND c.enableFlag='T'
 		  AND c.billDate = #billDate:NUMBER#
 			
@@ -167,6 +164,10 @@
  	
  	<select id="getPostCardId"   parameterClass="java.util.HashMap"   resultClass="java.util.HashMap">
 		SELECT F_GET_POST_CARDID(#outMoney#,#userId#) AS  F_GET_POST_CARDID
+ 	</select>
+ 	
+ 	<select id="checkIsAlreadyRunPaln"   parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+		SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=#creditCardId# and saleDate = STR_TO_DATE(#saleDate:VARCHAR#, '%Y-%m-%d %h:%i:%s')
  	</select>
     
 </sqlMap>

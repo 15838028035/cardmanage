@@ -15,7 +15,6 @@ import com.lj.app.cardmanage.base.service.BaseServiceImpl;
 import com.lj.app.cardmanage.creditcard.service.CreditCardService;
 import com.lj.app.cardmanage.plan.model.Plan;
 import com.lj.app.core.common.util.DateUtil;
-import com.lj.app.core.common.util.PropertyUtil;
 
 @Service("planService")
 public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanService<Plan>{
@@ -45,6 +44,7 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 	private int postCardId;//post机器id
 	private int userId;
 	private String saleDate = "";
+	private  int checkIsAlreadyRunPaln = 0;//是否已经生计划
 	
 	private static final int SIGLE_SALE_MIN_MONEY = 100;//单笔消费最小金额
 	
@@ -191,6 +191,27 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 	     return DateUtil.formatDate(calendar.getTime(),DateUtil.DATE_FOMRAT_yyyyMMddhhMMss);
 	}
 	
+	/**
+	 * 检验是否已经生成账单
+	 * @param creditCardId
+	 * @param saleDate
+	 * @return
+	 */
+	public int checkIsAlreadyRunPaln(int creditCardId, String saleDate){
+		int result = 0;
+		try{
+			Map<String,Object> queryMap = new HashMap<String,Object>();
+			queryMap.put("creditCardId", creditCardId);
+			queryMap.put("saleDate", saleDate);
+			Map obj  = (HashMap) queryForObject("checkIsAlreadyRunPaln", queryMap);
+			result = Integer.parseInt(String.valueOf(obj.get("userCreditCardAndPlanCount")));
+		  }catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
 	@Override
 	public void exceutePlanFromJava() {
 		 batchNo =  generateBatchNo();
@@ -258,9 +279,15 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 					p.setRemainMoney(remainMoney);
 					p.setExcuteFlag("F");
 					p.setCreateBy(userId);
+					p.setPostCardId(postCardId);
 					p.setCreateDate(DateUtil.getNowDateYYYYMMddHHMMSS());
 					
-					insertObject(p);
+					checkIsAlreadyRunPaln = this.checkIsAlreadyRunPaln(p.getCreditCardId(), saleDate);
+					
+					if(checkIsAlreadyRunPaln == 1){
+					}else{
+						insertObject(p);
+					}
 				}
 					
 			}

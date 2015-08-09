@@ -11,8 +11,8 @@ import com.lj.app.core.common.util.SpringContextHolder;
 @Component("taskService")
 public class PlanCronServiceImpl extends BaseServiceImpl<Plan> implements PlanCronService<Plan> {  
 	
-	
-    @Scheduled(cron="0 55 19  * * ? ")   //每5秒执行一次  
+
+    @Scheduled(cron="0 24 10 * * ? ")   //每5秒执行一次  
     public void exceutePlanCron(){
     	PlanService<Plan> planService = (PlanService<Plan>) SpringContextHolder.getBean("planService");
     	planService.exceutePlanCron();

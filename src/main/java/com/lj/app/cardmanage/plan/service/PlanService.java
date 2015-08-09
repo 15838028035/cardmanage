@@ -99,6 +99,14 @@ public interface PlanService<Plan> extends BaseService{
 	public String getSaleDay(String saleDay,int interOfDay);
 	
 	/**
+	 * 检验是否已经生成账单
+	 * @param creditCardId
+	 * @param saleDate
+	 * @return
+	 */
+	public int checkIsAlreadyRunPaln(int creditCardId, String saleDate);
+	
+	/**
 	 * 根据java代码执行计划
 	 */
 	public void exceutePlanFromJava();

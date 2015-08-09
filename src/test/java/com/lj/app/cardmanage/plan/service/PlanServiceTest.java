@@ -5,13 +5,11 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-base.xml")
-public class PlanServiceTest {
+
+import com.lj.app.core.common.util.AbstractBaseSpringTransactionTestCase;
+
+public class PlanServiceTest extends AbstractBaseSpringTransactionTestCase{
 
 	@Autowired
 	private PlanService planService;
@@ -57,9 +55,6 @@ public class PlanServiceTest {
 		String currentDate = planService.getCurrentDate();
 		String nextMonthToday = planService.getNextMonthToday();
 		int diffDays= planService.getIntervalDaysOfBill(nextMonthToday,currentDate);
-		System.out.println("currentDate="+ currentDate);
-		System.out.println("nextMonthToday="+ nextMonthToday);
-		System.out.println("diffDays="+ diffDays);
 		assertTrue(diffDays>=28);
 		assertTrue(diffDays<=31);
 	}

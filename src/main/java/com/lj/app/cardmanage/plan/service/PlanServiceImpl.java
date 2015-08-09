@@ -265,7 +265,11 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 					
 					remainMoney =remainMoney-outMoney;
 					
-					postCardId = getPostCardId(outMoney,userId);
+					if(outMoney ==0){
+						postCardId = getPostCardId(SIGLE_SALE_MIN_MONEY,userId);
+					}else {
+						postCardId = getPostCardId(outMoney,userId);
+					}
 					
 					saleDate = getSaleDay(saleDate,1);
 					

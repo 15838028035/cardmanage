@@ -50,7 +50,6 @@ public class LoginAction extends AbstractBaseAction<User> {
 			return SecurityConstants.LOGIN;
 		}
 
-
 		User user = new User();
 		user.setLoginNo(loginNo);
 		user.setPwd(pwd);
@@ -173,7 +172,7 @@ public class LoginAction extends AbstractBaseAction<User> {
 			Struts2Utils.getSession().invalidate();
 		}
 
-		return null;
+		return SecurityConstants.LOGIN;
 	}
 
 

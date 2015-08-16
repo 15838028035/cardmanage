@@ -99,6 +99,11 @@ public abstract class AbstractBaseAction<T> extends ActionSupport implements Mod
 		return user.getUserId();
 	}
 	
+	public String getLoginUserName() {
+		User user = (User)Struts2Utils.getSessionAttribute(SessionCode.MAIN_ACCT);
+		return user.getUserName();
+	}
+	
 	/**
 	 * Action函数, 默认的action函数, 默认调用list()函数.
 	 */

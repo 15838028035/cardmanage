@@ -32,12 +32,12 @@
         <result property="billDate" column="billDate" nullValue=""/>
         <result property="repaymentDate" column="repaymentDate" nullValue=""/>
         <result property="excuteFlag" column="excuteFlag" nullValue=""/>
+         <result property="cardNo" column="cardNo" nullValue=""/>
    </resultMap>
    
    <resultMap id="userAndPCardesult" class="plan">
 	   <result property="userId" column="userId" nullValue=""/>  
        <result property="creditCardId" column="creditCardId" nullValue=""/>    
-       <result property="postCardId" column="postCardId" nullValue=""/>
         <result property="maxLimit" column="maxLimit" nullValue=""/>
    </resultMap>
 	
@@ -48,7 +48,7 @@
 		 p.CREATEBY,DATE_FORMAT( p.CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE, p.UPDATEBY
 			,DATE_FORMAT( p.UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE,
 	   u.userName, pc.postCardNo, pc.manName,pc.rate,
-	   c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag
+	   c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag,c.cardNo
 			
 		 FROM plan p , user u,POSTCARD pc, CREDITCARD c
 
@@ -66,7 +66,7 @@
 		 p.CREATEBY,DATE_FORMAT( p.CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE, p.UPDATEBY
 			,DATE_FORMAT( p.UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE,
 	   u.userName, pc.postCardNo, pc.manName,pc.rate,
-	   c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag
+	   c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag,c.cardNo
 			
 		 FROM plan p , user u,POSTCARD pc, CREDITCARD c
 
@@ -75,7 +75,7 @@
 		and p.postCardId = pc.id
 		<dynamic prepend="AND">
 			<isGreaterEqual	prepend="AND" property="createBy" compareValue="1"> 
-				t.userId = #createBy# 
+				p.userId = #createBy# 
 			</isGreaterEqual> 
 		  	<isNotEmpty prepend="AND" property="loginNo"> u.loginNo = #loginNo#</isNotEmpty>
 		     <isNotEmpty prepend="AND" property="userName"> u.userName = #userName#</isNotEmpty>
@@ -92,7 +92,7 @@
 		and p.postCardId = pc.id
   		<dynamic prepend="AND">
   			<isGreaterEqual	prepend="AND" property="createBy" compareValue="1"> 
-				t.userId = #createBy# 
+				p.userId = #createBy# 
 			</isGreaterEqual> 
 		  	<isNotEmpty prepend="AND" property="loginNo"> u.loginNo = #loginNo#</isNotEmpty>
 		     <isNotEmpty prepend="AND" property="userName"> u.userName = #userName#</isNotEmpty>
@@ -146,12 +146,9 @@
 	 </update>
 	 
 	 <select id="selectUserAndCardOfBillDay"  parameterClass="int" resultMap="userAndPCardesult">
-		SELECT u.userId,c.id as creditCardId, pc.id as postCardId,c.cardNo, c.maxLimit FROM USER U,POSTCARD  pc,creditCard c
-		  where u.createBy = pc.createBy
-		  AND u.createBy = c.createBy
-		  AND pc.createBy = c.createBy
+		SELECT u.userId,c.id as creditCardId,c.cardNo, c.maxLimit FROM USER U,creditCard c
+		  WHERE  U.USERID = C.CREATEBY
 		  AND u.enableFlag='T'
-		  AND pc.enableFlag='T'
 		  AND c.enableFlag='T'
 		  AND c.billDate = #billDate:NUMBER#
 			
@@ -167,6 +164,10 @@
  	
  	<select id="getPostCardId"   parameterClass="java.util.HashMap"   resultClass="java.util.HashMap">
 		SELECT F_GET_POST_CARDID(#outMoney#,#userId#) AS  F_GET_POST_CARDID
+ 	</select>
+ 	
+ 	<select id="checkIsAlreadyRunPaln"   parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+		SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=#creditCardId# and saleDate = STR_TO_DATE(#saleDate:VARCHAR#, '%Y-%m-%d')
  	</select>
     
 </sqlMap>

@@ -47,7 +47,7 @@
 				url:'${ctx}/jsp/creditCard/creditCardAction!list.action',
 				datatype: 'json',
 				mtype: 'POST',
-				colNames:['编号','卡号','用户名','最大额度','有效期','绑定银行','账单日','还款日'],
+				colNames:['编号','卡号','姓名','最大额度','有效期','绑定银行','账单日','还款日'],
 				colModel:[
 					 {name:'id',index:'id',align:'center',hidden:true},
 					 {name:'cardNo',index:'cardNo', width:200,align:'center',editable:false},
@@ -120,7 +120,7 @@
 							<td></td><td></td>
 							<td>卡号</td>
 							<td><input name="cardNoParam" id = "cardNoParam" type="text" /></td>
-							<td>用户名</td>
+							<td>姓名</td>
 							<td><input name="userNameParam" id = "userNameParam" type="text"/></td>
 							<td>绑定银行</td>
 							<td><input name="bankNoParam" id = "bankNoParam" type="text"/></td>

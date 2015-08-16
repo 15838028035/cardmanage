@@ -57,17 +57,14 @@
 			url:'${ctx}/jsp/user/userAction!list.action',
 			datatype: 'json',
 			mtype: 'POST',
-			colNames:['ID','登录帐号','密码','用户名','卡号','地址','手机号码','加锁状态','是否有效'],
+			colNames:['ID','帐号','姓名','卡号','手机号码','地址'],
 			colModel:[
 				 {name:'userId',index:'userId',hidden:true},
 				 {name:'loginNo',index:'loginNo',width:100,align:'center'},
-				 {name:'pwd',index:'pwd',width:100,align:'center'},
-				 {name:'userName',index:'userName',width:240,align:'center'},
+				 {name:'userName',index:'userName',width:100,align:'center'},
 				 {name:'cardNo',index:'cardNo',width:240,align:'center'},
-				 {name:'address',index:'address',width:240,align:'center'},
-				 {name:'mobile',index:'mobile',width:240,align:'center'},
-				 {name:'lockStatus',index:'lockStatus',width:240,align:'center'},
-				 {name:'enableFlag',index:'enableFlag',width:240,align:'center'}
+				 {name:'mobile',index:'mobile',width:100,align:'center'},
+				 {name:'address',index:'address',width:240,align:'center'}
 				 ],
 			pager: '#pager',
 			sortable: true,
@@ -131,15 +128,13 @@
 					<table>
 						<tr>
 						<td>用户名</td>
-						<td><input name="userNameParam" id = "userNameParam" type="text" style="width:30px;"/></td>
+						<td><input name="userNameParam" id = "userNameParam" type="text"/></td>
 						<td>卡号</td>
 						<td><input name="cardNoParam" id = "cardNoParam" type="text"/></td>
-						<td>地址</td>
-						<td><input name="addressParam" id = "addressParam" type="text"/></td>
 						<td>手机号码</td>
 						<td><input name="mobileParam" id = "mobileParam" type="text" style="width:100px;"/></td>
-						<td>加锁状态</td>
-						<td><input name="lockStatusParam" id = "lockStatusParam" type="text" style="width:30px;"/></td>
+						<td>地址</td>
+						<td><input name="addressParam" id = "addressParam" type="text"/></td>
 						<td>		
 							<div class="window_button marg_lef10 float_lef">
 								<input class="window_button_centerInput" name="select" id = "select" type="button" value="查询" /></div>
@@ -165,7 +160,6 @@
 	    	var cardNo = $("#cardNoParam").val();
 	    	var address = $("#addressParam").val();
 	    	var mobile = $("#mobileParam").val();
-	    	var lockStatus = $("#lockStatusParam").val();
 	    	
 			jQuery("#list").jqGrid('setGridParam',{
 			    url:'${ctx}/jsp/user/userAction!list.action',
@@ -173,7 +167,6 @@
 							"cardNo" : cardNo,
 							"address" : address,
 							"mobile" : mobile,
-							"lockStatus" : lockStatus,
 				}, 
 			 	page:1
 			}).trigger("reloadGrid");

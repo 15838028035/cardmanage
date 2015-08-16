@@ -15,9 +15,6 @@
 			contralEffect.contain();
 			contralEffect.tablelist();
 			contralEffect.blueButton();
-			//$("#tabs").tabs();
-			//manageApplicationDialog();//dialog
-			//Management_4A.AccentTree();
 		});
 	
 	</script>
@@ -44,21 +41,18 @@
 				url:'${ctx}/jsp/plan/planAction!list.action',
 				datatype: 'json',
 				mtype: 'POST',
-				colNames:['编号','批次编号','用户编号','机具编号','信用卡卡号','消费日期','总金额','还款金额','消费金额','剩余金额','用户名',
+				colNames:['编号','信用卡卡号','消费日期','总金额','还款金额','消费金额','剩余金额','用户名',
 							'POST机编号','商户名','费率','账单日','还款日','执行'],
 				colModel:[
 					 {name:'id',index:'id',align:'center',hidden:true},
-					 {name:'batchNo',index:'batchNo', width:100,align:'center',editable:false},
-					 {name:'userId',index:'userId', width:60,align:'center',editable:true},
-					 {name:'creditCardId',index:'creditCardId', width:100,align:'center',editable:true},
-					 {name:'postCardId',index:'postCardId', width:50,align:'center',editable:true},
+					 {name:'cardNo',index:'cardNo', width:200,align:'center',editable:true},
 					 {name:'saleDate',index:'saleDate', width:100,align:'center',editable:true},
-					 {name:'sumAllMoney',index:'sumAllMoney', width:100,align:'center',editable:true},
+					 {name:'sumAllMoney',index:'sumAllMoney', width:80,align:'center',editable:true},
 					 {name:'inMoney',index:'inMoney', width:60,align:'center',editable:true},
 					 {name:'outMoney',index:'outMoney', width:60,align:'center',editable:true},
 					 {name:'remainMoney',index:'remainMoney', width:60,align:'center',editable:true},
-					 {name:'userName',index:'userName', width:50,align:'center',editable:true},
-					 {name:'postCardNo',index:'postCardNo', width:50,align:'center',editable:true},
+					 {name:'userName',index:'userName', width:100,align:'center',editable:true},
+					 {name:'postCardNo',index:'postCardNo', width:100,align:'center',editable:true},
 					 {name:'manName',index:'manName', width:100,align:'center',editable:true},
 					 {name:'rate',index:'rate', width:50,align:'center',editable:true},
 					 {name:'billDate',index:'billDate', width:50,align:'center',editable:true},
@@ -114,9 +108,6 @@
 				<div class="toolbar">
 					<div class="toolbar_wrap">
 						<div class="window_button marg_lef10 float_lef">
-						<input type="button" id="add" class="window_button_centerInput"
-						 value="新增" /></div>
-						<div class="window_button marg_lef10 float_lef">
 						<input type="button" id="edit" class="window_button_centerInput" value="编辑" /></div>
 						<div class="window_button marg_lef10 float_lef"> <input type="button" id="edit" class="window_button_centerInput" value="执行" onclick="mulExecute();" /></div>
 						<div class="window_button marg_lef10 float_lef"><input type="button" class="window_button_centerInput" value="删除" onclick="mulDelete();"/></div>
@@ -127,9 +118,10 @@
 						<td><input name="userNameParam" id = "userNameParam" type="text"  value="" /></td>
 						<td>卡号</td>
 						<td><input name="cardNoParam" id = "cardNoParam" type="text"  value="" /></td>
-						<div class="window_button marg_lef10 float_lef">
-							<input class="window_button_centerInput" name="select" id = "select" type="button" value="查询" /></div>
-						</div>
+						<td>
+							<div class="window_button marg_lef10 float_lef">
+								<input class="window_button_centerInput" name="select" id = "select" type="button" value="查询" /></div>
+							</div>
 						</td>
 						</tr>
 					</table>
@@ -185,7 +177,8 @@
         	}
 
         	showModalConfirmation('确认要删除么',"doDelete()");
-        }	
+        }
+        	
         function doDelete(){
         	var ids = jQuery("#list").jqGrid('getGridParam','selarrrow'); 
             var result = jQuery.ajax({
@@ -221,7 +214,6 @@
 			showModalMessage(obj.opResult);
 			refreshGrid();
         }
-        
 		        
       	function refreshGrid(){
 			jQuery("#list").jqGrid('setGridParam',{

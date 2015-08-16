@@ -41,15 +41,6 @@ function topMenuEff(){
 			//contralEffect.logout();
 			contralEffect.menu();
 			contralEffect.blueButton();
-			//Management_4A.Refresh();
-			//Management_4A.cteat();//左侧menu
-			//Management_4A.T_Menu();//顶部导航
-			//Management_4A.BulkImport();
-			
-			//Management_4A.tabs();
-			//contral_4A_dialog.indexLockPing();
-			//contral_4A_dialog.SystemConfiguration();
-			//contral_4A_dialog.Announcement();//页面刷新弹出层
 			
 			//全屏，默认进入页面不采用全屏显示。
 			$("#fullscreen").click(function(){
@@ -200,16 +191,8 @@ function topMenuEff(){
       <div class="float_rig">
         	<div class="LT_Fr_wrap slideMenu" id="TopMenu">
             	<ul>
-            		<!--
-                	<li class="float_lef LT_hd_li indexLockPing">
-                    	<img src="images/lock-screen.gif" title="锁定屏幕" />
-                    </li>
-                    -->
-                <li class="float_lef LT_hd_li" id="fullscreen" >
-						<a href="#"><img src="${ctx}/images/Esc_h.gif" title="全屏" /></a>
-				</li>
 				<li class="float_lef LT_hd_li Logout">
-					<a href="#"><img src="${ctx}/images/logout_h.gif" title="退出系统" /></a>
+					<a href="${ctx}/loginAction!logout.action"><img src="${ctx}/images/logout_h.gif" title="退出系统" /></a>
 				</li>
               </ul>
             </div><!--end LT_logo-->
@@ -229,11 +212,6 @@ function topMenuEff(){
     
     	<div class="LT_Fr_wrap_TM" id="LT_Fr_wrap_TM" style="float:left">
         	<ul>
-                 <li class="float_lef LT_hd_li_TM LocalManagment">
-                  	<table cellpadding="0" cellspacing="0"  border="0"><tr>
-                  	<td width="10"><img src="images/job.png" align="absmiddle"  width=15 height=15/>
-                  	</td><td><span class="marg_lef5">本地功能</span></td></tr></table>
-                 </li>
                  <li class="float_lef LT_hd_li_TM LocalManagment" style="font-size:16px;float:none">
                  	 <a href="${ctx}/jsp/creditCard/creditCardList.jsp"  target="LT_main" >卡片管理</a>
                   </li>

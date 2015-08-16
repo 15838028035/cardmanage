@@ -105,6 +105,9 @@ public class PostCardAction  extends AbstractBaseAction<PostCard> {
 	}
 	@Override
 	public String input() throws Exception {
+		PostCard = new PostCard();
+		postCardNo = postCardService.generatePostCardNo(getLoginUserId(), getLoginUserName());
+		PostCard.setPostCardNo(postCardNo);
 		return INPUT;
 	}
 

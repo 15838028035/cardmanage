@@ -61,6 +61,7 @@ public class PlanAction extends AbstractBaseAction<Plan> {
 			Map condition = new HashMap();
 			condition.put("userName", userName);
 			condition.put("cardNo", cardNo);
+			condition.put(CREATE_BY, getLoginUserId());
 			
 			this.planService.findPageList(page, condition);
 			Struts2Utils.renderText(PageTool.pageToJsonJQGrid(this.page),new String[0]);

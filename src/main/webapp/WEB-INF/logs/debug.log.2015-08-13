@@ -1,0 +1,728 @@
+[DEBUG] [21:40:40] java.sql.Connection - {conn-100000} Connection
+[DEBUG] [21:40:40] java.sql.Connection - {conn-100000} Preparing Statement:    SELECT ID,code,name,url,   LOCKSTATUS,ENABLEFLAG, CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY   ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM CMPermission  
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100003} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100003} Preparing Statement:      SELECT count(1)  FROM CREDITCARD  F where f.billDate=?  
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100006} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100006} Preparing Statement:    SELECT F_GENERATE_PLAN_DAY_TMP(?)   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100009} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100009} Preparing Statement:    SELECT u.userId,c.id as creditCardId,c.cardNo, c.maxLimit FROM USER U,creditCard c     WHERE  U.USERID = C.CREATEBY     AND u.enableFlag='T'     AND c.enableFlag='T'     AND c.billDate = ?      
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100012} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100012} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100015} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100015} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100018} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100018} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100021} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100021} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100023} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100023} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100026} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100026} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100029} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100029} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100032} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100032} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100034} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100034} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100037} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100037} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100040} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100040} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100043} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100043} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100045} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100045} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100048} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100048} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100051} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100051} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100054} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100054} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100056} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100056} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100059} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100059} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100062} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100062} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100065} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100065} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100067} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100067} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100070} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100070} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100073} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100073} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100076} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100076} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100078} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100078} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100081} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100081} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100084} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100084} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100087} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100087} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100089} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100089} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100092} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100092} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100095} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100095} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100098} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100098} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100100} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100100} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100103} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100103} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100106} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100106} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100109} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100109} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100111} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100111} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100114} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100114} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100117} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100117} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100120} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100120} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100122} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100122} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100125} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100125} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100128} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100128} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100131} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100131} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100133} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100133} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100136} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100136} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100139} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100139} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100142} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100142} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100144} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100144} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100147} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100147} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100150} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100150} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100153} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100153} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100155} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100155} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100158} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100158} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100161} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100161} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100164} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100164} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100166} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100166} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100169} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100169} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100172} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100172} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100175} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100175} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100177} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100177} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100180} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100180} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100183} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100183} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100186} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100186} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100188} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100188} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100191} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100191} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100194} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100194} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100197} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100197} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100199} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100199} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100202} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100202} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100205} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100205} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100208} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100208} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100210} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100210} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100213} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100213} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100216} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100216} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100219} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100219} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100221} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100221} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100224} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100224} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100227} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100227} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100230} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100230} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100232} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100232} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100235} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100235} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100238} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100238} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100241} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100241} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100243} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100243} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100246} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100246} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100249} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100249} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100252} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100252} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100254} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100254} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100257} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100257} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100260} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100260} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100263} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100263} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100265} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100265} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100268} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100268} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100271} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100271} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100274} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100274} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100276} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100276} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100279} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100279} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100282} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100282} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100285} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100285} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100287} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100287} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100290} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100290} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100293} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100293} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100296} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100296} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100298} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100298} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100301} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100301} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100304} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100304} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100307} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100307} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100309} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100309} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100312} Connection
+[DEBUG] [21:45:00] java.sql.Connection - {conn-100312} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100315} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100315} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100318} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100318} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100320} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100320} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100323} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100323} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100326} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100326} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100329} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100329} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100331} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100331} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100334} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100334} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100337} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100337} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100340} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100340} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100342} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100342} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100345} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100345} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100348} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100348} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100351} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100351} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100353} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100353} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100356} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100356} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100359} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100359} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100362} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100362} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100364} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100364} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100367} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100367} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100370} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100370} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100373} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100373} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100375} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100375} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100378} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100378} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100381} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100381} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100384} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100384} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100386} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100386} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100389} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100389} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100392} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100392} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100395} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100395} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100397} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100397} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100400} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100400} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100403} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100403} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100406} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100406} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100408} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100408} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100411} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100411} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100414} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100414} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100417} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100417} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100419} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100419} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100422} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100422} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100425} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100425} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100428} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100428} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100430} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100430} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100433} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100433} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100436} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100436} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100439} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100439} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100441} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100441} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100444} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100444} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100447} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100447} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100450} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100450} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100452} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100452} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100455} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100455} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100458} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100458} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100461} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100461} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100463} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100463} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100466} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100466} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100469} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100469} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100472} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100472} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100474} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100474} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100477} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100477} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100480} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100480} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100483} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100483} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100485} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100485} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100488} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100488} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100491} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100491} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100494} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100494} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100496} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100496} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100499} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100499} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100502} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100502} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100505} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100505} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100507} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100507} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100510} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100510} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100513} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100513} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100516} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100516} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100518} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100518} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100521} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100521} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100524} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100524} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100527} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100527} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100529} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100529} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100532} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100532} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100535} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100535} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100538} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100538} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100540} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100540} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100543} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100543} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100546} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100546} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100549} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100549} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100551} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100551} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100554} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100554} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100557} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100557} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100560} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100560} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100562} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100562} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100565} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100565} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100568} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100568} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100571} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100571} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100573} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100573} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100576} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100576} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100579} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100579} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100582} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100582} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100584} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100584} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100587} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100587} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100590} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100590} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100593} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100593} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100595} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100595} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100598} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100598} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100601} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100601} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100604} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100604} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100606} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100606} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100609} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100609} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100612} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100612} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100615} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100615} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100617} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100617} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100620} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100620} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100623} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100623} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100626} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100626} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100628} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100628} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100631} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100631} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100634} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100634} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100637} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100637} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100639} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100639} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100642} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100642} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100645} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100645} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100648} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100648} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100650} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100650} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100653} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100653} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100656} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100656} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100659} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100659} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100661} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100661} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100664} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100664} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100667} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100667} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100670} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100670} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100672} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100672} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100675} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100675} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100678} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100678} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100681} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100681} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100683} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100683} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100686} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100686} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100689} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100689} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100692} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100692} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100694} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100694} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100697} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100697} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100700} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100700} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100703} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100703} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100705} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100705} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100708} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100708} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100711} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100711} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100714} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100714} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100716} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100716} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100719} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100719} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100722} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100722} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100725} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100725} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100727} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100727} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100730} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100730} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100733} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100733} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100736} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100736} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100738} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100738} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100741} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100741} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100744} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100744} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100747} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100747} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100749} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100749} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100752} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100752} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100755} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100755} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100758} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100758} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100760} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100760} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100763} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100763} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100766} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100766} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100769} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100769} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100771} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100771} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100774} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100774} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100777} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100777} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100780} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100780} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100782} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100782} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100785} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100785} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100788} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100788} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100791} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100791} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100793} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100793} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100796} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100796} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100799} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100799} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100802} Connection
+[DEBUG] [21:45:01] java.sql.Connection - {conn-100802} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100804} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100804} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100807} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100807} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100810} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100810} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100813} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100813} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100815} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100815} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100818} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100818} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100821} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100821} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100824} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100824} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100826} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100826} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100829} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100829} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100832} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100832} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100835} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100835} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100837} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100837} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100840} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100840} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100843} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100843} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100846} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100846} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100848} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100848} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100851} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100851} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100854} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100854} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100857} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100857} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100859} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100859} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100862} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100862} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100865} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100865} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100868} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100868} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100870} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100870} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100873} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100873} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100876} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100876} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100879} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100879} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100881} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100881} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100884} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100884} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100887} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100887} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100890} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100890} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100892} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100892} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100895} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100895} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100898} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100898} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100901} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100901} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100903} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100903} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100906} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100906} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100909} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100909} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100912} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100912} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100914} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100914} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100917} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100917} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100920} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100920} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100923} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100923} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100925} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100925} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100928} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100928} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100931} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100931} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100934} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100934} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100936} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100936} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100939} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100939} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100942} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100942} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100945} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100945} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100947} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100947} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100950} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100950} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100953} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100953} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100956} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100956} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100958} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100958} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100961} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100961} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100964} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100964} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100967} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100967} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100969} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100969} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100972} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100972} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100975} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100975} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100978} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100978} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100980} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100980} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100983} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100983} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100986} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100986} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100989} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100989} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100991} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100991} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100994} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100994} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100997} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-100997} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')   
+[DEBUG] [21:45:02] java.sql.Connection - {conn-101000} Connection
+[DEBUG] [21:45:02] java.sql.Connection - {conn-101000} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       

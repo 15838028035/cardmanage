@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.lj.app.core.common.util.AbstractBaseSpringTransactionTestCase;
 
+
 public class PlanServiceTest extends AbstractBaseSpringTransactionTestCase{
 
 	@Autowired

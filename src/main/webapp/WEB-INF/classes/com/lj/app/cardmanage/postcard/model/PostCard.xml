@@ -112,4 +112,19 @@
 		DELETE FROM   postCard WHERE id=#id#
 	</delete>
 	
+	<select id="getUserPostCardList"  resultMap="postCardResult">
+		SELECT ID,POSTCARDNO,MANNAME,RATE,MINMONEY,MAXMONEY,TRADE,BINDBANK,CARDNO,USERNAME,
+		LOCKSTATUS,ENABLEFLAG, CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY
+		,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM POSTCARD t
+		
+		<dynamic prepend="WHERE">
+  			<isGreaterEqual	prepend="AND" property="createBy" compareValue="-1"> 
+				t.createBy = #createBy# 
+			</isGreaterEqual> 
+		</dynamic>
+		<![CDATA[ 
+			order by t.CREATEDATE DESC
+   			 ]]>  
+	</select>
+	
 </sqlMap>

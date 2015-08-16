@@ -28,20 +28,20 @@
 <input type="hidden" name="operate" value="${operate}" />
     <table>
         <tr>
-            <td align="right">登录帐号 </td>
-            <td><input type="text" id="loginNo" name="loginNo" value="${loginNo}"  /></td>
+            <td align="right"><font color="red">*</font>登录帐号 </td>
+            <td><input type="text" id="loginNo" name="loginNo" value="${loginNo}" maxLength="10" /></td>
         </tr>
         <tr>
-            <td align="right">密码</td>
-            <td><input type="text" id="pwd" name="pwd" value="${pwd}" maxlength="30"/> </td>
+            <td align="right"><font color="red">*</font>密码</td>
+            <td><input type="text" id="pwd" name="pwd" value="${pwd}" maxlength="200"/> </td>
         </tr>
           <tr>
-            <td align="right"> <font color="red">*用户名</td>
-             <td><input type="text" id="userName" name="userName" value="${userName}" maxlength="30"/> </td>
+            <td align="right"><font color="red">*</font>用户名</td>
+             <td><input type="text" id="userName" name="userName" value="${userName}" maxlength="10"/> </td>
         </tr>
          <tr>
             <td align="right"> <font color="red">*</font>卡号</td>
-             <td><input type="text" id="cardNo" name="cardNo" value="${cardNo}" maxlength="30"/> </td>
+             <td><input type="text" id="cardNo" name="cardNo" value="${cardNo}" maxlength="20"/> </td>
         </tr>
          <tr>
             <td align="right"> <font color="red">*</font>地址</td>
@@ -49,7 +49,7 @@
         </tr>
          <tr>
             <td align="right"> <font color="red">*</font>手机号码</td>
-             <td><input type="text" id="mobile" name="mobile" value="${mobile}" maxlength="30"/> </td>
+             <td><input type="text" id="mobile" name="mobile" value="${mobile}" maxlength="15"/> </td>
         </tr>
         
         <tr>
@@ -57,7 +57,7 @@
             </td>
             <td>
  				<div class="window_button marg_lef10 float_lef"><input type="button" id="submitButton" class="window_button_centerInput window_button_centerInput1" value="保存"/></div>
-		       	<div class="window_button marg_lef10 float_lef"><input type="button" id="cancelOpe" class="window_button_centerInput window_button_centerInput1 CA_4A_select04" value="取消" /></div>
+		       	<div class="window_button marg_lef10 float_lef"><input type="button" id="backToHomeButton" class="window_button_centerInput window_button_centerInput1 CA_4A_select04" value="返回主页" /></div>
             </td>
         </tr>
     </table>
@@ -72,12 +72,44 @@
 			submitHandler: function(form){
 				form.submit();
 				$('#submitButton').prop('disabled',true);
-			}
+			},
+			rules: {
+		       "loginNo": {
+					required: true,
+					minlength:1,
+					maxlength:10
+		       },
+		       "pwd": {
+					required: true,
+					minlength:6,
+					maxlength:200
+		       },
+		        "userName": {
+					required: true,
+					minlength:2,
+					maxlength:10
+		       },
+		        "cardNo": {
+					required: true,
+					minlength:16,
+					maxlength:20
+		       },
+		        "address": {
+					required: true,
+					minlength:5,
+					maxlength:30
+		       },
+		        "mobile": {
+					required: true,
+					minlength:11,
+					maxlength:15
+		       }
+		    }
+			
 		});
 
-
-        $("#cancelOpe").click(function() {
-			jQuery.FrameDialog.closeDialog();
+        $("#backToHomeButton").click(function() {
+			window.parent.location.href="${ctx}/index.jsp";
         });
 </script>
 </body>

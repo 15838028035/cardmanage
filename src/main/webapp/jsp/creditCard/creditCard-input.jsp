@@ -29,14 +29,14 @@
     <table>
         <tr>
            <td align="right"> <font color="red">*卡号</td>
-           <td><input type="text" id="cardNo" name="cardNo" value="${cardNo}" maxlength="30"/> </td>
+           <td><input type="text" id="cardNo" name="cardNo" value="${cardNo}" maxlength="20"/> </td>
         </tr>
         <tr>
            <td align="right"> <font color="red">*银行</td>
            <td><input type="text" id="bankNo" name="bankNo" value="${bankNo}" maxlength="30"/> </td>
         </tr>
           <tr>
-            <td align="right"> <font color="red">*用户名</td>
+            <td align="right"> <font color="red">*姓名</td>
              <td><input type="text" id="userName" name="userName" value="${userName}" maxlength="30"/> </td>
         </tr>
          <tr>
@@ -45,19 +45,19 @@
         </tr>
          <tr>
             <td align="right"> <font color="red">*</font>安全码</td>
-             <td><input type="text" id="secNo" name="secNo" value="${secNo}" maxlength="30"/> </td>
+             <td><input type="text" id="secNo" name="secNo" value="${secNo}" maxlength="3"/> </td>
         </tr>
          <tr>
             <td align="right"> <font color="red">*</font>有效期</td>
-             <td><input type="text" id="validateDate" name="validateDate" value="${validateDate}" maxlength="30"/> </td>
+             <td><input type="text" id="validateDate" name="validateDate" value="${validateDate}" maxlength="20"/> </td>
         </tr>
         <tr>
             <td align="right"> <font color="red">*</font>账单日期</td>
-             <td><input type="text" id="billDate" name="billDate" value="${billDate}" maxlength="30"/> </td>
+             <td><input type="text" id="billDate" name="billDate" value="${billDate}" maxlength="2"/> </td>
         </tr>
         <tr>
             <td align="right"> <font color="red">*</font>还款日</td>
-             <td><input type="text" id="repaymentDate" name="repaymentDate" value="${repaymentDate}" maxlength="30"/> </td>
+             <td><input type="text" id="repaymentDate" name="repaymentDate" value="${repaymentDate}" maxlength="2"/> </td>
         </tr>
         
         <tr>
@@ -65,7 +65,7 @@
             </td>
             <td>
  				<div class="window_button marg_lef10 float_lef"><input type="button" id="submitButton" class="window_button_centerInput window_button_centerInput1" value="保存"/></div>
-		       	<div class="window_button marg_lef10 float_lef"><input type="button" id="cancelOpe" class="window_button_centerInput window_button_centerInput1 CA_4A_select04" value="取消" /></div>
+		       	<div class="window_button marg_lef10 float_lef"><input type="button" id="backToHomeButton" class="window_button_centerInput window_button_centerInput1 CA_4A_select04" value="返回主页" /></div>
             </td>
         </tr>
     </table>
@@ -80,12 +80,54 @@
 			submitHandler: function(form){
 				form.submit();
 				$('#submitButton').prop('disabled',true);
-			}
+			},
+	    	rules: {
+		       "cardNo": {
+					required: true,
+					minlength:16,
+					maxlength:20
+		       },
+		       "bankNo": {
+					required: true,
+					minlength:1,
+					maxlength:30
+		       },
+		        "userName": {
+					required: true,
+					minlength:1,
+					maxlength:20
+		       },
+		        "maxLimit": {
+					required: true,
+					number:true,
+					minlength:1,
+					maxlength:20
+		       },
+		        "secNo": {
+					required: true,
+					minlength:3,
+					maxlength:3
+		       },
+		        "validateDate": {
+					required: true,
+					minlength:1,
+					maxlength:20
+		       },
+		        "billDate": {
+					number:true,
+					minlength:1,
+					maxlength:2
+		       },
+		        "repaymentDate": {
+					number:true,
+					minlength:1,
+					maxlength:2
+		       }
+		    }
 		});
 
-
-        $("#cancelOpe").click(function() {
-			jQuery.FrameDialog.closeDialog();
+        $("#backToHomeButton").click(function() {
+			window.parent.location.href="${ctx}/index.jsp";
         });
 </script>
 </body>

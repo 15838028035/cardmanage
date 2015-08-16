@@ -28,23 +28,23 @@
 <input type="hidden" name="operate" value="${operate}" />
     <table>
         <tr>
-            <td align="right">还款金额</td>
-            <td><input type="text" id="inMoney" name="inMoney" value="${inMoney}" maxlength="30"/> </td>
+            <td align="right"><font color="red">*</font>还款金额</td>
+            <td><input type="text" id="inMoney" name="inMoney" value="${inMoney}" maxlength="10"/> </td>
         </tr>
           <tr>
-            <td align="right"> <font color="red">刷卡金额</td>
-             <td><input type="text" id="outMoney" name="outMoney" value="${outMoney}" maxlength="30"/> </td>
+            <td align="right"><font color="red">*</font>刷卡金额</td>
+             <td><input type="text" id="outMoney" name="outMoney" value="${outMoney}" maxlength="10"/> </td>
         </tr>
          <tr>
             <td align="right"> <font color="red">*</font>剩余金额</td>
-             <td><input type="text" id="remainMoney" name="remainMoney" value="${remainMoney}" maxlength="30"/> </td>
+             <td><input type="text" id="remainMoney" name="remainMoney" value="${remainMoney}" maxlength="10"/> </td>
         </tr>
         <tr>
             <td>
             </td>
             <td>
  				<div class="window_button marg_lef10 float_lef"><input type="button" id="submitButton" class="window_button_centerInput window_button_centerInput1" value="保存"/></div>
-		       	<div class="window_button marg_lef10 float_lef"><input type="button" id="cancelOpe" class="window_button_centerInput window_button_centerInput1 CA_4A_select04" value="取消" /></div>
+		       	<div class="window_button marg_lef10 float_lef"><input type="button" id="backToHomeButton" class="window_button_centerInput window_button_centerInput1 CA_4A_select04" value="返回主页" /></div>
             </td>
         </tr>
     </table>
@@ -59,12 +59,32 @@
 			submitHandler: function(form){
 				form.submit();
 				$('#submitButton').prop('disabled',true);
-			}
+			},
+			rules: {
+		       "inMoney": {
+		       		required: true,
+					number:true,
+					minlength:1,
+					maxlength:10
+		       },
+		        "outMoney": {
+		        	required: true,
+					number:true,
+					minlength:1,
+					maxlength:10
+		       },
+		        "remainMoney": {
+		        	required: true,
+					number:true,
+					minlength:1,
+					maxlength:10
+		       }
+		    }
+			
 		});
 
-
-        $("#cancelOpe").click(function() {
-			jQuery.FrameDialog.closeDialog();
+ 		$("#backToHomeButton").click(function() {
+			window.parent.location.href="${ctx}/index.jsp";
         });
 </script>
 </body>

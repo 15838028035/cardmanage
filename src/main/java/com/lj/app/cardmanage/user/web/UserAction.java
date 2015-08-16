@@ -62,7 +62,6 @@ public class UserAction  extends AbstractBaseAction<User> {
 			condition.put("cardNo", cardNo);
 			condition.put("address", address);
 			condition.put("mobile", mobile);
-			condition.put("lockStatus", lockStatus);
 			condition.put(CREATE_BY, getLoginUserId());
 			this.userService.findPageList(page, condition);
 			Struts2Utils.renderText(PageTool.pageToJsonJQGrid(this.page),new String[0]);

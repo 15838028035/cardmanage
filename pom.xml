@@ -311,7 +311,7 @@
 <!-- 		<testOutputDirectory>${project.build.directory}/test-classes</testOutputDirectory> -->
 
 		<outputDirectory>${project.basedir}/src/main/webapp/Web-INF/classes</outputDirectory>
-		<testOutputDirectory>${project.basedir}/scr/main/webapp/Web-INF/classes</testOutputDirectory>
+		<testOutputDirectory>${project.basedir}/src/main/webapp/Web-INF/classes</testOutputDirectory>
 		
 		<resources>
 	      <resource>
@@ -496,42 +496,6 @@
 		</plugins>
 
 	</build>
-	
-	<profiles>
-				<profile>
-					<id>dev</id>
-					<properties>
-						<jdbc.url.server>jdbc:mysql://localhost:3306/cardmanage?</jdbc.url.server>
-						<jdbc.username>root</jdbc.username>
-						<jdbc.password>root</jdbc.password>
-						<jdbc.useUnicode>useUnicode=true</jdbc.useUnicode>
-						<jdbc.urlEncoding>characterEncoding=UTF-8</jdbc.urlEncoding>
-					</properties>
-				</profile>
-				
-				<profile>
-					<id>local</id>
-					<properties>
-						<jdbc.url.server>jdbc:mysql://localhost:3306/cardmanage?</jdbc.url.server>
-						<jdbc.username>root</jdbc.username>
-						<jdbc.password></jdbc.password>
-						<jdbc.useUnicode>useUnicode=true</jdbc.useUnicode>
-						<jdbc.urlEncoding>characterEncoding=UTF-8</jdbc.urlEncoding>
-					</properties>
-				</profile>
-				
-				<profile>
-					<id>product</id>
-					<properties>
-						<jdbc.url.server>jdbc:mysql://localhost:3306/cardmanage?</jdbc.url.server>
-						<jdbc.username>root</jdbc.username>
-						<jdbc.password></jdbc.password>
-						<jdbc.useUnicode>useUnicode=true</jdbc.useUnicode>
-						<jdbc.urlEncoding>characterEncoding=UTF-8</jdbc.urlEncoding>
-					</properties>
-				</profile>
-	
-		</profiles>
 
 	<reporting>
 		<plugins>
@@ -589,5 +553,41 @@
 		</plugins>
 			
 	</reporting>
+	
+	<profiles>
+			<profile>
+				<id>dev</id>
+				<properties>
+					<jdbc.url.server>jdbc:mysql://localhost:3306/cardmanage?</jdbc.url.server>
+					<jdbc.username>root</jdbc.username>
+					<jdbc.password>root</jdbc.password>
+					<jdbc.useUnicode>useUnicode=true</jdbc.useUnicode>
+					<jdbc.urlEncoding>characterEncoding=UTF-8</jdbc.urlEncoding>
+				</properties>
+			</profile>
+			
+			<profile>
+				<id>local</id>
+				<properties>
+					<jdbc.url.server>jdbc:mysql://localhost:3306/cardmanage?</jdbc.url.server>
+					<jdbc.username>root</jdbc.username>
+					<jdbc.password></jdbc.password>
+					<jdbc.useUnicode>useUnicode=true</jdbc.useUnicode>
+					<jdbc.urlEncoding>characterEncoding=UTF-8</jdbc.urlEncoding>
+				</properties>
+			</profile>
+			
+			<profile>
+				<id>product</id>
+				<properties>
+					<jdbc.url.server>jdbc:mysql://localhost:3306/cardmanage?</jdbc.url.server>
+					<jdbc.username>root</jdbc.username>
+					<jdbc.password></jdbc.password>
+					<jdbc.useUnicode>useUnicode=true</jdbc.useUnicode>
+					<jdbc.urlEncoding>characterEncoding=UTF-8</jdbc.urlEncoding>
+				</properties>
+			</profile>
+
+		</profiles>
 
 </project>

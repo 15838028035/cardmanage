@@ -65,6 +65,8 @@ public class Plan extends BaseModel{
 	private int repaymentDate;
 	
 	private int maxLimit;
+	
+	private String cardNo;
 
 	public int getId() {
 		return id;
@@ -209,8 +211,13 @@ public class Plan extends BaseModel{
 	public void setMaxLimit(int maxLimit) {
 		this.maxLimit = maxLimit;
 	}
-	
-	
-	
+
+	public String getCardNo() {
+		return cardNo;
+	}
+
+	public void setCardNo(String cardNo) {
+		this.cardNo = cardNo;
+	}
 	
 }

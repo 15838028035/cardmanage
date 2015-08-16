@@ -76,7 +76,7 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 	public int getBillDay(String CurrentDateOfDD){
 		int billDay = 0;
 		if(CurrentDateOfDD!=null) {
-			if(CurrentDateOfDD.length()>1){
+			if(CurrentDateOfDD.length()>1&&CurrentDateOfDD.startsWith("0")){
 				billDay = Integer.parseInt(CurrentDateOfDD.substring(1,CurrentDateOfDD.length()));
 			}else{
 				billDay = Integer.parseInt(CurrentDateOfDD);
@@ -221,7 +221,7 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 		preMonthToday = getPreMonthToday();
 		
 		billDate =  getBillDay(currentDateOfDD);
-		getIntervalDaysOfBill = getIntervalDaysOfBill(nextMonthToday,currentDate);
+		getIntervalDaysOfBill = getIntervalDaysOfBill(nextMonthToday,currentDate)-1;
 		credit_bill_date_count = creditCardService.getCreditBillDateCount(billDate);
 		billSaleRate = generateBillSaleRate();//70-80
 		inMoney = 0;
@@ -245,6 +245,7 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 					if(j==0){
 						cuurentSaleSumMoney = sumAllMoney*billSaleRate/100;
 						remainMoney = cuurentSaleSumMoney;
+						saleDate = getCurrentDate();
 					}
 					
 					userId = p.getUserId();

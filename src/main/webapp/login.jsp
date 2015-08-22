@@ -85,19 +85,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            	<td align="right"><label for="pwd">密&nbsp;&nbsp;&nbsp;码：</label></td>
 	            	<td align="left"><input id='pwd' name='pwd' type="password" value="" class="login_inputext" onfocus="changeCssOnfocus(this)" onblur="changeCssOnBlur(this)"/></td>
             	</tr>
-                <tr><td colspan="2" align="left"><span class="Warning">&nbsp;</span></td></tr>
             </table>
-            <table cellpadding="0" cellspacing="0" border="0" width="364" style="margin-top:20px;">
+            <table cellpadding="0" cellspacing="0" border="0" width="364" style="margin-top:33px;">
             	<tr><td align="center">
 	                <div id="loginHintInto" style="font-size:25px;color:red;align:center;display:none">
 					</div>
                 </td></tr>
             </table>
-            <table id="btnSubmit" cellpadding="0" cellspacing="0" border="0" width="364" style="margin-top:20px;">
+            <table id="btnSubmit" cellpadding="0" cellspacing="0" border="0" width="364">
             	<tr><td align="center">
-                <div class="but but01">
+                <div class="but but01" style="margin-left:70px">
                 	<a href="#" onClick="login();">
-                		<div class="but01_hover">
+                		<div class="but01_hover" >
                 			</div>
                     </a>
                 </div>

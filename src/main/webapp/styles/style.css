@@ -46,7 +46,7 @@ a:active{color:#2c6795; text-decoration:none; font-weight:normal;}
 	_ background:url(../images/login_box.jpg) no-repeat top center;
 }
 .lb_wrap{padding:70px 10px 0 40px; position:relative;}
-.login_logo{background:url(../images/login_logo_4a.jpg) no-repeat; width:436px; height:58px;} 
+.login_logo{background:url(../images/login_logo_4a.jpg) no-repeat; width:436px; height:95px;} 
 .login_form_wrap{position:relative;}
 .login_form_wrap table{width:364px;}
 .login_form_tab1{position:absolute; top:30px; *top:0px; _top:0px; left:30px;}
@@ -97,10 +97,10 @@ a:active{color:#2c6795; text-decoration:none; font-weight:normal;}
 /*----end hd----*/
 /* 修改以下三项把原来的41改成76px
 */
-.LT_left{position:absolute; top:80px; left:0px;width:80px; background:#eeeded;}
-.LT_hide_ELe{position:absolute; top:80px;   no-repeat left ; cursor:e-resize;vertical-align: middle;}
+.LT_left{position:absolute; top:58px; left:0px;width:80px; background:#eeeded;}
+.LT_hide_ELe{position:absolute; top:58px;   no-repeat left ; cursor:e-resize;vertical-align: middle;}
 .LT_show_ELe{position:absolute; display:none; top:76px; left:0px; cursor:pointer; width:9px; background:url(../images/LT_show_ELe_bg.jpg) no-repeat left top;}
-.LT_main{position:absolute; top:80px; background:#eeeded; /*background:#ffffff url(../images/layout_t_main_bg.jpg) repeat-x left top;*/}
+.LT_main{position:absolute; top:58px; background:#eeeded; /*background:#ffffff url(../images/layout_t_main_bg.jpg) repeat-x left top;*/;}
 .LT_footer{position:absolute; bottom:0px; width:100%; height:26px; background:url(../images/LT_footer_bg.jpg) repeat-x; line-height:26px; color:#ffffff; overflow:hidden;}
 .LT_ft_wrap{padding:1px 20px 0 20px;}
 .colorOrange{color:#ff7709;}

@@ -23,7 +23,7 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 	
 	private String batchNo;//批次编号
 	private String currentDate;//当前日期
-	String currentDateOfDD;//当天日期
+	private String currentDateOfDD;//当天日期
 	private int billDate;//账单日期
 	private String nextMonthToday;//下个月今天
 	private String preMonthToday;//上个月今天

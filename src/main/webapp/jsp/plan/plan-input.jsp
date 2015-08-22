@@ -28,15 +28,15 @@
 <input type="hidden" name="operate" value="${operate}" />
     <table>
         <tr>
-            <td align="right"><font color="red">*</font>还款金额</td>
+            <td align="right">还款金额<font color="red">*</font></td>
             <td><input type="text" id="inMoney" name="inMoney" value="${inMoney}" maxlength="10"/> </td>
         </tr>
           <tr>
-            <td align="right"><font color="red">*</font>刷卡金额</td>
+            <td align="right">刷卡金额<font color="red">*</font></td>
              <td><input type="text" id="outMoney" name="outMoney" value="${outMoney}" maxlength="10"/> </td>
         </tr>
          <tr>
-            <td align="right"> <font color="red">*</font>剩余金额</td>
+            <td align="right">剩余金额<font color="red">*</font></td>
              <td><input type="text" id="remainMoney" name="remainMoney" value="${remainMoney}" maxlength="10"/> </td>
         </tr>
         <tr>

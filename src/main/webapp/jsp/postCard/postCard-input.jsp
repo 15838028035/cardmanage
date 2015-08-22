@@ -28,39 +28,39 @@
 <input type="hidden" name="operate" value="${operate}" />
     <table>
         <tr>
-           <td align="right"> <font color="red">*POS机编号</td>
+           <td align="right">POS机编号 <font color="red">*</font></td>
            <td><input type="text" id="postCardNo" name="postCardNo" value="${postCardNo}" readonly="readonly" maxlength="30"/> </td>
         </tr>
         <tr>
-           <td align="right"> <font color="red">*商户名字</td>
+           <td align="right">商户名字<font color="red">*</font></td>
            <td><input type="text" id="manName" name="manName" value="${manName}" maxlength="30"/> </td>
         </tr>
           <tr>
-            <td align="right"> <font color="red">* 费率</td>
+            <td align="right">费率<font color="red">*</font> </td>
              <td><input type="text" id="rate" name="rate" value="${rate}" maxlength="10"/> </td>
         </tr>
          <tr>
-            <td align="right"> <font color="red">*</font>匹配最小额度</td>
+            <td align="right">匹配最小额度<font color="red">*</font></td>
              <td><input type="text" id="minMoney" name="minMoney" value="${minMoney}" maxlength="10"/> </td>
         </tr>
          <tr>
-            <td align="right"> <font color="red">*</font>匹配最大额度</td>
+            <td align="right">匹配最大额度<font color="red">*</font></td>
              <td><input type="text" id="maxMoney" name="maxMoney" value="${maxMoney}" maxlength="10"/> </td>
         </tr>
          <tr>
-            <td align="right"> <font color="red">*</font>行业</td>
+            <td align="right">行业<font color="red">*</font></td>
              <td><input type="text" id="trade" name="trade" value="${trade}" maxlength="30"/> </td>
         </tr>
         <tr>
-            <td align="right"> <font color="red">*</font>绑定银行</td>
+            <td align="right">绑定银行<font color="red">*</font></td>
              <td><input type="text" id="bindBank" name="bindBank" value="${bindBank}" maxlength="30"/> </td>
         </tr>
         <tr>
-            <td align="right"> <font color="red">*</font>卡号</td>
+            <td align="right">卡号<font color="red">*</font></td>
              <td><input type="text" id="cardNo" name="cardNo" value="${cardNo}" maxlength="20"/> </td>
         </tr>
          <tr>
-            <td align="right"> <font color="red">*</font> 姓名</td>
+            <td align="right">姓名<font color="red">*</font></td>
              <td><input type="text" id="userName" name="userName" value="${userName}" maxlength="10"/> </td>
         </tr>
         <tr>

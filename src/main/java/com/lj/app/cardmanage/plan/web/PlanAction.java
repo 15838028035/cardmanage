@@ -37,6 +37,7 @@ public class PlanAction extends AbstractBaseAction<Plan> {
 	
 	private String userName;
 	private String cardNo;
+	private String saleDate;
 	
 	private int inMoney;
 	private int outMoney;
@@ -61,6 +62,7 @@ public class PlanAction extends AbstractBaseAction<Plan> {
 			Map condition = new HashMap();
 			condition.put("userName", userName);
 			condition.put("cardNo", cardNo);
+			condition.put("saleDate", saleDate);
 			condition.put(CREATE_BY, getLoginUserId());
 			
 			this.planService.findPageList(page, condition);
@@ -285,7 +287,12 @@ public class PlanAction extends AbstractBaseAction<Plan> {
 	public void setCardNo(String cardNo) {
 		this.cardNo = cardNo;
 	}
-	
-	
 
+	public String getSaleDate() {
+		return saleDate;
+	}
+
+	public void setSaleDate(String saleDate) {
+		this.saleDate = saleDate;
+	}
 }

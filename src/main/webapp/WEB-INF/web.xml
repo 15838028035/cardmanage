@@ -71,7 +71,6 @@
 			<param-name>skipSessionValidate</param-name>
 			<param-value>
 				/jsp/common,
-				/index.jsp,
 				/login.jsp,
 				/loginAction!login.action,
 				/loginAction!getLoginMode.action,

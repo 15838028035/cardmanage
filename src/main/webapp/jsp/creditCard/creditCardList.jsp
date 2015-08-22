@@ -75,7 +75,7 @@
 								
 				viewrecords: true,
 				caption: '卡片管理',
-				width: '100%',
+				width: '1000px',
 				height: '100%',
 				hidegrid: false,
 				altRows:true,
@@ -115,7 +115,7 @@
 							<input type="button" class="window_button_centerInput" value="删除" onclick="mulDelete();"/>
 						</div>
 					
-						<table>
+						<table >
 							<tr>
 							<td></td><td></td>
 							<td>卡号</td>
@@ -206,6 +206,5 @@
       	}
       	
     </script>
-    
 </body>
 </html>

@@ -307,9 +307,8 @@
 
 	<build>
  		<directory>${project.basedir}/target</directory>
-<!-- 		<outputDirectory>${project.build.directory}/classes</outputDirectory>  -->
-<!-- 		<testOutputDirectory>${project.build.directory}/test-classes</testOutputDirectory> -->
-
+ 		
+		<testSourceDirectory>${project.basedir}/src/test/java,${project.basedir}/src/acceptancetest/java</testSourceDirectory>
 		<outputDirectory>${project.basedir}/src/main/webapp/Web-INF/classes</outputDirectory>
 		<testOutputDirectory>${project.basedir}/src/main/webapp/Web-INF/classes</testOutputDirectory>
 		
@@ -364,6 +363,39 @@
 					</includes>
 					<testFailureIgnore>true</testFailureIgnore>
 					<argLine>-Xmx1024M</argLine>
+					
+					  <executions>
+					  
+						  <execution>
+	                        <id>run-test</id>
+	                        <phase>test</phase>
+	                        <goals>
+	                            <goal>test</goal>
+	                        </goals>
+	                        <configuration>
+	                            <skip>false</skip>
+	                            <includes>
+	                                <include>${project.basedir}/src/test/java/**/**/*.java</include>
+	                            </includes>
+	                        </configuration>
+	                    </execution>
+	                    
+	                    <execution>
+	                        <id>run-integration-test</id>
+	                        <phase>integration-test</phase>
+	                        <goals>
+	                            <goal>test</goal>
+	                        </goals>
+	                        <configuration>
+	                            <skip>false</skip>
+	                            <includes>
+	                                <include>${project.basedir}/src/acceptancetest/java/**/**/*.java</include>
+	                            </includes>
+	                        </configuration>
+	                    </execution>
+                    
+                </executions>
+                
 				</configuration>
 				<dependencies>
 					<dependency>
@@ -378,15 +410,6 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>cobertura-maven-plugin</artifactId>
 				<version>2.5.1</version>
-				<configuration>
-					<instrumentation>
-						<excludes>
-							<exclude>**/xsd/*/*.class</exclude>
-						</excludes>
-
-					</instrumentation>
-					<check />
-				</configuration>
 			</plugin>
 
 			<plugin>

@@ -27,10 +27,12 @@
     	if(e && e.keyCode==13){ // enter 键                 //要做的事情           
     		var cardNo = $("#cardNoParam").val();
 	    	var userName = $("#userNameParam").val();
+	    	var saleDate = $("#saleDateParam").val();
 			jQuery("#list").jqGrid('setGridParam',{
 			    url:"${ctx}/jsp/plan/planAction!list.action",
 				postData : {"cardNo" : cardNo,
-							"userName" : userName
+							"userName" : userName,
+							"saleDate" : saleDate
 				},
 			 	page:1
 			}).trigger("reloadGrid");
@@ -57,11 +59,11 @@
 					 {name:'rate',index:'rate', width:50,align:'center',editable:true},
 					 {name:'billDate',index:'billDate', width:50,align:'center',editable:true},
 					 {name:'repaymentDate',index:'repaymentDate', width:50,align:'center',editable:true},
-					 {name:'excuteFlag',index:'excuteFlag', width:60,align:'center',editable:true}
+					 {name:'excuteFlag',index:'excuteFlag', width:60,align:'center',editable:true,formatter:isExecuteFunction}
 					 ],
 				pager: '#pager',
 				sortable: false,
-				rowNum:10,
+				rowNum:50,
 				multiselect: true, 
 				prmNames:{rows:"page.pageSize",page:"page.pageNumber",total:"page.totalPages"},     
 				jsonReader: {     
@@ -83,6 +85,19 @@
 				scrollrows: true
 		}); 
 		});
+		
+		
+	isExecuteFunction= function(el, cellval, opts) {
+		var excuteFlag = opts.excuteFlag;
+		
+		if(el == 'T') {
+			excuteFlag = "<font color='blue'>是</font>";
+		}
+		 else {
+			excuteFlag = "<font color='red'>否</font>";
+		}
+		return excuteFlag;
+	}
 	</script>
 </head>
 
@@ -100,7 +115,6 @@
 			            <span class="marg_lef5"></span>
 			            </div><!--end contain_t_text-->
 			            <div class="float_rig contain_t_check">
-			            	<div class="contain_icon"></div>
 			            </div><!--end contain_t_check-->
 			       </div><!--end contain_t_wrap-->
 			    </div><!--end contain_title-->
@@ -118,6 +132,8 @@
 						<td><input name="userNameParam" id = "userNameParam" type="text"  value="" /></td>
 						<td>卡号</td>
 						<td><input name="cardNoParam" id = "cardNoParam" type="text"  value="" /></td>
+						<td>消费日期</td>
+						<td><input name="saleDateParam" id = "saleDateParam" type="text"   onclick="WdatePicker()" readOnly="true"/></td>
 						<td>
 							<div class="window_button marg_lef10 float_lef">
 								<input class="window_button_centerInput" name="select" id = "select" type="button" value="查询" /></div>
@@ -141,10 +157,13 @@
 	    $("#select").click(function() {
 	    	var userName = $("#userNameParam").val();
 	    	var cardNo = $("#cardNoParam").val();
+	    	var saleDate = $("#saleDateParam").val();
+	    	
 			jQuery("#list").jqGrid('setGridParam',{
 			    url:'${ctx}/jsp/plan/planAction!list.action',
 				postData : {"cardNo" : cardNo,
-							"userName" : userName
+							"userName" : userName,
+							"saleDate" : saleDate
 				},
 			 	page:1
 			}).trigger("reloadGrid");

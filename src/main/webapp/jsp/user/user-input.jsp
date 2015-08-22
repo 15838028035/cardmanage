@@ -28,27 +28,27 @@
 <input type="hidden" name="operate" value="${operate}" />
     <table>
         <tr>
-            <td align="right"><font color="red">*</font>登录帐号 </td>
+            <td align="right">登录帐号<font color="red">*</font> </td>
             <td><input type="text" id="loginNo" name="loginNo" value="${loginNo}" maxLength="10" /></td>
         </tr>
         <tr>
-            <td align="right"><font color="red">*</font>密码</td>
+            <td align="right">密码<font color="red">*</font></td>
             <td><input type="text" id="pwd" name="pwd" value="${pwd}" maxlength="200"/> </td>
         </tr>
           <tr>
-            <td align="right"><font color="red">*</font>用户名</td>
+            <td align="right">用户名<font color="red">*</font></td>
              <td><input type="text" id="userName" name="userName" value="${userName}" maxlength="10"/> </td>
         </tr>
          <tr>
-            <td align="right"> <font color="red">*</font>卡号</td>
+            <td align="right">卡号<font color="red">*</font></td>
              <td><input type="text" id="cardNo" name="cardNo" value="${cardNo}" maxlength="20"/> </td>
         </tr>
          <tr>
-            <td align="right"> <font color="red">*</font>地址</td>
+            <td align="right">地址<font color="red">*</font></td>
              <td><input type="text" id="address" name="address" value="${address}" maxlength="30"/> </td>
         </tr>
          <tr>
-            <td align="right"> <font color="red">*</font>手机号码</td>
+            <td align="right">手机号码 <font color="red">*</font></td>
              <td><input type="text" id="mobile" name="mobile" value="${mobile}" maxlength="15"/> </td>
         </tr>
         

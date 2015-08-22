@@ -61,8 +61,72 @@ function topMenuEff(){
 				}				
 			}); 
 			
+			function showframe(){
+				isshow="1";							
+					//$("#showhideimg").attr("src","${ctx}/images/LT_hide_ELe_bg.jpg");
+					$("#showhideimg").attr("src","${ctx}/images/al_1.gif");
+					//$("#LT_left").show("fast");
+					$("#LT_left").animate({left:0,width:oriLeftFrmWidth},"fast");
+					$("#LT_hide_ELe").animate(
+						{
+							left:oriLeftFrmWidth,width:showdivwidth
+						},
+						"fast"
+						);
+					$("#LT_main").animate({ 
+						left:oriLeftFrmWidth+showdivwidth,
+					    width: screen.width-oriLeftFrmWidth-showdivwidth,					     
+					    marginLeft: "0"
+					  }, "fast" );
+			}
+			
+			function hideframe(){
+				//$("#showhideimg").attr("src","${ctx}/images/LT_show_ELe_bg.jpg");
+				$("#showhideimg").attr("src","${ctx}/images/bl_1.gif");
+					isshow="0";										
+					//$("#LT_left").hide("fast");
+					$("#LT_left").animate({left:0,width:0},"fast");
+					$("#LT_hide_ELe").animate(
+						{left:"0",width:showdivwidth},
+						"fast"
+					);
+					$("#LT_main").animate({ 
+						left:showdivwidth,
+					    width:screen.width-8,					     
+					    marginLeft: "0"
+					  }, "fast" );
+			}
+			
 			var isdown="0";
+			$("#LT_hide_ELe").mousemove(function(e){
+				var x = e.pageX;
+				var y = e.pageY;
 				
+				if(isdown!="1")return ;
+				
+				//forbidden dragging to left and the end of right.
+				if(x>document.body.clientWidth*0.95 ||x <=(oriLeftFrmWidth+showdivwidth)){
+					return ;
+				}
+			     var lft = x+$("#LT_hide_ELe").width();
+			     	$("#LT_left").css({width:x,left:0});
+			     	$("#LT_hide_ELe").css({left:x,width:showdivwidth});
+			     	$("#LT_main").css({width:screen.width-lft,left:lft});
+			     		
+		    });
+		    
+		    $('#LT_hide_ELe').mousedown(function() {
+		    	//alert(document.body.clientWidth);
+			  	isdown="1";
+			  	this.setCapture();
+			  	
+			});
+			
+			$('#LT_hide_ELe').mouseup(function() {
+			 	isdown="0";
+			 	this.releaseCapture();
+			});
+						
 			
 		});
 		
@@ -179,14 +243,31 @@ function topMenuEff(){
 	</div><!--end LT_left-->
 	
 	
-	<div class="LT_hide_ELe" id="LT_hide_ELe" style="vertical-align: bottom;background-color: #C0C0C0;padding: 0px; width:9px;" >&nbsp;
+	<div class="LT_hide_ELe" id="LT_hide_ELe" style="vertical-align: bottom;background-color: #C0C0C0;padding: 0px;" >		
+				<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+				<img src="${ctx}/images/al_1.gif" id="showhideimg" name="showhideimg" style="cursor: hand;" />
 	</div>
 	
 	
 	<iframe class="LT_main" id="LT_main" src="" scrolling="auto" frameborder="0" allowTransparency="true" name="LT_main">
 	</iframe><!--end LT_main-->
 	<div class="clear"></div>
-
+	<div class="LT_footer">
+	<div class="LT_ft_wrap">
+	<table cellpadding="0" cellspacing="0" border="0">
+	<tr><td width="80%" align="center">${applicationScope.title}</td>
+	<td width="20%">
+	<table width="450" cellpadding="0" cellspacing="0" height="20">
+	      <tr>
+	        <td align="right"><img src="${ctx}/images/LT_footer_i1.jpg" title="用户名" align="middle" /></td>
+	        <td align="left" width="190"><span class="marg_lef5" style="vertical-align:middle;">:</td>
+	        <td align="right"><img src="${ctx}/images/LT_footer_i2.jpg" title="登录时间" align="middle" /></td>
+	        <td align="left"></td>
+	      </tr>
+	    </table></td></tr>
+	</table>
+	 </div>
+	 </div>
 
   </body>
 

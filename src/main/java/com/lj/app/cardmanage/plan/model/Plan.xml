@@ -80,6 +80,9 @@
 		  	<isNotEmpty prepend="AND" property="loginNo"> u.loginNo = #loginNo#</isNotEmpty>
 		     <isNotEmpty prepend="AND" property="userName"> u.userName = #userName#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="cardNo"> c.cardNo = #cardNo#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="saleDate"> p.saleDate = STR_TO_DATE(#saleDate:VARCHAR#, '%Y-%m-%d')</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="currentDate"> p.saleDate >= STR_TO_DATE(#currentDate:VARCHAR#, '%Y-%m-%d')</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="nextMonthToday"> p.saleDate <= STR_TO_DATE(#nextMonthToday:VARCHAR#, '%Y-%m-%d')</isNotEmpty>
 		</dynamic>
 	</select>
 	
@@ -97,6 +100,9 @@
 		  	<isNotEmpty prepend="AND" property="loginNo"> u.loginNo = #loginNo#</isNotEmpty>
 		     <isNotEmpty prepend="AND" property="userName"> u.userName = #userName#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="cardNo"> c.cardNo = #cardNo#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="saleDate"> p.saleDate = STR_TO_DATE(#saleDate:VARCHAR#, '%Y-%m-%d')</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="currentDate"> p.saleDate >= STR_TO_DATE(#currentDate:VARCHAR#, '%Y-%m-%d')</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="nextMonthToday"> p.saleDate <= STR_TO_DATE(#nextMonthToday:VARCHAR#, '%Y-%m-%d')</isNotEmpty>
 		</dynamic>
 	</select>
 	
@@ -129,16 +135,16 @@
 				t.excuteFlag = #excuteFlag:VARCHAR#
 			</isNotEmpty>
 			
-			<isGreaterThan prepend="," property="sumAllMoney" compareValue="0">
+			<isGreaterThan prepend="," property="sumAllMoney" compareValue="-1">
 				t.sumAllMoney=#sumAllMoney:NUMBER#
 			</isGreaterThan>
-			<isGreaterThan prepend="," property="inMoney" compareValue="0">
+			<isGreaterThan prepend="," property="inMoney" compareValue="-1">
 				t.inMoney=#inMoney:NUMBER#
 			</isGreaterThan>
-			<isGreaterThan prepend="," property="outMoney" compareValue="0">
+			<isGreaterThan prepend="," property="outMoney" compareValue="-1">
 				t.outMoney=#outMoney:NUMBER#
 			</isGreaterThan>
-			<isGreaterThan prepend="," property="remainMoney" compareValue="0">
+			<isGreaterThan prepend="," property="remainMoney" compareValue="-1">
 				t.remainMoney=#remainMoney:NUMBER#
 			</isGreaterThan>
 		</dynamic>

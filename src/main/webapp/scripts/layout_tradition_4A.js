@@ -9,7 +9,7 @@ var layout_Tradition = function(){
 			if(DomW<500){DomW=500}
 			if(DomH<300){DomH=300}
 			$("body").attr("scroll","no");
-			var H = DomH-41-26-39-7+"px";
+			var H = DomH-41-18+"px";
 			leftW = 250;
 			var frameH = DomH-41-26-39-75+"px";
 			$("#LT_left").css({display:"block"});
@@ -19,13 +19,13 @@ var layout_Tradition = function(){
 			$("#LT_left").height(H);
 			$("#LT_menu").height(LT_menu_H);
 			$("#LT_hide_ELe").height(H);
-			$("#LT_hide_ELe").css({"left":leftW});
+			$("#LT_hide_ELe").css({"left":"160px"});
 			$("#LT_show_ELe").height(H);
 			var maniW = DomW - leftW-9;
 			var mainLeft = leftW+9;
 			$("#LT_main").height(H);
 			$("#tabs iframe").height(frameH);
-			$("#LT_main").css({width:maniW,left:mainLeft,background:"#ffffff"});
+			$("#LT_main").css({width:DomW-169+"px",left:"169px",background:"#ffffff"});
 			//点击收缩按钮收缩左侧菜单
 			/**
 			$("#LT_hide_ELe").click(function(){

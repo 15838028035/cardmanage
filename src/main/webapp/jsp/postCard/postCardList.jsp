@@ -101,7 +101,6 @@
 			            <span class="marg_lef5"></span>
 			            </div><!--end contain_t_text-->
 			            <div class="float_rig contain_t_check">
-			            	<div class="contain_icon"></div>
 			            </div><!--end contain_t_check-->
 			       </div><!--end contain_t_wrap-->
 			    </div><!--end contain_title-->

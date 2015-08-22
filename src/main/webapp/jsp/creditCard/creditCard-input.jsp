@@ -28,35 +28,35 @@
 <input type="hidden" name="operate" value="${operate}" />
     <table>
         <tr>
-           <td align="right"> <font color="red">*卡号</td>
+           <td align="right">卡号 <font color="red">*</font></td>
            <td><input type="text" id="cardNo" name="cardNo" value="${cardNo}" maxlength="20"/> </td>
         </tr>
         <tr>
-           <td align="right"> <font color="red">*银行</td>
+           <td align="right">银行<font color="red">*</font></td>
            <td><input type="text" id="bankNo" name="bankNo" value="${bankNo}" maxlength="30"/> </td>
         </tr>
           <tr>
-            <td align="right"> <font color="red">*姓名</td>
+            <td align="right">姓名 <font color="red">*</font></td>
              <td><input type="text" id="userName" name="userName" value="${userName}" maxlength="30"/> </td>
         </tr>
          <tr>
-            <td align="right"> <font color="red">*</font>最大额度</td>
+            <td align="right">最大额度 <font color="red">*</font></td>
              <td><input type="text" id="maxLimit" name="maxLimit" value="${maxLimit}" maxlength="30"/> </td>
         </tr>
          <tr>
-            <td align="right"> <font color="red">*</font>安全码</td>
+            <td align="right">安全码<font color="red">*</font></td>
              <td><input type="text" id="secNo" name="secNo" value="${secNo}" maxlength="3"/> </td>
         </tr>
          <tr>
-            <td align="right"> <font color="red">*</font>有效期</td>
+            <td align="right">有效期<font color="red">*</font></td>
              <td><input type="text" id="validateDate" name="validateDate" value="${validateDate}" maxlength="20"/> </td>
         </tr>
         <tr>
-            <td align="right"> <font color="red">*</font>账单日期</td>
+            <td align="right">账单日期<font color="red">*</font></td>
              <td><input type="text" id="billDate" name="billDate" value="${billDate}" maxlength="2"/> </td>
         </tr>
         <tr>
-            <td align="right"> <font color="red">*</font>还款日</td>
+            <td align="right">还款日 <font color="red">*</font></td>
              <td><input type="text" id="repaymentDate" name="repaymentDate" value="${repaymentDate}" maxlength="2"/> </td>
         </tr>
         

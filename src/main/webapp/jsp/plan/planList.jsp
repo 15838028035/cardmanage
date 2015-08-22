@@ -109,10 +109,7 @@
                 <div class="contain_title">
 			    	<div class="contain_t_wrap">
 			            <div class="float_lef contain_t_text">
-			            <span class=""><img src="${ctx}/images/system16.png" align="absmiddle" /></span>
-			            <span class="marg_lef5"><a href="#">计划管理</a></span>
-			            <span class="marg_lef5"><img src="${ctx}/images/next.gif" align="absmiddle" /></span>
-			            <span class="marg_lef5"></span>
+			            	<span class="marg_lef5">计划管理</span>
 			            </div><!--end contain_t_text-->
 			            <div class="float_rig contain_t_check">
 			            </div><!--end contain_t_check-->

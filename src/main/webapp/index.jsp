@@ -127,8 +127,8 @@ function topMenuEff(){
       <div class="float_rig">
         	<div class="LT_Fr_wrap slideMenu" id="TopMenu">
             	<ul>
-				<li class="float_lef LT_hd_li Logout">
-					<a href="${ctx}/loginAction!logout.action"><img src="${ctx}/images/logout_h.gif" title="退出系统" /></a>
+				<li class="float_lef LT_hd_li Logout" style="width:200px;">
+					${sessionScope.securityContext.loginName}:您好！欢迎登录!&nbsp;&nbsp;<a href="${ctx}/loginAction!logout.action">退出系统</a>
 				</li>
               </ul>
             </div><!--end LT_logo-->
@@ -152,7 +152,7 @@ function topMenuEff(){
                  	 <a href="${ctx}/jsp/creditCard/creditCardList.jsp"  target="LT_main" >卡片管理</a>
                   </li>
                     <li class="float_lef LT_hd_li_TM LocalManagment" style="font-size:16px;float:none">
-						<a href="${ctx}/jsp/postCard/postCardList.jsp" target="LT_main" >post机管理</a>
+						<a href="${ctx}/jsp/postCard/postCardList.jsp" target="LT_main" >机具管理</a>
 				</li>
 				<li class="float_lef LT_hd_li_TM LocalManagment" style="font-size:16px;float:none">
 					<a href="${ctx}/jsp/plan/planList.jsp" target="LT_main" >计划管理</a>
@@ -163,6 +163,9 @@ function topMenuEff(){
 						<a href="${ctx}/jsp/user/userList.jsp" target="LT_main" >用户管理</a>
 					</li>
 				</c:if>
+				<li class="float_lef LT_hd_li_TM LocalManagment" style="font-size:16px;float:none">
+					<a href="${ctx}/jsp/user/changepwd.jsp" target="LT_main" >修改密码</a>
+				</li>
 					
           </ul>
          </div><!--end LT_Fr_wrap_TM-->

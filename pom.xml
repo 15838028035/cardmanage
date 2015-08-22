@@ -381,8 +381,11 @@
 	                        <configuration>
 	                            <skip>false</skip>
 	                            <includes>
-	                                <include>${project.basedir}/src/test/java/**/**/*.java</include>
+	                                <include>**/**/*.java</include>
 	                            </includes>
+	                              <excludes>
+	                            	<exclude>**/**/*AcceptanceTest.java</exclude>
+	                            </excludes>
 	                        </configuration>
 	                    </execution>
 	                    
@@ -395,7 +398,7 @@
 	                        <configuration>
 	                            <skip>false</skip>
 	                            <includes>
-	                                <include>${project.basedir}/src/acceptancetest/java/**/**/*.java</include>
+	                                <include>**/**/*AcceptanceTest.java</include>
 	                            </includes>
 	                        </configuration>
 	                    </execution>

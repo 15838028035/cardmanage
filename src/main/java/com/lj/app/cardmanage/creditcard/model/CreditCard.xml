@@ -55,6 +55,9 @@
 			 <isNotEmpty prepend="AND" property="secNo"> t.secNo = #secNo#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="userName"> t.userName = #userName#</isNotEmpty>
 		</dynamic>
+		<![CDATA[ 
+			order by t.ID
+   			 ]]>  
 	</select>
 	
 	

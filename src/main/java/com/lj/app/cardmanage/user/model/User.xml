@@ -91,19 +91,20 @@
 	</insert>
 	
 	<update id="update" parameterClass="user" >
-			UPDATE  USER t 
-			SET t.loginNo = #loginNo:VARCHAR#, 
-			t.pwd=#pwd:VARCHAR#,
-			t.userName=#userName:VARCHAR#,
-			t.cardNo=#cardNo:VARCHAR#,
-			 t.address = #address:VARCHAR#, 
-			 t.mobile=#mobile:VARCHAR#, 
-			 t.lockStatus=#lockStatus:VARCHAR#, 
-			 t.enableFlag=#enableFlag:VARCHAR#,
-			 t.updateBy=#updateBy:NUMBER#, 
-			 t.updateDate=STR_TO_DATE(#updateDate:VARCHAR#,'%Y-%m-%d %h:%i:%s')
+		UPDATE  USER t 
+		<dynamic prepend="set" >
+			 <isNotEmpty prepend="," property="loginNo">t.loginNo = #loginNo:VARCHAR#</isNotEmpty>
+			 <isNotEmpty prepend="," property="pwd">t.pwd=#pwd:VARCHAR#</isNotEmpty>
+			 <isNotEmpty prepend="," property="userName">t.userName=#userName:VARCHAR#</isNotEmpty>
+			 <isNotEmpty prepend="," property="cardNo">t.cardNo=#cardNo:VARCHAR#</isNotEmpty>
+			 <isNotEmpty prepend="," property="address">t.address = #address:VARCHAR#</isNotEmpty>
+			 <isNotEmpty prepend="," property="mobile">t.mobile=#mobile:VARCHAR#</isNotEmpty>
+			 <isNotEmpty prepend="," property="lockStatus">t.lockStatus=#lockStatus:VARCHAR#</isNotEmpty>
+			 <isNotEmpty prepend="," property="enableFlag">t.enableFlag=#enableFlag:VARCHAR#</isNotEmpty>
+			 <isGreaterThan prepend="," property="updateBy" compareValue="0">t.updateBy=#updateBy:NUMBER# </isGreaterThan>
+			 <isNotEmpty prepend="," property="updateDate">t.updateDate=STR_TO_DATE(#updateDate:VARCHAR#,'%Y-%m-%d %h:%i:%s')</isNotEmpty>
 	 WHERE userId=#userId#
-       
+       </dynamic>
 	</update>
 	
 	<delete id="delete" parameterClass="int">

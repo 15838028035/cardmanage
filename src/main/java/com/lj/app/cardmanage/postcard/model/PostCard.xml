@@ -53,6 +53,9 @@
 			 <isNotEmpty prepend="AND" property="cardNo"> t.cardNo = #cardNo#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="userName"> t.userName = #userName#</isNotEmpty>
 		</dynamic>
+		<![CDATA[ 
+			order by t.ID 
+   		 ]]>  
 	</select>
 	
 	
@@ -124,7 +127,7 @@
 		</dynamic>
 		<![CDATA[ 
 			order by t.ID DESC
-   			 ]]>  
+   			]]>  
 	</select>
 	
 </sqlMap>

@@ -250,11 +250,7 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 					
 					userId = p.getUserId();
 					
-					if (j<5){
-						outMoney=  new BigDecimal(remainMoney*0.25).intValue();
-					}else {
-						outMoney=  new BigDecimal(remainMoney*Math.floor(5 + (Math.random() * 10))/100).intValue();
-					}
+					outMoney = PlanGenerateRuleFactory.getRadomOutMoney(remainMoney);
 					
 					if(outMoney<=SIGLE_SALE_MIN_MONEY){
 						outMoney = 0;

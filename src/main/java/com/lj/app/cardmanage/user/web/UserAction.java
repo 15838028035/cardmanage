@@ -15,6 +15,7 @@ import com.lj.app.cardmanage.user.service.UserService;
 import com.lj.app.core.common.pagination.PageTool;
 import com.lj.app.core.common.util.AjaxResult;
 import com.lj.app.core.common.util.DateUtil;
+import com.lj.app.core.common.util.SessionCode;
 import com.lj.app.core.common.util.des.DesUtil;
 import com.lj.app.core.common.web.AbstractBaseAction;
 import com.lj.app.core.common.web.Struts2Utils;
@@ -26,7 +27,6 @@ import com.lj.app.core.common.web.Struts2Utils;
 		@Result(name = AbstractBaseAction.SAVE, location = "userAction!edit.action",type=AbstractBaseAction.REDIRECT),
 		@Result(name = AbstractBaseAction.LIST, location = "/jsp/user/userList.jsp", type=AbstractBaseAction.REDIRECT)
 })
-@SuppressWarnings("unchecked")
 
 @Action("userAction")
 public class UserAction  extends AbstractBaseAction<User> {
@@ -41,6 +41,9 @@ public class UserAction  extends AbstractBaseAction<User> {
 	
 	private String lockStatus;
 	private String enableFlag;
+	
+	private String oldPwd;
+	private String newPwd;
 	
 	@Autowired
 	private UserService userService;
@@ -164,7 +167,46 @@ public class UserAction  extends AbstractBaseAction<User> {
 		Struts2Utils.renderJson(ar);
 		return null;
 	}
-
+	
+	
+	public String updateAcctPwd() throws Exception {
+	AjaxResult ar = new AjaxResult();
+		
+	try{
+			
+			User loginUser = (User)Struts2Utils.getSession().getAttribute(SessionCode.MAIN_ACCT);
+			if(!loginUser.getPwd().equals(DesUtil.encrypt(oldPwd))){
+				ar.setOpResult("对不起!旧密码不正确,请重新输入");
+				Struts2Utils.renderJson(ar);
+				return null;
+			}
+			
+			if(!pwd.equals(newPwd)){
+				ar.setOpResult("对不起!输入新密码两次不一致，请重新输入");
+				Struts2Utils.renderJson(ar);
+				return null;
+			}
+				
+			loginUser.setUserId(getLoginUserId());
+			loginUser.setPwd(DesUtil.encrypt(pwd));
+			loginUser.setUpdateBy(getLoginUserId());
+			loginUser.setUpdateDate(DateUtil.getNowDateYYYYMMddHHMMSS());
+			userService.updateObject(loginUser);
+			
+			Struts2Utils.getSession().setAttribute(SessionCode.MAIN_ACCT,loginUser);
+			
+			ar.setOpResult(UPDATE_SUCCESS);
+			Struts2Utils.renderJson(ar);
+		}catch(Exception e){
+			ar.setOpResult(UPDATE_FAILURE);
+			Struts2Utils.renderJson(ar);
+			throw e;
+		}
+	
+		return null;
+		
+	}
+	
 
 	@Override
 	protected void prepareModel() throws Exception {
@@ -258,5 +300,20 @@ public class UserAction  extends AbstractBaseAction<User> {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+
+	public String getOldPwd() {
+		return oldPwd;
+	}
+
+	public void setOldPwd(String oldPwd) {
+		this.oldPwd = oldPwd;
+	}
+
+	public String getNewPwd() {
+		return newPwd;
+	}
+
+	public void setNewPwd(String newPwd) {
+		this.newPwd = newPwd;
+	}
 }

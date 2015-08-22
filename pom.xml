@@ -302,6 +302,12 @@
 			<scope>test</scope>
 		</dependency>
 		
+		<dependency>
+		    <groupId>uk.co.javahelp.fitnesse</groupId>
+		    <artifactId>fitnesse-launcher-maven-plugin</artifactId>
+		    <version>1.4.2</version>
+		    <scope>test</scope>
+		</dependency>
 
 	</dependencies>
 

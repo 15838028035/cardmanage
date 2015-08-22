@@ -6,7 +6,6 @@ import com.lj.app.cardmanage.user.model.UserSetUpFixtureAcceptanceTest;
 public class SetupContextUtil extends AbstractAcceptanceTestBaseTestCase{
 	
 	private static  UserSetUpFixtureAcceptanceTest userSetUpFixtureAcceptanceTest;
-	
 
 	public static void setupContext(){
 		userSetUpFixtureAcceptanceTest = new UserSetUpFixtureAcceptanceTest();

@@ -115,23 +115,7 @@
 	</delete>
 	
 	<select id="getCreditBillDateCount" parameterClass="int" resultClass="int">
-		SELECT count(1)  FROM CREDITCARD  F where f.billDate=#billDate:NUMBER#
-	</select>
-	
-	<select id="getUserCreditBillDateCount" parameterClass="creditCard" resultClass="int">
-		SELECT count(1)  FROM CREDITCARD  F
-		<dynamic prepend="WHERE">
-			<isGreaterEqual	prepend="AND" property="createBy" compareValue="-1">
-				t.createBy = #createBy#
-			</isGreaterEqual>
-		  	<isNotEmpty prepend="AND" property="cardNo"> t.cardNo = #cardNo:VARCHAR#</isNotEmpty>
-			 <isNotEmpty prepend="AND" property="bankNo"> t.bankNo = #bankNo:VARCHAR#</isNotEmpty>
-			 <isNotEmpty prepend="AND" property="userName"> t.userName = #userName:VARCHAR#</isNotEmpty>
-			 <isNotEmpty prepend="AND" property="bindBank"> t.bindBank = #bindBank:VARCHAR#</isNotEmpty>
-			 <isNotEmpty prepend="AND" property="secNo"> t.secNo = #secNo:VARCHAR#</isNotEmpty>
-			 <isNotEmpty prepend="AND" property="userName"> t.userName = #userName:VARCHAR#</isNotEmpty>
-			  <isNotEmpty prepend="AND" property="billDate"> t.billDate = #billDate:NUMBER#</isNotEmpty>
-		</dynamic>
+				SELECT count(1)  FROM CREDITCARD  F where f.billDate=#billDate:NUMBER#
 	</select>
 	
 </sqlMap>

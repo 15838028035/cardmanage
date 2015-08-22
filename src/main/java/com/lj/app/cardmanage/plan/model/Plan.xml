@@ -81,8 +81,6 @@
 		     <isNotEmpty prepend="AND" property="userName"> u.userName = #userName#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="cardNo"> c.cardNo = #cardNo#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="saleDate"> p.saleDate = STR_TO_DATE(#saleDate:VARCHAR#, '%Y-%m-%d')</isNotEmpty>
-			 <isNotEmpty prepend="AND" property="currentDate"> p.saleDate >= STR_TO_DATE(#currentDate:VARCHAR#, '%Y-%m-%d')</isNotEmpty>
-			 <isNotEmpty prepend="AND" property="nextMonthToday"> p.saleDate <= STR_TO_DATE(#nextMonthToday:VARCHAR#, '%Y-%m-%d')</isNotEmpty>
 		</dynamic>
 	</select>
 	
@@ -101,8 +99,6 @@
 		     <isNotEmpty prepend="AND" property="userName"> u.userName = #userName#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="cardNo"> c.cardNo = #cardNo#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="saleDate"> p.saleDate = STR_TO_DATE(#saleDate:VARCHAR#, '%Y-%m-%d')</isNotEmpty>
-			 <isNotEmpty prepend="AND" property="currentDate"> p.saleDate >= STR_TO_DATE(#currentDate:VARCHAR#, '%Y-%m-%d')</isNotEmpty>
-			 <isNotEmpty prepend="AND" property="nextMonthToday"> p.saleDate <= STR_TO_DATE(#nextMonthToday:VARCHAR#, '%Y-%m-%d')</isNotEmpty>
 		</dynamic>
 	</select>
 	

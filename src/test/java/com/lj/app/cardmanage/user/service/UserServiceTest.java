@@ -45,6 +45,7 @@ public class UserServiceTest extends AbstractBaseSpringTransactionTestCase {
 	@Test
 	public void insetTest() {
 		User user = new User();
+		user.setUserId(1);
 		user.setLoginNo("111");
 		user.setUserName("user111");
 		user.setCardNo("11001");

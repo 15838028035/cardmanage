@@ -110,4 +110,30 @@ public interface PlanService<Plan> extends BaseService{
 	 * 根据java代码执行计划
 	 */
 	public void exceutePlanFromJava();
+	
+	/**
+	 * 上个月消费总金额
+	 * @param preMonthToday
+	 * @param saleDate
+	 * @param creditCardId
+	 * @return
+	 */
+	public int getPreMonthOutMoney(String preMonthToday,String saleDate,int creditCardId);
+	/**
+	 * 上个月还款金额
+	 * @param preMonthToday
+	 * @param saleDate
+	 * @param creditCardId
+	 * @return
+	 */
+	public  int getPreMonthInMoney(String preMonthToday,String saleDate,int creditCardId);
+	/**
+	 * 上个月帐号金额
+	 * @param preMonthToday
+	 * @param saleDate
+	 * @param creditCardId
+	 * @return
+	 */
+	public int getPreMonthOutSubInMoney(String preMonthToday,String saleDate,int creditCardId);
+	
 }

@@ -30,6 +30,8 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 	private int getIntervalDaysOfBill;//下一个账单日-当前日期相差时间
 	private int credit_bill_date_count;//信用卡账单日是今天的数量
 	
+	private int repaymentDate;//还款日
+	
 	private List selectUserAndCardOfBillDayList;
 	
 	private int sumAllMoney;//信用卡总金额
@@ -38,6 +40,15 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 	private int remainMoney;//剩余金额
 	private int outMoney;//单笔消费金额
 	private int inMoney;//单笔还款金额
+	
+	private int currentMonthSumInMoney;//当月还款总金额
+	
+	private int preMonthOutMoney;//上个月消费总金额
+	private int preMonthInMoney;//上个月还款金额
+	private int preMonthOutSubInMoney;//上个月帐号金额
+	
+	private int realRemainMoney;//实际剩余金额
+	private int planRemainMoney;//计划剩余金额
 	
 	private int checkSaleDay;//是否是消费日
 	
@@ -212,6 +223,75 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 		return result;
 	}
 	
+	/**
+	 * 上个月消费总金额
+	 * @param preMonthToday
+	 * @param saleDate
+	 * @param creditCardId
+	 * @return
+	 */
+	public int getPreMonthOutMoney(String preMonthToday,String saleDate,int creditCardId) {
+		int result = 0;
+		try{
+			Map<String,Object> queryMap = new HashMap<String,Object>();
+			queryMap.put("preMonthToday", preMonthToday);
+			queryMap.put("saleDate", saleDate);
+			queryMap.put("creditCardId", creditCardId);
+			Map obj  = (HashMap) queryForObject("queryPreMonthOutMoney", queryMap);
+			result = Integer.parseInt(String.valueOf(obj.get("preMonthOutMoney")));
+		  }catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	/**
+	 * 上个月还款金额
+	 * @param preMonthToday
+	 * @param saleDate
+	 * @param creditCardId
+	 * @return
+	 */
+	public  int getPreMonthInMoney(String preMonthToday,String saleDate,int creditCardId) {
+		int result = 0;
+		try{
+			Map<String,Object> queryMap = new HashMap<String,Object>();
+			queryMap.put("preMonthToday", preMonthToday);
+			queryMap.put("saleDate", saleDate);
+			queryMap.put("creditCardId", creditCardId);
+			Map obj  = (HashMap) queryForObject("queryPreMonthInMoney", queryMap);
+			result = Integer.parseInt(String.valueOf(obj.get("preMonthInMoney")));
+		  }catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	/**
+	 * 上个月帐号金额
+	 * @param preMonthToday
+	 * @param saleDate
+	 * @param creditCardId
+	 * @return
+	 */
+	public int getPreMonthOutSubInMoney(String preMonthToday,String saleDate,int creditCardId) {
+		int result = 0;
+		try{
+			Map<String,Object> queryMap = new HashMap<String,Object>();
+			queryMap.put("preMonthToday", preMonthToday);
+			queryMap.put("saleDate", saleDate);
+			queryMap.put("creditCardId", creditCardId);
+			Map obj  = (HashMap) queryForObject("queryPreMonthOutSubInMoney", queryMap);
+			result = Integer.parseInt(String.valueOf(obj.get("preMonthOutSubInMoney")));
+		  }catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
 	@Override
 	public void exceutePlanFromJava() {
 		 batchNo =  generateBatchNo();
@@ -236,61 +316,145 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 			selectUserAndCardOfBillDayList = this.selectUserAndCardOfBillDay(billDate);
 			for(int i = 0; i<selectUserAndCardOfBillDayList.size();i++){
 				Plan p = (Plan)selectUserAndCardOfBillDayList.get(i);
-			
 				
-				for(int j=0; j<getIntervalDaysOfBill;j++){
-					sumAllMoney = p.getMaxLimit();
-					checkSaleDay =checkSaleDay(j+1);
-					
-					if(j==0){
-						cuurentSaleSumMoney = sumAllMoney*billSaleRate/100;
-						remainMoney = cuurentSaleSumMoney;
-						saleDate = getCurrentDate();
-					}
-					
-					userId = p.getUserId();
-					
-					outMoney = PlanGenerateRuleFactory.getRadomOutMoney(remainMoney);
-					
-					if(outMoney<=SIGLE_SALE_MIN_MONEY){
-						outMoney = 0;
-					}
+				 preMonthOutMoney = getPreMonthOutMoney(preMonthToday,getCurrentDate(),p.getCreditCardId());//上个月消费总金额
+				 preMonthInMoney= getPreMonthInMoney(preMonthToday,getCurrentDate(),p.getCreditCardId());//上个月还款金额
+			     preMonthOutSubInMoney=getPreMonthOutSubInMoney(preMonthToday,getCurrentDate(),p.getCreditCardId());//上个月帐号金额
+			     
+			     repaymentDate = p.getRepaymentDate();
+			     
+			     if(preMonthOutSubInMoney<=0) {//上个月没呀欠费，消费金额=0||还款金额>消费金额.
 				
-					if(checkSaleDay != 1){
-						outMoney = 0;
-					}
+					for(int j=0; j<getIntervalDaysOfBill;j++){
+						sumAllMoney = p.getMaxLimit();
+						checkSaleDay =checkSaleDay(j+1);
+						
+						if(j==0){
+							cuurentSaleSumMoney = sumAllMoney*billSaleRate/100;
+							remainMoney = cuurentSaleSumMoney;
+							saleDate = getCurrentDate();
+							planRemainMoney = sumAllMoney-remainMoney;
+						}
+						
+						userId = p.getUserId();
+						
+						outMoney = PlanGenerateRuleFactory.getRadomOutMoney(remainMoney);
+						
+						if(outMoney<=SIGLE_SALE_MIN_MONEY){
+							outMoney = 0;
+						}
 					
-					remainMoney =remainMoney-outMoney;
-					
-					if(outMoney ==0){
-						postCardId = getPostCardId(SIGLE_SALE_MIN_MONEY,userId);
-					}else {
-						postCardId = getPostCardId(outMoney,userId);
-					}
-					
-					saleDate = getSaleDay(saleDate,1);
-					
-					p.setBatchNo(batchNo);
-					p.setUserId(userId);
-					p.setPostCardId(postCardId);
-					p.setSaleDate(saleDate);
-					p.setSumAllMoney(sumAllMoney);
-					p.setInMoney(inMoney);
-					p.setOutMoney(outMoney);
-					p.setRemainMoney(remainMoney);
-					p.setExcuteFlag("F");
-					p.setCreateBy(userId);
-					p.setPostCardId(postCardId);
-					p.setCreateDate(DateUtil.getNowDateYYYYMMddHHMMSS());
-					
-					checkIsAlreadyRunPaln = this.checkIsAlreadyRunPaln(p.getCreditCardId(), saleDate);
-					
-					if(checkIsAlreadyRunPaln == 1){
-					}else{
-						insertObject(p);
-					}
-				}
-					
+						if(checkSaleDay != 1){
+							outMoney = 0;
+						}
+						
+						remainMoney =remainMoney-outMoney;
+						
+						if(outMoney ==0){
+							postCardId = getPostCardId(SIGLE_SALE_MIN_MONEY,userId);
+						}else {
+							postCardId = getPostCardId(outMoney,userId);
+						}
+						
+						saleDate = getSaleDay(saleDate,1);
+						
+						
+						realRemainMoney = remainMoney+planRemainMoney;//实际剩余金额
+						
+						p.setBatchNo(batchNo);
+						p.setUserId(userId);
+						p.setPostCardId(postCardId);
+						p.setSaleDate(saleDate);
+						p.setSumAllMoney(sumAllMoney);
+						p.setInMoney(inMoney);
+						p.setOutMoney(outMoney);
+						p.setRemainMoney(realRemainMoney);
+						p.setExcuteFlag("F");
+						p.setCreateBy(userId);
+						p.setPostCardId(postCardId);
+						p.setCreateDate(DateUtil.getNowDateYYYYMMddHHMMSS());
+						
+						checkIsAlreadyRunPaln = this.checkIsAlreadyRunPaln(p.getCreditCardId(), saleDate);
+						
+						if(checkIsAlreadyRunPaln == 1){
+						}else{
+							insertObject(p);
+						}
+						}
+				     }else {//上个月有消费，欠款.
+				    	 for(int j=0; j<getIntervalDaysOfBill;j++){
+								sumAllMoney = p.getMaxLimit();
+								checkSaleDay =checkSaleDay(j+1);
+								
+								if(j==0){
+									cuurentSaleSumMoney = sumAllMoney*billSaleRate/100;
+									remainMoney = cuurentSaleSumMoney-preMonthOutSubInMoney;
+									saleDate = getCurrentDate();
+									planRemainMoney = sumAllMoney-cuurentSaleSumMoney;
+									currentMonthSumInMoney = 0;
+								}
+								
+								userId = p.getUserId();
+								
+								//还款操作
+								inMoney = PlanGenerateRuleFactory.getRandompInMoney(preMonthOutSubInMoney,currentMonthSumInMoney,inMoney,j,repaymentDate);
+								
+								currentMonthSumInMoney = currentMonthSumInMoney +inMoney;
+								
+								outMoney = PlanGenerateRuleFactory.getRadomOutMoney(remainMoney);
+								
+								if(outMoney<=SIGLE_SALE_MIN_MONEY){
+									outMoney = 0;
+								}
+							
+								if(checkSaleDay != 1){
+									outMoney = 0;
+								}
+								
+								remainMoney =remainMoney-outMoney+inMoney;
+								
+								if(outMoney ==0){
+									postCardId = getPostCardId(SIGLE_SALE_MIN_MONEY,userId);
+								}else {
+									postCardId = getPostCardId(outMoney,userId);
+								}
+								
+								saleDate = getSaleDay(saleDate,1);
+								
+								
+								realRemainMoney = remainMoney+planRemainMoney;//实际剩余金额
+								
+								if(j==0){
+									planRemainMoney = sumAllMoney-realRemainMoney - outMoney+inMoney;
+									realRemainMoney = realRemainMoney+planRemainMoney;
+									
+									if(realRemainMoney>sumAllMoney){
+										planRemainMoney = sumAllMoney-realRemainMoney - outMoney-inMoney;
+										realRemainMoney = realRemainMoney+planRemainMoney;
+									}
+								}
+								
+								p.setBatchNo(batchNo);
+								p.setUserId(userId);
+								p.setPostCardId(postCardId);
+								p.setSaleDate(saleDate);
+								p.setSumAllMoney(sumAllMoney);
+								p.setInMoney(inMoney);
+								p.setOutMoney(outMoney);
+								p.setRemainMoney(realRemainMoney);
+								p.setExcuteFlag("F");
+								p.setCreateBy(userId);
+								p.setPostCardId(postCardId);
+								p.setCreateDate(DateUtil.getNowDateYYYYMMddHHMMSS());
+								
+								checkIsAlreadyRunPaln = this.checkIsAlreadyRunPaln(p.getCreditCardId(), saleDate);
+								
+								if(checkIsAlreadyRunPaln == 1){
+								}else{
+									insertObject(p);
+								}
+								}
+				     }
 			}
 		}
 	}

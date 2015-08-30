@@ -38,7 +38,8 @@
    <resultMap id="userAndPCardesult" class="plan">
 	   <result property="userId" column="userId" nullValue=""/>  
        <result property="creditCardId" column="creditCardId" nullValue=""/>    
-        <result property="maxLimit" column="maxLimit" nullValue=""/>
+       <result property="maxLimit" column="maxLimit" nullValue=""/>
+       <result property="repaymentDate" column="repaymentDate" nullValue=""/>
    </resultMap>
 	
 	<select id="getInfoByKey" parameterClass="int" resultMap="planResult">
@@ -74,6 +75,9 @@
  		 and p.creditCardId = c.id
 		and p.postCardId = pc.id
 		<dynamic prepend="AND">
+			<isGreaterEqual	prepend="AND" property="id" compareValue="0"> 
+				p.id = #id# 
+			</isGreaterEqual> 
 			<isGreaterEqual	prepend="AND" property="createBy" compareValue="1"> 
 				p.userId = #createBy# 
 			</isGreaterEqual> 
@@ -82,6 +86,9 @@
 			 <isNotEmpty prepend="AND" property="cardNo"> c.cardNo = #cardNo#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="saleDate"> p.saleDate = STR_TO_DATE(#saleDate:VARCHAR#, '%Y-%m-%d')</isNotEmpty>
 		</dynamic>
+		<![CDATA[ 
+			order by p.ID
+   			 ]]>  
 	</select>
 	
 	
@@ -92,6 +99,9 @@
  		 and p.creditCardId = c.id
 		and p.postCardId = pc.id
   		<dynamic prepend="AND">
+  			<isGreaterEqual	prepend="AND" property="id" compareValue="0"> 
+				p.id = #id# 
+			</isGreaterEqual> 
   			<isGreaterEqual	prepend="AND" property="createBy" compareValue="1"> 
 				p.userId = #createBy# 
 			</isGreaterEqual> 
@@ -148,7 +158,7 @@
 	 </update>
 	 
 	 <select id="selectUserAndCardOfBillDay"  parameterClass="int" resultMap="userAndPCardesult">
-		SELECT u.userId,c.id as creditCardId,c.cardNo, c.maxLimit FROM USER U,creditCard c
+		SELECT u.userId,c.id as creditCardId,c.cardNo, c.maxLimit,c.repaymentDate FROM USER U,creditCard c
 		  WHERE  U.USERID = C.CREATEBY
 		  AND u.enableFlag='T'
 		  AND c.enableFlag='T'
@@ -171,5 +181,17 @@
  	<select id="checkIsAlreadyRunPaln"   parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
 		SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=#creditCardId# and saleDate = STR_TO_DATE(#saleDate:VARCHAR#, '%Y-%m-%d')
  	</select>
-    
+ 	
+ 	<select id="queryPreMonthOutMoney"   parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+		SELECT sum(p.outMoney) AS preMonthOutMoney  FROM plan p WHERE p.creditCardId=#creditCardId#   AND  saleDate BETWEEN STR_TO_DATE(#preMonthToday:VARCHAR#,'%Y-%m-%d') AND STR_TO_DATE(#saleDate:VARCHAR#,'%Y-%m-%d')
+ 	</select>
+ 	
+ 	<select id="queryPreMonthInMoney"   parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+		SELECT sum(p.inMoney) AS preMonthInMoney  FROM plan p WHERE p.creditCardId=#creditCardId# AND  saleDate BETWEEN STR_TO_DATE(#preMonthToday:VARCHAR#,'%Y-%m-%d') AND STR_TO_DATE(#saleDate:VARCHAR#,'%Y-%m-%d')
+ 	</select>
+ 	
+ 	<select id="queryPreMonthOutSubInMoney"   parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+		SELECT sum(p.outMoney)-sum(p.inMoney) AS preMonthOutSubInMoney  FROM plan p WHERE p.creditCardId=#creditCardId#  AND saleDate BETWEEN STR_TO_DATE('2015-07-01','%Y-%m-%d') AND STR_TO_DATE(#saleDate:VARCHAR#,'%Y-%m-%d')
+ 	</select>
+     
 </sqlMap>

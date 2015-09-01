@@ -24,11 +24,12 @@ public class PropertyUtil {
 	private static PropertiesPersister propertiesPersister = new DefaultPropertiesPersister();
 	
 	private static Properties properties;
-	private static String isFirstLoadExecute;
+	
+	private static final  String DEFAULT_ENV_NAME = "env.properties";
 	
 	static {
 		try{
-			properties = PropertyUtil.loadProperties("env.properties");
+			properties = PropertyUtil.loadProperties(DEFAULT_ENV_NAME);
 		}catch(Exception e) {
 			logger.error("Error load env.properties");
 		}
@@ -61,19 +62,4 @@ public class PropertyUtil {
 		return props;
 	}
 	
-	
-	public static  boolean isFirtLoadExecute() {
-		if(isFirstLoadExecute== null){
-			isFirstLoadExecute = properties.getProperty("isFirstLoadExecute");
-		}
-		if(isFirstLoadExecute.equals("T")){
-			return true;
-		}else {
-			return false;
-		}
-	}
-	
-	public static  void setIsFirstLoadExecute(String f){
-		isFirstLoadExecute=f;
-	}
 }

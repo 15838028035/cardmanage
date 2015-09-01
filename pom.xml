@@ -332,11 +332,11 @@
 	</dependencies>
 
 	<build>
- 		<directory>${project.basedir}/target</directory>
+<!--  		<directory>${project.basedir}/target</directory> -->
  		
 		<testSourceDirectory>${project.basedir}/src/test/java,${project.basedir}/src/acceptancetest/java</testSourceDirectory>
 		<outputDirectory>${project.basedir}/src/main/webapp/Web-INF/classes</outputDirectory>
-		<testOutputDirectory>${project.basedir}/src/main/webapp/Web-INF/classes</testOutputDirectory>
+		<testOutputDirectory>${project.basedir}/target/test-classes</testOutputDirectory>
 		
 		<resources>
 	      <resource>
@@ -415,10 +415,8 @@
 	                            <goal>start</goal>
 	                        </goals>
 	                    </execution>
-                    
                 </executions>
                 </configuration>
-                
 			</plugin>
 
 			<plugin>
@@ -530,6 +528,27 @@
                      </execution>
                  </executions>
              </plugin>
+             
+             <plugin>  
+            <groupId>org.codehaus.mojo</groupId>  
+            <artifactId>build-helper-maven-plugin</artifactId>  
+            <version>1.7</version>  
+            <executions>  
+                <execution>  
+                    <id>add-source</id>  
+                    <phase>generate-test-sources</phase>  
+                    <goals>  
+                        <goal>add-test-source</goal>  
+                    </goals>  
+                    <configuration>  
+                        <sources>  
+                            <source>${project.basedir}/src/test/java</source>
+                             <source>${project.basedir}/src/acceptancetest/java</source>
+                        </sources>  
+                    </configuration>  
+                </execution>  
+            </executions>  
+        </plugin>  
             
 		</plugins>
 

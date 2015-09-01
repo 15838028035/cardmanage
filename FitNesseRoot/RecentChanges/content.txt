@@ -1,0 +1,4 @@
+|CardManage.CardManageAcceptanceTestSuites.UserHasOneCreditCardTest||09:22:30 星期日, 八月 30, 2015|
+|CardManage.SetUp||09:22:04 星期日, 八月 30, 2015|
+|CardManage||09:10:40 星期日, 八月 30, 2015|
+|FrontPage||09:03:54 星期日, 八月 30, 2015|

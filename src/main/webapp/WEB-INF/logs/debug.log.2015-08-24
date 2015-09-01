@@ -1,0 +1,412 @@
+[DEBUG] [19:43:52] java.sql.Connection - {conn-100000} Connection
+[DEBUG] [19:43:53] java.sql.Connection - {conn-100000} Preparing Statement:    SELECT ID,code,name,url,   LOCKSTATUS,ENABLEFLAG, CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY   ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM CMPermission  
+[DEBUG] [19:44:17] java.sql.Connection - {conn-100003} Connection
+[DEBUG] [19:44:17] java.sql.Connection - {conn-100003} Preparing Statement:    SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,   CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY    ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER t    WHERE        t.loginNo = ?                                      
+[DEBUG] [19:44:18] java.sql.Connection - {conn-100006} Connection
+[DEBUG] [19:44:18] java.sql.Connection - {conn-100006} Preparing Statement:    SELECT ID,code,name,url,   LOCKSTATUS,ENABLEFLAG, CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY   ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM CMPermission  
+[ERROR] [19:44:27] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [19:44:27] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'nd' with value ['1440416666872', ]
+[ERROR] [19:44:27] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [19:44:27] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sord' with value ['desc', ]
+[DEBUG] [19:44:27] java.sql.Connection - {conn-100009} Connection
+[DEBUG] [19:44:27] java.sql.Connection - {conn-100009} Preparing Statement:   SELECT p.id, p.batchNo, p.userId, p.creditCardId, p.postCardId, p.saleDate, p.sumAllMoney,    p.inMoney, p.outMoney, p.remainMoney,    p.LOCKSTATUS, p.ENABLEFLAG,    p.CREATEBY,DATE_FORMAT( p.CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE, p.UPDATEBY    ,DATE_FORMAT( p.UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE,     u.userName, pc.postCardNo, pc.manName,pc.rate,     c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag,c.cardNo        FROM plan p , user u,POSTCARD pc, CREDITCARD c    where p.userid=u.userid     and p.creditCardId = c.id   and p.postCardId = pc.id   AND p.id=?    
+[ERROR] [19:44:27] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [19:44:27] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'nd' with value ['1440416666872', ]
+[ERROR] [19:44:27] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [19:44:27] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sord' with value ['desc', ]
+[DEBUG] [19:44:27] java.sql.Connection - {conn-100012} Connection
+[DEBUG] [19:44:27] java.sql.Connection - {conn-100012} Preparing Statement:      SELECT count(1)    FROM plan p , user u,POSTCARD pc, CREDITCARD c   where p.userid=u.userid     and p.creditCardId = c.id   and p.postCardId = pc.id                                                
+[DEBUG] [19:44:27] java.sql.Connection - {conn-100015} Connection
+[DEBUG] [19:44:27] java.sql.Connection - {conn-100015} Preparing Statement:    SELECT p.id, p.batchNo, p.userId, p.creditCardId, p.postCardId, p.saleDate, p.sumAllMoney,    p.inMoney, p.outMoney, p.remainMoney,    p.LOCKSTATUS, p.ENABLEFLAG,    p.CREATEBY,DATE_FORMAT( p.CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE, p.UPDATEBY    ,DATE_FORMAT( p.UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE,     u.userName, pc.postCardNo, pc.manName,pc.rate,     c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag,c.cardNo        FROM plan p , user u,POSTCARD pc, CREDITCARD c    where p.userid=u.userid     and p.creditCardId = c.id   and p.postCardId = pc.id                                                order by p.ID            
+[ERROR] [19:44:40] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [19:44:40] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'nd' with value ['1440416680585', ]
+[ERROR] [19:44:40] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [19:44:40] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sord' with value ['desc', ]
+[DEBUG] [19:44:40] java.sql.Connection - {conn-100018} Connection
+[DEBUG] [19:44:40] java.sql.Connection - {conn-100018} Preparing Statement:   SELECT p.id, p.batchNo, p.userId, p.creditCardId, p.postCardId, p.saleDate, p.sumAllMoney,    p.inMoney, p.outMoney, p.remainMoney,    p.LOCKSTATUS, p.ENABLEFLAG,    p.CREATEBY,DATE_FORMAT( p.CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE, p.UPDATEBY    ,DATE_FORMAT( p.UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE,     u.userName, pc.postCardNo, pc.manName,pc.rate,     c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag,c.cardNo        FROM plan p , user u,POSTCARD pc, CREDITCARD c    where p.userid=u.userid     and p.creditCardId = c.id   and p.postCardId = pc.id   AND p.id=?    
+[ERROR] [19:44:40] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [19:44:40] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'nd' with value ['1440416680585', ]
+[ERROR] [19:44:40] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [19:44:40] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sord' with value ['desc', ]
+[DEBUG] [19:44:40] java.sql.Connection - {conn-100021} Connection
+[DEBUG] [19:44:40] java.sql.Connection - {conn-100021} Preparing Statement:      SELECT count(1)    FROM plan p , user u,POSTCARD pc, CREDITCARD c   where p.userid=u.userid     and p.creditCardId = c.id   and p.postCardId = pc.id                                                
+[DEBUG] [19:44:40] java.sql.Connection - {conn-100024} Connection
+[DEBUG] [19:44:40] java.sql.Connection - {conn-100024} Preparing Statement:    SELECT p.id, p.batchNo, p.userId, p.creditCardId, p.postCardId, p.saleDate, p.sumAllMoney,    p.inMoney, p.outMoney, p.remainMoney,    p.LOCKSTATUS, p.ENABLEFLAG,    p.CREATEBY,DATE_FORMAT( p.CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE, p.UPDATEBY    ,DATE_FORMAT( p.UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE,     u.userName, pc.postCardNo, pc.manName,pc.rate,     c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag,c.cardNo        FROM plan p , user u,POSTCARD pc, CREDITCARD c    where p.userid=u.userid     and p.creditCardId = c.id   and p.postCardId = pc.id                                                order by p.ID            
+[DEBUG] [19:45:00] java.sql.Connection - {conn-100027} Connection
+[DEBUG] [19:45:00] java.sql.Connection - {conn-100027} Preparing Statement:      SELECT count(1)  FROM CREDITCARD  F where f.billDate=?  
+[DEBUG] [19:45:00] java.sql.Connection - {conn-100030} Connection
+[DEBUG] [19:45:00] java.sql.Connection - {conn-100030} Preparing Statement:    SELECT F_GENERATE_PLAN_DAY_TMP(?)   
+[DEBUG] [19:50:00] java.sql.Connection - {conn-100033} Connection
+[DEBUG] [19:50:00] java.sql.Connection - {conn-100033} Preparing Statement:      SELECT count(1)  FROM CREDITCARD  F where f.billDate=?  
+[DEBUG] [19:50:00] java.sql.Connection - {conn-100036} Connection
+[DEBUG] [19:50:00] java.sql.Connection - {conn-100036} Preparing Statement:    SELECT F_GENERATE_PLAN_DAY_TMP(?)   
+[DEBUG] [20:25:44] java.sql.Connection - {conn-100000} Connection
+[DEBUG] [20:25:44] java.sql.Connection - {conn-100000} Preparing Statement:    SELECT ID,code,name,url,   LOCKSTATUS,ENABLEFLAG, CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY   ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM CMPermission  
+[DEBUG] [20:26:28] java.sql.Connection - {conn-100003} Connection
+[DEBUG] [20:26:28] java.sql.Connection - {conn-100003} Preparing Statement:    SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,   CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY    ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER t    WHERE        t.loginNo = ?                                      
+[DEBUG] [20:26:29] java.sql.Connection - {conn-100006} Connection
+[DEBUG] [20:26:29] java.sql.Connection - {conn-100006} Preparing Statement:    SELECT ID,code,name,url,   LOCKSTATUS,ENABLEFLAG, CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY   ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM CMPermission  
+[ERROR] [20:26:38] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [20:26:38] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'nd' with value ['1440419197952', ]
+[ERROR] [20:26:38] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [20:26:38] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sord' with value ['desc', ]
+[DEBUG] [20:26:38] java.sql.Connection - {conn-100009} Connection
+[DEBUG] [20:26:38] java.sql.Connection - {conn-100009} Preparing Statement:   SELECT p.id, p.batchNo, p.userId, p.creditCardId, p.postCardId, p.saleDate, p.sumAllMoney,    p.inMoney, p.outMoney, p.remainMoney,    p.LOCKSTATUS, p.ENABLEFLAG,    p.CREATEBY,DATE_FORMAT( p.CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE, p.UPDATEBY    ,DATE_FORMAT( p.UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE,     u.userName, pc.postCardNo, pc.manName,pc.rate,     c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag,c.cardNo        FROM plan p , user u,POSTCARD pc, CREDITCARD c    where p.userid=u.userid     and p.creditCardId = c.id   and p.postCardId = pc.id   AND p.id=?    
+[ERROR] [20:26:38] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [20:26:38] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'nd' with value ['1440419197952', ]
+[ERROR] [20:26:38] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [20:26:38] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sord' with value ['desc', ]
+[DEBUG] [20:26:38] java.sql.Connection - {conn-100012} Connection
+[DEBUG] [20:26:38] java.sql.Connection - {conn-100012} Preparing Statement:      SELECT count(1)    FROM plan p , user u,POSTCARD pc, CREDITCARD c   where p.userid=u.userid     and p.creditCardId = c.id   and p.postCardId = pc.id                                                
+[ERROR] [20:28:20] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [20:28:20] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'nd' with value ['1440419300316', ]
+[ERROR] [20:28:20] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [20:28:20] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sord' with value ['desc', ]
+[DEBUG] [20:28:20] java.sql.Connection - {conn-100015} Connection
+[DEBUG] [20:28:20] java.sql.Connection - {conn-100015} Preparing Statement:   SELECT p.id, p.batchNo, p.userId, p.creditCardId, p.postCardId, p.saleDate, p.sumAllMoney,    p.inMoney, p.outMoney, p.remainMoney,    p.LOCKSTATUS, p.ENABLEFLAG,    p.CREATEBY,DATE_FORMAT( p.CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE, p.UPDATEBY    ,DATE_FORMAT( p.UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE,     u.userName, pc.postCardNo, pc.manName,pc.rate,     c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag,c.cardNo        FROM plan p , user u,POSTCARD pc, CREDITCARD c    where p.userid=u.userid     and p.creditCardId = c.id   and p.postCardId = pc.id   AND p.id=?    
+[ERROR] [20:28:20] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [20:28:20] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'nd' with value ['1440419300316', ]
+[ERROR] [20:28:20] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [20:28:20] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sord' with value ['desc', ]
+[DEBUG] [20:28:20] java.sql.Connection - {conn-100018} Connection
+[DEBUG] [20:28:20] java.sql.Connection - {conn-100018} Preparing Statement:      SELECT count(1)    FROM plan p , user u,POSTCARD pc, CREDITCARD c   where p.userid=u.userid     and p.creditCardId = c.id   and p.postCardId = pc.id                                                
+[ERROR] [20:28:48] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [20:28:48] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'nd' with value ['1440419328458', ]
+[ERROR] [20:28:48] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [20:28:48] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sord' with value ['desc', ]
+[DEBUG] [20:28:48] java.sql.Connection - {conn-100021} Connection
+[DEBUG] [20:28:48] java.sql.Connection - {conn-100021} Preparing Statement:   SELECT p.id, p.batchNo, p.userId, p.creditCardId, p.postCardId, p.saleDate, p.sumAllMoney,    p.inMoney, p.outMoney, p.remainMoney,    p.LOCKSTATUS, p.ENABLEFLAG,    p.CREATEBY,DATE_FORMAT( p.CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE, p.UPDATEBY    ,DATE_FORMAT( p.UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE,     u.userName, pc.postCardNo, pc.manName,pc.rate,     c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag,c.cardNo        FROM plan p , user u,POSTCARD pc, CREDITCARD c    where p.userid=u.userid     and p.creditCardId = c.id   and p.postCardId = pc.id   AND p.id=?    
+[ERROR] [20:28:48] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [20:28:48] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'nd' with value ['1440419328458', ]
+[ERROR] [20:28:48] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [20:28:48] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sord' with value ['desc', ]
+[DEBUG] [20:28:48] java.sql.Connection - {conn-100024} Connection
+[DEBUG] [20:28:48] java.sql.Connection - {conn-100024} Preparing Statement:      SELECT count(1)    FROM plan p , user u,POSTCARD pc, CREDITCARD c   where p.userid=u.userid     and p.creditCardId = c.id   and p.postCardId = pc.id                                                
+[ERROR] [20:29:20] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [20:29:20] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'nd' with value ['1440419360339', ]
+[ERROR] [20:29:20] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [20:29:20] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sord' with value ['desc', ]
+[DEBUG] [20:29:20] java.sql.Connection - {conn-100027} Connection
+[DEBUG] [20:29:20] java.sql.Connection - {conn-100027} Preparing Statement:   SELECT p.id, p.batchNo, p.userId, p.creditCardId, p.postCardId, p.saleDate, p.sumAllMoney,    p.inMoney, p.outMoney, p.remainMoney,    p.LOCKSTATUS, p.ENABLEFLAG,    p.CREATEBY,DATE_FORMAT( p.CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE, p.UPDATEBY    ,DATE_FORMAT( p.UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE,     u.userName, pc.postCardNo, pc.manName,pc.rate,     c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag,c.cardNo        FROM plan p , user u,POSTCARD pc, CREDITCARD c    where p.userid=u.userid     and p.creditCardId = c.id   and p.postCardId = pc.id   AND p.id=?    
+[ERROR] [20:29:20] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [20:29:20] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'nd' with value ['1440419360339', ]
+[ERROR] [20:29:20] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [20:29:20] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sord' with value ['desc', ]
+[DEBUG] [20:29:20] java.sql.Connection - {conn-100030} Connection
+[DEBUG] [20:29:20] java.sql.Connection - {conn-100030} Preparing Statement:      SELECT count(1)    FROM plan p , user u,POSTCARD pc, CREDITCARD c   where p.userid=u.userid     and p.creditCardId = c.id   and p.postCardId = pc.id                                                
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100033} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100033} Preparing Statement:      SELECT count(1)  FROM CREDITCARD  F where f.billDate=?  
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100036} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100036} Preparing Statement:    SELECT F_GENERATE_PLAN_DAY_TMP(?)   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100039} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100039} Preparing Statement:    SELECT u.userId,c.id as creditCardId,c.cardNo, c.maxLimit FROM USER U,creditCard c     WHERE  U.USERID = C.CREATEBY     AND u.enableFlag='T'     AND c.enableFlag='T'     AND c.billDate = ?      
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100042} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100042} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100045} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100045} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100048} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100048} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100051} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100051} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100053} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100053} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100056} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100056} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100059} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100059} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100062} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100062} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100064} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100064} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100067} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100067} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100070} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100070} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100073} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100073} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100075} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100075} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100078} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100078} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100081} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100081} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100084} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100084} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100086} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100086} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100089} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100089} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100092} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100092} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100095} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100095} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100097} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100097} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100100} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100100} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100103} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100103} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100106} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100106} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100108} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100108} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100111} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100111} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100114} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100114} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100117} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100117} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100119} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100119} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100122} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100122} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100125} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100125} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100128} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100128} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100130} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100130} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100133} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100133} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100136} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100136} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100139} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100139} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100141} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100141} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100144} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100144} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100147} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100147} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100150} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100150} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100152} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100152} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100155} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100155} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100158} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100158} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100161} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100161} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100163} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100163} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100166} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100166} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100169} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100169} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100172} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100172} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100174} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100174} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100177} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100177} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100180} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100180} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100183} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100183} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100185} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100185} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100188} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100188} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100191} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100191} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100194} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100194} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100196} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100196} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100199} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100199} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100202} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100202} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100205} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100205} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100207} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100207} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100210} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100210} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100213} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100213} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100216} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100216} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100218} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100218} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100221} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100221} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100224} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100224} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100227} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100227} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100229} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100229} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100232} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100232} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100235} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100235} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100238} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100238} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100240} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100240} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100243} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100243} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100246} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100246} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100249} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100249} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100251} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100251} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100254} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100254} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100257} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100257} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100260} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100260} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100262} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100262} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100265} Connection
+[DEBUG] [20:30:00] java.sql.Connection - {conn-100265} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100268} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100268} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100271} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100271} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100273} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100273} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100276} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100276} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100279} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100279} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100282} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100282} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100284} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100284} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100287} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100287} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100290} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100290} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100293} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100293} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100295} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100295} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100298} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100298} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100301} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100301} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100304} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100304} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100306} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100306} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100309} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100309} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100312} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100312} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100315} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100315} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100317} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100317} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100320} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100320} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100323} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100323} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100326} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100326} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100328} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100328} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100331} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100331} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100334} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100334} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100337} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100337} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100339} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100339} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100342} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100342} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100345} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100345} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100348} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100348} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100350} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100350} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100353} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100353} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100356} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100356} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100359} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100359} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100361} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100361} Preparing Statement:    SELECT  F_CHECK_SALE_DAY(?)  AS   F_CHECK_SALE_DAY   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100364} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100364} Preparing Statement:    SELECT F_GET_POST_CARDID(?,?) AS  F_GET_POST_CARDID   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100367} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100367} Preparing Statement:    SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=? and saleDate = STR_TO_DATE(?, '%Y-%m-%d')   
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100370} Connection
+[DEBUG] [20:30:01] java.sql.Connection - {conn-100370} Preparing Statement:     INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)       VALUES(?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s'),       ?,       ?,       ?,       ?,       ?,       ?,       STR_TO_DATE(?, '%Y-%m-%d %h:%i:%s')       )       
+[ERROR] [20:30:47] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [20:30:47] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'nd' with value ['1440419446853', ]
+[ERROR] [20:30:47] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [20:30:47] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sord' with value ['desc', ]
+[DEBUG] [20:30:47] java.sql.Connection - {conn-100372} Connection
+[DEBUG] [20:30:47] java.sql.Connection - {conn-100372} Preparing Statement:   SELECT p.id, p.batchNo, p.userId, p.creditCardId, p.postCardId, p.saleDate, p.sumAllMoney,    p.inMoney, p.outMoney, p.remainMoney,    p.LOCKSTATUS, p.ENABLEFLAG,    p.CREATEBY,DATE_FORMAT( p.CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE, p.UPDATEBY    ,DATE_FORMAT( p.UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE,     u.userName, pc.postCardNo, pc.manName,pc.rate,     c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag,c.cardNo        FROM plan p , user u,POSTCARD pc, CREDITCARD c    where p.userid=u.userid     and p.creditCardId = c.id   and p.postCardId = pc.id   AND p.id=?    
+[ERROR] [20:30:47] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [20:30:47] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'nd' with value ['1440419446853', ]
+[ERROR] [20:30:47] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [20:30:47] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sord' with value ['desc', ]
+[DEBUG] [20:30:47] java.sql.Connection - {conn-100375} Connection
+[DEBUG] [20:30:47] java.sql.Connection - {conn-100375} Preparing Statement:      SELECT count(1)    FROM plan p , user u,POSTCARD pc, CREDITCARD c   where p.userid=u.userid     and p.creditCardId = c.id   and p.postCardId = pc.id                                                
+[DEBUG] [20:30:47] java.sql.Connection - {conn-100378} Connection
+[DEBUG] [20:30:47] java.sql.Connection - {conn-100378} Preparing Statement:    SELECT p.id, p.batchNo, p.userId, p.creditCardId, p.postCardId, p.saleDate, p.sumAllMoney,    p.inMoney, p.outMoney, p.remainMoney,    p.LOCKSTATUS, p.ENABLEFLAG,    p.CREATEBY,DATE_FORMAT( p.CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE, p.UPDATEBY    ,DATE_FORMAT( p.UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE,     u.userName, pc.postCardNo, pc.manName,pc.rate,     c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag,c.cardNo        FROM plan p , user u,POSTCARD pc, CREDITCARD c    where p.userid=u.userid     and p.creditCardId = c.id   and p.postCardId = pc.id                                                order by p.ID            

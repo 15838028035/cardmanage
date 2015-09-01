@@ -1,0 +1,6 @@
+!|import|
+|com.lj.app.core.common.util.AbstractAcceptanceTestBaseTestCase|
+|com.lj.app.core.common.util.SetupContextUtil|
+|com.lj.app.cardmanage.user.model.UserSetUpFixtureAcceptanceTest|
+|com.lj.app.cardmanage.plan.service.PlanServiceAcceptanceTest|
+

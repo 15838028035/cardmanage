@@ -10,14 +10,36 @@ public class NoticeUtil {
 	
 	private static Log log = LogFactory.getLog(NoticeUtil.class);
 	
-	public static void sendEmail(String emailAddress,String title,String content){
+	private static IEmailSender emailSender;
+	
+	private static IEmailSender defaultEmailSender =  EmailSenderFactory.createEmailSenderImpl();
+	
+	public static boolean  sendEmail(String emailAddress,String title,String content){
 		
 		try {
-			IEmailSender emailSender = EmailSenderFactory.createEmailSenderImpl();
-			emailSender.sendEmail(emailAddress, title, content);
+			IEmailSender emailSender = getEmailSender();
+			return emailSender.sendEmail(emailAddress, title, content);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return true;
 	}
+
+	public static IEmailSender getEmailSender() {
+		return emailSender == null?defaultEmailSender:emailSender;
+	}
+
+	public static void setEmailSender(IEmailSender emailSender) {
+		NoticeUtil.emailSender = emailSender;
+	}
+
+	public static IEmailSender getDefaultEmailSender() {
+		return defaultEmailSender;
+	}
+
+	public static void setDefaultEmailSender(IEmailSender defaultEmailSender) {
+		NoticeUtil.defaultEmailSender = defaultEmailSender;
+	}
+	
 	
 }

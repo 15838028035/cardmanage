@@ -388,7 +388,7 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 								
 								if(j==0){
 									cuurentSaleSumMoney = sumAllMoney*billSaleRate/100;
-									remainMoney = cuurentSaleSumMoney-preMonthOutSubInMoney;
+									remainMoney = sumAllMoney-preMonthOutSubInMoney;
 									saleDate = getCurrentDate();
 									planRemainMoney = sumAllMoney-cuurentSaleSumMoney;
 									currentMonthSumInMoney = 0;
@@ -411,7 +411,12 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 									outMoney = 0;
 								}
 								
-								remainMoney =remainMoney-outMoney+inMoney;
+								remainMoney =Math.abs(remainMoney-outMoney+inMoney);
+								
+								if(remainMoney<=planRemainMoney){
+									remainMoney =Math.abs(remainMoney+outMoney);
+									outMoney=0;
+								}
 								
 								if(outMoney ==0){
 									postCardId = getPostCardId(SIGLE_SALE_MIN_MONEY,userId);
@@ -422,16 +427,19 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 								saleDate = getSaleDay(saleDate,1);
 								
 								
-								realRemainMoney = remainMoney+planRemainMoney;//实际剩余金额
+								//realRemainMoney = remainMoney+planRemainMoney;//实际剩余金额
+								realRemainMoney = remainMoney;
 								
 								if(j==0){
-									planRemainMoney = sumAllMoney-realRemainMoney - outMoney+inMoney;
-									realRemainMoney = realRemainMoney+planRemainMoney;
+									//planRemainMoney = sumAllMoney-realRemainMoney - outMoney+inMoney;
+									//planRemainMoney = sumAllMoney-realRemainMoney - outMoney+inMoney;
+									//realRemainMoney = realRemainMoney+planRemainMoney;
+									realRemainMoney = remainMoney;
 									
-									if(realRemainMoney>sumAllMoney){
+									/*if(realRemainMoney>sumAllMoney){
 										planRemainMoney = sumAllMoney-realRemainMoney - outMoney-inMoney;
 										realRemainMoney = realRemainMoney+planRemainMoney;
-									}
+									}*/
 								}
 								
 								p.setBatchNo(batchNo);

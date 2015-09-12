@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="plan">
+<typeAlias alias="plan" type="com.lj.app.cardmanage.plan.model.Plan" />
+	
+	<resultMap id="planResult" class="plan">
+		<result property="id" column="id" nullValue=""/>      
+	   <result property="batchNo" column="batchNo" nullValue=""/>    
+	   <result property="userId" column="userId" nullValue=""/>  
+       <result property="creditCardId" column="creditCardId" nullValue=""/>    
+       <result property="postCardId" column="postCardId" nullValue=""/>
+       <result property="saleDate" column="saleDate" nullValue=""/>
+       
+       <result property="sumAllMoney" column="sumAllMoney" nullValue=""/>
+       <result property="inMoney" column="inMoney" nullValue=""/>
+       <result property="outMoney" column="outMoney" nullValue=""/>
+       <result property="remainMoney" column="remainMoney" nullValue=""/>
+       
+       <result property="lockStatus" column="LOCKSTATUS" nullValue=""/>
+       <result property="enableFlag" column="ENABLEFLAG" nullValue=""/>
+       <result property="createBy" column="CREATEBY" nullValue="0"/>
+       <result property="createDate" column="CREATEDATE" nullValue=""/>
+       <result property="updateBy" column="UPDATEBY" nullValue="0"/>
+       <result property="updateDate" column="UPDATEDATE" nullValue=""/>
+       
+        <result property="userName" column="userName" nullValue=""/>
+        <result property="postCardNo" column="postCardNo" nullValue=""/>
+        <result property="manName" column="manName" nullValue=""/>
+        <result property="rate" column="rate" nullValue=""/>
+        <result property="maxLimit" column="maxLimit" nullValue=""/>
+        <result property="billDate" column="billDate" nullValue=""/>
+        <result property="repaymentDate" column="repaymentDate" nullValue=""/>
+        <result property="excuteFlag" column="excuteFlag" nullValue=""/>
+         <result property="cardNo" column="cardNo" nullValue=""/>
+   </resultMap>
+   
+   <resultMap id="userAndPCardesult" class="plan">
+	   <result property="userId" column="userId" nullValue=""/>  
+       <result property="creditCardId" column="creditCardId" nullValue=""/>    
+       <result property="maxLimit" column="maxLimit" nullValue=""/>
+       <result property="repaymentDate" column="repaymentDate" nullValue=""/>
+   </resultMap>
+	
+	<select id="getInfoByKey" parameterClass="int" resultMap="planResult">
+	SELECT p.id, p.batchNo, p.userId, p.creditCardId, p.postCardId, p.saleDate, p.sumAllMoney,
+		 p.inMoney, p.outMoney, p.remainMoney,
+		 p.LOCKSTATUS, p.ENABLEFLAG,
+		 p.CREATEBY,DATE_FORMAT( p.CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE, p.UPDATEBY
+			,DATE_FORMAT( p.UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE,
+	   u.userName, pc.postCardNo, pc.manName,pc.rate,
+	   c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag,c.cardNo
+			
+		 FROM plan p , user u,POSTCARD pc, CREDITCARD c
+
+		where p.userid=u.userid
+ 		 and p.creditCardId = c.id
+		and p.postCardId = pc.id
+		AND p.id=#id:NUMBER#
+	
+	</select>
+	
+	<select id="pagenate" parameterClass="java.util.HashMap" resultMap="planResult">
+		SELECT p.id, p.batchNo, p.userId, p.creditCardId, p.postCardId, p.saleDate, p.sumAllMoney,
+		 p.inMoney, p.outMoney, p.remainMoney,
+		 p.LOCKSTATUS, p.ENABLEFLAG,
+		 p.CREATEBY,DATE_FORMAT( p.CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE, p.UPDATEBY
+			,DATE_FORMAT( p.UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE,
+	   u.userName, pc.postCardNo, pc.manName,pc.rate,
+	   c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag,c.cardNo
+			
+		 FROM plan p , user u,POSTCARD pc, CREDITCARD c
+
+		where p.userid=u.userid
+ 		 and p.creditCardId = c.id
+		and p.postCardId = pc.id
+		<dynamic prepend="AND">
+			<isGreaterEqual	prepend="AND" property="id" compareValue="0"> 
+				p.id = #id# 
+			</isGreaterEqual> 
+			<isGreaterEqual	prepend="AND" property="createBy" compareValue="1"> 
+				p.userId = #createBy# 
+			</isGreaterEqual> 
+		  	<isNotEmpty prepend="AND" property="loginNo"> u.loginNo = #loginNo#</isNotEmpty>
+		     <isNotEmpty prepend="AND" property="userName"> u.userName = #userName#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="cardNo"> c.cardNo = #cardNo#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="saleDate"> p.saleDate = STR_TO_DATE(#saleDate:VARCHAR#, '%Y-%m-%d')</isNotEmpty>
+		</dynamic>
+		<![CDATA[ 
+			order by p.ID
+   			 ]]>  
+	</select>
+	
+	
+	 <select id="pagenate_count" parameterClass="java.util.HashMap" resultClass="long">
+				SELECT count(1)
+		 FROM plan p , user u,POSTCARD pc, CREDITCARD c
+		where p.userid=u.userid
+ 		 and p.creditCardId = c.id
+		and p.postCardId = pc.id
+  		<dynamic prepend="AND">
+  			<isGreaterEqual	prepend="AND" property="id" compareValue="0"> 
+				p.id = #id# 
+			</isGreaterEqual> 
+  			<isGreaterEqual	prepend="AND" property="createBy" compareValue="1"> 
+				p.userId = #createBy# 
+			</isGreaterEqual> 
+		  	<isNotEmpty prepend="AND" property="loginNo"> u.loginNo = #loginNo#</isNotEmpty>
+		     <isNotEmpty prepend="AND" property="userName"> u.userName = #userName#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="cardNo"> c.cardNo = #cardNo#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="saleDate"> p.saleDate = STR_TO_DATE(#saleDate:VARCHAR#, '%Y-%m-%d')</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<delete id="delete" parameterClass="int">
+		DELETE FROM   Plan WHERE id=#id#
+	</delete>
+ 
+	<insert id="insert" parameterClass="plan" >
+			INSERT INTO plan(batchNo,userId,postCardId,creditCardId,saleDate,sumAllMoney,inMoney,outMoney,remainMoney,excuteFlag,CREATEBY,CREATEDATE)
+						VALUES(#batchNo:VARCHAR#,
+						#userId:NUMBER#,
+						#postCardId:NUMBER#,
+						#creditCardId:NUMBER#,
+						STR_TO_DATE(#saleDate:VARCHAR#, '%Y-%m-%d %h:%i:%s'),
+						#sumAllMoney:NUMBER#,
+						#inMoney:NUMBER#,
+						#outMoney:NUMBER#,
+						#remainMoney:NUMBER#,
+						#excuteFlag:VARCHAR#,
+						#createBy:NUMBER#,
+						STR_TO_DATE(#createDate:VARCHAR#, '%Y-%m-%d %h:%i:%s')
+						)
+				
+	</insert>
+	
+ <update id="update" parameterClass="plan" >
+		UPDATE  plan t 
+		<dynamic prepend="set" >
+			<isNotEmpty prepend="," property="excuteFlag">
+				t.excuteFlag = #excuteFlag:VARCHAR#
+			</isNotEmpty>
+			
+			<isGreaterThan prepend="," property="sumAllMoney" compareValue="-1">
+				t.sumAllMoney=#sumAllMoney:NUMBER#
+			</isGreaterThan>
+			<isGreaterThan prepend="," property="inMoney" compareValue="-1">
+				t.inMoney=#inMoney:NUMBER#
+			</isGreaterThan>
+			<isGreaterThan prepend="," property="outMoney" compareValue="-1">
+				t.outMoney=#outMoney:NUMBER#
+			</isGreaterThan>
+			<isGreaterThan prepend="," property="remainMoney" compareValue="-1">
+				t.remainMoney=#remainMoney:NUMBER#
+			</isGreaterThan>
+		</dynamic>
+ 		WHERE id=#id:NUMBER#
+	 </update>
+	 
+	 <select id="selectUserAndCardOfBillDay"  parameterClass="int" resultMap="userAndPCardesult">
+		SELECT u.userId,c.id as creditCardId,c.cardNo, c.maxLimit,c.repaymentDate FROM USER U,creditCard c
+		  WHERE  U.USERID = C.CREATEBY
+		  AND u.enableFlag='T'
+		  AND c.enableFlag='T'
+		  AND c.billDate = #billDate:NUMBER#
+			
+	</select>
+	
+	<select id="generatePlanDayTmp"   parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+		SELECT F_GENERATE_PLAN_DAY_TMP(#days#)
+ 	</select>
+ 	
+ 	<select id="checkSaleDay" parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+		SELECT  F_CHECK_SALE_DAY(#day#)  AS   F_CHECK_SALE_DAY
+ 	</select>
+ 	
+ 	<select id="getPostCardId"   parameterClass="java.util.HashMap"   resultClass="java.util.HashMap">
+		SELECT F_GET_POST_CARDID(#outMoney#,#userId#) AS  F_GET_POST_CARDID
+ 	</select>
+ 	
+ 	<select id="checkIsAlreadyRunPaln"   parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+		SELECT count(1) AS userCreditCardAndPlanCount  FROM plan p WHERE p.creditCardId=#creditCardId# and saleDate = STR_TO_DATE(#saleDate:VARCHAR#, '%Y-%m-%d')
+ 	</select>
+ 	
+ 	<select id="queryPreMonthOutMoney"   parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+		SELECT sum(p.outMoney) AS preMonthOutMoney  FROM plan p WHERE p.creditCardId=#creditCardId#   AND  saleDate BETWEEN STR_TO_DATE(#preMonthToday:VARCHAR#,'%Y-%m-%d') AND STR_TO_DATE(#saleDate:VARCHAR#,'%Y-%m-%d')
+ 	</select>
+ 	
+ 	<select id="queryPreMonthInMoney"   parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+		SELECT sum(p.inMoney) AS preMonthInMoney  FROM plan p WHERE p.creditCardId=#creditCardId# AND  saleDate BETWEEN STR_TO_DATE(#preMonthToday:VARCHAR#,'%Y-%m-%d') AND STR_TO_DATE(#saleDate:VARCHAR#,'%Y-%m-%d')
+ 	</select>
+ 	
+ 	<select id="queryPreMonthOutSubInMoney"   parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+		SELECT sum(p.outMoney)-sum(p.inMoney) AS preMonthOutSubInMoney  FROM plan p WHERE p.creditCardId=#creditCardId#  AND saleDate BETWEEN STR_TO_DATE('2015-07-01','%Y-%m-%d') AND STR_TO_DATE(#saleDate:VARCHAR#,'%Y-%m-%d')
+ 	</select>
+     
+</sqlMap>

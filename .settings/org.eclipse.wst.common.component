@@ -13,6 +13,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/acceptancetest/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/scripts"/>
         <property name="java-output-path" value="/cardmanage/src/main/webapp/WEB-INF/classes"/>
         <property name="context-root" value="/cardmanage"/>
     </wb-module>

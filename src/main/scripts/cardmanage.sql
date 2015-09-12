@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50519
 File Encoding         : 65001
 
-Date: 2015-09-03 13:47:58
+Date: 2015-09-12 11:01:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -78,7 +78,7 @@ CREATE TABLE `creditcard` (
   `lockStatus` varchar(2) DEFAULT '0',
   `enableFlag` varchar(2) DEFAULT 'T',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of creditcard
@@ -101,31 +101,31 @@ CREATE TABLE `dayplantmpresult` (
   `day` int(11) DEFAULT NULL,
   `orderId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36706 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=36850 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dayplantmpresult
 -- ----------------------------
-INSERT INTO `dayplantmpresult` VALUES ('36686', '21', '21');
-INSERT INTO `dayplantmpresult` VALUES ('36687', '3', '3');
-INSERT INTO `dayplantmpresult` VALUES ('36688', '13', '13');
-INSERT INTO `dayplantmpresult` VALUES ('36689', '5', '5');
-INSERT INTO `dayplantmpresult` VALUES ('36690', '27', '27');
-INSERT INTO `dayplantmpresult` VALUES ('36691', '28', '28');
-INSERT INTO `dayplantmpresult` VALUES ('36692', '12', '12');
-INSERT INTO `dayplantmpresult` VALUES ('36693', '23', '23');
-INSERT INTO `dayplantmpresult` VALUES ('36694', '9', '9');
-INSERT INTO `dayplantmpresult` VALUES ('36695', '4', '4');
-INSERT INTO `dayplantmpresult` VALUES ('36696', '22', '22');
-INSERT INTO `dayplantmpresult` VALUES ('36697', '24', '24');
-INSERT INTO `dayplantmpresult` VALUES ('36698', '7', '7');
-INSERT INTO `dayplantmpresult` VALUES ('36699', '16', '16');
-INSERT INTO `dayplantmpresult` VALUES ('36700', '10', '10');
-INSERT INTO `dayplantmpresult` VALUES ('36701', '20', '20');
-INSERT INTO `dayplantmpresult` VALUES ('36702', '17', '17');
-INSERT INTO `dayplantmpresult` VALUES ('36703', '19', '19');
-INSERT INTO `dayplantmpresult` VALUES ('36704', '25', '25');
-INSERT INTO `dayplantmpresult` VALUES ('36705', '15', '15');
+INSERT INTO `dayplantmpresult` VALUES ('36819', '20', '20');
+INSERT INTO `dayplantmpresult` VALUES ('36820', '26', '26');
+INSERT INTO `dayplantmpresult` VALUES ('36821', '2', '2');
+INSERT INTO `dayplantmpresult` VALUES ('36822', '6', '6');
+INSERT INTO `dayplantmpresult` VALUES ('36823', '14', '14');
+INSERT INTO `dayplantmpresult` VALUES ('36824', '8', '8');
+INSERT INTO `dayplantmpresult` VALUES ('36825', '4', '4');
+INSERT INTO `dayplantmpresult` VALUES ('36826', '9', '9');
+INSERT INTO `dayplantmpresult` VALUES ('36827', '13', '13');
+INSERT INTO `dayplantmpresult` VALUES ('36828', '22', '22');
+INSERT INTO `dayplantmpresult` VALUES ('36829', '16', '16');
+INSERT INTO `dayplantmpresult` VALUES ('36830', '18', '18');
+INSERT INTO `dayplantmpresult` VALUES ('36831', '12', '12');
+INSERT INTO `dayplantmpresult` VALUES ('36832', '19', '19');
+INSERT INTO `dayplantmpresult` VALUES ('36833', '7', '7');
+INSERT INTO `dayplantmpresult` VALUES ('36834', '25', '25');
+INSERT INTO `dayplantmpresult` VALUES ('36835', '24', '24');
+INSERT INTO `dayplantmpresult` VALUES ('36836', '28', '28');
+INSERT INTO `dayplantmpresult` VALUES ('36837', '10', '10');
+INSERT INTO `dayplantmpresult` VALUES ('36838', '21', '21');
 
 -- ----------------------------
 -- Table structure for `plan`
@@ -341,7 +341,7 @@ CREATE TABLE `postcard` (
   `updateBy` int(11) DEFAULT NULL,
   `updateDate` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of postcard
@@ -377,7 +377,7 @@ CREATE TABLE `user` (
   `updateBy` int(11) DEFAULT NULL,
   `updateDate` date DEFAULT NULL,
   PRIMARY KEY (`userId`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
@@ -402,28 +402,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `exceutePlanCron`(in param1 varchar(
 BEGIN
 
 	
-DECLARE v_pre_month_bill_sum_money int ; -- 上月账单总额度
-
-
-
-
-
-
-DECLARE v_pre_month_bill_sale_money int;  -- 上月消费总金额
-
-
-
-
-
-
-DECLARE v_pre_month_bill_pay_money int ; --  上月还款总金额
-
-
-
-
-
-
-DECLARE v_pre_month_not_pay_bill_money  int;  -- 上月欠款总金额
+DECLARE v_pre_month_bill_sum_money int ; -- 上月账单总额度
 
 
 
@@ -431,29 +410,23 @@ DECLARE v_pre_month_not_pay_bill_money  int;  -- 上月欠款总金额
 
 
 
-
-DECLARE v_cur_month_bill_sum_money int ; --   当月账单总额度
-
-
-
-
-
-
-DECLARE v_cur_month_bill_sale_money int;  -- 当月消费总金额
+DECLARE v_pre_month_bill_sale_money int;  -- 上月消费总金额
 
 
 
 
 
 
-DECLARE v_cur_month_bill_pay_money int ; --   当月还款总金额
+
+DECLARE v_pre_month_bill_pay_money int ; --  上月还款总金额
 
 
 
 
 
 
-DECLARE v_cur_month_not_pay_bill_money  int;  --  当月欠款总金额
+
+DECLARE v_pre_month_not_pay_bill_money  int;  -- 上月欠款总金额
 
 
 
@@ -462,7 +435,43 @@ DECLARE v_cur_month_not_pay_bill_money  int;  --  当月欠款总金额
 
 
 
-DECLARE  v_billDATE  int; -- 账单日
+
+DECLARE v_cur_month_bill_sum_money int ; --   当月账单总额度
+
+
+
+
+
+
+
+DECLARE v_cur_month_bill_sale_money int;  -- 当月消费总金额
+
+
+
+
+
+
+
+DECLARE v_cur_month_bill_pay_money int ; --   当月还款总金额
+
+
+
+
+
+
+
+DECLARE v_cur_month_not_pay_bill_money  int;  --  当月欠款总金额
+
+
+
+
+
+
+
+
+
+DECLARE  v_billDATE  int; -- 账单日
+
 
 
 
@@ -471,21 +480,24 @@ DECLARE  v_billDATE  int; -- 账单日
 
 DECLARE  v_credit_bill_date_count int; -- 账单日信用卡数量
 
-DECLARE  v_pre_bill_sum_money	int ; -- 前一个帐号总金额
+DECLARE  v_pre_bill_sum_money	int ; -- 前一个帐号总金额
 
 
 
 
 
 
-DECLARE v_current_sale_sum_money int; -- 当前消费总金额
+
+DECLARE v_current_sale_sum_money int; -- 当前消费总金额
 
 
 
 
 
 
-DECLARE v_current_pay_sum_money	int; -- 当前还款总金额
+
+DECLARE v_current_pay_sum_money	int; -- 当前还款总金额
+
 
 
 
@@ -500,14 +512,15 @@ DECLARE v_bill_sale_rate double; -- 账单消费比率(总金额的70%-80%)
 DECLARE v_bill_credit_no VARCHAR(30); -- 信用卡号
 
 
-DECLARE v_pre_bill_date date;  -- 前一个月帐号日
+DECLARE v_pre_bill_date date;  -- 前一个月帐号日
+
 
 
 
 
 
 DECLARE  v_current_bill_day date; --  当前日期
-DECLARE v_next_bill_day date;	-- 下一个账单日期
+DECLARE v_next_bill_day date;	-- 下一个账单日期
 
 
 
@@ -515,14 +528,17 @@ DECLARE v_next_bill_day date;	-- 下一个账单日期
 
 
 
-DECLARE v_bill_sum_days  int; -- 账单总天数
+
+DECLARE v_bill_sum_days  int; -- 账单总天数
 
 
 
 
 
 
-DECLARE v_credit_no  VARCHAR(30); --  信用卡编号
+
+DECLARE v_credit_no  VARCHAR(30); --  信用卡编号
+
 
 
 
@@ -548,7 +564,7 @@ SELECT   v_next_bill_day - v_current_bill_day INTO   v_bill_sum_days;
 
 SELECT count(1) INTO v_credit_bill_date_count   FROM CREDITCARD  F where f.billDate=v_billDate;
 
-select date_add(NOW(), interval 1 MONTH) ; --  获取下一个月的今天
+select date_add(NOW(), interval 1 MONTH) ; --  获取下一个月的今天
 
 
 
@@ -556,7 +572,9 @@ select date_add(NOW(), interval 1 MONTH) ; --  获取下一个月的今天
 
 
 
-select date_sub(NOW(), interval  1 MONTH);  -- 获取上一个月的今天
+
+select date_sub(NOW(), interval  1 MONTH);  -- 获取上一个月的今天
+
 
 
 
@@ -623,38 +641,54 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `executePlanProc`()
 BEGIN
 	
-DECLARE v_pre_month_bill_sum_money INT ; -- 上月账单总额度
-DECLARE v_pre_month_bill_sale_money INT;  -- 上月消费总金额
-DECLARE v_pre_month_bill_pay_money INT ; --  上月还款总金额
-DECLARE v_pre_month_not_pay_bill_money  INT;  -- 上月欠款总金额
+DECLARE v_pre_month_bill_sum_money INT ; -- 上月账单总额度
 
-DECLARE v_cur_month_bill_sum_money INT ; --   当月账单总额度
-DECLARE v_cur_month_bill_sale_money INT;  -- 当月消费总金额
-DECLARE v_cur_month_bill_pay_money INT ; --   当月还款总金额
-DECLARE v_cur_month_not_pay_bill_money  INT;  --  当月欠款总金额
+DECLARE v_pre_month_bill_sale_money INT;  -- 上月消费总金额
 
-DECLARE  v_billDATE  INT; -- 账单日
+DECLARE v_pre_month_bill_pay_money INT ; --  上月还款总金额
+
+DECLARE v_pre_month_not_pay_bill_money  INT;  -- 上月欠款总金额
+
+
+DECLARE v_cur_month_bill_sum_money INT ; --   当月账单总额度
+
+DECLARE v_cur_month_bill_sale_money INT;  -- 当月消费总金额
+
+DECLARE v_cur_month_bill_pay_money INT ; --   当月还款总金额
+
+DECLARE v_cur_month_not_pay_bill_money  INT;  --  当月欠款总金额
+
+
+DECLARE  v_billDATE  INT; -- 账单日
+
 DECLARE  v_credit_bill_date_count INT; -- 账单日信用卡数量
 
-DECLARE  v_pre_bill_sum_money	INT ; -- 前一个帐号总金额
+DECLARE  v_pre_bill_sum_money	INT ; -- 前一个帐号总金额
 
-DECLARE v_current_sale_sum_money INT; -- 当前消费总金额
-DECLARE v_current_pay_sum_money	INT; -- 当前还款总金额
+
+DECLARE v_current_sale_sum_money INT; -- 当前消费总金额
+
+DECLARE v_current_pay_sum_money	INT; -- 当前还款总金额
+
 
 DECLARE v_bill_count  INT; -- 每张信用卡的账单数量
 DECLARE v_bill_sale_rate DOUBLE; -- 账单消费比率(总金额的70%-80%)
 
 DECLARE v_bill_credit_no VARCHAR(30); -- 信用卡号
 
-DECLARE v_pre_bill_date DATE;  -- 前一个月帐号日
+DECLARE v_pre_bill_date DATE;  -- 前一个月帐号日
+
 
 
 DECLARE  v_current_bill_day DATE; --  当前日期
-DECLARE v_next_bill_day DATE;	-- 下一个账单日期
+DECLARE v_next_bill_day DATE;	-- 下一个账单日期
 
-DECLARE v_bill_sum_days  INT; -- 账单总天数
 
-DECLARE v_credit_no  VARCHAR(30); --  信用卡编号
+DECLARE v_bill_sum_days  INT; -- 账单总天数
+
+
+DECLARE v_credit_no  VARCHAR(30); --  信用卡编号
+
 
 
 DECLARE i INT;
@@ -677,9 +711,11 @@ SELECT   v_next_bill_day - v_current_bill_day INTO   v_bill_sum_days;
 
 SELECT count(1) INTO v_credit_bill_date_count   FROM CREDITCARD  F where f.billDate=v_billDate;
 
-select date_add(NOW(), interval 1 MONTH) ; --  获取下一个月的今天
+select date_add(NOW(), interval 1 MONTH) ; --  获取下一个月的今天
 
-select date_sub(NOW(), interval  1 MONTH);  -- 获取上一个月的今天
+
+select date_sub(NOW(), interval  1 MONTH);  -- 获取上一个月的今天
+
 
 SEt dayCount=30;
 SET i=0;
@@ -822,7 +858,9 @@ BEGIN
 DECLARE v_post_cardId int;
 
 SET v_post_cardId = 0;
-SELECT P.ID into v_post_cardId  FROM POSTCARD P WHERE P.CREATEBY=userId AND P.MINMONEY<money AND P.MAXMONEY>=money limit 1;
+SELECT P.ID into v_post_cardId  FROM POSTCARD P WHERE P.CREATEBY=userId AND P.MINMONEY<money AND P.MAXMONEY>=money
+
+ORDER BY RAND() LIMIT 1 ;
 
 return v_post_cardId;
 

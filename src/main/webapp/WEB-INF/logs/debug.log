@@ -1,6 +1,14 @@
-[DEBUG] [12:02:12] java.sql.Connection - {conn-100000} Connection
-[DEBUG] [12:02:12] java.sql.Connection - {conn-100000} Preparing Statement:    SELECT ID,code,name,url,   LOCKSTATUS,ENABLEFLAG, CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY   ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM CMPermission  
-[DEBUG] [12:05:00] java.sql.Connection - {conn-100003} Connection
-[DEBUG] [12:05:00] java.sql.Connection - {conn-100003} Preparing Statement:      SELECT count(1)  FROM CREDITCARD  F where f.billDate=?  
-[DEBUG] [12:05:00] java.sql.Connection - {conn-100006} Connection
-[DEBUG] [12:05:00] java.sql.Connection - {conn-100006} Preparing Statement:    SELECT F_GENERATE_PLAN_DAY_TMP(?)   
+[DEBUG] [10:49:53] java.sql.Connection - {conn-100000} Connection
+[DEBUG] [10:49:53] java.sql.Connection - {conn-100000} Preparing Statement:    SELECT ID,code,name,url,   LOCKSTATUS,ENABLEFLAG, CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY   ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM CMPermission  
+[DEBUG] [10:50:00] java.sql.Connection - {conn-100003} Connection
+[DEBUG] [10:50:00] java.sql.Connection - {conn-100003} Preparing Statement:      SELECT count(1)  FROM CREDITCARD  F where f.billDate=?  
+[DEBUG] [10:50:00] java.sql.Connection - {conn-100006} Connection
+[DEBUG] [10:50:00] java.sql.Connection - {conn-100006} Preparing Statement:    SELECT F_GENERATE_PLAN_DAY_TMP(?)   
+[DEBUG] [10:55:00] java.sql.Connection - {conn-100009} Connection
+[DEBUG] [10:55:00] java.sql.Connection - {conn-100009} Preparing Statement:      SELECT count(1)  FROM CREDITCARD  F where f.billDate=?  
+[DEBUG] [10:55:00] java.sql.Connection - {conn-100012} Connection
+[DEBUG] [10:55:00] java.sql.Connection - {conn-100012} Preparing Statement:    SELECT F_GENERATE_PLAN_DAY_TMP(?)   
+[DEBUG] [11:00:00] java.sql.Connection - {conn-100015} Connection
+[DEBUG] [11:00:00] java.sql.Connection - {conn-100015} Preparing Statement:      SELECT count(1)  FROM CREDITCARD  F where f.billDate=?  
+[DEBUG] [11:00:00] java.sql.Connection - {conn-100018} Connection
+[DEBUG] [11:00:00] java.sql.Connection - {conn-100018} Preparing Statement:    SELECT F_GENERATE_PLAN_DAY_TMP(?)   

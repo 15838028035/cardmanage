@@ -64,6 +64,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function changeCssOnBlur(obj){
 		 $(obj).css({"background-image":"url(./images/login_inputextbg.jpg)"});
 		}
+		
+		$(document).ready(function(){
+		$("#pwd").keydown(function(e){
+		var curKey = e.which;
+			if(curKey == 13){
+				login();
+			}
+		});
+	}); 
 	
 	</script>
 	

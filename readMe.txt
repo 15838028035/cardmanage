@@ -19,7 +19,7 @@
  
 5.将打好的包放在tomcat目录下，启动tomcat.
 	登录地址:http://localhost:8080/cardmanage/login.jsp
-	默认用户名:system 默认密码:system
+	默认用户名:system 默认密码:123456
 
 备注:
   (1)执行验收测试

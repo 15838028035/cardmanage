@@ -12,8 +12,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 
 <body>
-	<div><h1>登录超时,请重新登录</h1></div>
-		<a href="javascript:login()">登录</a>
+	<div><h1>登录超时,请重新<a href="javascript:login()">登录</a></h1></div>
+		
 </body>
 
 <script language="javascript">

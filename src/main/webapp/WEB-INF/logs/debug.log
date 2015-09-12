@@ -12,3 +12,23 @@
 [DEBUG] [11:00:00] java.sql.Connection - {conn-100015} Preparing Statement:      SELECT count(1)  FROM CREDITCARD  F where f.billDate=?  
 [DEBUG] [11:00:00] java.sql.Connection - {conn-100018} Connection
 [DEBUG] [11:00:00] java.sql.Connection - {conn-100018} Preparing Statement:    SELECT F_GENERATE_PLAN_DAY_TMP(?)   
+[DEBUG] [11:12:32] java.sql.Connection - {conn-100000} Connection
+[DEBUG] [11:12:32] java.sql.Connection - {conn-100000} Preparing Statement:    SELECT ID,code,name,url,   LOCKSTATUS,ENABLEFLAG, CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY   ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM CMPermission  
+[DEBUG] [11:15:00] java.sql.Connection - {conn-100003} Connection
+[DEBUG] [11:15:00] java.sql.Connection - {conn-100003} Preparing Statement:      SELECT count(1)  FROM CREDITCARD  F where f.billDate=?  
+[DEBUG] [11:15:00] java.sql.Connection - {conn-100006} Connection
+[DEBUG] [11:15:00] java.sql.Connection - {conn-100006} Preparing Statement:    SELECT F_GENERATE_PLAN_DAY_TMP(?)   
+[DEBUG] [11:17:17] java.sql.Connection - {conn-100009} Connection
+[DEBUG] [11:17:17] java.sql.Connection - {conn-100009} Preparing Statement:    SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,   CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY    ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER t    WHERE        t.loginNo = ?                                      
+[DEBUG] [11:17:25] java.sql.Connection - {conn-100012} Connection
+[DEBUG] [11:17:25] java.sql.Connection - {conn-100012} Preparing Statement:    SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,   CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY    ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER t    WHERE        t.loginNo = ?                                      
+[DEBUG] [11:17:26] java.sql.Connection - {conn-100015} Connection
+[DEBUG] [11:17:26] java.sql.Connection - {conn-100015} Preparing Statement:    SELECT ID,code,name,url,   LOCKSTATUS,ENABLEFLAG, CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY   ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM CMPermission  
+[DEBUG] [11:20:00] java.sql.Connection - {conn-100018} Connection
+[DEBUG] [11:20:00] java.sql.Connection - {conn-100018} Preparing Statement:      SELECT count(1)  FROM CREDITCARD  F where f.billDate=?  
+[DEBUG] [11:20:00] java.sql.Connection - {conn-100021} Connection
+[DEBUG] [11:20:00] java.sql.Connection - {conn-100021} Preparing Statement:    SELECT F_GENERATE_PLAN_DAY_TMP(?)   
+[DEBUG] [11:20:45] java.sql.Connection - {conn-100024} Connection
+[DEBUG] [11:20:45] java.sql.Connection - {conn-100024} Preparing Statement:    SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,   CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY    ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER t    WHERE        t.loginNo = ?                                      
+[DEBUG] [11:20:45] java.sql.Connection - {conn-100027} Connection
+[DEBUG] [11:20:45] java.sql.Connection - {conn-100027} Preparing Statement:    SELECT ID,code,name,url,   LOCKSTATUS,ENABLEFLAG, CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY   ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM CMPermission  

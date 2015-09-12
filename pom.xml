@@ -19,7 +19,7 @@
 			<url>http://localhost:8080/cardmanage</url>
 			<organization>http://localhost:8080/cardmanage</organization>
 			<organizationUrl>http://localhost:8080/cardmanage</organizationUrl>
-			<email>liujie_09_24@163.com</email>
+			<email>liujie09_24@163.com</email>
 			<timezone>8</timezone>
 			<roles>
 				<role>Java Developer</role>

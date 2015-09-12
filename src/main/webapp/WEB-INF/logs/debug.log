@@ -32,3 +32,215 @@
 [DEBUG] [11:20:45] java.sql.Connection - {conn-100024} Preparing Statement:    SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,   CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY    ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER t    WHERE        t.loginNo = ?                                      
 [DEBUG] [11:20:45] java.sql.Connection - {conn-100027} Connection
 [DEBUG] [11:20:45] java.sql.Connection - {conn-100027} Preparing Statement:    SELECT ID,code,name,url,   LOCKSTATUS,ENABLEFLAG, CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY   ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM CMPermission  
+[DEBUG] [11:25:37] java.sql.Connection - {conn-100000} Connection
+[DEBUG] [11:25:37] java.sql.Connection - {conn-100000} Preparing Statement:    SELECT ID,code,name,url,   LOCKSTATUS,ENABLEFLAG, CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY   ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM CMPermission  
+[DEBUG] [11:27:14] java.sql.Connection - {conn-100003} Connection
+[DEBUG] [11:27:14] java.sql.Connection - {conn-100003} Preparing Statement:    SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,   CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY    ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER t    WHERE        t.loginNo = ?                                      
+[DEBUG] [11:27:15] java.sql.Connection - {conn-100006} Connection
+[DEBUG] [11:27:15] java.sql.Connection - {conn-100006} Preparing Statement:    SELECT ID,code,name,url,   LOCKSTATUS,ENABLEFLAG, CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY   ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM CMPermission  
+[ERROR] [11:27:21] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [11:27:21] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'nd' with value ['1442028441131', ]
+[ERROR] [11:27:21] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [11:27:21] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sord' with value ['desc', ]
+[DEBUG] [11:27:21] java.sql.Connection - {conn-100009} Connection
+[DEBUG] [11:27:21] java.sql.Connection - {conn-100009} Preparing Statement:   SELECT p.id, p.batchNo, p.userId, p.creditCardId, p.postCardId, p.saleDate, p.sumAllMoney,    p.inMoney, p.outMoney, p.remainMoney,    p.LOCKSTATUS, p.ENABLEFLAG,    p.CREATEBY,DATE_FORMAT( p.CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE, p.UPDATEBY    ,DATE_FORMAT( p.UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE,     u.userName, pc.postCardNo, pc.manName,pc.rate,     c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag,c.cardNo        FROM plan p , user u,POSTCARD pc, CREDITCARD c    where p.userid=u.userid     and p.creditCardId = c.id   and p.postCardId = pc.id   AND p.id=?    
+[ERROR] [11:27:21] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [11:27:21] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'nd' with value ['1442028441131', ]
+[ERROR] [11:27:21] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [11:27:21] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sord' with value ['desc', ]
+[DEBUG] [11:27:21] java.sql.Connection - {conn-100012} Connection
+[DEBUG] [11:27:21] java.sql.Connection - {conn-100012} Preparing Statement:      SELECT count(1)    FROM plan p , user u,POSTCARD pc, CREDITCARD c   where p.userid=u.userid     and p.creditCardId = c.id   and p.postCardId = pc.id                                                
+[DEBUG] [11:27:21] java.sql.Connection - {conn-100015} Connection
+[DEBUG] [11:27:21] java.sql.Connection - {conn-100015} Preparing Statement:    SELECT p.id, p.batchNo, p.userId, p.creditCardId, p.postCardId, p.saleDate, p.sumAllMoney,    p.inMoney, p.outMoney, p.remainMoney,    p.LOCKSTATUS, p.ENABLEFLAG,    p.CREATEBY,DATE_FORMAT( p.CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE, p.UPDATEBY    ,DATE_FORMAT( p.UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE,     u.userName, pc.postCardNo, pc.manName,pc.rate,     c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag,c.cardNo        FROM plan p , user u,POSTCARD pc, CREDITCARD c    where p.userid=u.userid     and p.creditCardId = c.id   and p.postCardId = pc.id                                                order by p.ID            
+[ERROR] [11:27:24] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [11:27:24] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'nd' with value ['1442028444065', ]
+[ERROR] [11:27:24] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sidx' with value ['loginNo', ]
+[ERROR] [11:27:24] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sord' with value ['asc', ]
+[DEBUG] [11:27:24] java.sql.Connection - {conn-100018} Connection
+[DEBUG] [11:27:24] java.sql.Connection - {conn-100018} Preparing Statement:     SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,   CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY    ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER   WHERE userId=?  
+[ERROR] [11:27:24] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [11:27:24] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'nd' with value ['1442028444065', ]
+[ERROR] [11:27:24] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sidx' with value ['loginNo', ]
+[ERROR] [11:27:24] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sord' with value ['asc', ]
+[DEBUG] [11:27:24] java.sql.Connection - {conn-100021} Connection
+[DEBUG] [11:27:24] java.sql.Connection - {conn-100021} Preparing Statement:      SELECT count(1) FROM USER t                                               
+[DEBUG] [11:27:24] java.sql.Connection - {conn-100024} Connection
+[DEBUG] [11:27:24] java.sql.Connection - {conn-100024} Preparing Statement:    SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,   CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY    ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER t                                            
+[ERROR] [11:28:20] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [11:28:20] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'nd' with value ['1442028500761', ]
+[ERROR] [11:28:20] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sidx' with value ['loginNo', ]
+[ERROR] [11:28:20] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sord' with value ['asc', ]
+[DEBUG] [11:28:20] java.sql.Connection - {conn-100027} Connection
+[DEBUG] [11:28:20] java.sql.Connection - {conn-100027} Preparing Statement:     SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,   CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY    ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER   WHERE userId=?  
+[ERROR] [11:28:20] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [11:28:20] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'nd' with value ['1442028500761', ]
+[ERROR] [11:28:20] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sidx' with value ['loginNo', ]
+[ERROR] [11:28:20] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sord' with value ['asc', ]
+[DEBUG] [11:28:21] java.sql.Connection - {conn-100030} Connection
+[DEBUG] [11:28:21] java.sql.Connection - {conn-100030} Preparing Statement:      SELECT count(1) FROM USER t                                               
+[DEBUG] [11:28:21] java.sql.Connection - {conn-100033} Connection
+[DEBUG] [11:28:21] java.sql.Connection - {conn-100033} Preparing Statement:    SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,   CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY    ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER t                                            
+[ERROR] [11:29:48] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [11:29:48] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'nd' with value ['1442028588715', ]
+[ERROR] [11:29:48] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sidx' with value ['loginNo', ]
+[ERROR] [11:29:48] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sord' with value ['asc', ]
+[DEBUG] [11:29:48] java.sql.Connection - {conn-100036} Connection
+[DEBUG] [11:29:48] java.sql.Connection - {conn-100036} Preparing Statement:     SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,   CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY    ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER   WHERE userId=?  
+[ERROR] [11:29:48] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [11:29:48] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'nd' with value ['1442028588715', ]
+[ERROR] [11:29:48] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sidx' with value ['loginNo', ]
+[ERROR] [11:29:48] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sord' with value ['asc', ]
+[DEBUG] [11:29:48] java.sql.Connection - {conn-100039} Connection
+[DEBUG] [11:29:48] java.sql.Connection - {conn-100039} Preparing Statement:      SELECT count(1) FROM USER t                                               
+[DEBUG] [11:29:48] java.sql.Connection - {conn-100042} Connection
+[DEBUG] [11:29:48] java.sql.Connection - {conn-100042} Preparing Statement:    SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,   CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY    ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER t                                            
+[DEBUG] [11:30:00] java.sql.Connection - {conn-100045} Connection
+[DEBUG] [11:30:00] java.sql.Connection - {conn-100045} Preparing Statement:      SELECT count(1)  FROM CREDITCARD  F where f.billDate=?  
+[DEBUG] [11:30:00] java.sql.Connection - {conn-100048} Connection
+[DEBUG] [11:30:00] java.sql.Connection - {conn-100048} Preparing Statement:    SELECT F_GENERATE_PLAN_DAY_TMP(?)   
+[ERROR] [11:30:44] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [11:30:44] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'nd' with value ['1442028644842', ]
+[ERROR] [11:30:44] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [11:30:44] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sord' with value ['desc', ]
+[DEBUG] [11:30:44] java.sql.Connection - {conn-100051} Connection
+[DEBUG] [11:30:44] java.sql.Connection - {conn-100051} Preparing Statement:   SELECT p.id, p.batchNo, p.userId, p.creditCardId, p.postCardId, p.saleDate, p.sumAllMoney,    p.inMoney, p.outMoney, p.remainMoney,    p.LOCKSTATUS, p.ENABLEFLAG,    p.CREATEBY,DATE_FORMAT( p.CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE, p.UPDATEBY    ,DATE_FORMAT( p.UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE,     u.userName, pc.postCardNo, pc.manName,pc.rate,     c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag,c.cardNo        FROM plan p , user u,POSTCARD pc, CREDITCARD c    where p.userid=u.userid     and p.creditCardId = c.id   and p.postCardId = pc.id   AND p.id=?    
+[ERROR] [11:30:45] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [11:30:45] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'nd' with value ['1442028644842', ]
+[ERROR] [11:30:45] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sidx' with value ['id', ]
+[ERROR] [11:30:45] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.plan.web.PlanAction: Error setting expression 'sord' with value ['desc', ]
+[DEBUG] [11:30:45] java.sql.Connection - {conn-100054} Connection
+[DEBUG] [11:30:45] java.sql.Connection - {conn-100054} Preparing Statement:      SELECT count(1)    FROM plan p , user u,POSTCARD pc, CREDITCARD c   where p.userid=u.userid     and p.creditCardId = c.id   and p.postCardId = pc.id                                                
+[DEBUG] [11:30:45] java.sql.Connection - {conn-100057} Connection
+[DEBUG] [11:30:45] java.sql.Connection - {conn-100057} Preparing Statement:    SELECT p.id, p.batchNo, p.userId, p.creditCardId, p.postCardId, p.saleDate, p.sumAllMoney,    p.inMoney, p.outMoney, p.remainMoney,    p.LOCKSTATUS, p.ENABLEFLAG,    p.CREATEBY,DATE_FORMAT( p.CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE, p.UPDATEBY    ,DATE_FORMAT( p.UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE,     u.userName, pc.postCardNo, pc.manName,pc.rate,     c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag,c.cardNo        FROM plan p , user u,POSTCARD pc, CREDITCARD c    where p.userid=u.userid     and p.creditCardId = c.id   and p.postCardId = pc.id                                                order by p.ID            
+[ERROR] [11:31:10] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [11:31:10] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'nd' with value ['1442028670541', ]
+[ERROR] [11:31:10] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sidx' with value ['loginNo', ]
+[ERROR] [11:31:10] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sord' with value ['asc', ]
+[DEBUG] [11:31:10] java.sql.Connection - {conn-100060} Connection
+[DEBUG] [11:31:10] java.sql.Connection - {conn-100060} Preparing Statement:     SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,   CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY    ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER   WHERE userId=?  
+[ERROR] [11:31:10] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [11:31:10] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'nd' with value ['1442028670541', ]
+[ERROR] [11:31:10] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sidx' with value ['loginNo', ]
+[ERROR] [11:31:10] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sord' with value ['asc', ]
+[DEBUG] [11:31:10] java.sql.Connection - {conn-100063} Connection
+[DEBUG] [11:31:10] java.sql.Connection - {conn-100063} Preparing Statement:      SELECT count(1) FROM USER t                                               
+[DEBUG] [11:31:10] java.sql.Connection - {conn-100066} Connection
+[DEBUG] [11:31:10] java.sql.Connection - {conn-100066} Preparing Statement:    SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,   CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY    ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER t                                            
+[ERROR] [11:34:42] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [11:34:42] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'nd' with value ['1442028882003', ]
+[ERROR] [11:34:42] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sidx' with value ['loginNo', ]
+[ERROR] [11:34:42] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sord' with value ['asc', ]
+[DEBUG] [11:34:42] java.sql.Connection - {conn-100069} Connection
+[DEBUG] [11:34:42] java.sql.Connection - {conn-100069} Preparing Statement:     SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,   CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY    ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER   WHERE userId=?  
+[ERROR] [11:34:42] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [11:34:42] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'nd' with value ['1442028882003', ]
+[ERROR] [11:34:42] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sidx' with value ['loginNo', ]
+[ERROR] [11:34:42] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sord' with value ['asc', ]
+[DEBUG] [11:34:42] java.sql.Connection - {conn-100072} Connection
+[DEBUG] [11:34:42] java.sql.Connection - {conn-100072} Preparing Statement:      SELECT count(1) FROM USER t                                               
+[DEBUG] [11:34:42] java.sql.Connection - {conn-100075} Connection
+[DEBUG] [11:34:42] java.sql.Connection - {conn-100075} Preparing Statement:    SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,   CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY    ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER t                                            
+[ERROR] [11:34:57] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [11:34:57] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'nd' with value ['1442028897729', ]
+[ERROR] [11:34:57] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sidx' with value ['loginNo', ]
+[ERROR] [11:34:57] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sord' with value ['asc', ]
+[DEBUG] [11:34:57] java.sql.Connection - {conn-100078} Connection
+[DEBUG] [11:34:57] java.sql.Connection - {conn-100078} Preparing Statement:     SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,   CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY    ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER   WHERE userId=?  
+[ERROR] [11:34:57] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [11:34:57] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'nd' with value ['1442028897729', ]
+[ERROR] [11:34:57] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sidx' with value ['loginNo', ]
+[ERROR] [11:34:57] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sord' with value ['asc', ]
+[DEBUG] [11:34:57] java.sql.Connection - {conn-100081} Connection
+[DEBUG] [11:34:57] java.sql.Connection - {conn-100081} Preparing Statement:      SELECT count(1) FROM USER t                                               
+[DEBUG] [11:34:57] java.sql.Connection - {conn-100084} Connection
+[DEBUG] [11:34:57] java.sql.Connection - {conn-100084} Preparing Statement:    SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,   CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY    ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER t                                            
+[DEBUG] [11:35:00] java.sql.Connection - {conn-100087} Connection
+[DEBUG] [11:35:00] java.sql.Connection - {conn-100087} Preparing Statement:      SELECT count(1)  FROM CREDITCARD  F where f.billDate=?  
+[DEBUG] [11:35:00] java.sql.Connection - {conn-100090} Connection
+[DEBUG] [11:35:00] java.sql.Connection - {conn-100090} Preparing Statement:    SELECT F_GENERATE_PLAN_DAY_TMP(?)   
+[ERROR] [11:35:16] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [11:35:16] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'nd' with value ['1442028916504', ]
+[ERROR] [11:35:16] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sidx' with value ['loginNo', ]
+[ERROR] [11:35:16] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sord' with value ['asc', ]
+[DEBUG] [11:35:16] java.sql.Connection - {conn-100093} Connection
+[DEBUG] [11:35:16] java.sql.Connection - {conn-100093} Preparing Statement:     SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,   CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY    ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER   WHERE userId=?  
+[ERROR] [11:35:16] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting '_search' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression '_search' with value ['false', ]
+[ERROR] [11:35:16] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'nd' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'nd' with value ['1442028916504', ]
+[ERROR] [11:35:16] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sidx' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sidx' with value ['loginNo', ]
+[ERROR] [11:35:16] com.opensymphony.xwork2.interceptor.ParametersInterceptor - Developer Notification (set struts.devMode to false to disable this message):
+Unexpected Exception caught setting 'sord' on 'class com.lj.app.cardmanage.user.web.UserAction: Error setting expression 'sord' with value ['asc', ]
+[DEBUG] [11:35:16] java.sql.Connection - {conn-100096} Connection
+[DEBUG] [11:35:16] java.sql.Connection - {conn-100096} Preparing Statement:      SELECT count(1) FROM USER t                                               
+[DEBUG] [11:35:16] java.sql.Connection - {conn-100099} Connection
+[DEBUG] [11:35:16] java.sql.Connection - {conn-100099} Preparing Statement:    SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,   CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY    ,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER t                                            

@@ -47,10 +47,55 @@ public class Plan extends BaseModel{
 	private int remainMoney;
 	
 	/**
+	 * 服务费率
+	 */
+	private float serviceRate;
+	
+	/**
+	 * 手续费
+	 */
+	private double poundage;
+	
+	/**
+	 * 收益金额
+	 */
+	private float incomeMoney;
+	
+	/**
 	 * 计划是否执行
 	 */
 	private String excuteFlag = "F";
 	
+	/**
+	 * 服务费率统计
+	 */
+	private String serviceRateSumFormat;
+	
+	/**
+	 * 手续费统计
+	 */
+	private String poundageSumFormat;
+	
+	/**
+	 * 收益金额统计
+	 */
+	private String incomeMoneySumFormat;
+	
+	/**
+	 * 还款统计
+	 */
+	private String inMoneySumFormat;
+	/**
+	 * 消费统计
+	 */
+	private String outMoneySumFormat;
+	
+	/**
+	 * 自定义编号
+	 */
+	private String cardNoProfile;	
+	
+	private String bankNo;
 	
 	private String userName;
 	
@@ -218,6 +263,84 @@ public class Plan extends BaseModel{
 
 	public void setCardNo(String cardNo) {
 		this.cardNo = cardNo;
+	}
+
+	public double getPoundage() {
+		return poundage;
+	}
+
+	public void setPoundage(double poundage) {
+		this.poundage = poundage;
+	}
+
+	public float getServiceRate() {
+		return serviceRate;
+	}
+
+	public void setServiceRate(float serviceRate) {
+		this.serviceRate = serviceRate;
+	}
+
+	public float getIncomeMoney() {
+		return incomeMoney;
+	}
+
+	public void setIncomeMoney(float incomeMoney) {
+		this.incomeMoney = incomeMoney;
+	}
+
+	public String getServiceRateSumFormat() {
+		return serviceRateSumFormat;
+	}
+
+	public void setServiceRateSumFormat(String serviceRateSumFormat) {
+		this.serviceRateSumFormat = serviceRateSumFormat;
+	}
+
+	public String getPoundageSumFormat() {
+		return poundageSumFormat;
+	}
+
+	public void setPoundageSumFormat(String poundageSumFormat) {
+		this.poundageSumFormat = poundageSumFormat;
+	}
+
+	public String getIncomeMoneySumFormat() {
+		return incomeMoneySumFormat;
+	}
+
+	public void setIncomeMoneySumFormat(String incomeMoneySumFormat) {
+		this.incomeMoneySumFormat = incomeMoneySumFormat;
+	}
+
+	public String getCardNoProfile() {
+		return cardNoProfile;
+	}
+
+	public void setCardNoProfile(String cardNoProfile) {
+		this.cardNoProfile = cardNoProfile;
+	}
+
+	public String getInMoneySumFormat() {
+		return inMoneySumFormat;
+	}
+
+	public void setInMoneySumFormat(String inMoneySumFormat) {
+		this.inMoneySumFormat = inMoneySumFormat;
+	}
+
+	public String getOutMoneySumFormat() {
+		return outMoneySumFormat;
+	}
+	public void setOutMoneySumFormat(String outMoneySumFormat) {
+		this.outMoneySumFormat = outMoneySumFormat;
+	}
+
+	public String getBankNo() {
+		return bankNo;
+	}
+	public void setBankNo(String bankNo) {
+		this.bankNo = bankNo;
 	}
 	
 }

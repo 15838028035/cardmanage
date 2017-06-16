@@ -1,7 +1,12 @@
 package com.lj.app.core.common.web;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import com.lj.app.cardmanage.base.service.BaseService;
 import com.lj.app.cardmanage.user.model.User;
 import com.lj.app.core.common.pagination.Page;
+import com.lj.app.core.common.pagination.PageTool;
 import com.lj.app.core.common.util.SessionCode;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -50,6 +55,11 @@ public abstract class AbstractBaseAction<T> extends ActionSupport implements Mod
 	
 	protected String multidExecute;
 	
+	private String sidx;
+	private String sord;
+	
+	private String sortName;
+	private String sortOrder;
 	
 	public String getMultidExecute() {
 		return multidExecute;
@@ -92,6 +102,39 @@ public abstract class AbstractBaseAction<T> extends ActionSupport implements Mod
 
 	public void setMultidelete(String multidelete) {
 		this.multidelete = multidelete;
+	}
+
+	public String getSidx() {
+		return sidx;
+	}
+
+	public void setSidx(String sidx) {
+		this.sidx = sidx;
+	}
+
+	public String getSord() {
+		return sord;
+	}
+
+	public void setSord(String sord) {
+		this.sord = sord;
+	}
+
+	
+	public String getSortName() {
+		return sortName;
+	}
+
+	public void setSortName(String sortName) {
+		this.sortName = sortName;
+	}
+
+	public String getSortOrder() {
+		return sortOrder;
+	}
+
+	public void setSortOrder(String sortOrder) {
+		this.sortOrder = sortOrder;
 	}
 
 	public int getLoginUserId() {
@@ -142,6 +185,7 @@ public abstract class AbstractBaseAction<T> extends ActionSupport implements Mod
 	/**
 	 * 实现空的prepare()函数,屏蔽所有Action函数公共的二次绑定.
 	 */
+	@Override
 	public void prepare() throws Exception {
 	}
 
@@ -163,4 +207,34 @@ public abstract class AbstractBaseAction<T> extends ActionSupport implements Mod
 	 * 等同于prepare()的内部函数,供prepardMethodName()函数调用. 
 	 */
 	protected abstract void prepareModel() throws Exception;
+	
+	
+	/**
+	 * getBaseService();
+	 */
+	protected abstract BaseService getBaseService()  ;
+	
+	/**
+	 * 公共bootStrapList查询方法
+	 * @return
+	 * @throws Exception
+	 */
+	public String bootStrapList() throws Exception {
+		try {
+			Map<String,Object> condition = new HashMap<String,Object>();
+			page.setFilters(getModel());
+			
+			if (this.getSortName()!=null) {
+				String orderBy =this.getSortName() + " "+ this.getSortOrder();
+				page.setSortColumns(orderBy);
+			}
+			
+			page = getBaseService().findPageList(page, condition);
+			Struts2Utils.renderText(PageTool.pageToJsonBootStrap(this.page),new String[0]);
+			return null;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+}
 }

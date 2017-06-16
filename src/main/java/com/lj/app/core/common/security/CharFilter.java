@@ -38,6 +38,7 @@ public class CharFilter implements Filter {
 		excludeUrl.add("/jsp/common/acctauthor!showAcctAuthorDetail.action"); 
 	}
 
+	@Override
 	public void doFilter(ServletRequest servletRequest,
 			ServletResponse servletResponse, FilterChain chain)
 			throws IOException, ServletException {
@@ -109,9 +110,11 @@ public class CharFilter implements Filter {
 		return false;
 	}
 
+	@Override
 	public void destroy() {
 	}
 
+	@Override
 	public void init(FilterConfig filterConfig) {
 		this.filterConfig = filterConfig;
 	}

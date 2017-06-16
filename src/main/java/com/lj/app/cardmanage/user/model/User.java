@@ -4,7 +4,7 @@ import com.lj.app.cardmanage.base.model.BaseModel;
 
 public class User extends BaseModel{
 
-	private int userId;
+	private Integer userId;
 	private String loginNo;
 	private String pwd;
 	private String userName;
@@ -13,10 +13,10 @@ public class User extends BaseModel{
 	private String mobile;
 	
 	
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 	public String getLoginNo() {

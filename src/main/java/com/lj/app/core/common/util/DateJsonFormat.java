@@ -9,6 +9,7 @@ import net.sf.json.processors.JsonValueProcessor;
 public class DateJsonFormat implements JsonValueProcessor {
 	private static final String format = "yyyy-MM-dd HH:mm:ss";
 
+	@Override
 	public Object processArrayValue(Object value, JsonConfig arg1) {
 		String[] obj = {};
 		if (value instanceof Date[]) {
@@ -22,6 +23,7 @@ public class DateJsonFormat implements JsonValueProcessor {
 		return obj;
 	}
 
+	@Override
 	public Object processObjectValue(String key, Object value, JsonConfig arg2) {
 		if (value instanceof Date) {
 			String str = new SimpleDateFormat(format).format((Date) value);

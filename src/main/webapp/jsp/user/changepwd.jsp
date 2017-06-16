@@ -6,107 +6,128 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>用户管理-->修改密码</title>
+    <title>修改密码</title>
     <%@ include file="/jsp/common/meta.jsp" %>
 	<%@ include file="/jsp/common/resource/scripts_all.jsp" %>
-	<%@ include file="/jsp/common/resource/styles_all.jsp" %>
 	<script>
 		$(document).ready(function(){
 			if('${returnMessage}' != ""){
-				showModalMessage("${returnMessage}","doUpdateSuccess()");
+				bootbox.alert("${returnMessage}");
 			}
 		});
-		function doUpdateSuccess(){
-			jQuery.FrameDialog.closeDialog();
-		   	parent.location.reload();
-		}
 	</script>
+	
+	<style type="text/css">
+	
+	body {
+    //background:url(${ctx}/images/login_conbg.jpg) #f8f6e9;
+	}
+		 .mycenter{
+		    margin-top: 100px;
+		    margin-left: auto;
+		    margin-right: auto;
+		    height: 350px;
+		    width:320px;
+		    padding: 5%;
+		    padding-left: 5%;
+		    padding-right: 5%;
+		}
+
+	</style>
 </head>
 <body>
+			    
 <form action="userAction!updateAcctPwd.action" method="post" name="userForm" id="userForm">
-    <table>
-        <tr>
-            <td align="right">旧密码<font color="red">*</font></td>
-            <td><input type="password" id="oldPwd" name="oldPwd" maxlength="10"/> </td>
-        </tr>
+         <div class="mycenter">
+           <div class="col-sm-12">
+              <input  class="form-control" type="password" id="oldPwd" name="oldPwd" class="form-control"placeholder="请输入旧密码"/>
+              </div>
+              
+               <div class="col-sm-12">
+              <input  class="form-control" type="password" id="pwd" name="pwd" class="form-control"placeholder="请输入新密码"/>
+              </div>
+              
+               <div class="col-md-12">
+              <input  class="form-control" type="password" id="newPwd" name="newPwd" class="form-control"placeholder="请输入确认密码"/>
+              </div>
+              
+                 <div class="col-sm-12">
+               		<button type="submit" id="save" class="btn btn-success btn-shadow btn-shadow-success ">保存</button> 
+        		   <button type="button" id="backToHomeButton" class="btn btn-primary ">返回</button> 
+              </div>
         
-        <tr>
-            <td align="right">新密码<font color="red">*</font></td>
-            <td><input type="password" id="pwd" name="pwd" maxlength="10"/> </td>
-        </tr>
+        </div>
         
-         <tr>
-            <td align="right">确认密码<font color="red">*</font></td>
-            <td><input type="password" id="newPwd" name="newPwd" maxlength="10"/> </td>
-        </tr>
-        
-        <tr>
-            <td>
-            </td>
-            <td>
- 				<div class="window_button marg_lef10 float_lef"><input type="button" id="submitButton" class="window_button_centerInput window_button_centerInput1" value="更改密码"/></div>
-		       	<div class="window_button marg_lef10 float_lef"><input type="button" id="backToHomeButton" class="window_button_centerInput window_button_centerInput1 CA_4A_select04" value="返回主页" /></div>
-            </td>
-        </tr>
-    </table>
 </form>
 <script>
         $("#submitButton").click(function() {
         	$("#userForm").submit();
         	return false;
         })
-
-		$("#userForm").validate({
-			submitHandler: function(form){
-				showModalConfirmation('确认要修改么',"doChangePwd()");
-			},
-			rules: {
-		       "oldPwd": {
-					required: true,
-					minlength:6,
-					maxlength:10
-		       },
-		       "pwd": {
-					required: true,
-					minlength:6,
-					maxlength:10
-		       },
-		        "newPwd": {
-					required: true,
-					minlength:6,
-					maxlength:10
-		       }
-		    }
-			
-		});
 		
-		
-		function doChangePwd() {
-			var oldPwd = $("#oldPwd").val();
-	    	var pwd = $("#pwd").val();
-	    	var newPwd = $("#newPwd").val();
-	    	
-	    	var queryUrl = "${ctx}/jsp/user/userAction!updateAcctPwd.action?oldPwd="+oldPwd+"&pwd="+pwd+"&newPwd="+newPwd;
-            var result = jQuery.ajax({
-		      	  url:queryUrl,
-		          async:false,
-		          cache:false,
-		          dataType:"json"
-		      }).responseText;
-			var obj = eval("("+result+")");
-			var optResult = obj.opResult;
-			showModalMessage(optResult);
-			
-			if(optResult.indexOf("成功")==-1){
-				$("#oldPwd").val("");
-				$("#pwd").val("");
-				$("#newPwd").val("");
+		 $('#userForm').bootstrapValidator({  
+	            fields: {  
+	            	"oldPwd": {  
+	                message: '旧密码不能为空',  
+	                validators: {  
+	                    notEmpty: {  
+	                    message: '旧密码不能为空'  
+	                    }  
+	                	}
+	        		},
+	                "pwd": {  
+	                    message: '密新密码不能为空',  
+	                    validators: {  
+	                        notEmpty: {  
+	                        message: '密码不不能为空'  
+	                        } 
+	                       
+	                    }  
+	                },
+	                "newPwd": {  
+	                    message: '确认密码不不能为空',  
+	                    validators: {  
+	                        notEmpty: {  
+	                        message: '确认密码不不能为空'  
+	                        } 
+	                    }  
+	                }
+	            },
+	            
+	            submitHandler: function(validator, form, submitButton) {  
+	            	 validator.defaultSubmit();  
+	            	doChangePwd();
+	            }  
+	        });  
+		 
+		 function doChangePwd() {
+				var oldPwd = $("#oldPwd").val();
+		    	var pwd = $("#pwd").val();
+		    	var newPwd = $("#newPwd").val();
+		    	
+		    	var queryUrl = "${ctx}/jsp/user/userAction!updateAcctPwd.action?oldPwd="+oldPwd+"&pwd="+pwd+"&newPwd="+newPwd;
+	            var result = jQuery.ajax({
+			      	  url:queryUrl,
+			          async:false,
+			          cache:false,
+			          dataType:"json"
+			      }).responseText;
+				var obj = eval("("+result+")");
+				var optResult = obj.opResult;
+				bootbox.alert(optResult);
+				
+				if(optResult.indexOf("成功")==-1){
+					$("#oldPwd").val("");
+					$("#pwd").val("");
+					$("#newPwd").val("");
+				}
 			}
-		}
+		 
+
+	        $("#backToHomeButton").click(function() {
+				window.parent.location.href="${ctx}/index.jsp";
+	        });
 		
-        $("#backToHomeButton").click(function() {
-			window.parent.location.href="${ctx}/index.jsp";
-        });
 </script>
 </body>
 </html>

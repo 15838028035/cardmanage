@@ -20,29 +20,32 @@
        <result property="createDate" column="createDate"  nullValue=""/>
        <result property="updateBy" column="updateBy"  nullValue="0"/>
        <result property="updateDate" column="updateDate"  nullValue=""/>
+       <result property="serviceRate" column="serviceRate"  nullValue="0"/>
+       <result property="initRemainMoney" column="initRemainMoney"  nullValue="0"/>
+       <result property="cardNoProfile" column="cardNoProfile"  nullValue=""/>
      
    </resultMap>
    
 	<select id="select"  resultMap="creditCardResult">
 		SELECT ID,CARDNO,BANKNO,USERNAME,MAXLIMIT,SECNO,VALIDATEDATE,BILLDATE,REPAYMENTDATE,LOCKSTATUS,ENABLEFLAG,
-			CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY
-			,DATE_FORMAT(UPDATEDATE, '%Y-%m-%d %h:%i:%s') UPDATEDATE
+			CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d') CREATEDATE,UPDATEBY
+			,DATE_FORMAT(UPDATEDATE, '%Y-%m-%d') UPDATEDATE,serviceRate,initRemainMoney,cardNoProfile
 			 
 		 FROM CREDITCARD
 	</select>
 	
 	<select id="getInfoByKey" parameterClass="int" resultMap="creditCardResult">
 		SELECT ID,CARDNO,BANKNO,USERNAME,MAXLIMIT,SECNO,VALIDATEDATE,BILLDATE,REPAYMENTDATE,LOCKSTATUS,ENABLEFLAG,
-			CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY
-			,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE
+			CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d') CREATEDATE,UPDATEBY
+			,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d') UPDATEDATE,serviceRate,initRemainMoney,cardNoProfile
 		 FROM CREDITCARD WHERE ID=#id:NUMBER#
 		
 	</select>
 	
-	<select id="pagenate" parameterClass="java.util.HashMap" resultMap="creditCardResult">
+	<select id="pagenate" resultMap="creditCardResult">
 		SELECT ID,CARDNO,BANKNO,USERNAME,MAXLIMIT,SECNO,VALIDATEDATE,BILLDATE,REPAYMENTDATE,LOCKSTATUS,ENABLEFLAG,
-			CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY
-			,DATE_FORMAT(UPDATEDATE, '%Y-%m-%d %h:%i:%s') UPDATEDATE
+			CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d') CREATEDATE,UPDATEBY
+			,DATE_FORMAT(UPDATEDATE, '%Y-%m-%d') UPDATEDATE,serviceRate,initRemainMoney,cardNoProfile
 		 FROM CREDITCARD t
 		<dynamic prepend="WHERE">
 			<isGreaterEqual	prepend="AND" property="createBy" compareValue="1">
@@ -54,14 +57,19 @@
 			 <isNotEmpty prepend="AND" property="bindBank"> t.bindBank = #bindBank#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="secNo"> t.secNo = #secNo#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="userName"> t.userName = #userName#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="cardNoProfile"> t.cardNoProfile = #cardNoProfile#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="billDate"> t.billDate = #billDate#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="repaymentDate"> t.repaymentDate = #repaymentDate#</isNotEmpty>
+			 
 		</dynamic>
-		<![CDATA[ 
-			order by t.ID
-   			 ]]>  
+		<dynamic prepend="ORDER BY">
+			<isNotEmpty property="sortColumns">$sortColumns$</isNotEmpty>
+		</dynamic>
+		
 	</select>
 	
 	
-	 <select id="pagenate_count" parameterClass="java.util.HashMap" resultClass="long">
+	 <select id="pagenate_count"  resultClass="long">
 				SELECT count(1) FROM CREDITCARD t
   		<dynamic prepend="WHERE">
   			<isGreaterEqual	prepend="AND" property="createBy" compareValue="1">
@@ -73,12 +81,15 @@
 			 <isNotEmpty prepend="AND" property="bindBank"> t.bindBank = #bindBank#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="secNo"> t.secNo = #secNo#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="userName"> t.userName = #userName#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="cardNoProfile"> t.cardNoProfile = #cardNoProfile#</isNotEmpty>
+			  <isNotEmpty prepend="AND" property="billDate"> t.billDate = #billDate#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="repaymentDate"> t.repaymentDate = #repaymentDate#</isNotEmpty>
 		</dynamic>
 	</select>
 	
 	<insert id="insert" parameterClass="creditCard" >
 			INSERT INTO creditCard(cardNo,bankNo,userName,maxLimit,secNo,validateDate,billDate,repaymentDate,lockStatus,enableFlag,
-			createBy,createDate)
+			createBy,createDate,serviceRate,initRemainMoney,cardNoProfile)
 						VALUES(#cardNo:VARCHAR#,
 						#bankNo:VARCHAR#,
 						#userName:VARCHAR#,
@@ -90,7 +101,10 @@
 						#lockStatus:VARCHAR#,
 						#enableFlag:VARCHAR#,
 						#createBy:NUMBER#,
-						STR_TO_DATE(#createDate:VARCHAR#, '%Y-%m-%d %h:%i:%s')
+						STR_TO_DATE(#createDate:VARCHAR#, '%Y-%m-%d %h:%i:%s'),
+						#serviceRate:NUMBER#,
+						#initRemainMoney:initRemainMoney#,
+						#cardNoProfile:VARCHAR#
 						)
 			
        
@@ -109,7 +123,10 @@
 			 t.lockStatus=#lockStatus:VARCHAR#,
 			 t.enableFlag=#enableFlag:VARCHAR#,
 			 t.updateBy=#updateBy:NUMBER#,
-			 t.updateDate=STR_TO_DATE(#updateDate:VARCHAR#,'%Y-%m-%d %h:%i:%s')
+			 t.updateDate=STR_TO_DATE(#updateDate:VARCHAR#,'%Y-%m-%d %h:%i:%s'),
+			 t.serviceRate=#serviceRate:NUMBER#,
+			 t.initRemainMoney=#initRemainMoney:NUMBER#,
+			 t.cardNoProfile=#cardNoProfile:NUMBER#
 	 WHERE id=#id#
 	</update>
 	
@@ -118,7 +135,7 @@
 	</delete>
 	
 	<select id="getCreditBillDateCount" parameterClass="int" resultClass="int">
-				SELECT count(1)  FROM CREDITCARD  F where f.billDate=#billDate:NUMBER#
+				SELECT count(1)  FROM CREDITCARD  F where f.billDate=#billDate:NUMBER# and f.lockStatus='0'
 	</select>
 	
 </sqlMap>

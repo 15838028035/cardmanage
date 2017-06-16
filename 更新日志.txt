@@ -1,0 +1,5 @@
+20170318
+1、过滤Action，防止不登录恶意删除数据。关联文件web.xml 调整过滤顺序
+2、修正登录页面恶意穷举转向错误问题。关联文件LoginAction.java 优化if语句
+3、修正还款金额为10的倍数的正整数。关联文件PlanGenerateRuleFactory.java 重定义刷卡金额
+4、修正刷卡金额为在还款金额基础上5的倍数随机。关联文件PlanServiceImpl.java 调整随机数

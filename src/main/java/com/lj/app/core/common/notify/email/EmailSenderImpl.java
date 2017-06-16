@@ -18,6 +18,7 @@ public class EmailSenderImpl implements IEmailSender {
 	}
 
 	//FIXME: 修改地址
+	@Override
 	public boolean sendEmail(String sendTo, String subject, String content) {
 		try {
 			if(sendTo==null||sendTo.equals(""))

@@ -13,5 +13,6 @@
        <sqlMap resource="com/lj/app/cardmanage/batch/model/Batch.xml"/>
       <sqlMap resource="com/lj/app/cardmanage/sysconfig/model/CMPermission.xml"/>
       <sqlMap resource="com/lj/app/cardmanage/plan/model/Plan.xml"/>
+      <sqlMap resource="com/lj/app/cardmanage/bulletin/model/Bulletin.SqlMap.xml"/>
 </sqlMapConfig>
     

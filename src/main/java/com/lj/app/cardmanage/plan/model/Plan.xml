@@ -32,7 +32,21 @@
         <result property="billDate" column="billDate" nullValue=""/>
         <result property="repaymentDate" column="repaymentDate" nullValue=""/>
         <result property="excuteFlag" column="excuteFlag" nullValue=""/>
-         <result property="cardNo" column="cardNo" nullValue=""/>
+        <result property="cardNo" column="cardNo" nullValue=""/>
+        <result property="poundage" column="poundage" nullValue=""/>
+        <result property="serviceRate" column="serviceRate" nullValue="0"/>
+        <result property="incomeMoney" column="incomeMoney" nullValue="0"/>
+        <result property="cardNoProfile" column="cardNoProfile" nullValue=""/>
+        <result property="bankNo" column="bankNo" nullValue=""/>
+        
+   </resultMap>
+   
+   <resultMap id="planCalcResult" class="plan">
+        <result property="serviceRateSumFormat" column="serviceRateSumFormat" nullValue="0"/>
+        <result property="poundageSumFormat" column="poundageSumFormat" nullValue="0"/>
+        <result property="incomeMoneySumFormat" column="incomeMoneySumFormat" nullValue="0"/>
+        <result property="inMoneySumFormat" column="inMoneySumFormat" nullValue="0"/>
+        <result property="outMoneySumFormat" column="outMoneySumFormat" nullValue="0"/>
    </resultMap>
    
    <resultMap id="userAndPCardesult" class="plan">
@@ -48,9 +62,12 @@
 		 p.LOCKSTATUS, p.ENABLEFLAG,
 		 p.CREATEBY,DATE_FORMAT( p.CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE, p.UPDATEBY
 			,DATE_FORMAT( p.UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE,
-	   u.userName, pc.postCardNo, pc.manName,pc.rate,
-	   c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag,c.cardNo
-			
+	   c.userName, pc.postCardNo, pc.manName,pc.rate,
+	   c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag,c.cardNo,
+	    (p.outMoney*pc.rate) as poundage,
+   		(c.serviceRate*p.outMoney) as serviceRate,
+		(c.serviceRate*p.outMoney)- (p.outMoney*pc.rate)  as incomeMoney,
+		cardNoProfile,bankNo
 		 FROM plan p , user u,POSTCARD pc, CREDITCARD c
 
 		where p.userid=u.userid
@@ -60,14 +77,17 @@
 	
 	</select>
 	
-	<select id="pagenate" parameterClass="java.util.HashMap" resultMap="planResult">
+	<select id="pagenate" resultMap="planResult">
 		SELECT p.id, p.batchNo, p.userId, p.creditCardId, p.postCardId, p.saleDate, p.sumAllMoney,
 		 p.inMoney, p.outMoney, p.remainMoney,
 		 p.LOCKSTATUS, p.ENABLEFLAG,
 		 p.CREATEBY,DATE_FORMAT( p.CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE, p.UPDATEBY
 			,DATE_FORMAT( p.UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE,
-	   u.userName, pc.postCardNo, pc.manName,pc.rate,
-	   c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag,c.cardNo
+	   c.userName, pc.postCardNo, pc.manName,pc.rate,
+	   c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag,c.cardNo,
+	    (p.outMoney*pc.rate) as poundage,
+   		(c.serviceRate*p.outMoney) as serviceRate,
+		((c.serviceRate*p.outMoney)- (p.outMoney*pc.rate))  as incomeMoney,cardNoProfile,bankNo
 			
 		 FROM plan p , user u,POSTCARD pc, CREDITCARD c
 
@@ -82,17 +102,20 @@
 				p.userId = #createBy# 
 			</isGreaterEqual> 
 		  	<isNotEmpty prepend="AND" property="loginNo"> u.loginNo = #loginNo#</isNotEmpty>
-		     <isNotEmpty prepend="AND" property="userName"> u.userName = #userName#</isNotEmpty>
+		     <isNotEmpty prepend="AND" property="userName"> c.userName = #userName#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="cardNo"> c.cardNo = #cardNo#</isNotEmpty>
-			 <isNotEmpty prepend="AND" property="saleDate"> p.saleDate = STR_TO_DATE(#saleDate:VARCHAR#, '%Y-%m-%d')</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="cardNoProfile"> c.cardNoProfile = #cardNoProfile#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="saleDateStratParam"> <![CDATA[  p.saleDate>=STR_TO_DATE(#saleDateStratParam:VARCHAR#, '%Y-%m-%d') ]]></isNotEmpty>
+			 <isNotEmpty prepend="AND" property="saleDateEndParam">  <![CDATA[ STR_TO_DATE(#saleDateEndParam:VARCHAR#, '%Y-%m-%d')>=p.saleDate ]]></isNotEmpty>
+			 <isNotEmpty prepend="AND" property="postCardNo"> pc.postCardNo = #postCardNo#</isNotEmpty>
 		</dynamic>
-		<![CDATA[ 
-			order by p.ID
-   			 ]]>  
+		<dynamic prepend="ORDER BY">
+			<isNotEmpty property="sortColumns">$sortColumns$</isNotEmpty>
+		</dynamic> 
 	</select>
 	
 	
-	 <select id="pagenate_count" parameterClass="java.util.HashMap" resultClass="long">
+	 <select id="pagenate_count"  resultClass="long">
 				SELECT count(1)
 		 FROM plan p , user u,POSTCARD pc, CREDITCARD c
 		where p.userid=u.userid
@@ -106,9 +129,12 @@
 				p.userId = #createBy# 
 			</isGreaterEqual> 
 		  	<isNotEmpty prepend="AND" property="loginNo"> u.loginNo = #loginNo#</isNotEmpty>
-		     <isNotEmpty prepend="AND" property="userName"> u.userName = #userName#</isNotEmpty>
+		     <isNotEmpty prepend="AND" property="userName"> c.userName = #userName#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="cardNo"> c.cardNo = #cardNo#</isNotEmpty>
-			 <isNotEmpty prepend="AND" property="saleDate"> p.saleDate = STR_TO_DATE(#saleDate:VARCHAR#, '%Y-%m-%d')</isNotEmpty>
+			  <isNotEmpty prepend="AND" property="cardNoProfile"> c.cardNoProfile = #cardNoProfile#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="saleDateStratParam"> <![CDATA[  p.saleDate>=STR_TO_DATE(#saleDateStratParam:VARCHAR#, '%Y-%m-%d') ]]></isNotEmpty>
+			 <isNotEmpty prepend="AND" property="saleDateEndParam">  <![CDATA[ STR_TO_DATE(#saleDateEndParam:VARCHAR#, '%Y-%m-%d')>=p.saleDate ]]></isNotEmpty>
+			 <isNotEmpty prepend="AND" property="postCardNo"> pc.postCardNo = #postCardNo#</isNotEmpty>
 		</dynamic>
 	</select>
 	
@@ -137,13 +163,7 @@
  <update id="update" parameterClass="plan" >
 		UPDATE  plan t 
 		<dynamic prepend="set" >
-			<isNotEmpty prepend="," property="excuteFlag">
-				t.excuteFlag = #excuteFlag:VARCHAR#
-			</isNotEmpty>
 			
-			<isGreaterThan prepend="," property="sumAllMoney" compareValue="-1">
-				t.sumAllMoney=#sumAllMoney:NUMBER#
-			</isGreaterThan>
 			<isGreaterThan prepend="," property="inMoney" compareValue="-1">
 				t.inMoney=#inMoney:NUMBER#
 			</isGreaterThan>
@@ -153,25 +173,68 @@
 			<isGreaterThan prepend="," property="remainMoney" compareValue="-1">
 				t.remainMoney=#remainMoney:NUMBER#
 			</isGreaterThan>
+			<isGreaterThan prepend="," property="postCardId" compareValue="-1">
+				t.postCardId=#postCardId:NUMBER#
+			</isGreaterThan>
 		</dynamic>
  		WHERE id=#id:NUMBER#
 	 </update>
+
+	<update id="updateExecuteState" parameterClass="plan" >
+		UPDATE  plan t 
+		<dynamic prepend="set" >
+			<isNotEmpty prepend="," property="excuteFlag">
+				t.excuteFlag = #excuteFlag:VARCHAR#
+			</isNotEmpty>
+			
+		</dynamic>
+ 		WHERE id=#id:NUMBER#
+	 </update>
+
 	 
+	 <select id="getPlanInfoForUpdate" parameterClass="plan" resultMap="planResult">
+	SELECT p.id, p.batchNo, p.userId, p.creditCardId, p.postCardId, p.saleDate, p.sumAllMoney,
+		 p.inMoney, p.outMoney, p.remainMoney,
+		 p.LOCKSTATUS, p.ENABLEFLAG,
+		 p.CREATEBY,DATE_FORMAT( p.CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE, p.UPDATEBY
+			,DATE_FORMAT( p.UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE,
+	   c.userName, pc.postCardNo, pc.manName,pc.rate,
+	   c.maxLimit,c.billDate,c.repaymentDate,p.excuteFlag,c.cardNo,
+	     (p.outMoney*pc.rate) as poundage,
+   		(c.serviceRate*p.outMoney) as serviceRate,
+		((c.serviceRate*p.outMoney)- (p.outMoney*pc.rate))  as incomeMoney,cardNoProfile,bankNo
+		 FROM plan p , user u,POSTCARD pc, CREDITCARD c
+
+		where p.userid=u.userid
+ 		 and p.creditCardId = c.id
+		and p.postCardId = pc.id
+		AND p.id>#id#
+        AND P.batchNo LIKE  concat('%', #batchNo#, '%')
+        AND P.creditCardId=#creditCardId#
+        ORDER BY P.id
+	
+	</select>
+	
 	 <select id="selectUserAndCardOfBillDay"  parameterClass="int" resultMap="userAndPCardesult">
 		SELECT u.userId,c.id as creditCardId,c.cardNo, c.maxLimit,c.repaymentDate FROM USER U,creditCard c
 		  WHERE  U.USERID = C.CREATEBY
 		  AND u.enableFlag='T'
 		  AND c.enableFlag='T'
+		  and c.lockStatus='0'
 		  AND c.billDate = #billDate:NUMBER#
 			
 	</select>
 	
 	<select id="generatePlanDayTmp"   parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
-		SELECT F_GENERATE_PLAN_DAY_TMP(#days#)
+		SELECT F_GENERATE_PLAN_DAY_TMP(#days#) AS   F_GENERATE_PLAN_DAY_TMP
  	</select>
  	
  	<select id="checkSaleDay" parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
 		SELECT  F_CHECK_SALE_DAY(#day#)  AS   F_CHECK_SALE_DAY
+ 	</select>
+ 	
+ 	<select id="getMaxSaleDay" parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+		SELECT  f_getMaxSaleDay()  AS   F_GETMAXSALEDAY
  	</select>
  	
  	<select id="getPostCardId"   parameterClass="java.util.HashMap"   resultClass="java.util.HashMap">
@@ -193,5 +256,94 @@
  	<select id="queryPreMonthOutSubInMoney"   parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
 		SELECT sum(p.outMoney)-sum(p.inMoney) AS preMonthOutSubInMoney  FROM plan p WHERE p.creditCardId=#creditCardId#  AND saleDate BETWEEN STR_TO_DATE('2015-07-01','%Y-%m-%d') AND STR_TO_DATE(#saleDate:VARCHAR#,'%Y-%m-%d')
  	</select>
+ 	
+ 	<select id="planCalc" parameterClass="java.util.HashMap" resultMap="planCalcResult">
+		SELECT 
+	SUM(c.serviceRate*p.outMoney) as serviceRateSumFormat,
+	    (SUM((p.outMoney*pc.rate))) as poundageSumFormat ,
+		(SUM((c.serviceRate*p.outMoney)- (p.outMoney*pc.rate)))  as incomeMoneySumFormat,
+		
+		(SUM((p.inMoney))) as inMoneySumFormat,
+		(SUM((p.outMoney))) as outMoneySumFormat
+		 FROM plan p , user u,POSTCARD pc, CREDITCARD c
+
+		where p.userid=u.userid
+ 		 and p.creditCardId = c.id
+		and p.postCardId = pc.id
+		<dynamic prepend="AND">
+			<isGreaterEqual	prepend="AND" property="id" compareValue="0"> 
+				p.id = #id# 
+			</isGreaterEqual> 
+			<isGreaterEqual	prepend="AND" property="createBy" compareValue="1"> 
+				p.userId = #createBy# 
+			</isGreaterEqual> 
+		  	<isNotEmpty prepend="AND" property="loginNo"> u.loginNo = #loginNo#</isNotEmpty>
+		    <isNotEmpty prepend="AND" property="userName"> c.userName = #userName#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="cardNo"> c.cardNo = #cardNo#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="cardNoProfile"> c.cardNoProfile = #cardNoProfile#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="saleDateStratParam"> <![CDATA[  p.saleDate>=STR_TO_DATE(#saleDateStratParam:VARCHAR#, '%Y-%m-%d') ]]></isNotEmpty>
+			 <isNotEmpty prepend="AND" property="saleDateEndParam">  <![CDATA[ STR_TO_DATE(#saleDateEndParam:VARCHAR#, '%Y-%m-%d')>=p.saleDate ]]></isNotEmpty>
+			 <isNotEmpty prepend="AND" property="postCardNo"> pc.postCardNo = #postCardNo#</isNotEmpty>
+		</dynamic>
+	</select>
+	
+ 	<select id="exportExcel" parameterClass="java.util.HashMap" resultClass="java.util.LinkedHashMap">
+		SELECT cardNoProfile,c.cardNo,bankNo, p.saleDate, p.sumAllMoney,
+		 p.inMoney, p.outMoney, p.remainMoney,
+	     c.userName,pc.postCardNo,
+	     c.billDate,c.repaymentDate,
+	     p.excuteFlag
+		 FROM plan p , user u,POSTCARD pc, CREDITCARD c
+
+		where p.userid=u.userid
+ 		 and p.creditCardId = c.id
+		and p.postCardId = pc.id
+		<dynamic prepend="AND">
+			<isGreaterEqual	prepend="AND" property="id" compareValue="0"> 
+				p.id = #id# 
+			</isGreaterEqual> 
+			<isGreaterEqual	prepend="AND" property="createBy" compareValue="1"> 
+				p.userId = #createBy# 
+			</isGreaterEqual> 
+		  	 <isNotEmpty prepend="AND" property="loginNo"> u.loginNo = #loginNo#</isNotEmpty>
+		   	 <isNotEmpty prepend="AND" property="userName"> c.userName = #userName#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="cardNo"> c.cardNo = #cardNo#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="cardNoProfile"> c.cardNoProfile = #cardNoProfile#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="saleDateStratParam"> <![CDATA[  p.saleDate>=STR_TO_DATE(#saleDateStratParam:VARCHAR#, '%Y-%m-%d') ]]></isNotEmpty>
+			 <isNotEmpty prepend="AND" property="saleDateEndParam">  <![CDATA[ STR_TO_DATE(#saleDateEndParam:VARCHAR#, '%Y-%m-%d')>=p.saleDate ]]></isNotEmpty>
+			 <isNotEmpty prepend="AND" property="postCardNo"> pc.postCardNo = #postCardNo#</isNotEmpty>
+		</dynamic>
+		<![CDATA[ 
+			order by p.ID
+   			 ]]>  
+	</select>
+	
+	<select id="exportSumExcel" parameterClass="java.util.HashMap" resultClass="java.util.LinkedHashMap">
+	SELECT 
+	      pc.manName,pc.userName,sum(p.outMoney) as sumOutMoney ,pc.rate,(sum(p.outMoney)-(sum(p.outMoney*pc.rate))) as goalMoney,
+(SUM(p.outMoney*pc.rate)) as feeMoney
+		 FROM plan p , user u,POSTCARD pc, CREDITCARD c
+		where p.userid=u.userid
+ 		 and p.creditCardId = c.id
+		and p.postCardId = pc.id
+		<dynamic prepend="AND">
+			<isGreaterEqual	prepend="AND" property="id" compareValue="0"> 
+				p.id = #id# 
+			</isGreaterEqual> 
+			<isGreaterEqual	prepend="AND" property="createBy" compareValue="1"> 
+				p.userId = #createBy# 
+			</isGreaterEqual> 
+		  	 <isNotEmpty prepend="AND" property="loginNo"> u.loginNo = #loginNo#</isNotEmpty>
+		   	 <isNotEmpty prepend="AND" property="userName"> c.userName = #userName#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="cardNo"> c.cardNo = #cardNo#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="cardNoProfile"> c.cardNoProfile = #cardNoProfile#</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="saleDateStratParam"> <![CDATA[  p.saleDate>=STR_TO_DATE(#saleDateStratParam:VARCHAR#, '%Y-%m-%d') ]]></isNotEmpty>
+			 <isNotEmpty prepend="AND" property="saleDateEndParam">  <![CDATA[ STR_TO_DATE(#saleDateEndParam:VARCHAR#, '%Y-%m-%d')>=p.saleDate ]]></isNotEmpty>
+			 <isNotEmpty prepend="AND" property="postCardNo"> pc.postCardNo = #postCardNo#</isNotEmpty>
+		</dynamic>
+		<![CDATA[ 
+			group by p.postCardId,pc.userName,pc.manName,pc.rate
+   			 ]]>  
+	</select>
      
 </sqlMap>

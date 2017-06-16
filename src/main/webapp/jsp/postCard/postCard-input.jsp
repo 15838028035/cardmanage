@@ -2,144 +2,144 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ include file="/jsp/common/taglibs.jsp" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>用户管理</title>
+<!DOCTYPE html>
+<html>
+    <title>机具新增</title>
     <%@ include file="/jsp/common/meta.jsp" %>
 	<%@ include file="/jsp/common/resource/scripts_all.jsp" %>
-	<%@ include file="/jsp/common/resource/styles_all.jsp" %>
 	<script>
 		$(document).ready(function(){
 			if('${returnMessage}' != ""){
-				showModalMessage("${returnMessage}","doUpdateSuccess()");
+				bootbox.alert("${returnMessage}");
 			}
 		});
-		function doUpdateSuccess(){
-			jQuery.FrameDialog.closeDialog();
-		   	parent.location.reload();
-		}
 	</script>
 </head>
 <body>
-<form action="postCardAction!save.action" method="post" name="postCardForm" id="postCardForm">
-<input type="hidden" name="id" value="${id }"/>
-<input type="hidden" name="operate" value="${operate}" />
-    <table>
-        <tr>
-           <td align="right">POS机编号 <font color="red">*</font></td>
-           <td><input type="text" id="postCardNo" name="postCardNo" value="${postCardNo}" readonly="readonly" maxlength="30"/> </td>
-        </tr>
-        <tr>
-           <td align="right">商户名字<font color="red">*</font></td>
-           <td><input type="text" id="manName" name="manName" value="${manName}" maxlength="30"/> </td>
-        </tr>
-          <tr>
-            <td align="right">费率<font color="red">*</font> </td>
-             <td><input type="text" id="rate" name="rate" value="${rate}" maxlength="10"/> </td>
-        </tr>
-         <tr>
-            <td align="right">匹配最小额度<font color="red">*</font></td>
-             <td><input type="text" id="minMoney" name="minMoney" value="${minMoney}" maxlength="10"/> </td>
-        </tr>
-         <tr>
-            <td align="right">匹配最大额度<font color="red">*</font></td>
-             <td><input type="text" id="maxMoney" name="maxMoney" value="${maxMoney}" maxlength="10"/> </td>
-        </tr>
-         <tr>
-            <td align="right">行业<font color="red">*</font></td>
-             <td><input type="text" id="trade" name="trade" value="${trade}" maxlength="30"/> </td>
-        </tr>
-        <tr>
-            <td align="right">绑定银行<font color="red">*</font></td>
-             <td><input type="text" id="bindBank" name="bindBank" value="${bindBank}" maxlength="30"/> </td>
-        </tr>
-        <tr>
-            <td align="right">卡号<font color="red">*</font></td>
-             <td><input type="text" id="cardNo" name="cardNo" value="${cardNo}" maxlength="20"/> </td>
-        </tr>
-         <tr>
-            <td align="right">姓名<font color="red">*</font></td>
-             <td><input type="text" id="userName" name="userName" value="${userName}" maxlength="10"/> </td>
-        </tr>
-        <tr>
-            <td>
-            </td>
-            <td>
- 				<div class="window_button marg_lef10 float_lef"><input type="button" id="submitButton" class="window_button_centerInput window_button_centerInput1" value="保存"/></div>
-		       	<div class="window_button marg_lef10 float_lef"><input type="button" id="backToHomeButton" class="window_button_centerInput window_button_centerInput1 CA_4A_select04" value="返回主页" /></div>
-            </td>
-        </tr>
-    </table>
-</form>
+<div class="panel-body" style="padding-bottom:0px;">
+        <div class="panel panel-default">
+            <div class="panel-heading">机具新增</div>
+            <div class="panel-body">
+                    <div class="form-group" style="margin-top:15px">
+		<form action="postCardAction!save.action" class="form-horizontal" method="post" name="postCardForm" id="postCardForm">
+		<input type="hidden" name="id" value="${id }"/>
+		<input type="hidden" name="operate" value="${operate}" />
+		        <div class="form-group">  
+		              <label class="control-label col-sm-1 col-md-1  col-lg-1" for="postCardNo">机具编号 </label>  
+		              <div class="col-sm-3 col-md-3 col-lg-3"><input  class="form-control" type="text" id="postCardNo" name="postCardNo" value="${postCardNo}" readonly="readonly"  /></div>
+		            
+		             <label class="control-label col-md-1 col-sm-1  col-lg-1" for="manName">商户名字 </label>
+		            <div class="col-sm-3 col-md-3 col-lg-3"> <input  class="form-control" type="text" id="manName" name="manName" value="${manName}" /></div>
+		            
+		              <label class="control-label col-sm-1 col-md-1 col-lg-1" for="rate">费率</label>  
+		               <div class="col-sm-3 col-md-3  col-lg-3"><input class="form-control" type="text" id="rate" name="rate" value="${rate}" /></div>
+		             
+		              <label class="control-label col-sm-1  col-md-1 col-lg-1" for="minMoney">最小匹配额度</label>  
+		             <div class="col-sm-3 col-md-3 col-lg-3"><input  class="form-control" type="text" id="minMoney" name="minMoney" value="${minMoney}"/></div>
+		           
+		               <label class="control-label col-sm-1 col-md-1 col-lg-1" for="maxMoney">最大匹配额度</label>  
+		               <div class="col-sm-3 col-md-3  col-lg-3"><input  class="form-control" type="text" id="maxMoney" name="maxMoney" value="${maxMoney}" /></div>
+		             
+		              <%-- <label class="control-label col-sm-1 col-md-1 col-lg-1" for="trade">行业</label>  
+		              <div class="col-sm-3 col-md-3 col-lg-3"> <input  class="form-control" type="text" id="trade" name="trade" value="${trade}"/></div> --%>
+		              
+		              <label class="control-label col-sm-1 col-md-1 col-lg-1" for="userName">姓名</label>  
+		              <div class="col-sm-3 col-md-3 col-lg-3"> <input  class="form-control" type="text" id="userName" name="userName" value="${userName}"/></div>
+		              
+		              <label class="control-label col-sm-1 col-md-1 col-lg-1" for="cardNo">卡号</label>  
+		              <div class="col-sm-3 col-md-3 col-lg-3"> <input  class="form-control" type="text" id="cardNo" name="cardNo" value="${cardNo}"/></div>
+		              
+		              <label class="control-label col-sm-1 col-md-1 col-lg-1" for="bindBank">绑定银行</label>  
+		              <div class="col-sm-3 col-md-3 col-lg-3"> <input  class="form-control" type="text" id="bindBank" name="bindBank" value="${bindBank}"/></div>
+		              
+		         <label class="control-label col-sm-1 col-md-1 col-lg-1" for="lockStatus">锁定状态</label>  
+		              <div class="col-sm-3 col-md-3 col-lg-3"> 
+		                <input   type="radio"  name="lockStatus" value="0"   <c:if test="${lockStatus==0}">checked</c:if>/>否
+		               <input    type="radio"   name="lockStatus" value="1"  <c:if test="${lockStatus==1}">checked</c:if>/>是
+		               </div>
+		        </div>
+		         <div class="form-group col-sm-12 col-md-12 col-lg-12"> 
+		        		<button type="submit" id="save" class="btn btn-success btn-shadow btn-shadow-success ">保存</button> 
+		        		   <button type="button" id="backToHomeButton" class="btn btn-primary ">返回</button> 
+		        </div>
+		        
+		</form>
+
+</div>
+</div>
+</div>
+</div>
+
 <script>
-        $("#submitButton").click(function() {
-        	$("#postCardForm").submit();
-        	return false;
-        })
+        $('#postCardForm').bootstrapValidator({  
+            fields: {  
+            	"manName": {  
+                message: '商户名字不能为空',  
+                validators: {  
+                    notEmpty: {  
+                    message: '商户名字不能为空'  
+                    }  
+                	}
+        		},
+                "rate": {  
+                    message: '费率不不能为空',  
+                    validators: {  
+                        notEmpty: {  
+                        message: '费率不不能为空'  
+                        } 
+                       
+                    }  
+                },
+                "minMoney": {  
+                    message: '最小匹配额度不能为空',  
+                    validators: {  
+                        notEmpty: {  
+                        message: '最小匹配额度不能为空'  
+                        }  
+                    	}
+            		},
+            	"maxMoney": {  
+                    message: '最大匹配额度不能为空',  
+                    validators: {  
+                        notEmpty: {  
+                        message: '最大匹配额度不能为空'  
+                            }  
+                        	}
+                		},	
+                "userName": {  
+                    message: '姓名不能为空',  
+                    validators: {  
+                        notEmpty: {  
+                        message: '姓名不能为空'  
+                                }  
+                            	}
+                    		},
+                "cardNo": {  
+                    message: '卡号不能为空',  
+                    validators: {  
+                                    notEmpty: {  
+                                    message: '卡号不能为空'  
+                                    }  
+                                	}
+                        		},
+                "bindBank": {  
+                                    message: '绑定银行不能为空',  
+                                    validators: {  
+                                        notEmpty: {  
+                                        message: '绑定银行不能为空'  
+                                        }  
+                                    	}
+                            		},
+            },
+            
+            submitHandler: function(validator, form, submitButton) {  
+                validator.defaultSubmit();  
+            }  
+        });  
 
-		$("#postCardForm").validate({
-			submitHandler: function(form){
-				form.submit();
-				$('#submitButton').prop('disabled',true);
-			},
-			rules: {
-		       "postCardNo": {
-					required: true,
-					minlength:3,
-					maxlength:30
-		       },
-		       "manName": {
-					required: true,
-					minlength:1,
-					maxlength:30
-		       },
-		        "rate": {
-					required: true,
-					number:true,
-					minlength:1,
-					maxlength:10
-		       },
-		        "minMoney": {
-					required: true,
-					number:true,
-					minlength:1,
-					maxlength:10
-		       },
-		        "maxMoney": {
-					required: true,
-					number:true,
-					minlength:1,
-					maxlength:10
-		       },
-		        "trade": {
-					required: true,
-					minlength:1,
-					maxlength:30
-		       },
-		        "bindBank": {
-					required: true,
-					minlength:1,
-					maxlength:30
-		       },
-		        "cardNo": {
-					required: true,
-					minlength:16,
-					maxlength:20
-		       },
-		       "userName": {
-					required: true,
-					minlength:1,
-					maxlength:10
-		       }
-		    }
-		});
-
-		  $("#backToHomeButton").click(function() {
-			window.parent.location.href="${ctx}/index.jsp";
+        $("#backToHomeButton").click(function() {
+			window.parent.location.href="${ctx}/jsp/postCard/postCardList.jsp";
         });
-
 </script>
 </body>
 </html>

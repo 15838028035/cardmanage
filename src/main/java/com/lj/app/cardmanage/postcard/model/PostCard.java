@@ -6,7 +6,7 @@ public class PostCard extends BaseModel{
 
 	private int id;
 	/**
-	 * POS机编号
+	 * 机具编号
 	 */
 	private String postCardNo;
 	/**

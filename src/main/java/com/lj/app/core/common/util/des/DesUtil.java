@@ -17,7 +17,7 @@ public class DesUtil {
     public static final String DES_KEY = "wang!@#$%";
  
     public static void main(String[] args) throws Exception {
-        String data = "123 456";
+        String data = "AH0QwOoEIEpKEOEjiC/Qxw==";
         String key = "wang!@#$%";
         System.err.println(encrypt(data, key));
         System.err.println(decrypt(encrypt(data, key), key));
@@ -135,4 +135,6 @@ public class DesUtil {
  
         return cipher.doFinal(data);
     }
+    
+    
 }

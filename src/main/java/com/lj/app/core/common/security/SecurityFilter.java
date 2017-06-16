@@ -38,6 +38,7 @@ public class SecurityFilter implements Filter {
 	
 	private Set<String> disabledAccessUrlSet;//uap_permission中不可访问的url集合
 	
+	@Override
 	public void init(FilterConfig filterConfig) {
 		isNeedAuthen = filterConfig.getInitParameter("isNeedAuthen");
 		String contextPath = filterConfig.getInitParameter("contextPath");
@@ -76,6 +77,7 @@ public class SecurityFilter implements Filter {
 		logger.info("disabledAccessUrlSet load success");
 	}
 
+	@Override
 	public void doFilter(ServletRequest servletRequest,
 			ServletResponse servletResponse, FilterChain filterChain) {
 		try {
@@ -237,6 +239,7 @@ public class SecurityFilter implements Filter {
 		return false ;
 	}	
 	
+	@Override
 	public void destroy() {
 
 	}

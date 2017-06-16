@@ -66,7 +66,6 @@ public class Struts2Utils {
 		session.setAttribute(name, value);
 	}
 	
-	
 	/**
 	 * 取得HttpRequest的简化函数.
 	 */

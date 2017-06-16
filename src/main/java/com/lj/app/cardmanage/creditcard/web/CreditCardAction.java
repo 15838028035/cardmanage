@@ -10,11 +10,13 @@ import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import com.lj.app.cardmanage.base.service.BaseService;
 import com.lj.app.cardmanage.creditcard.model.CreditCard;
 import com.lj.app.cardmanage.creditcard.service.CreditCardService;
 import com.lj.app.core.common.pagination.PageTool;
 import com.lj.app.core.common.util.AjaxResult;
 import com.lj.app.core.common.util.DateUtil;
+import com.lj.app.core.common.util.ValidateUtil;
 import com.lj.app.core.common.web.AbstractBaseAction;
 import com.lj.app.core.common.web.Struts2Utils;
 
@@ -36,40 +38,73 @@ public class CreditCardAction  extends AbstractBaseAction<CreditCard> {
 	
 	private CreditCard creditCard;
 	
-	private int id;
+	private Integer id;
 	private String cardNo;
 	private String bankNo;
 	private String userName;
 	private float  maxLimit;//额度
 	private String secNo;//安全码
 	private String validateDate;//有效期
-	private int billDate;//账单日期
+	private Integer billDate;//账单日期
 	private int repaymentDate;//还款日
+	private float serviceRate;//服务费率
+	private float initRemainMoney;//初始剩余金额
+	private String cardNoProfile;//自定义编号
+	private String lockStatus = "0";
 	
 	
 	@Override
+	protected BaseService getBaseService() {
+		return creditCardService;
+	}
+	
+	@Override
 	public CreditCard getModel() {
-		creditCard = (CreditCard)creditCardService.getInfoByKey(id);
 		return creditCard;
 	}
 
 	@Override
 	public String list() throws Exception {
+		return null;
+	}
+	
+	/**
+	 * 公共bootStrapList查询方法
+	 * @return
+	 * @throws Exception
+	 */
+	public String bootStrapList() throws Exception {
 		try {
+			
+
+			if (ValidateUtil.isNotEmpty(this.getSidx())) {
+				String orderBy =this.getSidx() + " " + this.getSord();
+				page.setSortColumns(orderBy);
+			}
 			
 			Map condition = new HashMap();
 			condition.put("cardNo",cardNo);
 			condition.put("userName", userName);
 			condition.put("bankNo", bankNo);
+			condition.put("cardNoProfile", cardNoProfile);
 			condition.put(CREATE_BY, getLoginUserId());
-			this.creditCardService.findPageList(page, condition);
-			Struts2Utils.renderText(PageTool.pageToJsonJQGrid(this.page),new String[0]);
+			
+			page.setFilters(getModel());
+			
+			if (this.getSortName()!=null) {
+				String orderBy =this.getSortName() + " "+ this.getSortOrder();
+				page.setSortColumns(orderBy);
+			}
+			
+			page = getBaseService().findPageList(page, condition);
+			Struts2Utils.renderText(PageTool.pageToJsonBootStrap(this.page),new String[0]);
 			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
 		}
-	}
+}
+	
 	
 	@Override
 	public String input() throws Exception {
@@ -97,6 +132,10 @@ public class CreditCardAction  extends AbstractBaseAction<CreditCard> {
 				
 				creditCard.setUpdateBy(getLoginUserId());
 				creditCard.setUpdateDate(DateUtil.getNowDateYYYYMMddHHMMSS());
+				creditCard.setServiceRate(serviceRate);
+				creditCard.setInitRemainMoney(initRemainMoney);
+				creditCard.setCardNoProfile(cardNoProfile);
+				creditCard.setLockStatus(lockStatus);
 				
 				creditCardService.updateObject(creditCard);
 				
@@ -116,11 +155,16 @@ public class CreditCardAction  extends AbstractBaseAction<CreditCard> {
 				
 				creditCard.setCreateBy(getLoginUserId());
 				creditCard.setCreateDate(DateUtil.getNowDateYYYYMMddHHMMSS());
+				creditCard.setServiceRate(serviceRate);
+				creditCard.setInitRemainMoney(initRemainMoney);
+				creditCard.setCardNoProfile(cardNoProfile);
+				creditCard.setLockStatus(lockStatus);
+				
 				creditCardService.insertObject(creditCard);
 				returnMessage = CREATE_SUCCESS;
 			}
 			
-			return LIST;
+			return INPUT;
 		}catch(Exception e){
 			returnMessage = CREATE_FAILURE;
 			e.printStackTrace();
@@ -136,9 +180,11 @@ public class CreditCardAction  extends AbstractBaseAction<CreditCard> {
 
 	@Override
 	protected void prepareModel() throws Exception {
-		creditCard = (CreditCard)creditCardService.getInfoByKey(id);
-		if(creditCard == null) {
-			creditCard = new CreditCard();
+		
+		if(id!=null){
+			creditCard = (CreditCard)creditCardService.getInfoByKey(id);
+		}else {
+			creditCard =new CreditCard();
 		}
 	}
 	
@@ -176,10 +222,12 @@ public class CreditCardAction  extends AbstractBaseAction<CreditCard> {
 		return null;
 	}
 
+	@Override
 	public String getMultidelete() {
 		return multidelete;
 	}
 
+	@Override
 	public void setMultidelete(String multidelete) {
 		this.multidelete = multidelete;
 	}
@@ -271,6 +319,35 @@ public class CreditCardAction  extends AbstractBaseAction<CreditCard> {
 	public void setRepaymentDate(int repaymentDate) {
 		this.repaymentDate = repaymentDate;
 	}
-	
 
+	public float getServiceRate() {
+		return serviceRate;
+	}
+
+	public void setServiceRate(float serviceRate) {
+		this.serviceRate = serviceRate;
+	}
+
+	public float getInitRemainMoney() {
+		return initRemainMoney;
+	}
+
+	public void setInitRemainMoney(float initRemainMoney) {
+		this.initRemainMoney = initRemainMoney;
+	}
+
+	public String getCardNoProfile() {
+		return cardNoProfile;
+	}
+
+	public void setCardNoProfile(String cardNoProfile) {
+		this.cardNoProfile = cardNoProfile;
+	}
+
+	public String getLockStatus() {
+		return lockStatus;
+	}
+	public void setLockStatus(String lockStatus) {
+		this.lockStatus = lockStatus;
+	}
 }

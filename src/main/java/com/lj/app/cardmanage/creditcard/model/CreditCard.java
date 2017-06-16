@@ -11,9 +11,11 @@ public class CreditCard extends BaseModel{
 	private float  maxLimit;//额度
 	private String secNo;//安全码
 	private String validateDate;//有效期
-	private int billDate;//账单日期
-	private int repaymentDate;//还款日
-	
+	private Integer billDate;//账单日期
+	private Integer repaymentDate;//还款日
+	private float serviceRate;//服务费率
+	private float initRemainMoney;//初始剩余金额
+	private String cardNoProfile;//自定义编号
 	public int getId() {
 		return id;
 	}
@@ -56,17 +58,36 @@ public class CreditCard extends BaseModel{
 	public void setValidateDate(String validateDate) {
 		this.validateDate = validateDate;
 	}
-	public int getBillDate() {
+	public Integer getBillDate() {
 		return billDate;
 	}
-	public void setBillDate(int billDate) {
+	public void setBillDate(Integer billDate) {
 		this.billDate = billDate;
 	}
-	public int getRepaymentDate() {
+	public Integer getRepaymentDate() {
 		return repaymentDate;
 	}
-	public void setRepaymentDate(int repaymentDate) {
+	public void setRepaymentDate(Integer repaymentDate) {
 		this.repaymentDate = repaymentDate;
 	}
+	public float getServiceRate() {
+		return serviceRate;
+	}
+	public void setServiceRate(float serviceRate) {
+		this.serviceRate = serviceRate;
+	}
+	public float getInitRemainMoney() {
+		return initRemainMoney;
+	}
+	public void setInitRemainMoney(float initRemainMoney) {
+		this.initRemainMoney = initRemainMoney;
+	}
+	public String getCardNoProfile() {
+		return cardNoProfile;
+	}
+	public void setCardNoProfile(String cardNoProfile) {
+		this.cardNoProfile = cardNoProfile;
+	}
+	
 	
 }

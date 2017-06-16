@@ -14,6 +14,7 @@ public class PostCardServiceImpl extends BaseServiceImpl implements PostCardServ
 	 * 生成post机器卡片编号
 	 * @return
 	 */
+	@Override
 	public String generatePostCardNo(int userId,String userName){
 		String postCardNo = "";
 		String queryPostCardNo = "";
@@ -26,7 +27,7 @@ public class PostCardServiceImpl extends BaseServiceImpl implements PostCardServ
 		List<PostCard> postCardList = this.queryForList("getUserPostCardList", queryPostCard);
 		
 		if(postCardList!=null && postCardList.size()>0) {
-			postCard = (PostCard)postCardList.get(0);
+			postCard = postCardList.get(0);
 		}
 		
 		queryPostCardNo = postCard.getPostCardNo();

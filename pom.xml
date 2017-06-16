@@ -1,4 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.lj.app</groupId>
@@ -60,7 +60,7 @@
 
 		<!-- Plugin的属性定义 -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jdk.version>1.6</jdk.version>
+		<jdk.version>1.7</jdk.version>
 		<project.name>cardmanage</project.name>
 		<project.build.finalName>cardmanage</project.build.finalName>
 		
@@ -306,6 +306,12 @@
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
+        
+        <dependency>
+	    	<groupId>net.sourceforge.jexcelapi</groupId>
+	    	<artifactId>jxl</artifactId>
+	   		<version>2.6</version>
+	     </dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
@@ -334,8 +340,8 @@
 	<build>
 <!--  		<directory>${project.basedir}/target</directory> -->
  		
-		<testSourceDirectory>${project.basedir}/src/test/java,${project.basedir}/src/acceptancetest/java</testSourceDirectory>
-		<outputDirectory>${project.basedir}/src/main/webapp/Web-INF/classes</outputDirectory>
+		<testSourceDirectory>${project.basedir}/src/test/java</testSourceDirectory>
+		<outputDirectory>${project.basedir}/target/classes</outputDirectory>
 		<testOutputDirectory>${project.basedir}/target/test-classes</testOutputDirectory>
 		
 		<resources>
@@ -370,7 +376,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.2</version>
+				<version>3.3</version>
 				<configuration>
 					<source>${jdk.version}</source>
 					<target>${jdk.version}</target>
@@ -516,50 +522,8 @@
    				 </configuration>  
 		</plugin>
 		
-		<plugin>
-                 <artifactId>maven-antrun-plugin</artifactId>
-                <version>${maven-antrun-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <phase> package </phase>
-                        <configuration>
-                             <target>
-                                 <checksum>
-                                     <fileset dir="${project.basedir}/src/main/webapp/WEB-INF/classes">
-                                         <include name="*" />
-                                     </fileset>
-                                 </checksum>
-                            </target>
-
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                     </execution>
-                 </executions>
-             </plugin>
-             
-             <plugin>  
-            <groupId>org.codehaus.mojo</groupId>  
-            <artifactId>build-helper-maven-plugin</artifactId>  
-            <version>1.7</version>  
-            <executions>  
-                <execution>  
-                    <id>add-source</id>  
-                    <phase>generate-test-sources</phase>  
-                    <goals>  
-                        <goal>add-test-source</goal>  
-                    </goals>  
-                    <configuration>  
-                        <sources>  
-                            <source>${project.basedir}/src/test/java</source>
-                             <source>${project.basedir}/src/acceptancetest/java</source>
-                        </sources>  
-                    </configuration>  
-                </execution>  
-            </executions>  
-        </plugin>  
-            
+		
+          
 		</plugins>
 
 	</build>
@@ -737,7 +701,7 @@
     <profile>
       <id>fitnesse-integration</id>
        <activation>
-        <activeByDefault>true</activeByDefault>
+        <activeByDefault>false</activeByDefault>
       </activation>
       
       <build>

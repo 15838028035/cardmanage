@@ -1,12 +1,23 @@
 package com.lj.app.core.common.pagination;
 
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.beanutils.BeanUtils;
+
+import com.lj.app.core.common.util.DateJsonFormat;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
 
 public class Page<T> implements Serializable {
 	
-	private List<T> result;
+	private List<T> result = new ArrayList<T>();
 
 	private T filters;
 	
@@ -17,6 +28,9 @@ public class Page<T> implements Serializable {
 	private String sortColumns;
 	
 	private int totalCount = 0;
+	
+	private static final String JSONROWS = "rows";
+	private static final String JSONPAGE = "page";
 	
 	public Page(int pageSize) {
 		this(pageSize,(T)null);
@@ -160,6 +174,42 @@ public class Page<T> implements Serializable {
 			count++;
 		}
 		return count;
+	}
+	public String toJsonString(List list){
+		return toJsonString(this,list);
+	}
+	
+	public String toJsonString(Page page,List list){
+		JsonConfig cfg = new JsonConfig();
+		DateJsonFormat df = new DateJsonFormat();
+		cfg.registerJsonValueProcessor(java.util.Date.class,df);
+		
+		
+		JSONObject all = new JSONObject();
+		if(list==null){
+			all.put(JSONROWS, "");
+		}else{
+			all.put(JSONROWS, JSONArray.fromObject(list,cfg));
+		}
+		
+		all.put(JSONPAGE, page);	
+		String jsonString = all.toString();
+		return jsonString ;
+	}
+	
+	public static String toJsonString(Object object){
+		 
+		JsonConfig cfg = new JsonConfig();		
+		DateJsonFormat df = new DateJsonFormat();
+		cfg.registerJsonValueProcessor(java.util.Date.class,df);
+		
+		JSONObject all = JSONObject.fromObject(object,cfg);
+		String jsonString = all.toString();
+		return jsonString ;
+	}
+	
+	public static Map<String, Object> toMap(Object o) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException{
+		return BeanUtils.describe(o);
 	}
 }
 

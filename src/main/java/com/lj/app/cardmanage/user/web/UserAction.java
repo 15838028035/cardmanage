@@ -10,6 +10,7 @@ import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import com.lj.app.cardmanage.base.service.BaseService;
 import com.lj.app.cardmanage.user.model.User;
 import com.lj.app.cardmanage.user.service.UserService;
 import com.lj.app.core.common.pagination.PageTool;
@@ -31,7 +32,7 @@ import com.lj.app.core.common.web.Struts2Utils;
 @Action("userAction")
 public class UserAction  extends AbstractBaseAction<User> {
 	
-	private int userId=-1;
+	private Integer userId;
 	private String loginNo;
 	private String pwd;
 	private String userName;
@@ -53,9 +54,15 @@ public class UserAction  extends AbstractBaseAction<User> {
 	
 	@Override
 	public User getModel() {
-		user = (User)userService.getInfoByKey(userId);
 		return user;
 	}
+
+	
+	@Override
+	protected BaseService getBaseService() {
+		return userService;
+	}
+
 
 	@Override
 	public String list() throws Exception {
@@ -206,11 +213,14 @@ public class UserAction  extends AbstractBaseAction<User> {
 		return null;
 		
 	}
-	
 
 	@Override
 	protected void prepareModel() throws Exception {
-		user = (User)userService.getInfoByKey(userId);
+		if(userId!=null){
+			user = (User)userService.getInfoByKey(userId);
+		}else {
+			user =new User();
+		}
 	}
 
 	public int getUserId() {

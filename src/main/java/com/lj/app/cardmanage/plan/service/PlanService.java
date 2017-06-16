@@ -3,6 +3,7 @@ package com.lj.app.cardmanage.plan.service;
 import java.util.List;
 
 import com.lj.app.cardmanage.base.service.BaseService;
+import com.lj.app.cardmanage.plan.model.Plan;
 
 public interface PlanService<Plan> extends BaseService{
 
@@ -83,7 +84,13 @@ public interface PlanService<Plan> extends BaseService{
 	public int checkSaleDay(int day);
 	
 	/**
-	 * 获取pos机器编号
+	 * 获得最大的消费日期
+	 * @return
+	 */
+	public int getMaxSaleDay();
+	
+	/**
+	 * 机具编号
 	 * @param outMoney
 	 * @param userId
 	 * @return
@@ -112,6 +119,11 @@ public interface PlanService<Plan> extends BaseService{
 	public void exceutePlanFromJava();
 	
 	/**
+	 * 根据java代码执行计划
+	 */
+	public void exceutePlanFromJava2();
+	
+	/**
 	 * 上个月消费总金额
 	 * @param preMonthToday
 	 * @param saleDate
@@ -135,5 +147,12 @@ public interface PlanService<Plan> extends BaseService{
 	 * @return
 	 */
 	public int getPreMonthOutSubInMoney(String preMonthToday,String saleDate,int creditCardId);
+	
+	/**
+	 * 更新计划
+	 * @param plan
+	 * @param planId
+	 */
+	public void updatePlan(Plan plan, int planId);
 	
 }

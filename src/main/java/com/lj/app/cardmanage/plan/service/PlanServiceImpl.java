@@ -1,6 +1,5 @@
 package com.lj.app.cardmanage.plan.service;
 
-import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -8,10 +7,12 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ibatis.common.logging.Log;
 import com.ibatis.common.logging.LogFactory;
 import com.lj.app.cardmanage.base.service.BaseServiceImpl;
+import com.lj.app.cardmanage.creditcard.model.CreditCard;
 import com.lj.app.cardmanage.creditcard.service.CreditCardService;
 import com.lj.app.cardmanage.plan.model.Plan;
 import com.lj.app.core.common.util.DateUtil;
@@ -38,6 +39,7 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 	private int cuurentSaleSumMoney;//当月消费总金额
 	private int billSaleRate;//费率
 	private int remainMoney;//剩余金额
+	
 	private int outMoney;//单笔消费金额
 	private int inMoney;//单笔还款金额
 	
@@ -47,17 +49,23 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 	private int preMonthInMoney;//上个月还款金额
 	private int preMonthOutSubInMoney;//上个月帐号金额
 	
+	private int preMonthOutSubInMoneySubcurrentMonthSumInMoney;//上月欠款，当月应还金额
+	
 	private int realRemainMoney;//实际剩余金额
 	private int planRemainMoney;//计划剩余金额
 	
 	private int checkSaleDay;//是否是消费日
+	private int getMaxSaleDay = 0;//最大消费日
 	
 	private int postCardId;//post机器id
 	private int userId;
 	private String saleDate = "";
 	private  int checkIsAlreadyRunPaln = 0;//是否已经生计划
 	
-	private static final int SIGLE_SALE_MIN_MONEY = 100;//单笔消费最小金额
+	private static final int SIGLE_SALE_MIN_MONEY = 10;//单笔消费最小金额
+	
+	private float initRemainMoney;//初始剩余金额
+	
 	
 	@Autowired
 	private CreditCardService creditCardService;
@@ -135,9 +143,25 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 	 * @return
 	 */
 	public int generateBillSaleRate(){
-		BigDecimal d = new BigDecimal( Math.floor(70+(Math.random()*10)));
-		int rate = d.intValue();
+		//BigDecimal d = new BigDecimal(Math.round(Math.random()*5)+90);
+		int rate = 100;
 		return  rate;
+	}
+	
+	/**
+	 * 获得最大的消费日期
+	 * @return
+	 */
+	public int getMaxSaleDay(){
+		int result = 0;
+		try{
+			Map obj  = (HashMap)queryForObject("getMaxSaleDay", null);
+			result = Integer.parseInt(String.valueOf(obj.get("F_GETMAXSALEDAY")));
+		  }catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
+		
 	}
 
 	/**
@@ -170,7 +194,7 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 	}
 	
 	/**
-	 * 获取pos机器编号
+	 * 获取机具器编号
 	 * @param outMoney
 	 * @param userId
 	 * @return
@@ -311,6 +335,141 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 		//生计划消费日
 		generatePlanDayTmp(getIntervalDaysOfBill);
 		
+		getMaxSaleDay=getMaxSaleDay();
+		
+		if(credit_bill_date_count>0) { //账单日数量大于0,开始排计划
+			selectUserAndCardOfBillDayList = this.selectUserAndCardOfBillDay(billDate);
+			for(int i = 0; i<selectUserAndCardOfBillDayList.size();i++){
+				Plan p = (Plan)selectUserAndCardOfBillDayList.get(i);
+				
+				 preMonthOutMoney = getPreMonthOutMoney(preMonthToday,getCurrentDate(),p.getCreditCardId());//上个月消费总金额
+				 preMonthInMoney= getPreMonthInMoney(preMonthToday,getCurrentDate(),p.getCreditCardId());//上个月还款金额
+			     preMonthOutSubInMoney=getPreMonthOutSubInMoney(preMonthToday,getCurrentDate(),p.getCreditCardId());//上个月帐号金额
+			     
+			     repaymentDate = p.getRepaymentDate();
+			   
+			    	 for(int j=0; j<getIntervalDaysOfBill;j++){
+							sumAllMoney = p.getMaxLimit();
+							checkSaleDay =checkSaleDay(j+1);
+							
+							if(j==0){
+								cuurentSaleSumMoney = sumAllMoney*billSaleRate/100;
+								//remainMoney = sumAllMoney-preMonthOutSubInMoney;
+								remainMoney = sumAllMoney;
+								saleDate = getCurrentDate();
+								planRemainMoney = sumAllMoney-cuurentSaleSumMoney;
+								currentMonthSumInMoney = 0;
+								//preMonthOutSubInMoneySubcurrentMonthSumInMoney=preMonthOutSubInMoney-currentMonthSumInMoney;
+								preMonthOutSubInMoneySubcurrentMonthSumInMoney=sumAllMoney;
+							}
+							
+							userId = p.getUserId();
+							
+							//还款操作
+							inMoney = PlanGenerateRuleFactory.getRandompInMoney(preMonthOutSubInMoney,currentMonthSumInMoney,inMoney,j,repaymentDate,preMonthOutSubInMoneySubcurrentMonthSumInMoney);
+							
+							currentMonthSumInMoney = currentMonthSumInMoney +inMoney;
+							
+							
+							
+							//outMoney = PlanGenerateRuleFactory.getRadomOutMoneyHasBill(remainMoney,j+1,getMaxSaleDay);
+							
+							if(outMoney<=SIGLE_SALE_MIN_MONEY){
+								outMoney = 0;
+							}
+						
+							if(checkSaleDay != 1){
+								outMoney = 0;
+							}
+							
+							if(inMoney>0){//还款了，必须刷出，
+							
+								//int randomNumber=(int)(Math.random()*5)+5;
+								int randomNumber=(int)(Math.random()*5+1)*5;
+								outMoney = inMoney-randomNumber;
+							}
+							
+							/*if(remainMoney<=planRemainMoney){
+								remainMoney =Math.abs(remainMoney+outMoney);
+								outMoney=0;
+							}*/
+							
+							remainMoney =Math.abs(realRemainMoney-outMoney+inMoney);
+							
+							if(outMoney ==0){
+								postCardId = getPostCardId(SIGLE_SALE_MIN_MONEY,userId);
+							}else {
+								postCardId = getPostCardId(outMoney,userId);
+							}
+							
+							saleDate = getSaleDay(saleDate,1);
+							//realRemainMoney = remainMoney+planRemainMoney;//实际剩余金额
+							
+							if(inMoney==0){
+								outMoney = realRemainMoney;
+								if (outMoney<0){
+									outMoney=0;
+								}
+								remainMoney =0;
+							}
+							
+							if(remainMoney>0) {
+								realRemainMoney = remainMoney;
+							}else {
+								realRemainMoney=0;
+							}
+							
+							/*if(j==0){
+								realRemainMoney = remainMoney;
+							}*/
+							
+							p.setBatchNo(batchNo);
+							p.setUserId(userId);
+							p.setPostCardId(postCardId);
+							p.setSaleDate(saleDate);
+							p.setSumAllMoney(sumAllMoney);
+							p.setInMoney(inMoney);
+							p.setOutMoney(outMoney);
+							p.setRemainMoney(realRemainMoney);
+							p.setExcuteFlag("F");
+							p.setCreateBy(userId);
+							p.setPostCardId(postCardId);
+							p.setCreateDate(DateUtil.getNowDateYYYYMMddHHMMSS());
+							
+							checkIsAlreadyRunPaln = this.checkIsAlreadyRunPaln(p.getCreditCardId(), saleDate);
+							
+							if(checkIsAlreadyRunPaln == 1){
+							}else{
+								insertObject(p);
+							}
+			}
+			}
+		}
+	}
+	
+	
+	
+	
+	@Override
+	public void exceutePlanFromJava2() {
+		 batchNo =  generateBatchNo();
+		 currentDate  = getCurrentDate();
+		 currentDateOfDD = getCurrentDateOfDD();
+		nextMonthToday = getNextMonthToday();
+		preMonthToday = getPreMonthToday();
+		
+		billDate =  getBillDay(currentDateOfDD);
+		getIntervalDaysOfBill = getIntervalDaysOfBill(nextMonthToday,currentDate)-1;
+		credit_bill_date_count = creditCardService.getCreditBillDateCount(billDate);
+		billSaleRate = generateBillSaleRate();//70-80
+		inMoney = 0;
+		
+		saleDate = getCurrentDate();
+	
+		//生计划消费日
+		generatePlanDayTmp(getIntervalDaysOfBill);
+		
+		getMaxSaleDay=getMaxSaleDay();
 		
 		if(credit_bill_date_count>0) { //账单日数量大于0,开始排计划
 			selectUserAndCardOfBillDayList = this.selectUserAndCardOfBillDay(billDate);
@@ -329,16 +488,21 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 						sumAllMoney = p.getMaxLimit();
 						checkSaleDay =checkSaleDay(j+1);
 						
+						userId = p.getUserId();
+						
 						if(j==0){
 							cuurentSaleSumMoney = sumAllMoney*billSaleRate/100;
 							remainMoney = cuurentSaleSumMoney;
 							saleDate = getCurrentDate();
 							planRemainMoney = sumAllMoney-remainMoney;
+							
+							initRemainMoney = ((CreditCard)creditCardService.getInfoByKey(p.getCreditCardId())).getInitRemainMoney();
+							//outMoney=sumAllMoney-new BigDecimal(initRemainMoney).intValue();
+							outMoney=0;
+							checkSaleDay=1;
+						}else {
+							outMoney = PlanGenerateRuleFactory.getRadomOutMoney(remainMoney,j+1,getMaxSaleDay);
 						}
-						
-						userId = p.getUserId();
-						
-						outMoney = PlanGenerateRuleFactory.getRadomOutMoney(remainMoney);
 						
 						if(outMoney<=SIGLE_SALE_MIN_MONEY){
 							outMoney = 0;
@@ -392,16 +556,17 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 									saleDate = getCurrentDate();
 									planRemainMoney = sumAllMoney-cuurentSaleSumMoney;
 									currentMonthSumInMoney = 0;
+									preMonthOutSubInMoneySubcurrentMonthSumInMoney=preMonthOutSubInMoney-currentMonthSumInMoney;
 								}
 								
 								userId = p.getUserId();
 								
 								//还款操作
-								inMoney = PlanGenerateRuleFactory.getRandompInMoney(preMonthOutSubInMoney,currentMonthSumInMoney,inMoney,j,repaymentDate);
+								inMoney = PlanGenerateRuleFactory.getRandompInMoney(preMonthOutSubInMoney,currentMonthSumInMoney,inMoney,j,repaymentDate,preMonthOutSubInMoneySubcurrentMonthSumInMoney);
 								
 								currentMonthSumInMoney = currentMonthSumInMoney +inMoney;
 								
-								outMoney = PlanGenerateRuleFactory.getRadomOutMoney(remainMoney);
+								outMoney = PlanGenerateRuleFactory.getRadomOutMoneyHasBill(remainMoney,j+1,getMaxSaleDay);
 								
 								if(outMoney<=SIGLE_SALE_MIN_MONEY){
 									outMoney = 0;
@@ -425,22 +590,20 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 								}
 								
 								saleDate = getSaleDay(saleDate,1);
-								
-								
 								//realRemainMoney = remainMoney+planRemainMoney;//实际剩余金额
+								
+								if(inMoney>0){//还款了，必须刷出，
+								//int randomNumber=(int)(Math.random()*5)+5;
+								int randomNumber=(int)(Math.random()*5)+5;
+								outMoney = inMoney-randomNumber;
+									remainMoney =Math.abs(remainMoney-outMoney);
+								}
+								
 								realRemainMoney = remainMoney;
 								
-								if(j==0){
-									//planRemainMoney = sumAllMoney-realRemainMoney - outMoney+inMoney;
-									//planRemainMoney = sumAllMoney-realRemainMoney - outMoney+inMoney;
-									//realRemainMoney = realRemainMoney+planRemainMoney;
+								/*if(j==0){
 									realRemainMoney = remainMoney;
-									
-									/*if(realRemainMoney>sumAllMoney){
-										planRemainMoney = sumAllMoney-realRemainMoney - outMoney-inMoney;
-										realRemainMoney = realRemainMoney+planRemainMoney;
-									}*/
-								}
+								}*/
 								
 								p.setBatchNo(batchNo);
 								p.setUserId(userId);
@@ -467,4 +630,31 @@ public class PlanServiceImpl extends BaseServiceImpl<Plan> implements PlanServic
 		}
 	}
 	
+	/**
+	 * 更新计划
+	 * @param plan
+	 * @param planId
+	 */
+	@Transactional
+	public void updatePlan(Plan plan, int planId){
+		updateObject(plan);
+		int currentRemainMoney = plan.getRemainMoney();
+		
+		Plan planParam =(Plan)getInfoByKey(planId);
+		planParam.setBatchNo(planParam.getBatchNo().substring(0, 10));
+		
+		List<Plan> updatePlanList = queryForList("getPlanInfoForUpdate",planParam);
+		
+		for(Plan planTmp : updatePlanList){
+			int inMoney = planTmp.getInMoney();
+			int outMoney = planTmp.getOutMoney();
+			int remainMoney = planTmp.getRemainMoney();
+			
+			remainMoney = currentRemainMoney+ inMoney -outMoney;
+			currentRemainMoney = remainMoney;
+			planTmp.setRemainMoney(remainMoney);
+			updateObject(planTmp);
+		}
+		
+	}
 }

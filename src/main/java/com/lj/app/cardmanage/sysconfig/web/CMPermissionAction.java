@@ -10,6 +10,7 @@ import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import com.lj.app.cardmanage.base.service.BaseService;
 import com.lj.app.cardmanage.sysconfig.model.CMPermission;
 import com.lj.app.cardmanage.sysconfig.service.CMPermissionService;
 import com.lj.app.core.common.pagination.PageTool;
@@ -42,6 +43,9 @@ public class CMPermissionAction  extends AbstractBaseAction<CMPermission> {
 	
 	private CMPermission cMPermission;
 	
+	public   BaseService getBaseService(){
+		return cMPermissionService;
+	}
 	
 	@Override
 	public CMPermission getModel() {

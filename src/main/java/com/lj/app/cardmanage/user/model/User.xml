@@ -26,7 +26,8 @@
 			,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER t
 			<dynamic prepend="WHERE">
 			  	<isNotEmpty prepend="AND" property="loginNo"> t.loginNo = #loginNo#</isNotEmpty>
-				 <isNotEmpty prepend="AND" property="userName"> t.userName = #userName#</isNotEmpty>
+				 <isNotEmpty prepend="AND" property="pwd"> t.pwd = #pwd#</isNotEmpty>
+				 <isNotEmpty prepend="AND" property="loginNo"> t.loginNo = #loginNo#</isNotEmpty>
 				 <isNotEmpty prepend="AND" property="cardNo"> t.cardNo = #cardNo#</isNotEmpty>
 				 <isNotEmpty prepend="AND" property="userName"> t.userName = #userName#</isNotEmpty>
 				 <isNotEmpty prepend="AND" property="address"> t.address = #address#</isNotEmpty>
@@ -35,7 +36,7 @@
 		
 	</select>
 	
-	<select id="pagenate" parameterClass="java.util.HashMap" resultMap="userResult">
+	<select id="pagenate" resultMap="userResult">
 		SELECT USERID,LOGINNO,PWD,USERNAME,CARDNO,ADDRESS,MOBILE,LOCKSTATUS,ENABLEFLAG,
 		CREATEBY,DATE_FORMAT(CREATEDATE,'%Y-%m-%d %h:%i:%s') CREATEDATE,UPDATEBY
 			,DATE_FORMAT(UPDATEDATE,'%Y-%m-%d %h:%i:%s') UPDATEDATE FROM USER t
@@ -50,10 +51,13 @@
 			 <isNotEmpty prepend="AND" property="address"> t.address = #address#</isNotEmpty>
 			 <isNotEmpty prepend="AND" property="mobile"> t.mobile = #mobile#</isNotEmpty>
 		</dynamic>
+		<dynamic prepend="ORDER BY">
+			<isNotEmpty property="sortColumns">$sortColumns$</isNotEmpty>
+		</dynamic> 
 	</select>
 	
 	
-	 <select id="pagenate_count" parameterClass="java.util.HashMap" resultClass="long">
+	 <select id="pagenate_count" resultClass="long">
 				SELECT count(1) FROM USER t
   		<dynamic prepend="WHERE">
   			<isGreaterEqual	prepend="AND" property="createBy" compareValue="1"> 

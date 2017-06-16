@@ -16,6 +16,7 @@ public class BatchServiceImpl<Batch> extends BaseServiceImpl<Batch> implements B
 		return DateUtil.getNowDate(DateUtil.DATE_FORMAT_YYYYMMDDHHMMSS).replaceAll(" ", "")+"_"+Math.random()*10000;
 	}
 	
+	@Override
 	public int getMaxBatchId() {
 		int batchId = this.countObject("selectMaxId", null);
 		return batchId;

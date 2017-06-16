@@ -18,6 +18,7 @@ public class CreditCardServiceImpl extends BaseServiceImpl implements CreditCard
 	 * @param creditCard
 	 * @return
 	 */
+	@Override
 	public int getUserCreditBillDateCount(CreditCard creditCard){
 		return countObject("getUserCreditBillDateCount",creditCard);
 	}

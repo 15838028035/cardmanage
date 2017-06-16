@@ -8,6 +8,7 @@ public class ExceptionInterceptor implements MethodInterceptor{
 	
 	private static Logger logger = Logger.getLogger(ExceptionInterceptor.class);
 	
+	@Override
 	public Object invoke(MethodInvocation object) throws Throwable {
 		try{
     		Object obj=object.proceed();

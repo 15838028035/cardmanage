@@ -10,12 +10,14 @@ import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import com.lj.app.cardmanage.base.service.BaseService;
 import com.lj.app.cardmanage.postcard.model.PostCard;
 import com.lj.app.cardmanage.postcard.service.PostCardService;
 import com.lj.app.core.common.pagination.Page;
 import com.lj.app.core.common.pagination.PageTool;
 import com.lj.app.core.common.util.AjaxResult;
 import com.lj.app.core.common.util.DateUtil;
+import com.lj.app.core.common.util.ValidateUtil;
 import com.lj.app.core.common.web.AbstractBaseAction;
 import com.lj.app.core.common.web.Struts2Utils;
 
@@ -23,6 +25,7 @@ import com.lj.app.core.common.web.Struts2Utils;
 @Namespace("/jsp/postCard")
 @Results({
 		@Result(name = AbstractBaseAction.INPUT, location = "/jsp/postCard/postCard-input.jsp"),
+		@Result(name = AbstractBaseAction.EDIT, location = "/jsp/postCard/postCardList.jsp"),
 		@Result(name = AbstractBaseAction.SAVE, location = "postCardAction!edit.action",type=AbstractBaseAction.REDIRECT),
 		@Result(name = AbstractBaseAction.LIST, location = "/jsp/postCard/postCardList.jsp",type=AbstractBaseAction.REDIRECT),
 		
@@ -33,9 +36,9 @@ import com.lj.app.core.common.web.Struts2Utils;
 @Action("postCardAction")
 public class PostCardAction  extends AbstractBaseAction<PostCard> {
 	
-	private int id;
+	private Integer id;
 	/**
-	 * POS机编号
+	 * 机具编号
 	 */
 	private String postCardNo;
 	/**
@@ -73,41 +76,68 @@ public class PostCardAction  extends AbstractBaseAction<PostCard> {
 	 * 姓名
 	 */
 	private String userName;
+	private String lockStatus = "0";
 	
 
 	@Autowired
 	private PostCardService postCardService;
 	
-	private PostCard PostCard;
+	private PostCard postCard;
 	
+	@Override
+	protected BaseService getBaseService() {
+		return postCardService;
+	}
 	
 	@Override
 	public PostCard getModel() {
-		PostCard = (PostCard)postCardService.getInfoByKey(id);
-		return PostCard;
+		return postCard;
 	}
 
 	@Override
 	public String list() throws Exception {
+		return null;
+	}
+	
+	/**
+	 * 公共bootStrapList查询方法
+	 * @return
+	 * @throws Exception
+	 */
+	public String bootStrapList() throws Exception {
 		try {
+			if (ValidateUtil.isNotEmpty(this.getSidx())) {
+				String orderBy =this.getSidx() + " " + this.getSord();
+				page.setSortColumns(orderBy);
+			}
+			
 			Map condition = new HashMap();
 			condition.put("postCardNo", postCardNo);
 			condition.put("manName", manName);
 			condition.put("bindBank", bindBank);
 			condition.put(CREATE_BY, getLoginUserId());
-			this.postCardService.findPageList(page, condition);
-			Struts2Utils.renderText(PageTool.pageToJsonJQGrid(this.page),new String[0]);
+			
+			page.setFilters(getModel());
+			
+			if (this.getSortName()!=null) {
+				String orderBy =this.getSortName() + " "+ this.getSortOrder();
+				page.setSortColumns(orderBy);
+			}
+			
+			page = getBaseService().findPageList(page, condition);
+			Struts2Utils.renderText(PageTool.pageToJsonBootStrap(this.page),new String[0]);
 			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
 		}
-	}
+}
+	
 	@Override
 	public String input() throws Exception {
-		PostCard = new PostCard();
+		postCard = new PostCard();
 		postCardNo = postCardService.generatePostCardNo(getLoginUserId(), getLoginUserName());
-		PostCard.setPostCardNo(postCardNo);
+		postCard.setPostCardNo(postCardNo);
 		return INPUT;
 	}
 
@@ -129,6 +159,7 @@ public class PostCardAction  extends AbstractBaseAction<PostCard> {
 				postCard.setBindBank(bindBank);
 				postCard.setCardNo(cardNo);
 				postCard.setUserName(userName);
+				postCard.setLockStatus(lockStatus);
 				
 				postCard.setUpdateBy(getLoginUserId());
 				postCard.setUpdateDate(DateUtil.getNowDateYYYYMMddHHMMSS());
@@ -147,6 +178,7 @@ public class PostCardAction  extends AbstractBaseAction<PostCard> {
 				postCard.setBindBank(bindBank);
 				postCard.setCardNo(cardNo);
 				postCard.setUserName(userName);
+				postCard.setLockStatus(lockStatus);
 				
 				postCard.setCreateBy(getLoginUserId());
 				postCard.setCreateDate(DateUtil.getNowDateYYYYMMddHHMMSS());
@@ -155,7 +187,7 @@ public class PostCardAction  extends AbstractBaseAction<PostCard> {
 				returnMessage = CREATE_SUCCESS;
 			}
 			
-			return LIST;
+			return INPUT;
 		}catch(Exception e){
 			returnMessage = CREATE_FAILURE;
 			e.printStackTrace();
@@ -171,7 +203,13 @@ public class PostCardAction  extends AbstractBaseAction<PostCard> {
 
 	@Override
 	protected void prepareModel() throws Exception {
-		
+		if(id!=null){
+			postCard = (PostCard)postCardService.getInfoByKey(id);
+		}else {
+			postCard = new PostCard();
+			postCardNo = postCardService.generatePostCardNo(getLoginUserId(), getLoginUserName());
+			postCard.setPostCardNo(postCardNo);
+		}
 	}
 	
 	public String multidelete() throws Exception {
@@ -288,29 +326,36 @@ public class PostCardAction  extends AbstractBaseAction<PostCard> {
 		this.userName = userName;
 	}
 
+	@Override
 	public String getMultidelete() {
 		return multidelete;
 	}
 
+	@Override
 	public void setMultidelete(String multidelete) {
 		this.multidelete = multidelete;
 	}
 
+	@Override
 	public Page<PostCard> getPage() {
 		return page;
 	}
 
+	@Override
 	public void setPage(Page<PostCard> page) {
 		this.page = page;
 	}
 
-
 	public PostCard getPostCard() {
-		return PostCard;
+		return postCard;
 	}
 
 	public void setPostCard(PostCard postCard) {
-		PostCard = postCard;
+		this.postCard = postCard;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public PostCardService getPostCardService() {
@@ -320,5 +365,12 @@ public class PostCardAction  extends AbstractBaseAction<PostCard> {
 	public void setPostCardService(PostCardService postCardService) {
 		this.postCardService = postCardService;
 	}
-	
+
+	public String getLockStatus() {
+		return lockStatus;
+	}
+
+	public void setLockStatus(String lockStatus) {
+		this.lockStatus = lockStatus;
+	}
 }

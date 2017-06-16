@@ -4,3 +4,16 @@
 p.creditCardId=3 
 AND saleDate between STR_TO_DATE('2015-08-01', '%Y-%m-%d') 
 and STR_TO_DATE('2015-08-20', '%Y-%m-%d')
+
+
+
+select * from user;
+
+
+select * from plan p where p.userId=41;
+
+
+select * from plan p where p.userId=41 and  p.outMoney>0;
+
+select count(1) from plan p where p.userId=41 and  p.outMoney>0;
+

@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="bulletin">
+
+    <typeAlias alias="bulletin" type="com.lj.app.cardmanage.bulletin.model.Bulletin"/>
+
+    <resultMap id="bulletinResult" class="bulletin">
+   	  	<result property="bulletinId" column="bulletinId"   />
+   	  	<result property="typeName" column="typeName"   />
+   	  	<result property="levelName" column="levelName"   />
+   	  	<result property="title" column="title"   />
+   	  	<result property="targetTypeName" column="targetTypeName"   />
+   	  	<result property="targetName" column="targetName"   />
+   	  	<result property="isNestedName" column="isNestedName"   />
+   	  	<result property="userId" column="userId"   />
+   	  	<result property="state" column="state"   />
+   	  	<result property="effDate" column="effDate"   />
+   	  	<result property="expDate" column="expDate"   />
+   	  	<result property="createTime" column="createTime"   />
+   	  	<result property="operator" column="operator"   />
+   	  	<result property="optDate" column="optDate"   />
+    </resultMap>
+
+	<sql id="dynamicWhere">
+	    <dynamic prepend="WHERE">
+	       <isNotEmpty prepend="AND" property="bulletinId">
+	             bulletinId = #bulletinId#
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="typeName">
+	             typeName = #typeName#
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="levelName">
+	             levelName = #levelName#
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="title">
+	             title = #title#
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="targetTypeName">
+	             targetTypeName = #targetTypeName#
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="targetName">
+	             targetName = #targetName#
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="isNestedName">
+	             isNestedName = #isNestedName#
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="userId">
+	             userId = #userId#
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="state">
+	             state = #state#
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="effDate">
+	             effDate = #effDate#
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="effDateBegin">
+	             <![CDATA[
+	             effDate >= str_to_date('#effDatebegin#','%Y-%m-%d') 
+	             ]]>
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="effDateEnd">
+	             <![CDATA[
+	             effDate <= str_to_date('#effDateEnd#','%Y-%m-%d')
+	             ]]>
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="expDate">
+	             expDate = #expDate#
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="expDateBegin">
+	             <![CDATA[
+	             expDate >= str_to_date('#expDatebegin#','%Y-%m-%d') 
+	             ]]>
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="expDateEnd">
+	             <![CDATA[
+	             expDate <= str_to_date('#expDateEnd#','%Y-%m-%d')
+	             ]]>
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="createTime">
+	             createTime = #createTime#
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="createTimeBegin">
+	             <![CDATA[
+	             createTime >= str_to_date('#createTimebegin#','%Y-%m-%d') 
+	             ]]>
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="createTimeEnd">
+	             <![CDATA[
+	             createTime <= str_to_date('#createTimeEnd#','%Y-%m-%d')
+	             ]]>
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="operator">
+	             operator = #operator#
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="optDate">
+	             optDate = #optDate#
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="optDateBegin">
+	             <![CDATA[
+	             optDate >= str_to_date('#optDatebegin#','%Y-%m-%d') 
+	             ]]>
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="optDateEnd">
+	             <![CDATA[
+	             optDate <= str_to_date('#optDateEnd#','%Y-%m-%d')
+	             ]]>
+	       </isNotEmpty>
+	    </dynamic>	
+	</sql>
+
+	<sql id="commonSelectColumnsPrefix">
+	    <![CDATA[
+	    select
+        	bulletinId ,
+        	typeName ,
+        	levelName ,
+        	title ,
+        	targetTypeName ,
+        	targetName ,
+        	isNestedName ,
+        	userId ,
+        	state ,
+        	effDate ,
+        	expDate ,
+        	createTime ,
+        	operator ,
+        	optDate 
+	    ]]>
+	</sql>
+	
+    <insert id="insert" parameterClass="bulletin">
+        <selectKey resultClass="int" keyProperty="bulletinId"  type="post">
+             SELECT LAST_INSERT_ID()
+        </selectKey>
+
+	    <![CDATA[
+	        INSERT INTO
+	        bulletin (
+	        	bulletinId ,
+	        	typeName ,
+	        	levelName ,
+	        	title ,
+	        	targetTypeName ,
+	        	targetName ,
+	        	isNestedName ,
+	        	userId ,
+	        	state ,
+	        	effDate ,
+	        	expDate ,
+	        	createTime ,
+	        	operator ,
+	        	optDate 
+	        ) VALUES (
+				#bulletinId# ,
+				#typeName# ,
+				#levelName# ,
+				#title# ,
+				#targetTypeName# ,
+				#targetName# ,
+				#isNestedName# ,
+				#userId# ,
+				#state# ,
+				#effDate# ,
+				#expDate# ,
+				#createTime# ,
+				#operator# ,
+				#optDate# 
+	        )
+	    ]]>
+    </insert>
+   
+     <update id="update" parameterClass="bulletin">
+    <![CDATA[
+        UPDATE bulletin 
+      ]]>
+      <dynamic prepend="set"> 
+	        <isNotEmpty prepend="," property="bulletinId">
+				bulletinId = #bulletinId#
+			</isNotEmpty>
+	        <isNotEmpty prepend="," property="typeName">
+				typeName = #typeName#
+			</isNotEmpty>
+	        <isNotEmpty prepend="," property="levelName">
+				levelName = #levelName#
+			</isNotEmpty>
+	        <isNotEmpty prepend="," property="title">
+				title = #title#
+			</isNotEmpty>
+	        <isNotEmpty prepend="," property="targetTypeName">
+				targetTypeName = #targetTypeName#
+			</isNotEmpty>
+	        <isNotEmpty prepend="," property="targetName">
+				targetName = #targetName#
+			</isNotEmpty>
+	        <isNotEmpty prepend="," property="isNestedName">
+				isNestedName = #isNestedName#
+			</isNotEmpty>
+	        <isNotEmpty prepend="," property="userId">
+				userId = #userId#
+			</isNotEmpty>
+	        <isNotEmpty prepend="," property="state">
+				state = #state#
+			</isNotEmpty>
+	        <isNotEmpty prepend="," property="effDate">
+				effDate = #effDate#
+			</isNotEmpty>
+	        <isNotEmpty prepend="," property="expDate">
+				expDate = #expDate#
+			</isNotEmpty>
+	        <isNotEmpty prepend="," property="createTime">
+				createTime = #createTime#
+			</isNotEmpty>
+	        <isNotEmpty prepend="," property="operator">
+				operator = #operator#
+			</isNotEmpty>
+	        <isNotEmpty prepend="," property="optDate">
+				optDate = #optDate#
+			</isNotEmpty>
+	        
+	   </dynamic>
+        WHERE 
+	        bulletinId = #bulletinId# 
+    </update>
+
+    <delete id="delete" parameterClass="Integer">
+    <![CDATA[
+        delete from bulletin where
+        bulletinId = #bulletinId# 
+    ]]>
+    </delete>
+    
+    <select id="select" resultMap="bulletinResult">
+    	<include refid="commonSelectColumnsPrefix"/>
+	    <![CDATA[
+	        from bulletin 
+	    ]]>
+		<include refid="dynamicWhere"/>
+    </select>
+    
+    <select id="getInfoByKey" resultMap="bulletinResult">
+	    <include refid="commonSelectColumnsPrefix"/>
+	    <![CDATA[
+	        from bulletin 
+	        where 
+		        bulletinId = #bulletinId# 
+	    ]]>
+    </select>
+
+ 	<select id="pagenate" resultMap="bulletinResult">
+    	<include refid="commonSelectColumnsPrefix"/>
+	    <![CDATA[
+	        from bulletin 
+	    ]]>
+		<include refid="dynamicWhere"/>
+		<dynamic prepend="ORDER BY">
+			<isNotEmpty property="sortColumns">$sortColumns$</isNotEmpty>
+		</dynamic>
+    </select>
+    
+    <select id="pagenate_count" resultClass="long">
+    <![CDATA[
+        select 
+        count(*)
+        from bulletin
+    ]]>
+		<include refid="dynamicWhere"/>    
+    </select>
+
+</sqlMap>

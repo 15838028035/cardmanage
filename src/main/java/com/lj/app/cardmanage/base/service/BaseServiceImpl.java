@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.lj.app.cardmanage.base.dao.BaseDao;
 import com.lj.app.cardmanage.base.model.BaseModel;
 import com.lj.app.core.common.pagination.Page;
+import com.lj.app.core.common.util.MapAndObject;
 import com.lj.app.core.common.util.ValidateUtil;
 
 @Service("baseService")
@@ -144,18 +145,21 @@ public abstract class BaseServiceImpl<T> implements BaseService {
 		String countQuery = getSqlMapNameSpace()+NAMESPACE_SPLIT+sqlId+PAGE_QUERY_SUBFIX;
 		String findQuery = getSqlMapNameSpace()+NAMESPACE_SPLIT+sqlId;
 		
-		Number totalCount = (Number) baseDao.queryForObject(countQuery, condition);
+		if(ValidateUtil.isNotEmpty(page.getSortColumns())){
+			condition.put("sortColumns", page.getSortColumns());
+		}
+		
+		Map parameterObject = new MapAndObject(condition, page.getFilters());
+		
+		Number totalCount = (Number) baseDao.queryForObject(countQuery, parameterObject);
 		if(totalCount == null || totalCount.intValue() <= 0) {
 			return page;
 		}
-		if(ValidateUtil.isEmpty(page.getSortColumns())) {
-		} else {
-			condition.put("sortColumns", page.getSortColumns());
-		}
-
+		
 		page.setTotalCount(totalCount.intValue());
-		List list = baseDao.queryForList(findQuery,condition,page.getFirstResult(), page.getPageSize());
+		List list = baseDao.queryForList(findQuery,parameterObject,page.getFirstResult(), page.getPageSize());
 		page.setResult(list);
+
 		return page;
 	}
 

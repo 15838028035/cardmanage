@@ -14,6 +14,7 @@ import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import com.lj.app.cardmanage.base.service.BaseService;
 import com.lj.app.cardmanage.sysconfig.service.CMPermissionService;
 import com.lj.app.cardmanage.user.model.User;
 import com.lj.app.cardmanage.user.service.UserService;
@@ -31,6 +32,7 @@ import com.lj.app.core.common.web.Struts2Utils;
 @Namespace("/")
 @Results( {
 		@Result(name = SecurityConstants.LOGIN, location = "/login.jsp"),
+		@Result(name = "lockCheck", location = "/lockCheck.jsp"),
 		@Result(name = SecurityConstants.INDEX, location = "/index.jsp", type = "redirect"),
 		@Result(name = SecurityConstants.NOPERMISSION, location = "/jsp/common/nopermission.jsp"),
 		@Result(name = SecurityConstants.SYSERROR, location = "/jsp/common/500.jsp") })
@@ -44,6 +46,12 @@ public class LoginAction extends AbstractBaseAction<User> {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Override
+	protected BaseService getBaseService() {
+		return userService;
+	}
+
 
 	public String login() throws Exception {
 		if (ValidateUtil.isEmpty(loginNo)|| ValidateUtil.isEmpty(pwd)) {
@@ -52,7 +60,7 @@ public class LoginAction extends AbstractBaseAction<User> {
 
 		User user = new User();
 		user.setLoginNo(loginNo);
-		user.setPwd(pwd);
+		user.setPwd(DesUtil.encrypt(pwd));
 		user.setLockStatus(CMCode.LOCK_SATE_0);
 		
 		List<User> userList = userService.findBaseModeList(user);
@@ -61,19 +69,25 @@ public class LoginAction extends AbstractBaseAction<User> {
 		if (ValidateUtil.isEmpty(loginNo)) {
 			logger.debug("no user loginNo:" + userList + " found.");
 			return SecurityConstants.LOGIN;
-		} else {
-			loginUser = userList.get(0);
-			String encryptPwd = DesUtil.encrypt(pwd);
-			String dbpwd = loginUser.getPwd();
-			if (!encryptPwd.equals(dbpwd)) {
-				logger.info("password wrong!!!");
-				return SecurityConstants.LOGIN;
-			} else if (!loginUser.getLockStatus().equals("0")) {
-				logger
-						.info("lockstatus is not 0(common status),so login denied!");
-				return SecurityConstants.LOGIN;
-			}
 		}
+		
+		if (userList==null || userList.size()==0 ) {
+			logger.debug("no user loginNo:" + userList + " found.");
+			return SecurityConstants.LOGIN;
+		}
+		
+		loginUser = userList.get(0);
+		String encryptPwd = DesUtil.encrypt(pwd);
+		String dbpwd = loginUser.getPwd();
+		if (!encryptPwd.equals(dbpwd)) {
+			logger.info("password wrong!!!");
+			return SecurityConstants.LOGIN;
+		} else if (!loginUser.getLockStatus().equals("0")) {
+			logger
+					.info("lockstatus is not 0(common status),so login denied!");
+			return SecurityConstants.LOGIN;
+		}
+		
 
 		HttpSession session2 = Struts2Utils.getSession();// 清空session
 		if (session2 != null) {
@@ -114,7 +128,7 @@ public class LoginAction extends AbstractBaseAction<User> {
 		}
 		Struts2Utils.getSession().setAttribute(SessionCode.MAIN_ACCT,loginUser);
 		Struts2Utils.getSession().setAttribute(SessionCode.LOGIN_NAME,user.getLoginNo());
-		
+		logger.info("password wrong!!!");
 		Struts2Utils.getResponse().sendRedirect(Struts2Utils.getRequest().getContextPath() + "/index.jsp");
 		return null;
 	}
@@ -173,6 +187,65 @@ public class LoginAction extends AbstractBaseAction<User> {
 		}
 
 		return SecurityConstants.LOGIN;
+	}
+
+	public String getLockFlag() {
+		Object o = Struts2Utils.getSession().getAttribute("lockFlag");
+		if (o == null) {
+			Struts2Utils.renderText("");
+		} else {
+			String lockFlag = (String) o;
+			Struts2Utils.renderText(lockFlag);
+		}
+		return null;
+	}
+	
+	/**
+	 * 锁屏页面初始化
+	 * 
+	 * @return
+	 */
+	public String lockCheckInit() {
+		return "lockCheck";
+	}
+
+	public String lock() {
+		Struts2Utils.getSession().setAttribute("lockFlag", "1");
+		return null;
+	}
+	
+	/**
+	 * @description: 校验锁屏密码
+	 * @return：
+	 */
+	public String lockCheck() {
+		// 产品默认 认证类
+		
+
+		try {
+			String password = DesUtil.encrypt(Struts2Utils.getParameter("password"));
+			String loginNo = Struts2Utils.getParameter("loginNo");
+			loginNo = (String)Struts2Utils.getSessionAttribute(SessionCode.LOGIN_NAME);
+			
+			User user = new User();
+			user.setLoginNo(loginNo);
+			user.setPwd(password);
+			user.setLockStatus(CMCode.LOCK_SATE_0);
+			
+			List<User> userList = userService.findBaseModeList(user);
+			
+			if(userList!=null && userList.size()>0) {
+				Struts2Utils.renderText("0");
+				Struts2Utils.getSession().setAttribute("lockFlag","0");
+			}else {
+				Struts2Utils.renderText("1");
+				Struts2Utils.getSession().setAttribute("lockFlag","1");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 

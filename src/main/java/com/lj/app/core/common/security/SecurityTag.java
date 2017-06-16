@@ -19,6 +19,7 @@ public class SecurityTag extends SimpleTagSupport {
 		this.required = required;
 	}
 
+	@Override
 	public void doTag() throws JspException, IOException {
 		if(required == null || required.equals("true")) {
 			CMSecurityContext securityContext = (CMSecurityContext)this.getJspContext().findAttribute(

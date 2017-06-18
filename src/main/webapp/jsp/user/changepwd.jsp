@@ -2,9 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ include file="/jsp/common/taglibs.jsp" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
     <title>修改密码</title>
     <%@ include file="/jsp/common/meta.jsp" %>
@@ -17,48 +16,35 @@
 		});
 	</script>
 	
-	<style type="text/css">
-	
-	body {
-    //background:url(${ctx}/images/login_conbg.jpg) #f8f6e9;
-	}
-		 .mycenter{
-		    margin-top: 100px;
-		    margin-left: auto;
-		    margin-right: auto;
-		    height: 350px;
-		    width:320px;
-		    padding: 5%;
-		    padding-left: 5%;
-		    padding-right: 5%;
-		}
-
-	</style>
 </head>
 <body>
-			    
-<form action="userAction!updateAcctPwd.action" method="post" name="userForm" id="userForm">
-         <div class="mycenter">
-           <div class="col-sm-12">
-              <input  class="form-control" type="password" id="oldPwd" name="oldPwd" class="form-control"placeholder="请输入旧密码"/>
-              </div>
-              
-               <div class="col-sm-12">
-              <input  class="form-control" type="password" id="pwd" name="pwd" class="form-control"placeholder="请输入新密码"/>
-              </div>
-              
-               <div class="col-md-12">
-              <input  class="form-control" type="password" id="newPwd" name="newPwd" class="form-control"placeholder="请输入确认密码"/>
-              </div>
-              
-                 <div class="col-sm-12">
-               		<button type="submit" id="save" class="btn btn-success btn-shadow btn-shadow-success ">保存</button> 
-        		   <button type="button" id="backToHomeButton" class="btn btn-primary ">返回</button> 
-              </div>
-        
-        </div>
-        
-</form>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-offset-3 col-sm-6">
+			<form action="userAction!updateAcctPwd.action" method="post" name="userForm" id="userForm" class="form-horizontal">
+						<span class="heading"><h2>修改密码 </h2></span>
+			           <div class="form-group">
+			              <input  class="form-control" type="password" id="oldPwd" name="oldPwd" class="form-control"placeholder="请输入旧密码"/>
+			              </div>
+			              
+			               <div class="form-group">
+			              <input  class="form-control" type="password" id="pwd" name="pwd" class="form-control"placeholder="请输入新密码"/>
+			              </div>
+			              
+			               <div class="form-group">
+			              <input  class="form-control" type="password" id="newPwd" name="newPwd" class="form-control"placeholder="请输入确认密码"/>
+			              </div>
+			              
+			                 <div class="form-group">
+			               		<button type="submit" id="save" class="btn btn-success btn-shadow btn-shadow-success btn-lg">保存</button> 
+			        		   <button type="button" id="backToHomeButton" class="btn btn-primary btn-lg">返回</button> 
+			              </div>
+			</form>
+
+</div>
+</div>
+</div>
+
 <script>
         $("#submitButton").click(function() {
         	$("#userForm").submit();

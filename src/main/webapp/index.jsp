@@ -9,7 +9,7 @@
  </head>
   <body>
   
-  <div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -62,7 +62,7 @@
         <div class="col-sm-6 col-md-4 col-lg-3 ">
           <div class="thumbnail">
             <a href="${ctx}/jsp/creditCard/creditCardList.jsp" title="卡片管理" target="_blank" >
-            <img class="lazy" src="${ctx}/images/image01.jpg" width="300" height="150"></a>
+            <img class="lazy" src="${ctx}/images/image01.jpg" class="img-responsive" ></a>
             <div class="caption">
               <h3>
                 <a href="${ctx}/jsp/creditCard/creditCardList.jsp" title="卡片管理" target="_blank" >卡片管理</a>
@@ -74,7 +74,7 @@
          <div class="col-sm-6 col-md-4 col-lg-3 ">
           <div class="thumbnail">
             <a href="${ctx}/jsp/postCard/postCardList.jsp" title="机具管理" target="_blank" >
-            <img class="lazy" src="${ctx}/images/image02.jpg" width="300" height="150"></a>
+            <img class="lazy" src="${ctx}/images/image02.jpg" class="img-responsive" ></a>
             <div class="caption">
               <h3>
                 <a href="${ctx}/jsp/postCard/postCardList.jsp" title="机具管理" target="_blank" >机具管理</a>
@@ -86,7 +86,7 @@
         <div class="col-sm-6 col-md-4 col-lg-3 ">
           <div class="thumbnail">
             <a href="${ctx}/jsp/plan/planList.jsp" title="计划管理" target="_blank" >
-            <img class="lazy" src="${ctx}/images/image03.jpg" width="300" height="150"></a>
+            <img class="lazy" src="${ctx}/images/image03.jpg" class="img-responsive" ></a>
             <div class="caption">
               <h3>
                 <a href="${ctx}/jsp/plan/planList.jsp" title="计划管理" target="_blank" >计划管理</a>
@@ -100,7 +100,7 @@
         <div class="col-sm-6 col-md-4 col-lg-3 ">
           <div class="thumbnail">
             <a href="${ctx}/jsp/user/userList.jsp" title="用户管理" target="_blank" >
-            <img class="lazy" src="${ctx}/images/image04.jpg" width="300" height="150"></a>
+            <img class="lazy" src="${ctx}/images/image04.jpg" class="img-responsive" ></a>
             <div class="caption">
               <h3>
                 <a href="${ctx}/jsp/user/userList.jsp" title="用户管理" target="_blank" >用户管理</a>
@@ -116,7 +116,7 @@
         <div class="col-sm-6 col-md-4 col-lg-3 ">
           <div class="thumbnail">
             <a href="${ctx}/jsp/bulletin/bulletinList.jsp" title="公告管理" target="_blank" >
-            <img class="lazy" src="${ctx}/images/image05.jpg" width="300" height="150"></a>
+            <img class="lazy" src="${ctx}/images/image05.jpg" class="img-responsive" ></a>
             <div class="caption">
               <h3>
                 <a href="${ctx}/jsp/bulletin/bulletinList.jsp" title="公告管理" target="_blank" >公告管理</a>
@@ -130,7 +130,7 @@
         <div class="col-sm-6 col-md-4 col-lg-3 ">
           <div class="thumbnail">
             <a href="${ctx}/jsp/user/changepwd.jsp" title="修改密码" target="_blank" >
-            <img class="lazy" src="${ctx}/images/image06.jpg" width="300" height="150"></a>
+            <img class="lazy" src="${ctx}/images/image06.jpg" class="img-responsive" ></a>
             <div class="caption">
               <h3>
                 <a href="${ctx}/jsp/user/changepwd.jsp" title="修改密码" target="_blank" >修改密码</a>

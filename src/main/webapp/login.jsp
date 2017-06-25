@@ -39,7 +39,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-offset-3 col-sm-6">
+        <div class="center-block" style="width:250px;">
             <form class="form-horizontal" action="${ctx}/loginAction!login.action" method="post">
                 <span class="heading"><h1>卡神管理系统</h1><h2>用户登录</h2></span>
                 <div class="form-group">

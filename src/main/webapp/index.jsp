@@ -51,7 +51,7 @@
     <div class="jumbotron masthead">
 	    <div class="container-fluid">
 			<h1>卡神管理系统</h1>
-			<h2>简洁、简单的卡神管理系统</h2>
+			<p class="lead">简洁、简单的卡神管理系统</p>
 	    </div>
     </div>
     
@@ -138,18 +138,6 @@
             </div>
           </div>
         </div>
-        
-<!--          <div class="col-sm-6 col-md-4 col-lg-3 "> -->
-<!--           <div class="thumbnail"> -->
-<%--             <a href="${ctx}/jsp/creditCard/cardapply.jsp" title="申请卡片" target="_blank" > --%>
-<%--             <img class="lazy" src="${ctx}/images/image07.jpg" width="300" height="150"></a> --%>
-<!--             <div class="caption"> -->
-<!--               <h3> -->
-<%--                 <a href="${ctx}/jsp/creditCard/cardapply.jsp" title="申请卡片" target="_blank" >申请卡片</a> --%>
-<!--               </h3> -->
-<!--             </div> -->
-<!--           </div> -->
-<!--         </div> -->
         
    </div>
 
